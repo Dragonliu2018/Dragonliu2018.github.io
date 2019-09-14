@@ -4,25 +4,25 @@
   
     
     <entry>
-      <title>Good  softwares for win10</title>
-      <link href="/2019/09/14/Good-softwares-for-win10/"/>
-      <url>/2019/09/14/Good-softwares-for-win10/</url>
+      <title>VScode配置C++运行程序</title>
+      <link href="/2019/09/14/VScode%E9%85%8D%E7%BD%AEC-%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/"/>
+      <url>/2019/09/14/VScode%E9%85%8D%E7%BD%AEC-%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/</url>
       
-        <content type="html"><![CDATA[<h2 id="文件搜索增强工具"><a href="#文件搜索增强工具" class="headerlink" title="文件搜索增强工具"></a>文件搜索增强工具</h2><ul><li>Everything<blockquote><p>软件本身很小，搜索速度很快，甚至可以删除所有桌面应用快捷方式，仅留一个它！</p></blockquote></li><li>Wox<blockquote><p>它可以调用 Everything 快速搜索本地文件，也可以启动程序、执行命令行、进行网页搜索等，非常强大。Wox 支持安装各种插件，从而实现剪贴板历史、进程管理、文本翻译、进制转换、快递查询等扩展功能。</p></blockquote><h2 id="查看增强工具"><a href="#查看增强工具" class="headerlink" title="查看增强工具"></a>查看增强工具</h2></li><li>Seer<blockquote><p>安装 Seer 后，无需其它设置，你就可以在选中文件后按空格快速预览它了。Seer 默认支持文本、图片、视频、压缩包等类别的上百种文件扩展名，你也可以在设置中为其安装 Office、CAD 等扩展插件，让其支持更多文件类型。此外，Seer 还支持与 Directory Opus 等第三方程序集成，或者自定义预览快捷键</p></blockquote></li></ul><h2 id="粘贴板增强工具"><a href="#粘贴板增强工具" class="headerlink" title="粘贴板增强工具"></a>粘贴板增强工具</h2><ul><li>Ditto<blockquote><p>无论你粘贴了什么，任何时候都已回溯，还支持导出，修改，搜索，可以说如果你经常和文字打交道，那么你就需要它！</p></blockquote><h2 id="截图增强工具"><a href="#截图增强工具" class="headerlink" title="截图增强工具"></a>截图增强工具</h2></li><li>Snipaste<blockquote><p>截图，贴补，保存图，小巧，功能丰富。</p></blockquote><h2 id="markdown写作工具"><a href="#markdown写作工具" class="headerlink" title="markdown写作工具"></a>markdown写作工具</h2></li><li>typora<blockquote><p>win平台颜值最高的markdown写作工具</p></blockquote><h2 id="压缩解压缩软件"><a href="#压缩解压缩软件" class="headerlink" title="压缩解压缩软件"></a>压缩解压缩软件</h2></li><li>Bandizip<blockquote><p>没有任何广告，软件体积小，响应快，丰富右键菜单，从不打扰用户的免费压缩软件。</p></blockquote><h2 id="视频播放软件"><a href="#视频播放软件" class="headerlink" title="视频播放软件"></a>视频播放软件</h2></li><li>PotPlayer<blockquote><p>avi格式都支持，支持倍速播放，可以看世姐任意一个国家的电视，免费，无广告。</p></blockquote><h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2></li><li>谷歌浏览器</li></ul>]]></content>
+        <content type="html"><![CDATA[<h2 id="步骤1-安装-mingw-w64"><a href="#步骤1-安装-mingw-w64" class="headerlink" title="步骤1 安装 mingw-w64"></a>步骤1 安装 mingw-w64</h2><blockquote><p>Windows10下中途安装失败： The file has been downloaded incorrectedly!</p></blockquote><h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><blockquote><p>将舍友的mingw-w64文件夹拷到自己的电脑上，然后增加环境变量。</p></blockquote><h2 id="步骤2-下载插件"><a href="#步骤2-下载插件" class="headerlink" title="步骤2 下载插件"></a>步骤2 下载插件</h2><blockquote><p>C/C++<br>C++ Intellisense<br>Code Runner<br>Chinese (Simplified) Language Pack for Visual Studio Code （此中文（简体）语言包为 VS Code 提供本地化界面）</p></blockquote><h2 id="步骤3-解决输出中文乱码"><a href="#步骤3-解决输出中文乱码" class="headerlink" title="步骤3 解决输出中文乱码"></a>步骤3 解决输出中文乱码</h2><p>VScode默认是UTF-8编码格式，此时我们要做的是更改VScode的默认编码格式为GB2312。</p><h3 id="具体操作步骤为："><a href="#具体操作步骤为：" class="headerlink" title="具体操作步骤为："></a>具体操作步骤为：</h3><blockquote><p>文件-&gt;首选项-&gt;设置-&gt;搜索设置-&gt;encoding-&gt;Files：Encoding-&gt;gb2312<br>等价于（配置文件添加：    “files.encoding”: “gb2312”,）</p></blockquote><h3 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h3><blockquote><p>不要更改VScode默认编码格式（UTF-8），而是仅仅编写c++程序前将编码格式改为 GB2312</p></blockquote><h2 id="步骤4-自动补全"><a href="#步骤4-自动补全" class="headerlink" title="步骤4  自动补全"></a>步骤4  自动补全</h2><blockquote><p>配置文件中添加：  “C_Cpp.intelliSenseEngine”: “Default”,</p></blockquote>]]></content>
       
       
       <categories>
           
-          <category> Blog </category>
+          <category> 配置环境 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> software </tag>
+            <tag> VScode </tag>
             
-            <tag> win10 </tag>
+            <tag> C++ </tag>
             
         </tags>
       
@@ -58,25 +58,25 @@
     
     
     <entry>
-      <title>VScode配置C++运行程序</title>
-      <link href="/2019/09/14/VScode%E9%85%8D%E7%BD%AEC-%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/"/>
-      <url>/2019/09/14/VScode%E9%85%8D%E7%BD%AEC-%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/</url>
+      <title>Good  softwares for win10</title>
+      <link href="/2019/09/14/Good-softwares-for-win10/"/>
+      <url>/2019/09/14/Good-softwares-for-win10/</url>
       
-        <content type="html"><![CDATA[<h4 id="步骤1-安装mingw-w64"><a href="#步骤1-安装mingw-w64" class="headerlink" title="步骤1 安装mingw-w64"></a>步骤1 安装mingw-w64</h4><blockquote><p>Windows10下中途安装失败： The file has been downloaded incorrectedly!</p></blockquote><blockquote><p>解决：</p><blockquote><p>1.在线安装<br>2.将</p></blockquote></blockquote><h4 id="步骤2-下载插件"><a href="#步骤2-下载插件" class="headerlink" title="步骤2 下载插件"></a>步骤2 下载插件</h4><blockquote><p>C/C++<br>C++ Intellisense<br>Code Runner<br>Chinese (Simplified) Language Pack for Visual Studio Code （此中文（简体）语言包为 VS Code 提供本地化界面）</p></blockquote><h4 id="步骤3-解决输出中文乱码"><a href="#步骤3-解决输出中文乱码" class="headerlink" title="步骤3 解决输出中文乱码"></a>步骤3 解决输出中文乱码</h4><blockquote><p>VScode默认是UTF-8编码格式，此时我们要做的是更改VScode的默认编码格式为GB2312。<br>具体操作步骤为：</p><blockquote><p>文件——》首选项——》设置——》搜索设置——》encoding——》Files：Encoding——》gb2312<br>等价于（配置文件添加：    “files.encoding”: “gb2312”,）<br>建议：不要更改VScode默认编码格式（UTF-8），而是编写c++程序前将编码格式改为 GB2312</p></blockquote></blockquote><h4 id="步骤4-自动补全"><a href="#步骤4-自动补全" class="headerlink" title="步骤4  自动补全"></a>步骤4  自动补全</h4><blockquote><p>配置文件中添加：  “C_Cpp.intelliSenseEngine”: “Default”,</p></blockquote><hr><p>title: VScode配置C++运行环境<br>date: 2019-09-09 11:49:41</p><h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2>]]></content>
+        <content type="html"><![CDATA[<h2 id="文件搜索增强工具-Everything-amp-amp-Wox"><a href="#文件搜索增强工具-Everything-amp-amp-Wox" class="headerlink" title="文件搜索增强工具: Everything &amp;&amp; Wox"></a>文件搜索增强工具: Everything &amp;&amp; Wox</h2><blockquote><p>Everything本身很小，搜索速度很快，甚至可以删除所有桌面应用快捷方式。</p></blockquote><blockquote><p>Wox可以调用 Everything 快速搜索本地文件，也可以启动程序、执行命令行、进行网页搜索等，非常强大。Wox 支持安装各种插件，从而实现剪贴板历史、进程管理、文本翻译、进制转换、快递查询等扩展功能。</p></blockquote><p>注：显示wox安装失败时，alt+空格，若显示wox搜索框，则表明已安装成功。</p><h2 id="查看增强工具-Seer"><a href="#查看增强工具-Seer" class="headerlink" title="查看增强工具: Seer"></a>查看增强工具: Seer</h2><blockquote><p>安装 Seer 后，无需其它设置，你就可以在选中文件后按空格快速预览它了。Seer 默认支持文本、图片、视频、压缩包等类别的上百种文件扩展名，你也可以在设置中为其安装 Office、CAD 等扩展插件，让其支持更多文件类型。此外，Seer 还支持与 Directory Opus 等第三方程序集成，或者自定义预览快捷键</p></blockquote><h2 id="粘贴板增强工具-Ditto"><a href="#粘贴板增强工具-Ditto" class="headerlink" title="粘贴板增强工具: Ditto"></a>粘贴板增强工具: Ditto</h2><blockquote><p>无论你粘贴了什么，任何时候都已回溯，支持导出，修改，搜索。</p></blockquote><h2 id="截图增强工具：Snipaste"><a href="#截图增强工具：Snipaste" class="headerlink" title="截图增强工具：Snipaste"></a>截图增强工具：Snipaste</h2><blockquote><p>截图，贴补，保存图，小巧，功能丰富。</p></blockquote><h2 id="markdown写作工具：typora"><a href="#markdown写作工具：typora" class="headerlink" title="markdown写作工具：typora"></a>markdown写作工具：typora</h2><blockquote><p>win平台颜值最高的markdown写作工具</p></blockquote><h2 id="压缩解压缩软件：Bandizip"><a href="#压缩解压缩软件：Bandizip" class="headerlink" title="压缩解压缩软件：Bandizip"></a>压缩解压缩软件：Bandizip</h2><blockquote><p>没有广告，软件体积小，响应快，丰富右键菜单，从不打扰用户的免费压缩软件。</p></blockquote><h2 id="视频播放软件：-PotPlayer"><a href="#视频播放软件：-PotPlayer" class="headerlink" title="视频播放软件： PotPlayer"></a>视频播放软件： PotPlayer</h2><blockquote><p>avi格式都支持，支持倍速播放，可以看世姐任意一个国家的电视，免费，无广告。</p></blockquote><h2 id="浏览器：谷歌，火狐"><a href="#浏览器：谷歌，火狐" class="headerlink" title="浏览器：谷歌，火狐"></a>浏览器：谷歌，火狐</h2><h2 id="编辑器：-Visual-Studio-Code"><a href="#编辑器：-Visual-Studio-Code" class="headerlink" title="编辑器： Visual Studio Code"></a>编辑器： Visual Studio Code</h2>]]></content>
       
       
       <categories>
           
-          <category> 配置环境 </category>
+          <category> Blog </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> VScode </tag>
+            <tag> software </tag>
             
-            <tag> C++ </tag>
+            <tag> win10 </tag>
             
         </tags>
       
