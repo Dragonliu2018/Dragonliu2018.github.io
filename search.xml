@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>VS Code配置Markdown</title>
+      <link href="/2019/10/07/VS%20Code%E7%9A%84Markdown%E9%85%8D%E7%BD%AE/"/>
+      <url>/2019/10/07/VS%20Code%E7%9A%84Markdown%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Markdown编辑器"><a href="#Markdown编辑器" class="headerlink" title="Markdown编辑器"></a>Markdown编辑器</h3><p><a href="https://blog.csdn.net/ArthurCaoMH/article/details/89299589" target="_blank" rel="noopener">链接</a><br>外加 <strong>Typora</strong> </p><h3 id="VS-code-插件"><a href="#VS-code-插件" class="headerlink" title="VS code 插件"></a>VS code 插件</h3><ol><li>markdown-all-in-one<br> 简介：所有你需要写Markdown要用到的（键盘快捷方式，目录，自动预览等）</li><li>markdown toc<br>  简介：这个插件是用来生成目录</li><li>markdown+math<br>简介：此扩展使用$ 分隔符支持内联数学公式，或者使用KaTeX parse error: Can’t use function ‘$’ in math mode at position 126: …式不能用，所有的公式必须在’ $̲ $ ‘或者…$$之中。</li><li>markdown pdf<br> 简介：markdown是不支持pdf输出，需要借助其他办法输出，使用该插件就可以。<br> 该插件还支持导出为以下格式，只需要在md文件中右键鼠标就可以弹出选项</li><li>Markdown Preview Enhanced<br>简介：实时预览的插件，很好用，也可以结合上图中的其他程序导出为其他格式，推荐使用pandoc可以导出为word文件、pdf    、html等多种格式，但是实测导出效果并不理想，可能是姿势不对吧，没有深究。</li></ol><p><a href="https://blog.csdn.net/ArthurCaoMH/article/details/89300713" target="_blank" rel="noopener">详细请看原文</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Windows </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> VS Code </tag>
+            
+            <tag> Makdown配置 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo常用指令</title>
+      <link href="/2019/10/07/Hexo%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+      <url>/2019/10/07/Hexo%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>npm install hexo -g</p><h3 id="升级Hexo"><a href="#升级Hexo" class="headerlink" title="升级Hexo"></a>升级Hexo</h3><p>npm update hexo -g</p><h3 id="初始化博客"><a href="#初始化博客" class="headerlink" title="初始化博客"></a>初始化博客</h3><p>hexo init</p><h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><p>hexo n “我的博客” == hexo new “我的博客” </p><h3 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h3><p>hexo g == hexo generate </p><h3 id="启动服务预览"><a href="#启动服务预览" class="headerlink" title="启动服务预览"></a>启动服务预览</h3><p>hexo s == hexo server </p><h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>hexo d == hexo deploy </p><h3 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h3><p>hexo clean </p><h3 id="本机测试"><a href="#本机测试" class="headerlink" title="本机测试"></a>本机测试</h3><p>hexo server #Hexo会监视文件变动并自动更新，无须重启服务器<br>hexo server -s #静态模式<br>hexo server -p 5000 #更改端口<br>hexo server -i 192.168.1.1 #自定义 IP</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Windows </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo指令 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Markdown常用指令</title>
       <link href="/2019/10/07/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
       <url>/2019/10/07/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
@@ -48,58 +100,6 @@
             <tag> 多系统 </tag>
             
             <tag> Manjaro </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hexo常用指令</title>
-      <link href="/2019/10/07/Hexo%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
-      <url>/2019/10/07/Hexo%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
-      
-        <content type="html"><![CDATA[<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>npm install hexo -g</p><h3 id="升级Hexo"><a href="#升级Hexo" class="headerlink" title="升级Hexo"></a>升级Hexo</h3><p>npm update hexo -g</p><h3 id="初始化博客"><a href="#初始化博客" class="headerlink" title="初始化博客"></a>初始化博客</h3><p>hexo init</p><h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><p>hexo n “我的博客” == hexo new “我的博客” </p><h3 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h3><p>hexo g == hexo generate </p><h3 id="启动服务预览"><a href="#启动服务预览" class="headerlink" title="启动服务预览"></a>启动服务预览</h3><p>hexo s == hexo server </p><h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>hexo d == hexo deploy </p><h3 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h3><p>hexo clean </p><h3 id="本机测试"><a href="#本机测试" class="headerlink" title="本机测试"></a>本机测试</h3><p>hexo server #Hexo会监视文件变动并自动更新，无须重启服务器<br>hexo server -s #静态模式<br>hexo server -p 5000 #更改端口<br>hexo server -i 192.168.1.1 #自定义 IP</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo指令 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>VS Code配置Markdown</title>
-      <link href="/2019/10/07/VS%20Code%E7%9A%84Markdown%E9%85%8D%E7%BD%AE/"/>
-      <url>/2019/10/07/VS%20Code%E7%9A%84Markdown%E9%85%8D%E7%BD%AE/</url>
-      
-        <content type="html"><![CDATA[<h3 id="Markdown编辑器"><a href="#Markdown编辑器" class="headerlink" title="Markdown编辑器"></a>Markdown编辑器</h3><p><a href="https://blog.csdn.net/ArthurCaoMH/article/details/89299589" target="_blank" rel="noopener">链接</a><br>外加 <strong>Typora</strong> </p><h3 id="VS-code-插件"><a href="#VS-code-插件" class="headerlink" title="VS code 插件"></a>VS code 插件</h3><ol><li>markdown-all-in-one<br> 简介：所有你需要写Markdown要用到的（键盘快捷方式，目录，自动预览等）</li><li>markdown toc<br>  简介：这个插件是用来生成目录</li><li>markdown+math<br>简介：此扩展使用$ 分隔符支持内联数学公式，或者使用KaTeX parse error: Can’t use function ‘$’ in math mode at position 126: …式不能用，所有的公式必须在’ $̲ $ ‘或者…$$之中。</li><li>markdown pdf<br> 简介：markdown是不支持pdf输出，需要借助其他办法输出，使用该插件就可以。<br> 该插件还支持导出为以下格式，只需要在md文件中右键鼠标就可以弹出选项</li><li>Markdown Preview Enhanced<br>简介：实时预览的插件，很好用，也可以结合上图中的其他程序导出为其他格式，推荐使用pandoc可以导出为word文件、pdf    、html等多种格式，但是实测导出效果并不理想，可能是姿势不对吧，没有深究。</li></ol><p><a href="https://blog.csdn.net/ArthurCaoMH/article/details/89300713" target="_blank" rel="noopener">详细请看原文</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> VS Code </tag>
-            
-            <tag> Makdown </tag>
             
         </tags>
       
