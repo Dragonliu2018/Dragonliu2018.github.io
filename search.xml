@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Code的Markdown配置</title>
+      <link href="/2019/10/08/Code%E7%9A%84Markdown%E9%85%8D%E7%BD%AE/"/>
+      <url>/2019/10/08/Code%E7%9A%84Markdown%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux安装以及日常配置</title>
       <link href="/2019/10/08/Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/"/>
       <url>/2019/10/08/Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/</url>
@@ -166,9 +179,9 @@
             
             <tag> 多系统 </tag>
             
-            <tag> Manjaro </tag>
-            
             <tag> Ubuntu </tag>
+            
+            <tag> Manjaro </tag>
             
             <tag> Kali </tag>
             
