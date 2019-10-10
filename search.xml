@@ -29,6 +29,35 @@
     
     
     <entry>
+      <title>Manjaro Linux安装以及日常配置</title>
+      <link href="/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/"/>
+      <url>/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>不满足于当前windows,想要安装Linux</p><h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><ul><li><p>镜像下载</p><ol><li>官网下载<br>*<a href="ubuntu.org">Ubuntu</a><br>*<a href="kali.org">Kali</a></li><li>清华源下载(速度较快)<br><a href="https://mirrors.tuna.tsinghua.edu.cn" target="_blank" rel="noopener">清华源</a><blockquote><p><strong>补充-&gt;高速下载</strong>：FTP客户端下载,例如Filezilla。</p></blockquote></li></ol></li><li><p>分盘</p></li><li><p>烧录</p><ol><li>软碟通工具(UltralSO)，但是要切记使用raw刻录方式。</li><li>Linux命令行：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li></ol></li><li><p>安装</p><ul><li>虚拟机安装<br>使用Vmware或VirtualBox</li><li>物理机安装</li></ul><ol><li>关闭掉Secure Boot</li><li>分区(重要)<br>(1) mbr启动模式<br>这里我们直接划分出来一块分区文件系统选择ext4，挂载点 /</li></ol><p>(2)uefi启动模式<br>这里需要一个esp分区<br>划出300MB分区，文件系统fat16，挂载点boot/efi，标记boot，esp<br>还需要一个根分区也就是系统分区<br>划出分区，文件系统ext4，挂载点 / ，无需标记</p></li><li><p>进行软件源设置以及系统更新</p><ol><li><p>换源</p><ul><li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  sudo pacman-mirrors -i -c China -m rank</span><br></pre></td></tr></table></figure></li><li><p>弹出窗口选择中科大</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://mirrors.ustc.edu.cn/manjaro/</span><br></pre></td></tr></table></figure></li><li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  sudo nano /etc/pacman.conf</span><br></pre></td></tr></table></figure><p> 粘贴以下内容</p> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">SigLevel = Optional TrustedOnly</span><br><span class="line">Server=https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch</span><br></pre></td></tr></table></figure></li></ul><p>sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring</p></li></ol><ul><li>系统更新（出现替换提示选择Y）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp; sudo pacman -Syyu</span><br></pre></td></tr></table></figure></li></ul></li><li><p>中文输入法</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> OS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 多系统 </tag>
+            
+            <tag> Manjaro </tag>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>VS Code配置Markdown</title>
       <link href="/2019/10/09/VScode%E7%9A%84Markdown%E9%85%8D%E7%BD%AE/"/>
       <url>/2019/10/09/VScode%E7%9A%84Markdown%E9%85%8D%E7%BD%AE/</url>
