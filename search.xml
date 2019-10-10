@@ -4,11 +4,96 @@
   
     
     <entry>
+      <title>win10开启与配置FTP</title>
+      <link href="/2019/10/11/win10%E5%BC%80%E5%90%AF%E4%B8%8E%E9%85%8D%E7%BD%AEFTP/"/>
+      <url>/2019/10/11/win10%E5%BC%80%E5%90%AF%E4%B8%8E%E9%85%8D%E7%BD%AEFTP/</url>
+      
+        <content type="html"><![CDATA[<ol><li><h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3>需要下载的文件大，浏览器下载速度慢，使用FTP高速下载。</li><li><h3 id="操作-下载未实践"><a href="#操作-下载未实践" class="headerlink" title="操作(下载未实践)"></a>操作(下载未实践)</h3><a href="https://blog.csdn.net/qq_34610293/article/details/79210539" target="_blank" rel="noopener">百度</a></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> software </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> win10 </tag>
+            
+            <tag> FTP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>manjaro显示实时网速cpu内存信息</title>
+      <link href="/2019/10/11/manjaro%E6%98%BE%E7%A4%BA%E5%AE%9E%E6%97%B6%E7%BD%91%E9%80%9Fcpu%E5%86%85%E5%AD%98%E4%BF%A1%E6%81%AF/"/>
+      <url>/2019/10/11/manjaro%E6%98%BE%E7%A4%BA%E5%AE%9E%E6%97%B6%E7%BD%91%E9%80%9Fcpu%E5%86%85%E5%AD%98%E4%BF%A1%E6%81%AF/</url>
+      
+        <content type="html"><![CDATA[<ol><li><h3 id="安装显示网速的软件"><a href="#安装显示网速的软件" class="headerlink" title="安装显示网速的软件:"></a>安装显示网速的软件:</h3><p> 打开manjaro自带的软件商店,搜索安装<strong>indicator-sysmonitor</strong>;</p></li><li><h3 id="安装该软件需要的依赖"><a href="#安装该软件需要的依赖" class="headerlink" title="安装该软件需要的依赖:"></a>安装该软件需要的依赖:</h3><p> 在自带的软件商店直接搜索安装<strong>AppIndicator3</strong>和<strong>psutil</strong>;</p></li><li><h3 id="启动该软件"><a href="#启动该软件" class="headerlink" title="启动该软件"></a>启动该软件</h3><p> 终端输入:</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nohup indicator-sysmonitor</span><br></pre></td></tr></table></figure></li><li><h3 id="设置其开机启动"><a href="#设置其开机启动" class="headerlink" title="设置其开机启动"></a>设置其开机启动</h3><p> 添加{net}参数显示网速。</p></li></ol><p><a href="https://blog.csdn.net/qq_41490274/article/details/83589368" target="_blank" rel="noopener">详细请看原文</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> OS </category>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> manjaro </tag>
+            
+            <tag> 网速 </tag>
+            
+            <tag> cpu </tag>
+            
+            <tag> 内存 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>内存条购买指南</title>
+      <link href="/2019/10/11/%E5%86%85%E5%AD%98%E6%9D%A1%E8%B4%AD%E4%B9%B0%E6%8C%87%E5%8D%97/"/>
+      <url>/2019/10/11/%E5%86%85%E5%AD%98%E6%9D%A1%E8%B4%AD%E4%B9%B0%E6%8C%87%E5%8D%97/</url>
+      
+        <content type="html"><![CDATA[<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><pre><code>笔记本的内存大小已经满足不了你的需求，需要另装内存条扩展内存。</code></pre><h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p><a href="https://www.zhihu.com/question/25013395/answer/145545591" target="_blank" rel="noopener">知乎问答</a></p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol><li>第5步：查一下你内存的频率（例如：1333，1600，2133，2400），在任务管理器同样可以查到。<br><strong>这样查到的不一定是准确的(ASUS FL8000显示4插槽，实际就2个插槽)，去官网查或问客服。</strong></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> hardware </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 内存条 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Manjaro Linux安装以及日常配置</title>
       <link href="/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/"/>
       <url>/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/</url>
       
-        <content type="html"><![CDATA[<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>不满足于当前windows,想要安装Linux</p><h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><ul><li><p>镜像下载</p><ol><li>官网下载<br>*<a href="ubuntu.org">Ubuntu</a><br>*<a href="kali.org">Kali</a></li><li>清华源下载(速度较快)<br><a href="https://mirrors.tuna.tsinghua.edu.cn" target="_blank" rel="noopener">清华源</a><blockquote><p><strong>补充-&gt;高速下载</strong>：FTP客户端下载,例如Filezilla。</p></blockquote></li></ol></li><li><p>分盘</p></li><li><p>烧录</p><ol><li>软碟通工具(UltralSO)，但是要切记使用raw刻录方式。</li><li>Linux命令行：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li></ol></li><li><p>安装</p><ul><li>虚拟机安装<br>使用Vmware或VirtualBox</li><li>物理机安装</li></ul><ol><li>关闭掉Secure Boot</li><li>分区(重要)<br>(1) mbr启动模式<br>这里我们直接划分出来一块分区文件系统选择ext4，挂载点 /</li></ol><p>(2)uefi启动模式<br>这里需要一个esp分区<br>划出300MB分区，文件系统fat16，挂载点boot/efi，标记boot，esp<br>还需要一个根分区也就是系统分区<br>划出分区，文件系统ext4，挂载点 / ，无需标记</p></li><li><p>进行软件源设置以及系统更新</p><ol><li><p>换源</p><ul><li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  sudo pacman-mirrors -i -c China -m rank</span><br></pre></td></tr></table></figure></li><li><p>弹出窗口选择中科大</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://mirrors.ustc.edu.cn/manjaro/</span><br></pre></td></tr></table></figure></li><li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  sudo nano /etc/pacman.conf</span><br></pre></td></tr></table></figure><p> 粘贴以下内容</p> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">SigLevel = Optional TrustedOnly</span><br><span class="line">Server=https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch</span><br></pre></td></tr></table></figure></li></ul><p>sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring</p></li></ol><ul><li>系统更新（出现替换提示选择Y）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp; sudo pacman -Syyu</span><br></pre></td></tr></table></figure></li></ul></li><li><p>中文输入法</p></li></ul>]]></content>
+        <content type="html"><![CDATA[<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>不满足于当前windows,想要安装Linux</p><h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><ul><li><p>镜像下载</p><ol><li>官网下载<br>*<a href="ubuntu.org">Ubuntu</a><br>*<a href="kali.org">Kali</a></li><li>清华源下载(速度较快)<br><a href="https://mirrors.tuna.tsinghua.edu.cn" target="_blank" rel="noopener">清华源</a><blockquote><p><strong>补充-&gt;高速下载</strong>：FTP客户端下载,例如Filezilla。</p></blockquote></li><li>哈希值文件校验<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ certutil -hashfile yourfilename.ext SHA1</span><br></pre></td></tr></table></figure></li></ol></li><li><p>分盘</p></li><li><p>烧录</p><ol><li>软碟通工具(UltralSO)，但是要切记使用raw刻录方式。</li><li>Linux命令行：<br>复制：    <em>dd if=/dev/target of=/tmp/source.img</em><br>显示进度：<em>watch -n 5 killall -USR1 dd</em></li></ol></li><li><p>安装</p><ul><li>虚拟机安装<br>使用Vmware或VirtualBox</li><li>物理机安装</li></ul><ol><li>关闭掉Secure Boot</li><li>分区(重要)<br>(1) mbr启动模式<br>这里我们直接划分出来一块分区文件系统选择ext4，挂载点 /</li></ol><p>(2)uefi启动模式<br>这里需要一个esp分区<br>划出300MB分区，文件系统fat16，挂载点boot/efi，标记boot，esp<br>还需要一个根分区也就是系统分区<br>划出分区，文件系统ext4，挂载点 / ，无需标记</p></li><li><p>进行软件源设置以及系统更新</p><ol><li><p>换源</p><ul><li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  sudo pacman-mirrors -i -c China -m rank</span><br></pre></td></tr></table></figure></li><li><p>弹出窗口选择中科大</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://mirrors.ustc.edu.cn/manjaro/</span><br></pre></td></tr></table></figure></li><li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  sudo nano /etc/pacman.conf</span><br></pre></td></tr></table></figure><p> 粘贴以下内容</p> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">SigLevel = Optional TrustedOnly</span><br><span class="line">Server=https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch</span><br></pre></td></tr></table></figure></li></ul><p>sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring</p></li></ol><ul><li>系统更新（出现替换提示选择Y）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp; sudo pacman -Syyu</span><br></pre></td></tr></table></figure></li></ul></li><li><p>中文输入法</p></li></ul>]]></content>
       
       
       <categories>
