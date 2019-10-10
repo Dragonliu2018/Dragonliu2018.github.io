@@ -161,11 +161,11 @@
       
         <tags>
             
-            <tag> 树莓派 </tag>
-            
             <tag> 远程连接 </tag>
             
             <tag> SSH </tag>
+            
+            <tag> 树莓派 </tag>
             
         </tags>
       
@@ -183,9 +183,9 @@
       
       <categories>
           
-          <category> OS </category>
-          
           <category> Reading Notes </category>
+          
+          <category> OS </category>
           
       </categories>
       
