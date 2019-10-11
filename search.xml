@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Manjaro状态栏显示TIM</title>
+      <link href="/2019/10/11/Manjaro%E7%8A%B6%E6%80%81%E6%A0%8F%E6%98%BE%E7%A4%BATIM/"/>
+      <url>/2019/10/11/Manjaro%E7%8A%B6%E6%80%81%E6%A0%8F%E6%98%BE%E7%A4%BATIM/</url>
+      
+        <content type="html"><![CDATA[<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><pre><code>Manjaro-gnome安装TIM后，TIM图标不在状态栏，而是在Wine System Tray托盘中。将图标放回状态栏。</code></pre><h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><ol><li><p><strong>安装Topicons扩展</strong></p><ul><li><p>使用终端</p>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp; sudo pacman -S gnome-shell-extension-topicons-git</span><br></pre></td></tr></table></figure></li><li><p>使用图形化的包管理器<br>  搜索<em>topicon</em>会出现图中的包，安装即可。</p></li></ul></li><li><p><strong>进入扩展中开启Topicons</strong></p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> OS </category>
+          
+          <category> software </category>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> TIM </tag>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>win10开启与配置FTP</title>
       <link href="/2019/10/11/win10%E5%BC%80%E5%90%AF%E4%B8%8E%E9%85%8D%E7%BD%AEFTP/"/>
       <url>/2019/10/11/win10%E5%BC%80%E5%90%AF%E4%B8%8E%E9%85%8D%E7%BD%AEFTP/</url>
@@ -89,6 +120,31 @@
     
     
     <entry>
+      <title>Markdown常用指令</title>
+      <link href="/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+      <url>/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#: 一个#号字号最大，#号越多字号越小，一共六级标题。</span><br></pre></td></tr></table></figure><h3 id="层次"><a href="#层次" class="headerlink" title="层次"></a>层次</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*(注意是星+空格)即可变为项目符号“·”; 而输入“1.”“2.”“3.”</span><br><span class="line">则会变为编号</span><br></pre></td></tr></table></figure><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[百度](url)</span><br></pre></td></tr></table></figure><h3 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**文字**，无空格</span><br></pre></td></tr></table></figure><h3 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*文字*</span><br></pre></td></tr></table></figure><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![图片1](url)</span><br></pre></td></tr></table></figure><h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```bash/c/c++/python</span><br><span class="line">code</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### 分割线</span><br></pre></td></tr></table></figure><hr><pre><code></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> software </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Markdown指令 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Manjaro Linux安装以及日常配置</title>
       <link href="/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/"/>
       <url>/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/</url>
@@ -107,36 +163,11 @@
       
         <tags>
             
+            <tag> Linux </tag>
+            
             <tag> 多系统 </tag>
             
             <tag> Manjaro </tag>
-            
-            <tag> Linux </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Markdown常用指令</title>
-      <link href="/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
-      <url>/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
-      
-        <content type="html"><![CDATA[<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#: 一个#号字号最大，#号越多字号越小，一共六级标题。</span><br></pre></td></tr></table></figure><h3 id="层次"><a href="#层次" class="headerlink" title="层次"></a>层次</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*(注意是星+空格)即可变为项目符号“·”; 而输入“1.”“2.”“3.”</span><br><span class="line">则会变为编号</span><br></pre></td></tr></table></figure><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[百度](url)</span><br></pre></td></tr></table></figure><h3 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**文字**，无空格</span><br></pre></td></tr></table></figure><h3 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*文字*</span><br></pre></td></tr></table></figure><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![图片1](url)</span><br></pre></td></tr></table></figure><h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```bash/c/c++/python</span><br><span class="line">code</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### 分割线</span><br></pre></td></tr></table></figure><hr><pre><code></code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> software </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Markdown指令 </tag>
             
         </tags>
       
@@ -207,7 +238,7 @@
       <link href="/2019/10/08/windows%E4%B8%8ELinux%E5%8F%8C%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E4%B8%8D%E5%90%8C%E6%AD%A5/"/>
       <url>/2019/10/08/windows%E4%B8%8ELinux%E5%8F%8C%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E4%B8%8D%E5%90%8C%E6%AD%A5/</url>
       
-        <content type="html"><![CDATA[<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>安装完windows和Linux双系统后时间不同步，解决此问题。</p><h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><ul><li><p><strong>原因分析</strong><br>Linux和Windows默认的时间管理方式不同，Linux默认时间是把BIOS时间当成GMT+0时间，也就是世界标准时，而我国在东八区（GMT+8），所以如果你的Linux位置是中国的话你系统显示的时间就是BIOS时间+8小时, 假如现在是早上8点，那么你Linux会显示8点，而当你切换到Windows系统时就会发生时间错乱，因为Windows会认为BIOS时间就是你的本地时间，结果就是Windows显示时间为0点……而假如你在Windows下同步时间，恢复显示为8点，这时BIOS时间也会被Windows改写成8点，再次进入Linux时显示时间又变成了8+8=16点。</p></li><li><p><strong>在Windows下启用UTC(世界协调时)–Ubuntu的时间管理方式</strong></p><ul><li><p>打开运行窗口（快捷键Win+R），然后输入 regedit 启动注册表编辑器，并找到一下目录位置</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/TimeZoneInformation/</span><br></pre></td></tr></table></figure></li><li><p>添加一项类型为REG_DWORD的键值，命名为RealTimeIsUniversal，值为1然后重启后时间即回复正常</p></li></ul></li></ul><p><a href="https://blog.csdn.net/tangcuyuha/article/details/80331313" target="_blank" rel="noopener">详细请看原文</a></p>]]></content>
+        <content type="html"><![CDATA[<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><pre><code>安装完windows和Linux双系统后时间不同步，解决此问题。</code></pre><h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p><em>电脑系统中有两个时间</em><br>    1. 硬件时间：保存在主板中，信息比较少没时区、夏令时的概念<br>    2. 系统时间：又系统维护，独立于硬件时间，拥有时区、夏令时等信息<br><em>系统时间又因为系统的不同使用了两种时间管理办法</em><br>    1. localtime：本地时间，目前只有 Windows 在使用。<br>    2. UTC：是一种世界标准时间，Linux 这类类 UNIX 多数会使用，UTC 加减时区之后才是本地时间。</p><p>Windows 认为硬件时间就是本地时间，所以会直接把主板中的时间拿来当做当前的时间。设置或同步时间后也会把“正确”的时间写入主板。<br>Linux 认为硬件时间是 UTC 标准时间，Linux 时间同步后会把“正确”的时间 -8 之后作为标准 UTC 标准时间写入主板。<br>而貌似 Linux 启动时就会链接网络同步时间，所以硬件时间很迅速的就被替换为了 UTC 。<br>但是 Windows 比较懒，虽然我们都开启了自动同步时间，但是往往不是很及时，所以错把为 +8 的 UTC 时间当做了正确的显示了出来。</p><h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p><strong>方法一：Windows 使用 UTC</strong></p><ul><li><p>打开运行窗口（快捷键Win+R），然后输入 regedit 启动注册表编辑器，并找到一下目录位置</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/TimeZoneInformation/</span><br></pre></td></tr></table></figure></li><li><p>添加一项类型为REG_DWORD的键值，命名为RealTimeIsUniversal，值为1然后重启后时间即回复正常</p></li><li><p><strong>方法二：Linux 使用本地时间(推荐)</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp; sudo timedatectl <span class="built_in">set</span>-local-rtc <span class="literal">true</span></span><br></pre></td></tr></table></figure></li></ul><p><a href="https://blog.csdn.net/aaazz47/article/details/78696899" target="_blank" rel="noopener">原文链接</a></p>]]></content>
       
       
       <categories>
@@ -252,11 +283,11 @@
       
         <tags>
             
-            <tag> 树莓派 </tag>
-            
             <tag> 远程连接 </tag>
             
             <tag> SSH </tag>
+            
+            <tag> 树莓派 </tag>
             
         </tags>
       
