@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>C程序设计笔记</title>
+      <link href="/2019/10/11/C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/"/>
+      <url>/2019/10/11/C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<ol><li>exe已停止工作：1)漏&amp;；2)分母为0</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Programming Language </category>
+          
+          <category> C </category>
+          
+          <category> course </category>
+          
+          <category> C </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C </tag>
+            
+            <tag> 笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Manjaro状态栏显示TIM</title>
       <link href="/2019/10/11/Manjaro%E7%8A%B6%E6%80%81%E6%A0%8F%E6%98%BE%E7%A4%BATIM/"/>
       <url>/2019/10/11/Manjaro%E7%8A%B6%E6%80%81%E6%A0%8F%E6%98%BE%E7%A4%BATIM/</url>
@@ -24,9 +57,9 @@
       
         <tags>
             
-            <tag> TIM </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> TIM </tag>
             
         </tags>
       
@@ -163,11 +196,11 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> 多系统 </tag>
             
             <tag> Manjaro </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -238,7 +271,7 @@
       <link href="/2019/10/08/windows%E4%B8%8ELinux%E5%8F%8C%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E4%B8%8D%E5%90%8C%E6%AD%A5/"/>
       <url>/2019/10/08/windows%E4%B8%8ELinux%E5%8F%8C%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E4%B8%8D%E5%90%8C%E6%AD%A5/</url>
       
-        <content type="html"><![CDATA[<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><pre><code>安装完windows和Linux双系统后时间不同步，解决此问题。</code></pre><h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p><em>电脑系统中有两个时间</em><br>    1. 硬件时间：保存在主板中，信息比较少没时区、夏令时的概念<br>    2. 系统时间：又系统维护，独立于硬件时间，拥有时区、夏令时等信息<br><em>系统时间又因为系统的不同使用了两种时间管理办法</em><br>    1. localtime：本地时间，目前只有 Windows 在使用。<br>    2. UTC：是一种世界标准时间，Linux 这类类 UNIX 多数会使用，UTC 加减时区之后才是本地时间。</p><p>Windows 认为硬件时间就是本地时间，所以会直接把主板中的时间拿来当做当前的时间。设置或同步时间后也会把“正确”的时间写入主板。<br>Linux 认为硬件时间是 UTC 标准时间，Linux 时间同步后会把“正确”的时间 -8 之后作为标准 UTC 标准时间写入主板。<br>而貌似 Linux 启动时就会链接网络同步时间，所以硬件时间很迅速的就被替换为了 UTC 。<br>但是 Windows 比较懒，虽然我们都开启了自动同步时间，但是往往不是很及时，所以错把为 +8 的 UTC 时间当做了正确的显示了出来。</p><h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p><strong>方法一：Windows 使用 UTC</strong></p><ul><li><p>打开运行窗口（快捷键Win+R），然后输入 regedit 启动注册表编辑器，并找到一下目录位置</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/TimeZoneInformation/</span><br></pre></td></tr></table></figure></li><li><p>添加一项类型为REG_DWORD的键值，命名为RealTimeIsUniversal，值为1然后重启后时间即回复正常</p></li><li><p><strong>方法二：Linux 使用本地时间(推荐)</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp; sudo timedatectl <span class="built_in">set</span>-local-rtc <span class="literal">true</span></span><br></pre></td></tr></table></figure></li></ul><p><a href="https://blog.csdn.net/aaazz47/article/details/78696899" target="_blank" rel="noopener">原文链接</a></p>]]></content>
+        <content type="html"><![CDATA[<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>解决windows和Linux双系统后时间不同步问题。</p><h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p><em>电脑系统中有两个时间</em><br>    1. 硬件时间：保存在主板中，信息比较少没时区、夏令时的概念<br>    2. 系统时间：又系统维护，独立于硬件时间，拥有时区、夏令时等信息<br><em>系统时间又因为系统的不同使用了两种时间管理办法</em><br>    1. localtime：本地时间，目前只有 Windows 在使用。<br>    2. UTC：是一种世界标准时间，Linux 这类类 UNIX 多数会使用，UTC 加减时区之后才是本地时间。</p><p>Windows 认为硬件时间就是本地时间，所以会直接把主板中的时间拿来当做当前的时间。设置或同步时间后也会把“正确”的时间写入主板。<br>Linux 认为硬件时间是 UTC 标准时间，Linux 时间同步后会把“正确”的时间 -8 之后作为标准 UTC 标准时间写入主板。<br>而貌似 Linux 启动时就会链接网络同步时间，所以硬件时间很迅速的就被替换为了 UTC 。<br>但是 Windows 比较懒，虽然我们都开启了自动同步时间，但是往往不是很及时，所以错把为 +8 的 UTC 时间当做了正确的显示了出来。</p><h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p><strong>方法一：Windows 使用 UTC</strong></p><ul><li><p>打开运行窗口（快捷键Win+R），然后输入 regedit 启动注册表编辑器，并找到一下目录位置</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Control/TimeZoneInformation/</span><br></pre></td></tr></table></figure></li><li><p>添加一项类型为REG_DWORD的键值，命名为RealTimeIsUniversal，值为1然后重启后时间即回复正常</p></li><li><p><strong>方法二：Linux 使用本地时间(推荐)</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp; sudo timedatectl <span class="built_in">set</span>-local-rtc <span class="literal">true</span></span><br></pre></td></tr></table></figure></li></ul><p><a href="https://blog.csdn.net/aaazz47/article/details/78696899" target="_blank" rel="noopener">原文链接</a></p>]]></content>
       
       
       <categories>
