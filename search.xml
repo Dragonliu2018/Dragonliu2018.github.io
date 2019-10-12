@@ -4,11 +4,44 @@
   
     
     <entry>
+      <title>C++程序设计笔记</title>
+      <link href="/2019/10/13/C++%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/"/>
+      <url>/2019/10/13/C++%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Programming Language </category>
+          
+          <category> C++ </category>
+          
+          <category> course </category>
+          
+          <category> C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> 笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>C程序设计笔记</title>
       <link href="/2019/10/11/C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/"/>
       <url>/2019/10/11/C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/</url>
       
-        <content type="html"><![CDATA[<ol><li>exe已停止工作：1)漏&amp;；2)分母为0</li></ol>]]></content>
+        <content type="html"><![CDATA[<ol><li>exe已停止工作：1)漏&amp;；2)分母为0</li><li>定义整型，输入实型：自动截取小数部分，eg:2.5-&gt;2(赋值亦是)。</li><li>输出数据出错：格式字符与变量类型未对应；为赋初值。特别注意除号“/”和等号“==”。</li><li>数据范围与补码：-1全1，正负0全0，负数min为“1+全0”;溢出取低位，小数对应2<sup>-1</sup>,2<sup>-2</sup>,2<sup>-3</sup>…小数转二进制数: x2取整数知道小数为0。</li><li>else就近结合。</li><li>|| 和 &amp;&amp; 的短路特性。</li><li>数组a[]: scanf(“%d”, a)指对a[0]赋值。</li><li>字符串：scanf(“%s”, a)-&gt;遇’ ‘, ‘\0’, ‘\t’为截点(‘\n’跳出)开始不计；puts()=printf(“%s”, a)-&gt;遇’\0’结束；gets()遇回车结束，前无截点。</li><li>x *= y+8 等价于 x = x + (y+8)</li><li>C语言的函数体中，可以调用但不能定义其他函数。</li><li>puts()自动换行，putchar()不自动换行。</li></ol>]]></content>
       
       
       <categories>
@@ -26,9 +59,9 @@
       
         <tags>
             
-            <tag> C </tag>
-            
             <tag> 笔记 </tag>
+            
+            <tag> C </tag>
             
         </tags>
       
@@ -432,9 +465,9 @@
       
         <tags>
             
-            <tag> VScode </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> VScode </tag>
             
         </tags>
       
