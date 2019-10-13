@@ -4,11 +4,36 @@
   
     
     <entry>
+      <title>常见的计算机专业术语</title>
+      <link href="/2019/10/13/%E5%B8%B8%E8%A7%81%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD/"/>
+      <url>/2019/10/13/%E5%B8%B8%E8%A7%81%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD/</url>
+      
+        <content type="html"><![CDATA[<ol><li><p><strong>硬件(hardware)</strong></p><ul><li><strong>输入输出设备(I/O)</strong>: 键盘(keyboard)和鼠标(mouse)，显示器(screen)和硬盘(hard disk)</li><li><strong>处理器(Central Processing Unit, CPU)</strong></li><li><strong>“内存”-随机存储器(Random Access Memory, RAM)</strong></li></ul></li><li><p><strong>操作系统(operating system, OS)</strong> </p><ul><li><strong>操作系统内核(kernel)</strong></li><li><strong>系统调用(System Call)</strong></li></ul><p><strong>功能</strong>: 管理计算机所用活动以及驱动系统中的所有硬件。<br>eg: Linux, Windows, Mac…</p></li><li><p><strong>应用程序(application, AP)</strong><br>eg: Office, Pycharm, VSCode…</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Reading Notes </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机术语 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>C++程序设计笔记</title>
       <link href="/2019/10/13/C++%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/"/>
       <url>/2019/10/13/C++%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/</url>
       
-        <content type="html"><![CDATA[<ol><li>endl = ‘\n’ + flush(刷新缓冲区)</li><li>cin跳过空白字符，cin.get()读取包含空白字符的字符</li><li>浮点数和整型注意转化中的除号</li><li>递归调用次数可用二叉树解决</li><li>C++, 字符串拷贝用”=”, 字符串比较”==”</li><li>汉字占两个字符，故name[0]无法输出，”cout&lt;&lt;name[0]&lt;&lt;name[1]”输出一个汉字</li><li>cin对象遇’\n’结束</li><li>nullptr能够避免在整数(0或NULL)和指针(nullptr)之间发生混淆</li><li>函数传参：数据较小，按值传递，但修改时用引用；数组用指针；结构体用指针或引用；对象用引用</li><li>缺省函数：声明函数(最先且一次)时为其参数指定默认值</li><li><ul><li><strong>sizeof()</strong>: 测字节(包含’\0’)区分数组与指针</li><li><strong>strlen()</strong>: 不区分数组还是指针，读到’\0’为止返回长度(\t,\n不停)</li></ul></li><li><ul><li><strong>全局变量</strong>: int global -&gt; extern int global 声明到文件结尾</li><li><strong>局部变量</strong>: 从声明到函数结束</li><li><strong>静态变量</strong>: 函数退出保留值，下次调用</li></ul></li><li>getline()读取换行符，但向数组存储时并不存储</li><li>拷贝构造函数：<ul><li>用对象初始化同类的另一个对象</li><li>函数形参是对象，当进行参数传递时将调用copyconstruct</li><li>函数返回值是对象，函数执行结束时，将调用拷贝构造函数对无名临时对象初始化</li></ul></li><li>初始化和赋值是不同概念</li><li>文本文件存储文件大小：char类型存储；二进制文件：”01”存储(内存大小)</li><li>引起缓存区刷新：缓存区满时(4K)；程序结束；flush语句；close语句；endl语句</li><li>解决<redefinition>：<em>#ifdef ``` #endif</em> 或 <em>#pragma once</em></redefinition></li><li>派生类的构造函数只能描述自己的成员和基类的初始化，不能去初始化基类的成员；基类的成员需要调用基类的构造函数初始化。</li><li>k = (a=1, b=2, a+b)逗号运算符</li><li>自身类的对象不能作为类的成员(存在无限初始化问题，构造成员变量-&gt;调用自身的构造函数)，而自身类对象的引用和指针可以。</li><li><ul><li><strong>虚函数</strong>：特殊的成员函数，用来实现运行时的多态；动态决议(运行时才绑定)；基类说明virtual后，子类可缺省virtual</li><li><strong>静态成员函数</strong>：静态决议(编译时就绑定)，属于整个class，并不针对某个类的实例，为所有对象所共用，作用域为全局；不能直接使用this指针；virtual不能是static</li></ul></li><li>静态数据成员：class内声明：<em>static int num</em>; class外定义：<em>int className::num</em>(无static，默认0)</li><li>继承中的析构函数：基类的指针可指向派生类对象(多态性); <em>if delete []p;</em>就会调用该指针指向的派生类析构函数，而其自动调用基类的析构函数，整个派生类的对象被完全释放。若析构函数不被声明成虚函数，则编译器是是静态绑定，再删除基类指针时，只会调用基类的析构函数而不调用派生类的析构函数，这样一来派生类对象析构不完全。</li><li>两个指针指向同一数组，可以相减，结果是两个指针之间的元素数目。</li><li>引用必须初始化</li><li><ul><li><strong>函数模板</strong>：一个模板，专门用来生产函数的</li><li><strong>模板函数</strong>：是函数模板的实例化</li><li><em>注*</em>：类模板和模板类亦同</li></ul></li><li><strong>联编</strong>：程序自身彼此关联的过程，确定程序中的操作调用与执行该操作的代码之间的关系。<ul><li><strong>静态联编</strong>：联编工作出现在联编阶段，用对象名或者类名来限定要调用的函数；</li><li><strong>动态联编</strong>：联编工作在程序运行时执行，在程序运行时才确定将要调用的函数。</li></ul></li><li>虚基类子对象是由最远派生类的构造函数通过调用虚基类的构造函数进行初始化的；初始化列表列出对虚基类调用，如未列出则用虚基类构造函数；先虚后非虚。</li><li><strong>虚基类</strong>：多条继承路径上有一个公共的基类，公共的基类会产生多个实例。<em>virtual class</em>是为了实例化一次基类存在的。eg: ios类是istream和ostream类的虚基类。</li><li>char = int + ‘0’</li><li><ul><li><strong>指针数组</strong>：int *p[4]</li><li><strong>数组指针</strong>：int (*p)[4]</li></ul></li><li>构造析构顺序：<ol><li>存在继承关系时，先执行父类的构造函数，再执行子类的构造函数。</li><li>当一个类中含有对象成员时，在启动本类的构造函数之前，先分配对象空间，按对象成员的声明顺序执行他们各自的构造函数，再执行本类的构造函数。</li><li>对于非静态的局部对象，他们的析构函数的执行顺序与构造函数相反。</li><li>构造：父类-&gt;成员函数-&gt;子类</li></ol></li><li>Runtime Error: 除0操作；数组越界；栈溢出；未指定值的指针进行读写操作；已经释放空间的指针再次释放。</li><li><strong>数组</strong>：<ul><li><strong>int&amp;float&amp;double</strong>:初始化补零</li><li><strong>char</strong>: 初始化补’\0’</li><li><strong>对象</strong>：调用缺省构造函数</li></ul></li><li>常对象不能被更新，因此通过常对象只能调用他的常成员函数。</li><li>临时对象是在遇到其后第一个分号(语句结束处)析构的。</li></ol>]]></content>
+        <content type="html"><![CDATA[<ol><li>endl = ‘\n’ + flush(刷新缓冲区)</li><li>cin跳过空白字符，cin.get()读取包含空白字符的字符</li><li>浮点数和整型注意转化中的除号</li><li>递归调用次数可用二叉树解决</li><li>C++, 字符串拷贝用”=”, 字符串比较”==”</li><li>汉字占两个字符，故name[0]无法输出，”cout&lt;&lt;name[0]&lt;&lt;name[1]”输出一个汉字</li><li>cin对象遇’\n’结束</li><li>nullptr能够避免在整数(0或NULL)和指针(nullptr)之间发生混淆</li><li><strong>函数传参</strong>：数据较小，按值传递，但修改时用引用；数组用指针；结构体用指针或引用；对象用引用</li><li><strong>缺省函数</strong>：声明函数(最先且一次)时为其参数指定默认值</li><li><ul><li><strong>sizeof()</strong>: 测字节(包含’\0’)区分数组与指针</li><li><strong>strlen()</strong>: 不区分数组还是指针，读到’\0’为止返回长度(\t,\n不停)</li></ul></li><li><ul><li><strong>全局变量</strong>: int global -&gt; extern int global 声明到文件结尾</li><li><strong>局部变量</strong>: 从声明到函数结束</li><li><strong>静态变量</strong>: 函数退出保留值，下次调用</li></ul></li><li>getline()读取换行符，但向数组存储时并不存储</li><li><strong>拷贝构造函数</strong>：<ul><li>用对象初始化同类的另一个对象</li><li>函数形参是对象，当进行参数传递时将调用copyconstruct</li><li>函数返回值是对象，函数执行结束时，将调用拷贝构造函数对无名临时对象初始化</li></ul></li><li>初始化和赋值是不同概念</li><li>文本文件存储文件大小：char类型存储；二进制文件：”01”存储(内存大小)</li><li>引起缓存区刷新：缓存区满时(4K)；程序结束；flush语句；close语句；endl语句</li><li>解决<redefinition>：<em>#ifdef ``` #endif</em> 或 <em>#pragma once</em></redefinition></li><li>派生类的构造函数只能描述自己的成员和基类的初始化，不能去初始化基类的成员；基类的成员需要调用基类的构造函数初始化。</li><li>k = (a=1, b=2, a+b)逗号运算符</li><li>自身类的对象不能作为类的成员(存在无限初始化问题，构造成员变量-&gt;调用自身的构造函数)，而自身类对象的引用和指针可以。</li><li><ul><li><strong>虚函数</strong>：特殊的成员函数，用来实现运行时的多态；动态决议(运行时才绑定)；基类说明virtual后，子类可缺省virtual</li><li><strong>静态成员函数</strong>：静态决议(编译时就绑定)，属于整个class，并不针对某个类的实例，为所有对象所共用，作用域为全局；不能直接使用this指针；virtual不能是static</li></ul></li><li><strong>静态数据成员</strong>：class内声明：<em>static int num</em>; class外定义：<em>int className::num</em>(无static，默认0)</li><li><strong>继承中的析构函数</strong>：基类的指针可指向派生类对象(多态性); <em>if delete []p;</em>就会调用该指针指向的派生类析构函数，而其自动调用基类的析构函数，整个派生类的对象被完全释放。若析构函数不被声明成虚函数，则编译器是是静态绑定，再删除基类指针时，只会调用基类的析构函数而不调用派生类的析构函数，这样一来派生类对象析构不完全。</li><li>两个指针指向同一数组，可以相减，结果是两个指针之间的元素数目。</li><li>引用必须初始化</li><li><ul><li><strong>函数模板</strong>：一个模板，专门用来生产函数的</li><li><strong>模板函数</strong>：是函数模板的实例化</li><li><em>注*</em>：类模板和模板类亦同</li></ul></li><li><strong>联编</strong>：程序自身彼此关联的过程，确定程序中的操作调用与执行该操作的代码之间的关系。<ul><li><strong>静态联编</strong>：联编工作出现在联编阶段，用对象名或者类名来限定要调用的函数；</li><li><strong>动态联编</strong>：联编工作在程序运行时执行，在程序运行时才确定将要调用的函数。</li></ul></li><li>虚基类子对象是由最远派生类的构造函数通过调用虚基类的构造函数进行初始化的；初始化列表列出对虚基类调用，如未列出则用虚基类构造函数；先虚后非虚。</li><li><strong>虚基类</strong>：多条继承路径上有一个公共的基类，公共的基类会产生多个实例。<em>virtual class</em>是为了实例化一次基类存在的。eg: ios类是istream和ostream类的虚基类。</li><li>char = int + ‘0’</li><li><ul><li><strong>指针数组</strong>：int *p[4]</li><li><strong>数组指针</strong>：int (*p)[4]</li></ul></li><li><strong>构造析构顺序</strong>：<br>1) 存在继承关系时，先执行父类的构造函数，再执行子类的构造函数。<br>2) 当一个类中含有对象成员时，在启动本类的构造函数之前，先分配对象空间，按对象成员的声明顺序执行他们各自的构造函数，再执行本类的构造函数。<br>3) 对于非静态的局部对象，他们的析构函数的执行顺序与构造函数相反。<br>4) 构造：父类-&gt;成员函数-&gt;子类</li><li><strong>Runtime Error</strong>: 除0操作；数组越界；栈溢出；未指定值的指针进行读写操作；已经释放空间的指针再次释放。</li><li><strong>数组</strong>：<ul><li><strong>int&amp;float&amp;double</strong>:初始化补零</li><li><strong>char</strong>: 初始化补’\0’</li><li><strong>对象</strong>：调用缺省构造函数</li></ul></li><li>常对象不能被更新，因此通过常对象只能调用他的常成员函数。</li><li>临时对象是在遇到其后第一个分号(语句结束处)析构的。</li></ol>]]></content>
       
       
       <categories>
@@ -26,9 +51,9 @@
       
         <tags>
             
-            <tag> 笔记 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 笔记 </tag>
             
         </tags>
       
@@ -59,9 +84,9 @@
       
         <tags>
             
-            <tag> C </tag>
-            
             <tag> 笔记 </tag>
+            
+            <tag> C </tag>
             
         </tags>
       
@@ -79,9 +104,9 @@
       
       <categories>
           
-          <category> software </category>
-          
           <category> OS </category>
+          
+          <category> software </category>
           
           <category> Linux </category>
           
@@ -186,6 +211,31 @@
     
     
     <entry>
+      <title>Markdown常用指令</title>
+      <link href="/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+      <url>/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#: 一个#号字号最大，#号越多字号越小，一共六级标题。</span><br></pre></td></tr></table></figure><h3 id="层次"><a href="#层次" class="headerlink" title="层次"></a>层次</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*(注意是星+空格)即可变为项目符号“·”; 而输入“1.”“2.”“3.”</span><br><span class="line">则会变为编号</span><br></pre></td></tr></table></figure><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[百度](url)</span><br></pre></td></tr></table></figure><h3 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**文字**，无空格</span><br></pre></td></tr></table></figure><h3 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*文字*</span><br></pre></td></tr></table></figure><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![图片1](url)</span><br></pre></td></tr></table></figure><h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```bash/c/c++/python</span><br><span class="line">code</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### 分割线</span><br></pre></td></tr></table></figure><hr><pre><code></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> software </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Markdown指令 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Manjaro Linux安装以及日常配置</title>
       <link href="/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/"/>
       <url>/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/</url>
@@ -209,31 +259,6 @@
             <tag> Manjaro </tag>
             
             <tag> Linux </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Markdown常用指令</title>
-      <link href="/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
-      <url>/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
-      
-        <content type="html"><![CDATA[<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#: 一个#号字号最大，#号越多字号越小，一共六级标题。</span><br></pre></td></tr></table></figure><h3 id="层次"><a href="#层次" class="headerlink" title="层次"></a>层次</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*(注意是星+空格)即可变为项目符号“·”; 而输入“1.”“2.”“3.”</span><br><span class="line">则会变为编号</span><br></pre></td></tr></table></figure><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[百度](url)</span><br></pre></td></tr></table></figure><h3 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**文字**，无空格</span><br></pre></td></tr></table></figure><h3 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*文字*</span><br></pre></td></tr></table></figure><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![图片1](url)</span><br></pre></td></tr></table></figure><h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```bash/c/c++/python</span><br><span class="line">code</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### 分割线</span><br></pre></td></tr></table></figure><hr><pre><code></code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> software </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Markdown指令 </tag>
             
         </tags>
       
@@ -373,9 +398,9 @@
           
           <category> OS </category>
           
-          <category> Reading Notes </category>
-          
           <category> Linux </category>
+          
+          <category> Reading Notes </category>
           
       </categories>
       
