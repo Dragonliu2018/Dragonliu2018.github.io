@@ -8,7 +8,7 @@
       <link href="/2019/10/13/%E5%B8%B8%E8%A7%81%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD/"/>
       <url>/2019/10/13/%E5%B8%B8%E8%A7%81%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD/</url>
       
-        <content type="html"><![CDATA[<ol><li><p><strong>硬件(hardware)</strong></p><ul><li><strong>输入输出设备(I/O)</strong>: 键盘(keyboard)和鼠标(mouse)，显示器(screen)和硬盘(hard disk)</li><li><strong>处理器(Central Processing Unit, CPU)</strong></li><li><strong>“内存”-随机存储器(Random Access Memory, RAM)</strong></li></ul></li><li><p><strong>操作系统(operating system, OS)</strong> </p><ul><li><strong>操作系统内核(kernel)</strong></li><li><strong>系统调用(System Call)</strong></li></ul><p><strong>功能</strong>: 管理计算机所用活动以及驱动系统中的所有硬件。<br>eg: Linux, Windows, Mac…</p></li><li><p><strong>应用程序(application, AP)</strong><br>eg: Office, Pycharm, VSCode…</p></li></ol><img width="350" height="250" div align="center" data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/Dragonliu2018.github.io@latest/img/OS_part.jpg" class="lozad"><ol start="4"><li><strong>信息安全</strong><ul><li><strong>渗透测试(penetration testing)</strong>：测试人员在具体和授权的指导原则下尝试规避信息系统的防护措施所使用的方法、过程和规程，包括突破系统集成的安全特性。</li><li><strong>漏洞(loophole)</strong>：漏洞通常是指通过某种方式可破坏信息系统的机密性、完整性或可用性的一个缺陷。</li><li><strong>漏洞利用(exploit)</strong>: 是指利用特定漏洞的一个程序代码。</li></ul></li></ol>]]></content>
+        <content type="html"><![CDATA[<ol><li><p><strong>硬件(hardware)</strong></p><ul><li><strong>输入输出设备(I/O)</strong>: 键盘(keyboard)和鼠标(mouse)，显示器(screen)和硬盘(hard disk)</li><li><strong>处理器(Central Processing Unit, CPU)</strong></li><li><strong>“内存”-随机存储器(Random Access Memory, RAM)</strong></li></ul></li><li><p><strong>操作系统(operating system, OS)</strong> </p><ul><li><strong>操作系统内核(kernel)</strong></li><li><strong>系统调用(System Call)</strong></li></ul><p><strong>功能</strong>: 管理计算机所有活动以及驱动系统中的所有硬件。<br>eg: Linux, Windows, Mac…</p></li><li><p><strong>应用程序(application, AP)</strong><br>eg: Office, Pycharm, VSCode…</p></li></ol><img width="350" height="250" div align="center" data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/Dragonliu2018.github.io@latest/img/OS_part.jpg" class="lozad"><ol start="4"><li><strong>信息安全</strong><ul><li><strong>渗透测试(penetration testing)</strong>：测试人员在具体和授权的指导原则下尝试规避信息系统的防护措施所使用的方法、过程和规程，包括突破系统集成的安全特性。</li><li><strong>漏洞(loophole)</strong>：漏洞通常是指通过某种方式可破坏信息系统的机密性、完整性或可用性的一个缺陷。</li><li><strong>漏洞利用(exploit)</strong>: 是指利用特定漏洞的一个程序代码。</li></ul></li></ol>]]></content>
       
       
       <categories>
@@ -40,9 +40,9 @@
           
           <category> Programming Language </category>
           
-          <category> course </category>
-          
           <category> C++ </category>
+          
+          <category> course </category>
           
           <category> C++ </category>
           
@@ -51,9 +51,9 @@
       
         <tags>
             
-            <tag> 笔记 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 笔记 </tag>
             
         </tags>
       
@@ -73,9 +73,9 @@
           
           <category> Programming Language </category>
           
-          <category> C </category>
-          
           <category> course </category>
+          
+          <category> C </category>
           
           <category> C </category>
           
@@ -84,9 +84,9 @@
       
         <tags>
             
-            <tag> C </tag>
-            
             <tag> 笔记 </tag>
+            
+            <tag> C </tag>
             
         </tags>
       
@@ -374,11 +374,11 @@
       
         <tags>
             
+            <tag> 树莓派 </tag>
+            
             <tag> 远程连接 </tag>
             
             <tag> SSH </tag>
-            
-            <tag> 树莓派 </tag>
             
         </tags>
       
@@ -398,9 +398,9 @@
           
           <category> OS </category>
           
-          <category> Linux </category>
-          
           <category> Reading Notes </category>
+          
+          <category> Linux </category>
           
       </categories>
       
