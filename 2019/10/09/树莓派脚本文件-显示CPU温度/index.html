@@ -26,21 +26,19 @@
 </li>
 <li><p><strong>编写</strong></p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">cd</span> /sys/class/thermal/thermal_zone0 </span><br><span class="line">t=$(cat temp)</span><br><span class="line">ti=`expr <span class="variable">$t</span> / 1000`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$ti</span> 摄氏度"</span></span><br></pre></td></tr></table></figure>
-
 <p>  第1行：指定脚本解释器，这里是用/bin/sh做解释器的，查看其路径(以查看python3为例)</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ whereis python3</span><br></pre></td></tr></table></figure>
-
 <p>  第2行：进入目标文件夹<br>  第3行：读取文件内容并赋值给变量<br>  第4行：进行运算<br>  第5行：输出内容</p>
 </li>
 <li><p><strong>授予权限</strong></p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chmod 755 ./xxx.sh</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p><strong>解释</strong>：第1个数字代表usr权限，第2个数字代表群组权限，第3个数字代表other权限; 7代表”111”, 引号内数字分别代表r,w,x。</p>
 </blockquote>
 </li>
 <li><p><strong>运行</strong></p>
-<pre><code class="bash">$ ./xxx.sh</code></pre>
+<pre><code class="lang-bash">  $ ./xxx.sh
+</code></pre>
 </li>
 </ul>
 <p><a href="https://www.runoob.com/linux/linux-shell.html" target="_blank" rel="noopener">shell教程</a></p>
