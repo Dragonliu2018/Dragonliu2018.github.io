@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>网络是怎样连接的笔记</title>
+      <link href="/2019/10/20/%E7%BD%91%E7%BB%9C%E6%98%AF%E6%80%8E%E6%A0%B7%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%AC%94%E8%AE%B0/"/>
+      <url>/2019/10/20/%E7%BD%91%E7%BB%9C%E6%98%AF%E6%80%8E%E6%A0%B7%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p><img alt="路线图" data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/Dragonliu2018.github.io@latest/img/network_photo.png" class="lozad"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Reading Notes </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 《网络是怎样连接的》 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>离散数学笔记</title>
       <link href="/2019/10/20/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0/"/>
       <url>/2019/10/20/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0/</url>
@@ -181,9 +206,9 @@
           
           <category> Programming Language </category>
           
-          <category> course </category>
-          
           <category> C </category>
+          
+          <category> course </category>
           
           <category> C </category>
           
@@ -223,9 +248,9 @@
       
         <tags>
             
-            <tag> TIM </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> TIM </tag>
             
         </tags>
       
@@ -319,31 +344,6 @@
     
     
     <entry>
-      <title>Markdown常用指令</title>
-      <link href="/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
-      <url>/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
-      
-        <content type="html"><![CDATA[<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#: 一个#号字号最大，#号越多字号越小，一共六级标题。</span><br></pre></td></tr></table></figure><h3 id="层次"><a href="#层次" class="headerlink" title="层次"></a>层次</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*(注意是星+空格)即可变为项目符号“·”; 而输入“1.”“2.”“3.”</span><br><span class="line">则会变为编号</span><br></pre></td></tr></table></figure><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[百度](url)</span><br></pre></td></tr></table></figure><h3 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**文字**，无空格</span><br></pre></td></tr></table></figure><h3 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*文字*</span><br></pre></td></tr></table></figure><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![图片1](url)</span><br><span class="line">设置属性：&lt;img src=&quot;http:...&quot; width = &quot;100&quot; height = &quot;100&quot; div align=right /&gt;</span><br></pre></td></tr></table></figure><h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;```bash/c/c++/python</span><br><span class="line">code</span><br><span class="line">```&quot;</span><br></pre></td></tr></table></figure><h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;***&quot;</span><br></pre></td></tr></table></figure><h3 id="字体颜色"><a href="#字体颜色" class="headerlink" title="字体颜色"></a>字体颜色</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">浅红色文字：&lt;font color="#dd0000"&gt;浅红色文字：&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深红色文字：&lt;font color="#660000"&gt;深红色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅绿色文字：&lt;font color="#00dd00"&gt;浅绿色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深绿色文字：&lt;font color="#006600"&gt;深绿色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅蓝色文字：&lt;font color="#0000dd"&gt;浅蓝色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深蓝色文字：&lt;font color="#000066"&gt;深蓝色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅黄色文字：&lt;font color="#dddd00"&gt;浅黄色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深黄色文字：&lt;font color="#666600"&gt;深黄色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅青色文字：&lt;font color="#00dddd"&gt;浅青色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深青色文字：&lt;font color="#006666"&gt;深青色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅紫色文字：&lt;font color="#dd00dd"&gt;浅紫色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深紫色文字：&lt;font color="#660066"&gt;深紫色文字&lt;/font&gt;&lt;br /&gt;</span><br></pre></td></tr></table></figure><h3 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">上标：&lt;sup&gt;&lt;/sup&gt;</span><br><span class="line">下标：&lt;sub&gt;&lt;/sub&gt;</span><br></pre></td></tr></table></figure><h3 id="数学公式及符号"><a href="#数学公式及符号" class="headerlink" title="数学公式及符号"></a>数学公式及符号</h3><p><a href="https://www.zybuluo.com/codeep/note/163962" target="_blank" rel="noopener">手册</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> software </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Markdown指令 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Manjaro Linux安装以及日常配置</title>
       <link href="/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/"/>
       <url>/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/</url>
@@ -362,11 +362,36 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> 多系统 </tag>
             
             <tag> Manjaro </tag>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Markdown常用指令</title>
+      <link href="/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+      <url>/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#: 一个#号字号最大，#号越多字号越小，一共六级标题。</span><br></pre></td></tr></table></figure><h3 id="层次"><a href="#层次" class="headerlink" title="层次"></a>层次</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*(注意是星+空格)即可变为项目符号“·”; 而输入“1.”“2.”“3.”</span><br><span class="line">则会变为编号</span><br></pre></td></tr></table></figure><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[百度](url)</span><br></pre></td></tr></table></figure><h3 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**文字**，无空格</span><br></pre></td></tr></table></figure><h3 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*文字*</span><br></pre></td></tr></table></figure><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![图片1](url)</span><br><span class="line">设置属性：&lt;img src=&quot;http:...&quot; width = &quot;100&quot; height = &quot;100&quot; div align=right /&gt;</span><br></pre></td></tr></table></figure><h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;```bash/c/c++/python</span><br><span class="line">code</span><br><span class="line">```&quot;</span><br></pre></td></tr></table></figure><h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;***&quot;</span><br></pre></td></tr></table></figure><h3 id="字体颜色"><a href="#字体颜色" class="headerlink" title="字体颜色"></a>字体颜色</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">浅红色文字：&lt;font color="#dd0000"&gt;浅红色文字：&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深红色文字：&lt;font color="#660000"&gt;深红色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅绿色文字：&lt;font color="#00dd00"&gt;浅绿色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深绿色文字：&lt;font color="#006600"&gt;深绿色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅蓝色文字：&lt;font color="#0000dd"&gt;浅蓝色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深蓝色文字：&lt;font color="#000066"&gt;深蓝色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅黄色文字：&lt;font color="#dddd00"&gt;浅黄色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深黄色文字：&lt;font color="#666600"&gt;深黄色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅青色文字：&lt;font color="#00dddd"&gt;浅青色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深青色文字：&lt;font color="#006666"&gt;深青色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅紫色文字：&lt;font color="#dd00dd"&gt;浅紫色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深紫色文字：&lt;font color="#660066"&gt;深紫色文字&lt;/font&gt;&lt;br /&gt;</span><br></pre></td></tr></table></figure><h3 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">上标：&lt;sup&gt;&lt;/sup&gt;</span><br><span class="line">下标：&lt;sub&gt;&lt;/sub&gt;</span><br></pre></td></tr></table></figure><h3 id="数学公式及符号"><a href="#数学公式及符号" class="headerlink" title="数学公式及符号"></a>数学公式及符号</h3><p><a href="https://www.zybuluo.com/codeep/note/163962" target="_blank" rel="noopener">手册</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> software </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Markdown指令 </tag>
             
         </tags>
       
@@ -482,11 +507,11 @@
       
         <tags>
             
-            <tag> 树莓派 </tag>
-            
             <tag> 远程连接 </tag>
             
             <tag> SSH </tag>
+            
+            <tag> 树莓派 </tag>
             
         </tags>
       
@@ -506,9 +531,9 @@
           
           <category> OS </category>
           
-          <category> Reading Notes </category>
-          
           <category> Linux </category>
+          
+          <category> Reading Notes </category>
           
       </categories>
       
