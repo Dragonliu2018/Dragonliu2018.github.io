@@ -4,11 +4,38 @@
   
     
     <entry>
+      <title>一剪梅·红藕香残玉簟秋</title>
+      <link href="/2019/10/21/%E4%B8%80%E5%89%AA%E6%A2%85%C2%B7%E7%BA%A2%E8%97%95%E9%A6%99%E6%AE%8B%E7%8E%89%E7%B0%9F%E7%A7%8B/"/>
+      <url>/2019/10/21/%E4%B8%80%E5%89%AA%E6%A2%85%C2%B7%E7%BA%A2%E8%97%95%E9%A6%99%E6%AE%8B%E7%8E%89%E7%B0%9F%E7%A7%8B/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一剪梅·红藕香残玉簟秋"><a href="#一剪梅·红藕香残玉簟秋" class="headerlink" title="一剪梅·红藕香残玉簟秋"></a><center>一剪梅·红藕香残玉簟秋</center></h2><h3 id="李清照"><a href="#李清照" class="headerlink" title="李清照"></a><center>李清照</center></h3><center>红藕香残玉簟秋。轻解罗裳，独上兰舟。云中谁寄锦书来，雁字回时，月满西楼。花自飘零水自流。一种相思，两处闲愁。此情无计可消除，才下眉头，却上心头。</center>]]></content>
+      
+      
+      <categories>
+          
+          <category> culture </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 诗歌 </tag>
+            
+            <tag> 李清照 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>网络是怎样连接的笔记</title>
       <link href="/2019/10/20/%E7%BD%91%E7%BB%9C%E6%98%AF%E6%80%8E%E6%A0%B7%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%AC%94%E8%AE%B0/"/>
       <url>/2019/10/20/%E7%BD%91%E7%BB%9C%E6%98%AF%E6%80%8E%E6%A0%B7%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%AC%94%E8%AE%B0/</url>
       
-        <content type="html"><![CDATA[<p><img alt="路线图" data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/Dragonliu2018.github.io@latest/img/network_photo.png" class="lozad"></p>]]></content>
+        <content type="html"><![CDATA[<p><img alt="路线图" data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/Dragonliu2018.github.io@latest/img/network_photo.png" class="lozad"></p><hr><h2 id="第一章-浏览器生成消息-Web浏览器"><a href="#第一章-浏览器生成消息-Web浏览器" class="headerlink" title="第一章 浏览器生成消息(Web浏览器)"></a>第一章 浏览器生成消息(Web浏览器)</h2><h3 id="章节"><a href="#章节" class="headerlink" title="章节"></a>章节</h3><ul><li><strong>生成HTTP请求信息</strong></li><li><strong>向DNS服务器查询Web服务器的IP地址</strong></li><li><strong>全世界DNS服务器的大接力</strong></li><li><strong>委托协议栈发送信息</strong><h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3></li></ul><ol><li>URL：Uniform Resource Locator 统一资源定位符</li><li>FTP: File Transfer Protocol 文本传送协议</li><li>HTTP: Hypertext Transfer Protocol 超文本传送协议</li><li>DNS：Domain Name System 域名服务系统</li><li>协议栈：操作系统内部的网络控制软件，也叫“协议驱动” “TCP/IP驱动”等。</li><li>UDP：User Datagram Protocol 用户数据报协议<h3 id="KEY"><a href="#KEY" class="headerlink" title="KEY"></a>KEY</h3></li><li>1条请求信息中只能写1个URL。如果需要获取多个文件，必须对每个文件单独发送1条请求。</li><li>IP地址的主机号：全0表示整个子网，全1表示向子网上所有设备发送包，即“广播”。</li><li>Socke库是用于调用网络功能的程序组件集合。</li><li>根据域名查IP地址时，浏览器会使用Socket库中的解析器。</li><li>DNS服务器会从域名与IP地址的对照表中查找相应的记录，并返回IP地址。</li><li>在域名中，越靠右的位置表示其层次越高；下级的域称为子域。</li><li>向操作系统内部的协议栈发出委托时，需要按照指定的顺序来调用Socket库中的程序组件。</li><li>收发数据的操作：<ul><li>创建：创建套接字</li><li>连接：将管道连接到服务器端的套接字上</li><li>通信：收发数据</li><li>断开：断开管道并删除套接字</li></ul></li><li>应用程序是通过“描述符”这一类似号码牌的东西来识别套接字的。</li><li>IP地址不是分配给每个设备，而是分配给设备中安装的网络硬件的。</li><li>描述符：应用程序用来识别套接字的机制</li><li>IP地址和端口号：客户端和服务器之间用来识别对方套接字的机制</li><li>向DNS服务器发送请求消息的程序是解析器。</li><li>URL中的www是Web服务器上的一种命名；World Wide Web，中文名字为“万维网”，”环球网”等，常简称为Web。</li></ol><hr><h2 id="第2章-用电信号传输TCP-IP数据-协议栈、网卡"><a href="#第2章-用电信号传输TCP-IP数据-协议栈、网卡" class="headerlink" title="第2章 用电信号传输TCP/IP数据(协议栈、网卡)"></a>第2章 用电信号传输TCP/IP数据(协议栈、网卡)</h2><h3 id="章节-1"><a href="#章节-1" class="headerlink" title="章节"></a>章节</h3><ul><li><strong>创建套接字</strong></li><li><strong>连接服务器</strong></li><li><strong>收发数据</strong></li><li><strong>从服务器断开并删除套接字</strong></li><li><strong>IP与以太网的包收发操作</strong></li><li><strong>UDP协议的收发操作</strong><h3 id="术语-1"><a href="#术语-1" class="headerlink" title="术语"></a>术语</h3></li></ul><ol><li>MAC：Media Access Control / MAC地址：符合IEEE规格的局域网设备都使用统一格式的地址。</li><li>PID：Process ID 进程标识符</li><li>MTU：Maximum Transmission Unit 最大传输单元</li><li>MSS：Maximum Segment Size 最大分段大小</li><li>SFD：Start Frame Delimiter 起始帧分界符</li><li>FCS：Frame Check Sequence 帧校验序列</li><li>SUN：Synchronize 同步</li><li>ACK：Acknowledge character 确认字符（在数据通信中，接收站发给发送站的一种传输类控制字符。表示发来的数据已确认接收无误）</li><li>ARP：Address Resolution Protocol 地址解析协议</li><li>CRC：Cyclic Redundancy Check 循环冗余校验</li><li>MAU：Medium Attachment Unit 介质连接单元</li><li>PHY：Physical Layer Device 物理层设置</li><li>PnP：Plug and Play 是一种自动对扩展卡和周边设备进行配置的功能。<h3 id="KEY-1"><a href="#KEY-1" class="headerlink" title="KEY"></a>KEY</h3></li><li>浏览器、邮件等一般应用程序收发数据用TCP；DNS查询等收发较短的控制数据时用UDP。</li><li>IP中还包含ICMP协议和ARP协议.ICMP用来告知网络包传送过程中产生的错误以及各种控制信息，ARP用来根据IP地址查询相应的以太网MAC地址。</li><li>协议栈是根据套接字中记录的控制信息来工作的。</li><li>创建套接字时，首先分配一个套接字所需的内存空间，然后向其中写入初始状态。</li><li>通信操作中使用的控制信息分为两类：头部中记录的信息、套接字(协议栈中的内存空间)中记录的信息。</li><li>连接操作的第一步是在TCP模块处创建表示连接控制信息的头部。</li><li>通过TCP头部中的发送方和接收方端口号可以找到要连接的套接字。</li><li>MTU：一个网络包的最大长度，以太网中一般为1500字节；MSS：除去头部后，一个网络包所能容纳的TCP数据的最大长度。</li><li>通过“序号”和“ACK号”可以确认接收方是否接收到了网络包。</li><li>能够接收的最大数据量称为窗口大小，一般和接收方的缓冲区大小一致。</li><li>集线器是按照以太网规则传输包的设备，路由器是按照IP规则传输包的设备。</li><li>IP模块负责添加两个头部：MAC头部(以太网用的头部，包含MAc地址)、IP头部(IP用的头部，包含IP地址)。</li><li>无论要收发的包是控制包还是数据包，IP对各种类型的包的收发操作都是相同的。</li><li>IP头部的“接受方IP地址”填写通信对象的IP。发送方IP地址需要判断发送所使用的网卡，并填写该网卡的IP地址。</li><li>子网掩码：用来判断IP地址中网络号与主机号分界线的地址。</li><li>IP模块根据路由表Gateway栏的内容判断应该把包发送给谁。</li><li>以太网3个性质：将包发送到MAC头部的接收方MAC地址代表的目的地、用发送方MAC地址识别发送方、用以太类型识别包的内容。</li><li>网卡的ROM中保存着全世界唯一的MAC地址，这是在生产网卡时写入的。</li><li>网卡中保存的MAC地址会由网卡驱动程序读取并分配给MAC模块。</li><li>每个包的前面都有报头和SFD，报头用来测定时机，SFD用来确定帧的起始位置。</li><li>网卡的MAC模块生成通用信号，然后由PHY(MAU)模块转换成可在网线中传输的格式，并通过网线发送出去。</li><li>端口号用来指定服务器程序的种类，位于TCP头部。</li><li>TCP对包是否正确送达进行确认。</li><li>在收到ACK号之前继续发送下一个包的方式是滑动窗口方式。</li></ol>]]></content>
       
       
       <categories>
@@ -33,7 +60,7 @@
       <link href="/2019/10/20/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0/"/>
       <url>/2019/10/20/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0/</url>
       
-        <content type="html"><![CDATA[<hr><h2 id="第1章-命题逻辑的基本概念"><a href="#第1章-命题逻辑的基本概念" class="headerlink" title="第1章 命题逻辑的基本概念"></a>第1章 命题逻辑的基本概念</h2><h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ol><li>判断给定句子是否为命题，应该分两步：首先判断它是否为陈述句，其次判断它是否有唯一的真值。</li><li>由真推出假，又由假能推出真，从而既不能为真，也不能为假的陈述句称作悖论，悖论不是命题。eg: 我正在说假话。</li><li>相容或与排斥或。</li><li>p$\rightarrow$q:p与q的蕴涵式。p$\rightarrow$q为假当且仅当q为真p为假。叙述方式：如果p，则q；只要p，就q；因为p，所以q；p仅当q；只有q才p；除非q才p；除非q，否则非p。</li><li>联结词集{$\not F$, $\bigwedge$, $\bigvee$, $\rightarrow$, $\leftrightarrow$}: 优先顺序为(), $\not F$, $\bigwedge$,  $\bigvee$, $\rightarrow$, $\leftrightarrow$; 对同一优先级，从左向右顺序进行。</li><li>给定n个命题变项，按照合式公式的形成规则，可以形成无穷个公式。其产生2<sup>n</sup>个不同的赋值，任何公式在每个赋值下只能去两个值(0，1)，真值表有2<sup>2<sup>n</sup>&lt;/sup&gt;种情况，因而必有无穷多个公式具有相同的真值表。</sup></li></ol><h3 id="题型汇总"><a href="#题型汇总" class="headerlink" title="题型汇总"></a>题型汇总</h3><ul><li><strong>命题符号化</strong></li><li><strong>求复合命题的真值与命题公式的赋值</strong></li><li><strong>判断公式的类型</strong></li><li><strong>复合命题符号化</strong></li></ul><hr><h2 id="第2章-命题逻辑等值演算"><a href="#第2章-命题逻辑等值演算" class="headerlink" title="第2章 命题逻辑等值演算"></a>第2章 命题逻辑等值演算</h2><h3 id="基础知识-1"><a href="#基础知识-1" class="headerlink" title="基础知识"></a>基础知识</h3><ol><li>$\Leftrightarrow$是元语言符号，用来说明A与B等值的一种记法，$\leftrightarrow$是联结符，也要注意与一般等号=的区别。</li><li><a href="https://wenku.baidu.com/view/61b8cb43a8956bec0975e346.html" target="_blank" rel="noopener">等值式模式</a>：双重否定律，幂等律，交换律，结合律，分配律，德摩根律，吸收律，零律，同一律，排中律，矛盾律，蕴涵等值式，等价等值式，假言易位，等价否定等值式，归谬论。</li><li>判断A$\Leftrightarrow$B是否成立的方法：<ul><li><strong>真值表法</strong>：判断A$\leftrightarrow$B是否是重言式</li><li><strong>观察法(求证$\not \Leftrightarrow$)</strong>：给出一个赋值使两个命题公式真值不同</li><li><strong>等值演算法</strong></li><li><strong>主范式</strong></li></ul></li><li>求公式A的主析取(合取范式)的方法和步骤：<ul><li><strong>等值演算法</strong><ol><li>消去联结词$\rightarrow$, $\leftrightarrow$；</li><li>否定联结词$\not F$的内移(德摩根律)或消去(双重否定律)；</li><li>使用分配律(求析取范式用$\bigwedge$对$\bigvee$的分配律，求析取范式用$\bigvee$对$\bigwedge$的分配律) -&gt; 已将A化为析取(合取范式)</li><li>将范式中不是极小项(极大项)的简单合取式(析取式)利用排中律、同一律、分配律化成若干个极小项(极大项)。</li><li>将极小项(极大项)用名称m<sub>i</sub>(M<sub>i</sub>)表示，使用幂等律，最后排序。</li></ol></li><li><strong>真值表法</strong><ol><li>写出A的真值表</li><li>找出A的成真赋值(成假赋值)</li><li>写出每个成真赋值(成假赋值)对应的极小项(极大项)，按角标从小到大析取(合取)</li></ol></li><li><strong>主析取合取互推</strong><ol><li>$\not F$m<sub>i</sub>$\Leftrightarrow$M<sub>i</sub></li><li>$\not F$M<sub>i</sub>$\Leftrightarrow$m<sub>i</sub></li></ol></li></ul></li><li>与非$\uparrow$、或非$\downarrow$：$\not F$p$\Leftrightarrow$p$\uparrow$p$\Leftrightarrow$p$\downarrow$p</li><li>{$\uparrow$},{$\downarrow$}都是联结词完备集。</li></ol><h3 id="题型汇总-1"><a href="#题型汇总-1" class="headerlink" title="题型汇总"></a>题型汇总</h3><ul><li><strong>用等值演算法证明重言式和矛盾式</strong>：A$\Leftrightarrow$1, A$\Leftrightarrow$0</li><li><strong>用等值演算法证明等值式</strong></li><li><strong>通过求公式的主析取范式(主合取范式)判断公式类型</strong></li><li><strong>通过求公式的主析取范式(主合取范式)判断两个公式是否等值</strong></li><li><strong>将已知的命题公式等值地化成给定联结词完备集上的公式</strong></li><li><strong>用等值演算等方法解决实际问题</strong></li><li>消去规则及其性质</li><li>消去序列与消去法</li></ul><hr>]]></content>
+        <content type="html"><![CDATA[<hr><h2 id="第1章-命题逻辑的基本概念"><a href="#第1章-命题逻辑的基本概念" class="headerlink" title="第1章 命题逻辑的基本概念"></a>第1章 命题逻辑的基本概念</h2><h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ol><li>判断给定句子是否为命题，应该分两步：首先判断它是否为陈述句，其次判断它是否有唯一的真值。</li><li>由真推出假，又由假能推出真，从而既不能为真，也不能为假的陈述句称作悖论，悖论不是命题。eg: 我正在说假话。</li><li>相容或与排斥或。</li><li>p$\rightarrow$q:p与q的蕴涵式。p$\rightarrow$q为假当且仅当p为真q为假。叙述方式：如果p，则q；只要p，就q；因为p，所以q；p仅当q；只有q才p；除非q才p；除非q，否则非p。</li><li>联结词集{$\not F$, $\bigwedge$, $\bigvee$, $\rightarrow$, $\leftrightarrow$}: 优先顺序为(), $\not F$, $\bigwedge$,  $\bigvee$, $\rightarrow$, $\leftrightarrow$; 对同一优先级，从左向右顺序进行。</li><li>给定n个命题变项，按照合式公式的形成规则，可以形成无穷个公式。其产生2<sup>n</sup>个不同的赋值，任何公式在每个赋值下只能去两个值(0，1)，真值表有2<sup>2<sup>n</sup>&lt;/sup&gt;种情况，因而必有无穷多个公式具有相同的真值表。</sup></li></ol><h3 id="题型汇总"><a href="#题型汇总" class="headerlink" title="题型汇总"></a>题型汇总</h3><ul><li><strong>命题符号化</strong></li><li><strong>求复合命题的真值与命题公式的赋值</strong></li><li><strong>判断公式的类型</strong></li><li><strong>复合命题符号化</strong></li></ul><hr><h2 id="第2章-命题逻辑等值演算"><a href="#第2章-命题逻辑等值演算" class="headerlink" title="第2章 命题逻辑等值演算"></a>第2章 命题逻辑等值演算</h2><h3 id="基础知识-1"><a href="#基础知识-1" class="headerlink" title="基础知识"></a>基础知识</h3><ol><li>$\Leftrightarrow$是元语言符号，用来说明A与B等值的一种记法，$\leftrightarrow$是联结符，也要注意与一般等号=的区别。</li><li><a href="https://wenku.baidu.com/view/61b8cb43a8956bec0975e346.html" target="_blank" rel="noopener">等值式模式</a>：双重否定律，幂等律，交换律，结合律，分配律，德摩根律，吸收律，零律，同一律，排中律，矛盾律，蕴涵等值式，等价等值式，假言易位，等价否定等值式，归谬论。</li><li>判断A$\Leftrightarrow$B是否成立的方法：<ul><li><strong>真值表法</strong>：判断A$\leftrightarrow$B是否是重言式</li><li><strong>观察法(求证$\not \Leftrightarrow$)</strong>：给出一个赋值使两个命题公式真值不同</li><li><strong>等值演算法</strong></li><li><strong>主范式</strong></li></ul></li><li>求公式A的主析取(合取范式)的方法和步骤：<ul><li><strong>等值演算法</strong><ol><li>消去联结词$\rightarrow$, $\leftrightarrow$；</li><li>否定联结词$\not F$的内移(德摩根律)或消去(双重否定律)；</li><li>使用分配律(求析取范式用$\bigwedge$对$\bigvee$的分配律，求析取范式用$\bigvee$对$\bigwedge$的分配律) -&gt; 已将A化为析取(合取范式)</li><li>将范式中不是极小项(极大项)的简单合取式(析取式)利用排中律、同一律、分配律化成若干个极小项(极大项)。</li><li>将极小项(极大项)用名称m<sub>i</sub>(M<sub>i</sub>)表示，使用幂等律，最后排序。</li></ol></li><li><strong>真值表法</strong><ol><li>写出A的真值表</li><li>找出A的成真赋值(成假赋值)</li><li>写出每个成真赋值(成假赋值)对应的极小项(极大项)，按角标从小到大析取(合取)</li></ol></li><li><strong>主析取合取互推</strong><ol><li>$\not F$m<sub>i</sub>$\Leftrightarrow$M<sub>i</sub></li><li>$\not F$M<sub>i</sub>$\Leftrightarrow$m<sub>i</sub></li></ol></li></ul></li><li>与非$\uparrow$、或非$\downarrow$：$\not F$p$\Leftrightarrow$p$\uparrow$p$\Leftrightarrow$p$\downarrow$p</li><li>{$\uparrow$},{$\downarrow$}都是联结词完备集。</li></ol><h3 id="题型汇总-1"><a href="#题型汇总-1" class="headerlink" title="题型汇总"></a>题型汇总</h3><ul><li><strong>用等值演算法证明重言式和矛盾式</strong>：A$\Leftrightarrow$1, A$\Leftrightarrow$0</li><li><strong>用等值演算法证明等值式</strong></li><li><strong>通过求公式的主析取范式(主合取范式)判断公式类型</strong></li><li><strong>通过求公式的主析取范式(主合取范式)判断两个公式是否等值</strong></li><li><strong>将已知的命题公式等值地化成给定联结词完备集上的公式</strong></li><li><strong>用等值演算等方法解决实际问题</strong></li><li>消去规则及其性质</li><li>消去序列与消去法</li></ul><hr>]]></content>
       
       
       <categories>
@@ -184,9 +211,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
-            
             <tag> 笔记 </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -217,9 +244,9 @@
       
         <tags>
             
-            <tag> 笔记 </tag>
-            
             <tag> C </tag>
+            
+            <tag> 笔记 </tag>
             
         </tags>
       
@@ -237,9 +264,9 @@
       
       <categories>
           
-          <category> software </category>
-          
           <category> OS </category>
+          
+          <category> software </category>
           
           <category> Linux </category>
           
@@ -344,6 +371,31 @@
     
     
     <entry>
+      <title>Markdown常用指令</title>
+      <link href="/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+      <url>/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#: 一个#号字号最大，#号越多字号越小，一共六级标题。</span><br></pre></td></tr></table></figure><h3 id="层次"><a href="#层次" class="headerlink" title="层次"></a>层次</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*(注意是星+空格)即可变为项目符号“·”; 而输入“1.”“2.”“3.”</span><br><span class="line">则会变为编号</span><br></pre></td></tr></table></figure><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[百度](url)</span><br></pre></td></tr></table></figure><h3 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**文字**，无空格</span><br></pre></td></tr></table></figure><h3 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*文字*</span><br></pre></td></tr></table></figure><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![图片1](url)</span><br><span class="line">设置属性：&lt;img src=&quot;http:...&quot; width = &quot;100&quot; height = &quot;100&quot; div align=right /&gt;</span><br></pre></td></tr></table></figure><h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;```bash/c/c++/python</span><br><span class="line">code</span><br><span class="line">```&quot;</span><br></pre></td></tr></table></figure><h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;***&quot;</span><br></pre></td></tr></table></figure><h3 id="字体颜色"><a href="#字体颜色" class="headerlink" title="字体颜色"></a>字体颜色</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">浅红色文字：&lt;font color="#dd0000"&gt;浅红色文字：&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深红色文字：&lt;font color="#660000"&gt;深红色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅绿色文字：&lt;font color="#00dd00"&gt;浅绿色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深绿色文字：&lt;font color="#006600"&gt;深绿色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅蓝色文字：&lt;font color="#0000dd"&gt;浅蓝色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深蓝色文字：&lt;font color="#000066"&gt;深蓝色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅黄色文字：&lt;font color="#dddd00"&gt;浅黄色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深黄色文字：&lt;font color="#666600"&gt;深黄色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅青色文字：&lt;font color="#00dddd"&gt;浅青色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深青色文字：&lt;font color="#006666"&gt;深青色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅紫色文字：&lt;font color="#dd00dd"&gt;浅紫色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深紫色文字：&lt;font color="#660066"&gt;深紫色文字&lt;/font&gt;&lt;br /&gt;</span><br></pre></td></tr></table></figure><h3 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">上标：&lt;sup&gt;&lt;/sup&gt;</span><br><span class="line">下标：&lt;sub&gt;&lt;/sub&gt;</span><br></pre></td></tr></table></figure><h3 id="数学公式及符号"><a href="#数学公式及符号" class="headerlink" title="数学公式及符号"></a>数学公式及符号</h3><p><a href="https://www.zybuluo.com/codeep/note/163962" target="_blank" rel="noopener">手册</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> software </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Markdown指令 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Manjaro Linux安装以及日常配置</title>
       <link href="/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/"/>
       <url>/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/</url>
@@ -367,31 +419,6 @@
             <tag> Manjaro </tag>
             
             <tag> Linux </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Markdown常用指令</title>
-      <link href="/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
-      <url>/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
-      
-        <content type="html"><![CDATA[<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#: 一个#号字号最大，#号越多字号越小，一共六级标题。</span><br></pre></td></tr></table></figure><h3 id="层次"><a href="#层次" class="headerlink" title="层次"></a>层次</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*(注意是星+空格)即可变为项目符号“·”; 而输入“1.”“2.”“3.”</span><br><span class="line">则会变为编号</span><br></pre></td></tr></table></figure><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[百度](url)</span><br></pre></td></tr></table></figure><h3 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**文字**，无空格</span><br></pre></td></tr></table></figure><h3 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*文字*</span><br></pre></td></tr></table></figure><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![图片1](url)</span><br><span class="line">设置属性：&lt;img src=&quot;http:...&quot; width = &quot;100&quot; height = &quot;100&quot; div align=right /&gt;</span><br></pre></td></tr></table></figure><h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;```bash/c/c++/python</span><br><span class="line">code</span><br><span class="line">```&quot;</span><br></pre></td></tr></table></figure><h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;***&quot;</span><br></pre></td></tr></table></figure><h3 id="字体颜色"><a href="#字体颜色" class="headerlink" title="字体颜色"></a>字体颜色</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">浅红色文字：&lt;font color="#dd0000"&gt;浅红色文字：&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深红色文字：&lt;font color="#660000"&gt;深红色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅绿色文字：&lt;font color="#00dd00"&gt;浅绿色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深绿色文字：&lt;font color="#006600"&gt;深绿色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅蓝色文字：&lt;font color="#0000dd"&gt;浅蓝色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深蓝色文字：&lt;font color="#000066"&gt;深蓝色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅黄色文字：&lt;font color="#dddd00"&gt;浅黄色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深黄色文字：&lt;font color="#666600"&gt;深黄色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅青色文字：&lt;font color="#00dddd"&gt;浅青色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深青色文字：&lt;font color="#006666"&gt;深青色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅紫色文字：&lt;font color="#dd00dd"&gt;浅紫色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深紫色文字：&lt;font color="#660066"&gt;深紫色文字&lt;/font&gt;&lt;br /&gt;</span><br></pre></td></tr></table></figure><h3 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">上标：&lt;sup&gt;&lt;/sup&gt;</span><br><span class="line">下标：&lt;sub&gt;&lt;/sub&gt;</span><br></pre></td></tr></table></figure><h3 id="数学公式及符号"><a href="#数学公式及符号" class="headerlink" title="数学公式及符号"></a>数学公式及符号</h3><p><a href="https://www.zybuluo.com/codeep/note/163962" target="_blank" rel="noopener">手册</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> software </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Markdown指令 </tag>
             
         </tags>
       
