@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>ARM9嵌入式系统设计--基于S3C2410与Linux笔记</title>
+      <link href="/2019/10/26/ARM9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-%E5%9F%BA%E4%BA%8ES3C2410%E4%B8%8ELinux%E7%AC%94%E8%AE%B0/"/>
+      <url>/2019/10/26/ARM9%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-%E5%9F%BA%E4%BA%8ES3C2410%E4%B8%8ELinux%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<hr><h2 id="第1章-嵌入式系统基础与开发过程"><a href="#第1章-嵌入式系统基础与开发过程" class="headerlink" title="第1章 嵌入式系统基础与开发过程"></a>第1章 嵌入式系统基础与开发过程</h2><ol><li>嵌入式系统IEEE定义：嵌入式系统是“控制、监视或者辅助操作机器和设备的装置”</li><li>嵌入式系统三要素：<ul><li>嵌入性：嵌入到对象体系中，有对象环境要求</li><li>专用性：软硬件按对象要求裁减</li><li>计算机：实现对象的智能化控制</li></ul></li><li>嵌入式系统通常由嵌入式处理器、外围设备、嵌入式操作系统和应用软件等几大部分组成。</li><li>单片机（微控制器，Micro Controller Unit，EMCU）是嵌入式处理器。</li><li>ARM处理器的三大特点：<ul><li>小体积、低功耗、低成本而高性能</li><li>16/32位双指令集</li><li>全球众多的合作伙伴</li></ul></li><li><ul><li><strong>冯·诺伊曼结构</strong>：其程序和数据共用一个存储空间，程序指令存储地址和数据存储地址指向同一个存储器的不同物理位置；采用单一的地址及数据总线、程序指令和数据的宽度相同。eg: Intel的8086、ARM7</li><li><strong>哈佛结构</strong>：<br>将程序和数据存储在不同的存储空间中，即程序存储器和数据存储器是两个相互独立的存储器，每个存储器独立编址、独立访问。系统中具有程序的数据总线与地址总线，数据的数据总线与地址总线。eg:ARM9</li></ul></li><li>流水线技术：<ul><li>基本思想：将一个重复的时序分解成若干个子过程，而每个子过程都可有效地将其专用功能段上与其他子过程同时执行。</li><li>分类：单功能流水线/多功能流水线、静态流水线/动态流水线、标量流水线/向量流水线</li><li>指令流水线：将一条指令分解成一连串执行的子过程。eg:指令的执行过程细分为取指令、指令译码、取操作数和执行4个子过程。</li></ul></li><li>在存储器中两种存放方法：<ul><li>小端字节顺序存储法：低字节数据存放在内存低地址处，高字节数据存放在内存高地址处</li><li>大端字节顺序存储法：高字节数据存放在内存低地址处，低字节数据存放在内存高地址处</li></ul></li><li>操作系统三项任务：<ul><li>内存管理</li><li>多任务管理</li><li>外围设备管理</li></ul></li><li>Mac OS不是嵌入式操作系统</li><li>嵌入式系统的开发流程：<ul><li>需求分析</li><li>体系结构设计</li><li>硬件/软件设计</li><li>系统集成</li><li>代码固化</li></ul></li></ol><hr><h2 id="第2章-ARM体系结构及指令系统"><a href="#第2章-ARM体系结构及指令系统" class="headerlink" title="第2章 ARM体系结构及指令系统"></a>第2章 ARM体系结构及指令系统</h2><ol><li>ARM体系结构特点：<ul><li>RISC型处理器结构</li><li>多处理器状态模式</li><li>嵌入式在线仿真调试</li><li>灵活和方便的接口</li><li>低电压低功耗设计</li></ul></li><li>ARM体系结构由32位ALU、31个32位通用寄存器及6个状态寄存器、32×8位乘法器、32×32位桶形移位寄存器、指令译码及控制逻辑、指令流水线和数据/地址寄存器组成。</li><li>指令执行的阶段：<ul><li>取址，从存储器中取出指令(fetch)</li><li>译码，指令译码(dec)</li><li>取操作数，假定操作数从寄存器组中取(reg)</li><li>执行操作(ALU)</li><li>存储器访问，操作数与存储器有关(mem)</li><li>结果写回寄存器(res)</li></ul></li><li><ul><li>流水线的停顿：相邻指令执行的数据相关性会产生指令执行的停顿。</li><li>遇到分支指令：碰到分之类指令，则会使后面紧接该条指令的几条指令的执行都无效。</li></ul></li><li>在最基本的ARM处理器内核基础上，可增加Cache、存储器管理单元MMU、协处理器CP15、AMBA接口以及EMT宏单元等，构成ARM处理器核。</li><li>寻址方式是根据指令中给出的地址码字段来寻找真实操作数地址的方式。ARM处理器支持的基本寻址方式有：<ul><li>寄存器寻址</li><li>立即寻址</li><li>寄存器移位寻址</li><li>寄存器间接寻址</li><li>变址寻址</li><li>多寄存器寻址</li><li>堆栈寻址</li><li>块复制寻址</li><li>相对寻址</li></ul></li></ol><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Reading Notes </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 《ARM9嵌入式系统设计--基于S3C2410与Linux》 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>浣溪沙·闺情</title>
       <link href="/2019/10/23/%E6%B5%A3%E6%BA%AA%E6%B2%99%C2%B7%E9%97%BA%E6%83%85/"/>
       <url>/2019/10/23/%E6%B5%A3%E6%BA%AA%E6%B2%99%C2%B7%E9%97%BA%E6%83%85/</url>
@@ -254,9 +279,9 @@
           
           <category> Programming Language </category>
           
-          <category> C++ </category>
-          
           <category> course </category>
+          
+          <category> C++ </category>
           
           <category> C++ </category>
           
@@ -329,9 +354,9 @@
       
         <tags>
             
-            <tag> TIM </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> TIM </tag>
             
         </tags>
       
@@ -468,11 +493,11 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> 多系统 </tag>
             
             <tag> Manjaro </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -612,9 +637,9 @@
           
           <category> OS </category>
           
-          <category> Linux </category>
-          
           <category> Reading Notes </category>
+          
+          <category> Linux </category>
           
       </categories>
       
@@ -704,9 +729,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
-            
             <tag> VScode </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
