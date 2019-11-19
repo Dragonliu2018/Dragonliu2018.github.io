@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>配置Java开发环境</title>
+      <link href="/2019/11/19/%E9%85%8D%E7%BD%AEJava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
+      <url>/2019/11/19/%E9%85%8D%E7%BD%AEJava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</url>
+      
+        <content type="html"><![CDATA[<h3 id="下载java开发工具包JDK"><a href="#下载java开发工具包JDK" class="headerlink" title="下载java开发工具包JDK"></a>下载java开发工具包JDK</h3><ul><li>关注“软件安装管家”微信公众号，软件目录/软件目录/开发编程/JDK，选择合适版本(安装步骤详细，初试不爽)</li><li>解决百度网盘下载速度慢(<a href="https://pandownload.com/" target="_blank" rel="noopener">加速盘</a>)</li></ul><h3 id="安装开发工具"><a href="#安装开发工具" class="headerlink" title="安装开发工具"></a>安装开发工具</h3><h4 id="IDEA"><a href="#IDEA" class="headerlink" title="IDEA"></a>IDEA</h4><ul><li><strong><a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener">官网下载</a></strong> ：开通学校邮箱即可免费使用，也可在“软件安装管家”中“免费”下载使用</li><li><strong><a href="https://blog.csdn.net/testcs_dn/article/details/51793511" target="_blank" rel="noopener">运行 helloworld.java</a></strong><h4 id="Eclipse-开源"><a href="#Eclipse-开源" class="headerlink" title="Eclipse(开源)"></a><a href="http://www.eclipse.org/downloads/packages/" target="_blank" rel="noopener">Eclipse</a>(开源)</h4></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Programming Language </category>
+          
+          <category> C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Kobe</title>
       <link href="/2019/11/11/Kobe/"/>
       <url>/2019/11/11/Kobe/</url>
@@ -336,9 +363,9 @@
       
         <tags>
             
-            <tag> 计算机术语 </tag>
-            
             <tag> 《鸟哥的Linux私房菜》 </tag>
+            
+            <tag> 计算机术语 </tag>
             
         </tags>
       
@@ -422,9 +449,9 @@
       
       <categories>
           
-          <category> software </category>
-          
           <category> OS </category>
+          
+          <category> software </category>
           
           <category> Linux </category>
           
@@ -433,9 +460,9 @@
       
         <tags>
             
-            <tag> TIM </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> TIM </tag>
             
         </tags>
       
@@ -572,11 +599,11 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> 多系统 </tag>
             
             <tag> Manjaro </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -727,11 +754,11 @@
             
             <tag> 多系统 </tag>
             
-            <tag> 《鸟哥的Linux私房菜》 </tag>
-            
             <tag> 磁盘分区 </tag>
             
             <tag> Linux笔记 </tag>
+            
+            <tag> 《鸟哥的Linux私房菜》 </tag>
             
         </tags>
       
