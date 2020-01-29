@@ -8,7 +8,7 @@
       <link href="/2020/01/29/%E5%85%8D%E8%B4%B9%E4%B8%8B%E8%BD%BDVIP%E6%AD%8C%E6%9B%B2%E5%92%8C%E4%BB%98%E8%B4%B9%E6%AD%8C%E6%9B%B2/"/>
       <url>/2020/01/29/%E5%85%8D%E8%B4%B9%E4%B8%8B%E8%BD%BDVIP%E6%AD%8C%E6%9B%B2%E5%92%8C%E4%BB%98%E8%B4%B9%E6%AD%8C%E6%9B%B2/</url>
       
-        <content type="html"><![CDATA[<h3 id="场景描述"><a href="#场景描述" class="headerlink" title="场景描述"></a>场景描述</h3><p>　　2020年1月29日，大年初五，小雪。虽说“待在家里就是对社会最大的贡献”，但日渐发福的菜鸟不禁要折腾一下，翻翻自行车，写写博客。现在的歌好多需要VIP，但作为平民窟的一菜鸟，怎么会氪金听歌下歌呢？不妨试着白嫖！</p><h3 id="0x01-F12抓包法"><a href="#0x01-F12抓包法" class="headerlink" title="0x01 F12抓包法"></a>0x01 F12抓包法</h3><ul><li><p>打开浏览器，进入QQ音乐、网易云音乐等的网页版</p><p><img alt="image-20200129113632296" data-src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20200129113632296.png" class="lozad"></p></li></ul><p>　　*   cdhcbh</p><p>　　</p>]]></content>
+        <content type="html"><![CDATA[<h3 id="场景描述"><a href="#场景描述" class="headerlink" title="场景描述"></a>场景描述</h3><p>　　2020年1月29日，大年初五，小雪。虽说“待在家里就是对社会最大的贡献”，但日渐发福的菜鸟不禁要折腾一下，翻翻自行车，写写博客。现在的歌好多需要VIP，但作为平民窟的一菜鸟，怎么会氪金听歌下歌呢？不妨试着白嫖！</p><h3 id="0x01-F12抓包法"><a href="#0x01-F12抓包法" class="headerlink" title="0x01 F12抓包法"></a>0x01 F12抓包法</h3><ol><li><p>打开浏览器，进入QQ音乐、网易云音乐等的网页版；</p><p><img alt="图1" data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/Dragonliu2018.github.io@latest/img/Green_Hand/vip_songs/1.png" class="lozad"></p></li><li><p>输入歌曲，播放，按下F12，点击<strong>Network</strong>，点击<strong>Size</strong>使其按照内存递增排序，找到末尾几行，(<strong>Type</strong>是<strong>media</strong>和<strong>Size</strong>大约为几 MB，若没找到则进行刷新 )，点击此行对应的<strong>Name</strong>；</p><p><img alt="图2" data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/Dragonliu2018.github.io@latest/img/Green_Hand/vip_songs/2.png" class="lozad"></p></li><li><p>点击<strong>Headers</strong>，找到<strong>General</strong>下的<strong>Request URL</strong>，复制URL，在新的页面访问，<strong>下载</strong>即可。</p><p><img alt="图3" data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/Dragonliu2018.github.io@latest/img/Green_Hand/vip_songs/3.png" class="lozad"></p><p><img alt="图4" data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/Dragonliu2018.github.io@latest/img/Green_Hand/vip_songs/4.png" class="lozad"></p></li></ol><h3 id="0x02-在线网站"><a href="#0x02-在线网站" class="headerlink" title="0x02 在线网站"></a>0x02 在线网站</h3><p>　　0x01方法虽然是最安全的，但是有些歌曲仅可以试听,所以无法使用上述方法。但是可以通过一些网站下载，取长补短，一个翻车再换辆车。</p><ol><li><p><a href="http://music.zhuolin.wang/" target="_blank" rel="noopener">VIP付费音乐解析下载</a>：支持网易云、QQ、虾米、酷狗、百度</p><p><img alt="图5" data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/Dragonliu2018.github.io@latest/img/Green_Hand/vip_songs/5.png" class="lozad"></p></li><li><p><a href="http://www.gequdaquan.net/gqss/" target="_blank" rel="noopener">歌曲大全－音乐聚合搜索引擎</a>：支持网易云、虾米、酷狗、百度</p><p><img alt="图6" data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/Dragonliu2018.github.io@latest/img/Green_Hand/vip_songs/6.png" class="lozad"></p></li><li><p><a href="http://music.fooor.cn/" target="_blank" rel="noopener">悦听</a>：支持网易云、虾米、酷狗、百度</p><p><img alt="图7" data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/Dragonliu2018.github.io@latest/img/Green_Hand/vip_songs/7.png" class="lozad"></p></li><li><p><a href="[http://music.sonimei.cn/](http://link.zhihu.com/?target=http%3A//music.sonimei.cn/">全网音乐免费下载工具</a>)：支持平台贼多</p><p><img alt="图8" data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/Dragonliu2018.github.io@latest/img/Green_Hand/vip_songs/8.png" class="lozad"></p></li></ol>]]></content>
       
       
       <categories>
@@ -413,9 +413,9 @@
       
         <tags>
             
-            <tag> 计算机术语 </tag>
-            
             <tag> 《鸟哥的Linux私房菜》 </tag>
+            
+            <tag> 计算机术语 </tag>
             
         </tags>
       
@@ -446,9 +446,9 @@
       
         <tags>
             
-            <tag> 笔记 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 笔记 </tag>
             
         </tags>
       
@@ -479,9 +479,9 @@
       
         <tags>
             
-            <tag> C </tag>
-            
             <tag> 笔记 </tag>
+            
+            <tag> C </tag>
             
         </tags>
       
@@ -769,11 +769,11 @@
       
         <tags>
             
-            <tag> 树莓派 </tag>
-            
             <tag> 远程连接 </tag>
             
             <tag> SSH </tag>
+            
+            <tag> 树莓派 </tag>
             
         </tags>
       
@@ -791,11 +791,11 @@
       
       <categories>
           
-          <category> Reading Notes </category>
-          
           <category> OS </category>
           
           <category> Linux </category>
+          
+          <category> Reading Notes </category>
           
       </categories>
       
@@ -804,11 +804,11 @@
             
             <tag> 多系统 </tag>
             
-            <tag> 《鸟哥的Linux私房菜》 </tag>
-            
             <tag> 磁盘分区 </tag>
             
             <tag> Linux笔记 </tag>
+            
+            <tag> 《鸟哥的Linux私房菜》 </tag>
             
         </tags>
       
