@@ -498,9 +498,9 @@
       
         <tags>
             
-            <tag> 笔记 </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> 笔记 </tag>
             
         </tags>
       
@@ -531,9 +531,9 @@
       
         <tags>
             
-            <tag> C </tag>
-            
             <tag> 笔记 </tag>
+            
+            <tag> C </tag>
             
         </tags>
       
@@ -551,9 +551,9 @@
       
       <categories>
           
-          <category> OS </category>
-          
           <category> software </category>
+          
+          <category> OS </category>
           
           <category> Linux </category>
           
@@ -562,9 +562,9 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> TIM </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -701,11 +701,11 @@
       
         <tags>
             
+            <tag> Linux </tag>
+            
             <tag> 多系统 </tag>
             
             <tag> Manjaro </tag>
-            
-            <tag> Linux </tag>
             
         </tags>
       
@@ -821,11 +821,11 @@
       
         <tags>
             
+            <tag> 树莓派 </tag>
+            
             <tag> 远程连接 </tag>
             
             <tag> SSH </tag>
-            
-            <tag> 树莓派 </tag>
             
         </tags>
       
@@ -843,9 +843,9 @@
       
       <categories>
           
-          <category> OS </category>
-          
           <category> Reading Notes </category>
+          
+          <category> OS </category>
           
           <category> Linux </category>
           
