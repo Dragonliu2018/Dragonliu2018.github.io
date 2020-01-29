@@ -465,9 +465,9 @@
       
         <tags>
             
-            <tag> 《鸟哥的Linux私房菜》 </tag>
-            
             <tag> 计算机术语 </tag>
+            
+            <tag> 《鸟哥的Linux私房菜》 </tag>
             
         </tags>
       
@@ -520,9 +520,9 @@
           
           <category> Programming Language </category>
           
-          <category> C </category>
-          
           <category> course </category>
+          
+          <category> C </category>
           
           <category> C </category>
           
@@ -551,9 +551,9 @@
       
       <categories>
           
-          <category> software </category>
-          
           <category> OS </category>
+          
+          <category> software </category>
           
           <category> Linux </category>
           
@@ -821,11 +821,11 @@
       
         <tags>
             
-            <tag> 树莓派 </tag>
-            
             <tag> 远程连接 </tag>
             
             <tag> SSH </tag>
+            
+            <tag> 树莓派 </tag>
             
         </tags>
       
@@ -856,11 +856,11 @@
             
             <tag> 多系统 </tag>
             
+            <tag> 《鸟哥的Linux私房菜》 </tag>
+            
             <tag> 磁盘分区 </tag>
             
             <tag> Linux笔记 </tag>
-            
-            <tag> 《鸟哥的Linux私房菜》 </tag>
             
         </tags>
       
