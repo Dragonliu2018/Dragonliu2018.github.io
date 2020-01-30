@@ -658,6 +658,31 @@
     
     
     <entry>
+      <title>Markdown常用指令</title>
+      <link href="/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+      <url>/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#: 一个#号字号最大，#号越多字号越小，一共六级标题。</span><br></pre></td></tr></table></figure><h3 id="层次"><a href="#层次" class="headerlink" title="层次"></a>层次</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*(注意是星+空格)即可变为项目符号“·”; 而输入“1.”“2.”“3.”</span><br><span class="line">则会变为编号</span><br></pre></td></tr></table></figure><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[百度](url)</span><br></pre></td></tr></table></figure><h3 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**文字**，无空格</span><br></pre></td></tr></table></figure><h3 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*文字*</span><br></pre></td></tr></table></figure><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![图片1](url)</span><br><span class="line">设置属性：&lt;img src=&quot;http:...&quot; width = &quot;100&quot; height = &quot;100&quot; div align=right /&gt;</span><br></pre></td></tr></table></figure><h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;```bash/c/c++/python</span><br><span class="line">code</span><br><span class="line">```&quot;</span><br></pre></td></tr></table></figure><h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;***&quot;</span><br></pre></td></tr></table></figure><h3 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. &amp;nbsp;</span><br><span class="line">2. 全角空格(切换到全角模式下（一般的中文输入法都是按 shift + space，若无法切换，在输入法设置中添加即可）输入两个空格)</span><br></pre></td></tr></table></figure><h3 id="字体颜色"><a href="#字体颜色" class="headerlink" title="字体颜色"></a>字体颜色</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">浅红色文字：&lt;font color="#dd0000"&gt;浅红色文字：&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深红色文字：&lt;font color="#660000"&gt;深红色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅绿色文字：&lt;font color="#00dd00"&gt;浅绿色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深绿色文字：&lt;font color="#006600"&gt;深绿色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅蓝色文字：&lt;font color="#0000dd"&gt;浅蓝色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深蓝色文字：&lt;font color="#000066"&gt;深蓝色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅黄色文字：&lt;font color="#dddd00"&gt;浅黄色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深黄色文字：&lt;font color="#666600"&gt;深黄色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅青色文字：&lt;font color="#00dddd"&gt;浅青色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深青色文字：&lt;font color="#006666"&gt;深青色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅紫色文字：&lt;font color="#dd00dd"&gt;浅紫色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深紫色文字：&lt;font color="#660066"&gt;深紫色文字&lt;/font&gt;&lt;br /&gt;</span><br></pre></td></tr></table></figure><h3 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">上标：&lt;sup&gt;&lt;/sup&gt;</span><br><span class="line">下标：&lt;sub&gt;&lt;/sub&gt;</span><br></pre></td></tr></table></figure><h3 id="数学公式及符号"><a href="#数学公式及符号" class="headerlink" title="数学公式及符号"></a>数学公式及符号</h3><p><a href="https://www.zybuluo.com/codeep/note/163962" target="_blank" rel="noopener">手册</a><br><a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">手写识别</a></p><h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a><a href="https://blog.csdn.net/zhangyu4863/article/details/81702177" target="_blank" rel="noopener">表格</a></h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> software </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Markdown指令 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Manjaro Linux安装以及日常配置</title>
       <link href="/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/"/>
       <url>/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/</url>
@@ -681,31 +706,6 @@
             <tag> Manjaro </tag>
             
             <tag> Linux </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Markdown常用指令</title>
-      <link href="/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
-      <url>/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#: 一个#号字号最大，#号越多字号越小，一共六级标题。</span><br></pre></td></tr></table></figure><h3 id="层次"><a href="#层次" class="headerlink" title="层次"></a>层次</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*(注意是星+空格)即可变为项目符号“·”; 而输入“1.”“2.”“3.”</span><br><span class="line">则会变为编号</span><br></pre></td></tr></table></figure><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[百度](url)</span><br></pre></td></tr></table></figure><h3 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**文字**，无空格</span><br></pre></td></tr></table></figure><h3 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*文字*</span><br></pre></td></tr></table></figure><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![图片1](url)</span><br><span class="line">设置属性：&lt;img src=&quot;http:...&quot; width = &quot;100&quot; height = &quot;100&quot; div align=right /&gt;</span><br></pre></td></tr></table></figure><h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;```bash/c/c++/python</span><br><span class="line">code</span><br><span class="line">```&quot;</span><br></pre></td></tr></table></figure><h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;***&quot;</span><br></pre></td></tr></table></figure><h3 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. &amp;nbsp;</span><br><span class="line">2. 全角空格(切换到全角模式下（一般的中文输入法都是按 shift + space，若无法切换，在输入法设置中添加即可）输入两个空格)</span><br></pre></td></tr></table></figure><h3 id="字体颜色"><a href="#字体颜色" class="headerlink" title="字体颜色"></a>字体颜色</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">浅红色文字：&lt;font color="#dd0000"&gt;浅红色文字：&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深红色文字：&lt;font color="#660000"&gt;深红色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅绿色文字：&lt;font color="#00dd00"&gt;浅绿色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深绿色文字：&lt;font color="#006600"&gt;深绿色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅蓝色文字：&lt;font color="#0000dd"&gt;浅蓝色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深蓝色文字：&lt;font color="#000066"&gt;深蓝色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅黄色文字：&lt;font color="#dddd00"&gt;浅黄色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深黄色文字：&lt;font color="#666600"&gt;深黄色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅青色文字：&lt;font color="#00dddd"&gt;浅青色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深青色文字：&lt;font color="#006666"&gt;深青色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">浅紫色文字：&lt;font color="#dd00dd"&gt;浅紫色文字&lt;/font&gt;&lt;br /&gt; </span><br><span class="line">深紫色文字：&lt;font color="#660066"&gt;深紫色文字&lt;/font&gt;&lt;br /&gt;</span><br></pre></td></tr></table></figure><h3 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">上标：&lt;sup&gt;&lt;/sup&gt;</span><br><span class="line">下标：&lt;sub&gt;&lt;/sub&gt;</span><br></pre></td></tr></table></figure><h3 id="数学公式及符号"><a href="#数学公式及符号" class="headerlink" title="数学公式及符号"></a>数学公式及符号</h3><p><a href="https://www.zybuluo.com/codeep/note/163962" target="_blank" rel="noopener">手册</a><br><a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">手写识别</a></p><h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a><a href="https://blog.csdn.net/zhangyu4863/article/details/81702177" target="_blank" rel="noopener">表格</a></h3>]]></content>
-      
-      
-      <categories>
-          
-          <category> software </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Markdown指令 </tag>
             
         </tags>
       
@@ -821,11 +821,11 @@
       
         <tags>
             
+            <tag> 树莓派 </tag>
+            
             <tag> 远程连接 </tag>
             
             <tag> SSH </tag>
-            
-            <tag> 树莓派 </tag>
             
         </tags>
       
@@ -843,11 +843,11 @@
       
       <categories>
           
+          <category> Reading Notes </category>
+          
           <category> OS </category>
           
           <category> Linux </category>
-          
-          <category> Reading Notes </category>
           
       </categories>
       
@@ -898,7 +898,7 @@
       <link href="/2019/09/15/%E4%BD%A0%E6%98%AF%E4%BA%BA%E9%97%B4%E5%9B%9B%E6%9C%88%E5%A4%A9/"/>
       <url>/2019/09/15/%E4%BD%A0%E6%98%AF%E4%BA%BA%E9%97%B4%E5%9B%9B%E6%9C%88%E5%A4%A9/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script>        <div id="aplayer-KSKibBHc" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-KSKibBHc"),            narrow: false,            autoplay: false,            showlrc: 3,            music: {              title: "你是人间四月天",              author: "李宇春",              url: "http://lc-sxa9m4vi.cn-n1.lcfile.com/aacfe9d4470fd48eccdd/%E4%BD%A0%E6%98%AF%E4%BA%BA%E9%97%B4%E7%9A%84%E5%9B%9B%E6%9C%88%E5%A4%A9.mp3",              pic: "http://q4wib37p7.bkt.clouddn.com/Musiclychnsrjsyt.jpg",              lrc: "http://lc-sXa9M4Vi.cn-n1.lcfile.com/4c176bbd5b4cdcfa5418/Lychnsrjsyt.txt"            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script><h2 id="你是人间的四月天"><a href="#你是人间的四月天" class="headerlink" title="你是人间的四月天"></a>你是人间的四月天</h2><h3 id="林徽因"><a href="#林徽因" class="headerlink" title="林徽因"></a>林徽因</h3><p><strong>我说 你是人间的四月天；</strong></p><p><strong>笑响点亮了四面风；轻灵</strong><br><strong>在春的光艳中交舞着变。</strong></p><p><strong>你是四月早天里的云烟，</strong><br><strong>黄昏吹着风的软，星子在</strong><br><strong>无意中闪，细雨点洒在花前。</strong></p><p><strong>那轻，那娉婷，你是，鲜妍</strong><br><strong>百花的冠冕你戴着，你是</strong><br><strong>天真，庄严，你是夜夜的月圆。</strong></p><p><strong>雪化后那片鹅黄，你像；新鲜</strong><br><strong>初放芽的绿，你是；柔嫩喜悦，</strong><br><strong>水光浮动着你梦期待中白莲。</strong></p><p><strong>你是一树一树的花开，是燕</strong><br><strong>在梁间呢喃，——你是爱，是暖，</strong><br><strong>是希望，你是人间的四月天！</strong></p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script>        <div id="aplayer-bKmYsagM" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-bKmYsagM"),            narrow: false,            autoplay: false,            showlrc: 3,            music: {              title: "你是人间四月天",              author: "李宇春",              url: "http://lc-sxa9m4vi.cn-n1.lcfile.com/aacfe9d4470fd48eccdd/%E4%BD%A0%E6%98%AF%E4%BA%BA%E9%97%B4%E7%9A%84%E5%9B%9B%E6%9C%88%E5%A4%A9.mp3",              pic: "http://q4wib37p7.bkt.clouddn.com/Musiclychnsrjsyt.jpg",              lrc: "http://lc-sXa9M4Vi.cn-n1.lcfile.com/4c176bbd5b4cdcfa5418/Lychnsrjsyt.txt"            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script><h2 id="你是人间的四月天"><a href="#你是人间的四月天" class="headerlink" title="你是人间的四月天"></a>你是人间的四月天</h2><h3 id="林徽因"><a href="#林徽因" class="headerlink" title="林徽因"></a>林徽因</h3><p><strong>我说 你是人间的四月天；</strong></p><p><strong>笑响点亮了四面风；轻灵</strong><br><strong>在春的光艳中交舞着变。</strong></p><p><strong>你是四月早天里的云烟，</strong><br><strong>黄昏吹着风的软，星子在</strong><br><strong>无意中闪，细雨点洒在花前。</strong></p><p><strong>那轻，那娉婷，你是，鲜妍</strong><br><strong>百花的冠冕你戴着，你是</strong><br><strong>天真，庄严，你是夜夜的月圆。</strong></p><p><strong>雪化后那片鹅黄，你像；新鲜</strong><br><strong>初放芽的绿，你是；柔嫩喜悦，</strong><br><strong>水光浮动着你梦期待中白莲。</strong></p><p><strong>你是一树一树的花开，是燕</strong><br><strong>在梁间呢喃，——你是爱，是暖，</strong><br><strong>是希望，你是人间的四月天！</strong></p>]]></content>
       
       
       <categories>
