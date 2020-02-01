@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>爱奇艺超前点播</title>
+      <link href="/2020/02/01/%E7%88%B1%E5%A5%87%E8%89%BA%E8%B6%85%E5%89%8D%E7%82%B9%E6%92%AD/"/>
+      <url>/2020/02/01/%E7%88%B1%E5%A5%87%E8%89%BA%E8%B6%85%E5%89%8D%E7%82%B9%E6%92%AD/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>　　2020年2月1日，大年初八，晴。晚饭过后，闲来无事，dragon寻思和妹妹看看《爱情公寓5》。毕竟有嘉木师傅的爱奇艺VIP，能多看好几集。不料，更新的早已看完，谁耐他只是每周日至周二更新。同时发现新名词——会员点播直通结局，上网一搜，发现知乎上早已讨论得不亦乐乎。<a href="https://www.zhihu.com/question/361584626" target="_blank" rel="noopener"><strong>前往吃瓜</strong></a></p><p>　　但终究有“无私奉献者”，让菜鸟dragon享受“免费的午餐”。影视大全看爱5全集，白嫖一波~　</p><h3 id="0x01-影视大全"><a href="#0x01-影视大全" class="headerlink" title="0x01 影视大全"></a>0x01 影视大全</h3><p>　网址：<a href="https://www.yingshidaquan.info/" target="_blank" rel="noopener">https://www.yingshidaquan.info/</a></p><p>​    <a href="https://www.yingshidaquan.info/" target="_blank" rel="noopener">前往影视大全</a></p><p><img alt="图1" data-src="http://q4wib37p7.bkt.clouddn.com/TiIQIYI1.png" class="lozad"></p><p>　<strong>注</strong>：支持正版！！！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Tips </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Windows快捷键</title>
       <link href="/2020/01/29/Windows%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
       <url>/2020/01/29/Windows%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
@@ -504,9 +523,9 @@
       
         <tags>
             
-            <tag> TIM </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> TIM </tag>
             
         </tags>
       
@@ -590,6 +609,33 @@
     
     
     <entry>
+      <title>Manjaro Linux安装以及日常配置</title>
+      <link href="/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/"/>
+      <url>/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>不满足于当前windows,想要安装Linux</p><h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><ul><li><p>镜像下载</p><ol><li>官网下载<br> <em><a href="ubuntu.org">Ubuntu</a> </em><a href="kali.org">Kali</a></li><li>清华源下载(速度较快)<br><a href="https://mirrors.tuna.tsinghua.edu.cn" target="_blank" rel="noopener">清华源</a><blockquote><p><strong>补充-&gt;高速下载</strong>：FTP客户端下载,例如Filezilla。</p></blockquote></li><li>哈希值文件校验<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ certutil -hashfile yourfilename.ext SHA1</span><br></pre></td></tr></table></figure></li></ol></li><li><p>分盘</p></li><li>烧录<ol><li>软碟通工具(UltralSO)，但是要切记使用raw刻录方式。</li><li>Linux命令行：<br> 复制：    <em>dd if=/dev/target of=/tmp/source.img</em><br> 显示进度：<em>watch -n 5 killall -USR1 dd</em></li></ol></li><li><p>安装</p><ul><li>虚拟机安装<br>使用Vmware或VirtualBox</li><li>物理机安装</li></ul><ol><li>关闭掉Secure Boot</li><li>分区(重要)<br>(1) mbr启动模式<br>这里我们直接划分出来一块分区文件系统选择ext4，挂载点 /</li></ol><p>(2)uefi启动模式<br>这里需要一个esp分区<br>划出300MB分区，文件系统fat16，挂载点boot/efi，标记boot，esp<br>还需要一个根分区也就是系统分区<br>划出分区，文件系统ext4，挂载点 / ，无需标记</p></li><li><p>进行软件源设置以及系统更新</p><ol><li><p>换源</p><ul><li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  sudo pacman-mirrors -i -c China -m rank</span><br></pre></td></tr></table></figure></li><li><p>弹出窗口选择中科大</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://mirrors.ustc.edu.cn/manjaro/</span><br></pre></td></tr></table></figure></li><li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  sudo nano /etc/pacman.conf</span><br></pre></td></tr></table></figure><p> 粘贴以下内容</p> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">SigLevel = Optional TrustedOnly</span><br><span class="line">Server=https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch</span><br></pre></td></tr></table></figure><p>sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring</p></li></ul></li></ol><ul><li>系统更新（出现替换提示选择Y）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp; sudo pacman -Syyu</span><br></pre></td></tr></table></figure></li></ul></li><li><p>中文输入法</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Manjaro </tag>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Markdown常用指令</title>
       <link href="/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
       <url>/2019/10/09/Markdown%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
@@ -607,33 +653,6 @@
         <tags>
             
             <tag> Markdown </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Manjaro Linux安装以及日常配置</title>
-      <link href="/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/"/>
-      <url>/2019/10/09/Manjaro-Linux%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>不满足于当前windows,想要安装Linux</p><h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><ul><li><p>镜像下载</p><ol><li>官网下载<br> <em><a href="ubuntu.org">Ubuntu</a> </em><a href="kali.org">Kali</a></li><li>清华源下载(速度较快)<br><a href="https://mirrors.tuna.tsinghua.edu.cn" target="_blank" rel="noopener">清华源</a><blockquote><p><strong>补充-&gt;高速下载</strong>：FTP客户端下载,例如Filezilla。</p></blockquote></li><li>哈希值文件校验<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ certutil -hashfile yourfilename.ext SHA1</span><br></pre></td></tr></table></figure></li></ol></li><li><p>分盘</p></li><li>烧录<ol><li>软碟通工具(UltralSO)，但是要切记使用raw刻录方式。</li><li>Linux命令行：<br> 复制：    <em>dd if=/dev/target of=/tmp/source.img</em><br> 显示进度：<em>watch -n 5 killall -USR1 dd</em></li></ol></li><li><p>安装</p><ul><li>虚拟机安装<br>使用Vmware或VirtualBox</li><li>物理机安装</li></ul><ol><li>关闭掉Secure Boot</li><li>分区(重要)<br>(1) mbr启动模式<br>这里我们直接划分出来一块分区文件系统选择ext4，挂载点 /</li></ol><p>(2)uefi启动模式<br>这里需要一个esp分区<br>划出300MB分区，文件系统fat16，挂载点boot/efi，标记boot，esp<br>还需要一个根分区也就是系统分区<br>划出分区，文件系统ext4，挂载点 / ，无需标记</p></li><li><p>进行软件源设置以及系统更新</p><ol><li><p>换源</p><ul><li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  sudo pacman-mirrors -i -c China -m rank</span><br></pre></td></tr></table></figure></li><li><p>弹出窗口选择中科大</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://mirrors.ustc.edu.cn/manjaro/</span><br></pre></td></tr></table></figure></li><li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  sudo nano /etc/pacman.conf</span><br></pre></td></tr></table></figure><p> 粘贴以下内容</p> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">SigLevel = Optional TrustedOnly</span><br><span class="line">Server=https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch</span><br></pre></td></tr></table></figure><p>sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring</p></li></ul></li></ol><ul><li>系统更新（出现替换提示选择Y）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp; sudo pacman -Syyu</span><br></pre></td></tr></table></figure></li></ul></li><li><p>中文输入法</p></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Linux </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Linux </tag>
-            
-            <tag> Manjaro </tag>
             
         </tags>
       
@@ -814,7 +833,7 @@
       <link href="/2019/09/15/%E4%BD%A0%E6%98%AF%E4%BA%BA%E9%97%B4%E5%9B%9B%E6%9C%88%E5%A4%A9/"/>
       <url>/2019/09/15/%E4%BD%A0%E6%98%AF%E4%BA%BA%E9%97%B4%E5%9B%9B%E6%9C%88%E5%A4%A9/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script>        <div id="aplayer-JtUCmuqS" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-JtUCmuqS"),            narrow: false,            autoplay: false,            showlrc: 3,            music: {              title: "你是人间的四月天",              author: "李宇春",              url: "http://lc-sxa9m4vi.cn-n1.lcfile.com/aacfe9d4470fd48eccdd/%E4%BD%A0%E6%98%AF%E4%BA%BA%E9%97%B4%E7%9A%84%E5%9B%9B%E6%9C%88%E5%A4%A9.mp3",              pic: "http://q4wib37p7.bkt.clouddn.com/Musiclychnsrjsyt.jpg",              lrc: "http://lc-sXa9M4Vi.cn-n1.lcfile.com/4c176bbd5b4cdcfa5418/Lychnsrjsyt.txt"            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script><h2 id="你是人间的四月天"><a href="#你是人间的四月天" class="headerlink" title="你是人间的四月天"></a>你是人间的四月天</h2><h3 id="林徽因"><a href="#林徽因" class="headerlink" title="林徽因"></a>林徽因</h3><p><strong>我说 你是人间的四月天；</strong></p><p><strong>笑响点亮了四面风；轻灵</strong><br><strong>在春的光艳中交舞着变。</strong></p><p><strong>你是四月早天里的云烟，</strong><br><strong>黄昏吹着风的软，星子在</strong><br><strong>无意中闪，细雨点洒在花前。</strong></p><p><strong>那轻，那娉婷，你是，鲜妍</strong><br><strong>百花的冠冕你戴着，你是</strong><br><strong>天真，庄严，你是夜夜的月圆。</strong></p><p><strong>雪化后那片鹅黄，你像；新鲜</strong><br><strong>初放芽的绿，你是；柔嫩喜悦，</strong><br><strong>水光浮动着你梦期待中白莲。</strong></p><p><strong>你是一树一树的花开，是燕</strong><br><strong>在梁间呢喃，——你是爱，是暖，</strong><br><strong>是希望，你是人间的四月天！</strong></p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script>        <div id="aplayer-CkrnwfpA" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-CkrnwfpA"),            narrow: false,            autoplay: false,            showlrc: 3,            music: {              title: "你是人间的四月天",              author: "李宇春",              url: "http://lc-sxa9m4vi.cn-n1.lcfile.com/aacfe9d4470fd48eccdd/%E4%BD%A0%E6%98%AF%E4%BA%BA%E9%97%B4%E7%9A%84%E5%9B%9B%E6%9C%88%E5%A4%A9.mp3",              pic: "http://q4wib37p7.bkt.clouddn.com/Musiclychnsrjsyt.jpg",              lrc: "http://lc-sXa9M4Vi.cn-n1.lcfile.com/4c176bbd5b4cdcfa5418/Lychnsrjsyt.txt"            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script><h2 id="你是人间的四月天"><a href="#你是人间的四月天" class="headerlink" title="你是人间的四月天"></a>你是人间的四月天</h2><h3 id="林徽因"><a href="#林徽因" class="headerlink" title="林徽因"></a>林徽因</h3><p><strong>我说 你是人间的四月天；</strong></p><p><strong>笑响点亮了四面风；轻灵</strong><br><strong>在春的光艳中交舞着变。</strong></p><p><strong>你是四月早天里的云烟，</strong><br><strong>黄昏吹着风的软，星子在</strong><br><strong>无意中闪，细雨点洒在花前。</strong></p><p><strong>那轻，那娉婷，你是，鲜妍</strong><br><strong>百花的冠冕你戴着，你是</strong><br><strong>天真，庄严，你是夜夜的月圆。</strong></p><p><strong>雪化后那片鹅黄，你像；新鲜</strong><br><strong>初放芽的绿，你是；柔嫩喜悦，</strong><br><strong>水光浮动着你梦期待中白莲。</strong></p><p><strong>你是一树一树的花开，是燕</strong><br><strong>在梁间呢喃，——你是爱，是暖，</strong><br><strong>是希望，你是人间的四月天！</strong></p>]]></content>
       
       
       <categories>
