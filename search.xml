@@ -83,7 +83,7 @@
       
       <categories>
           
-          <category> Course </category>
+          <category> others </category>
           
       </categories>
       
@@ -684,7 +684,7 @@
       
       <categories>
           
-          <category> Course </category>
+          <category> others </category>
           
       </categories>
       
@@ -709,9 +709,7 @@
       
       <categories>
           
-          <category> Develop </category>
-          
-          <category> Hexo </category>
+          <category> others </category>
           
       </categories>
       
@@ -761,7 +759,7 @@
       
       <categories>
           
-          <category> others </category>
+          <category> Culture </category>
           
       </categories>
       
@@ -805,7 +803,7 @@
       
       <categories>
           
-          <category> others </category>
+          <category> Culture </category>
           
       </categories>
       
@@ -832,7 +830,7 @@
           
           <category> CTF </category>
           
-          <category> Web </category>
+          <category> Misc </category>
           
       </categories>
       
@@ -857,7 +855,7 @@
       
       <categories>
           
-          <category> Course </category>
+          <category> others </category>
           
       </categories>
       
@@ -907,7 +905,7 @@
       
       <categories>
           
-          <category> Course </category>
+          <category> others </category>
           
       </categories>
       
@@ -934,7 +932,7 @@
           
           <category> CTF </category>
           
-          <category> Pwn </category>
+          <category> Misc </category>
           
       </categories>
       
@@ -978,7 +976,7 @@
       
       <categories>
           
-          <category> Course </category>
+          <category> others </category>
           
       </categories>
       
@@ -1003,7 +1001,7 @@
       
       <categories>
           
-          <category> Course </category>
+          <category> others </category>
           
       </categories>
       
@@ -1209,9 +1207,7 @@
       
       <categories>
           
-          <category> Develop </category>
-          
-          <category> RaspberryPi </category>
+          <category> others </category>
           
       </categories>
       
@@ -1265,9 +1261,7 @@
       
       <categories>
           
-          <category> Develop </category>
-          
-          <category> RaspberryPi </category>
+          <category> others </category>
           
       </categories>
       
@@ -1323,9 +1317,7 @@
       
       <categories>
           
-          <category> Develop </category>
-          
-          <category> Hexo </category>
+          <category> others </category>
           
       </categories>
       
@@ -1345,12 +1337,12 @@
       <link href="/2019/09/15/%E4%BD%A0%E6%98%AF%E4%BA%BA%E9%97%B4%E5%9B%9B%E6%9C%88%E5%A4%A9/"/>
       <url>/2019/09/15/%E4%BD%A0%E6%98%AF%E4%BA%BA%E9%97%B4%E5%9B%9B%E6%9C%88%E5%A4%A9/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script>        <div id="aplayer-wiyEgZqx" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-wiyEgZqx"),            narrow: false,            autoplay: false,            showlrc: 3,            music: {              title: "你是人间的四月天",              author: "李宇春",              url: "http://lc-sxa9m4vi.cn-n1.lcfile.com/aacfe9d4470fd48eccdd/%E4%BD%A0%E6%98%AF%E4%BA%BA%E9%97%B4%E7%9A%84%E5%9B%9B%E6%9C%88%E5%A4%A9.mp3",              pic: "http://q4wib37p7.bkt.clouddn.com/Musiclychnsrjsyt.jpg",              lrc: "http://lc-sXa9M4Vi.cn-n1.lcfile.com/4c176bbd5b4cdcfa5418/Lychnsrjsyt.txt"            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script><h2 id="你是人间的四月天"><a href="#你是人间的四月天" class="headerlink" title="你是人间的四月天"></a>你是人间的四月天</h2><h3 id="林徽因"><a href="#林徽因" class="headerlink" title="林徽因"></a>林徽因</h3><p><strong>我说 你是人间的四月天；</strong></p><p><strong>笑响点亮了四面风；轻灵</strong><br><strong>在春的光艳中交舞着变。</strong></p><p><strong>你是四月早天里的云烟，</strong><br><strong>黄昏吹着风的软，星子在</strong><br><strong>无意中闪，细雨点洒在花前。</strong></p><p><strong>那轻，那娉婷，你是，鲜妍</strong><br><strong>百花的冠冕你戴着，你是</strong><br><strong>天真，庄严，你是夜夜的月圆。</strong></p><p><strong>雪化后那片鹅黄，你像；新鲜</strong><br><strong>初放芽的绿，你是；柔嫩喜悦，</strong><br><strong>水光浮动着你梦期待中白莲。</strong></p><p><strong>你是一树一树的花开，是燕</strong><br><strong>在梁间呢喃，——你是爱，是暖，</strong><br><strong>是希望，你是人间的四月天！</strong></p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script>        <div id="aplayer-xWhlUGPf" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-xWhlUGPf"),            narrow: false,            autoplay: false,            showlrc: 3,            music: {              title: "你是人间的四月天",              author: "李宇春",              url: "http://lc-sxa9m4vi.cn-n1.lcfile.com/aacfe9d4470fd48eccdd/%E4%BD%A0%E6%98%AF%E4%BA%BA%E9%97%B4%E7%9A%84%E5%9B%9B%E6%9C%88%E5%A4%A9.mp3",              pic: "http://q4wib37p7.bkt.clouddn.com/Musiclychnsrjsyt.jpg",              lrc: "http://lc-sXa9M4Vi.cn-n1.lcfile.com/4c176bbd5b4cdcfa5418/Lychnsrjsyt.txt"            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script><h2 id="你是人间的四月天"><a href="#你是人间的四月天" class="headerlink" title="你是人间的四月天"></a>你是人间的四月天</h2><h3 id="林徽因"><a href="#林徽因" class="headerlink" title="林徽因"></a>林徽因</h3><p><strong>我说 你是人间的四月天；</strong></p><p><strong>笑响点亮了四面风；轻灵</strong><br><strong>在春的光艳中交舞着变。</strong></p><p><strong>你是四月早天里的云烟，</strong><br><strong>黄昏吹着风的软，星子在</strong><br><strong>无意中闪，细雨点洒在花前。</strong></p><p><strong>那轻，那娉婷，你是，鲜妍</strong><br><strong>百花的冠冕你戴着，你是</strong><br><strong>天真，庄严，你是夜夜的月圆。</strong></p><p><strong>雪化后那片鹅黄，你像；新鲜</strong><br><strong>初放芽的绿，你是；柔嫩喜悦，</strong><br><strong>水光浮动着你梦期待中白莲。</strong></p><p><strong>你是一树一树的花开，是燕</strong><br><strong>在梁间呢喃，——你是爱，是暖，</strong><br><strong>是希望，你是人间的四月天！</strong></p>]]></content>
       
       
       <categories>
           
-          <category> others </category>
+          <category> Culture </category>
           
       </categories>
       
@@ -1421,9 +1413,7 @@
       
       <categories>
           
-          <category> Develop </category>
-          
-          <category> Hexo </category>
+          <category> others </category>
           
       </categories>
       
