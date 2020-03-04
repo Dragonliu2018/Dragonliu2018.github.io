@@ -83,7 +83,7 @@
       
       <categories>
           
-          <category> others </category>
+          <category> Course </category>
           
       </categories>
       
@@ -684,7 +684,7 @@
       
       <categories>
           
-          <category> others </category>
+          <category> Course </category>
           
       </categories>
       
@@ -709,7 +709,9 @@
       
       <categories>
           
-          <category> others </category>
+          <category> Develop </category>
+          
+          <category> Hexo </category>
           
       </categories>
       
@@ -830,7 +832,7 @@
           
           <category> CTF </category>
           
-          <category> Misc </category>
+          <category> Web </category>
           
       </categories>
       
@@ -855,7 +857,7 @@
       
       <categories>
           
-          <category> others </category>
+          <category> Course </category>
           
       </categories>
       
@@ -905,7 +907,7 @@
       
       <categories>
           
-          <category> others </category>
+          <category> Course </category>
           
       </categories>
       
@@ -932,7 +934,7 @@
           
           <category> CTF </category>
           
-          <category> Misc </category>
+          <category> Pwn </category>
           
       </categories>
       
@@ -976,7 +978,7 @@
       
       <categories>
           
-          <category> others </category>
+          <category> Course </category>
           
       </categories>
       
@@ -1001,7 +1003,7 @@
       
       <categories>
           
-          <category> others </category>
+          <category> Course </category>
           
       </categories>
       
@@ -1207,7 +1209,9 @@
       
       <categories>
           
-          <category> others </category>
+          <category> Develop </category>
+          
+          <category> RaspberryPi </category>
           
       </categories>
       
@@ -1261,7 +1265,9 @@
       
       <categories>
           
-          <category> others </category>
+          <category> Develop </category>
+          
+          <category> RaspberryPi </category>
           
       </categories>
       
@@ -1317,7 +1323,9 @@
       
       <categories>
           
-          <category> others </category>
+          <category> Develop </category>
+          
+          <category> Hexo </category>
           
       </categories>
       
@@ -1413,7 +1421,9 @@
       
       <categories>
           
-          <category> others </category>
+          <category> Develop </category>
+          
+          <category> Hexo </category>
           
       </categories>
       
