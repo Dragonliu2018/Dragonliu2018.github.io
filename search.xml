@@ -4,6 +4,82 @@
   
     
     <entry>
+      <title>二分搜索</title>
+      <link href="/2020/03/09/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2/"/>
+      <url>/2020/03/09/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Algorithm </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>程序技巧</title>
+      <link href="/2020/03/07/%E7%A8%8B%E5%BA%8F%E6%8A%80%E5%B7%A7/"/>
+      <url>/2020/03/07/%E7%A8%8B%E5%BA%8F%E6%8A%80%E5%B7%A7/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2 id="0x01-位运算快读"><a href="#0x01-位运算快读" class="headerlink" title="0x01 位运算快读"></a>0x01 位运算快读</h2><p>　　平常的快读用的都是*10，而位运算要比乘快，所以我们可以左移三位（乘2^3=8）再左移一位（乘2）,然后再加上读入的字符（由大佬lcx提供思路）。引自：<a href="https://blog.csdn.net/qq_44343213/article/details/102646937" target="_blank" rel="noopener">https://blog.csdn.net/qq_44343213/article/details/102646937</a></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">char</span> ch=getchar();</span><br><span class="line"><span class="keyword">int</span> x=<span class="number">0</span>,cf=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;</span><br><span class="line"><span class="keyword">if</span>(ch==<span class="string">'-'</span>) cf=<span class="number">-1</span>;</span><br><span class="line">ch=getchar();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) &#123;</span><br><span class="line">x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+(ch^<span class="number">48</span>);</span><br><span class="line">ch=getchar();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> x*cf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Algorithm </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>篮球技巧</title>
+      <link href="/2020/03/07/%E7%AF%AE%E7%90%83%E6%8A%80%E5%B7%A7/"/>
+      <url>/2020/03/07/%E7%AF%AE%E7%90%83%E6%8A%80%E5%B7%A7/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Culture </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>使用虚拟机踩到的坑</title>
+      <link href="/2020/03/07/%E4%BD%BF%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B8%A9%E5%88%B0%E7%9A%84%E5%9D%91/"/>
+      <url>/2020/03/07/%E4%BD%BF%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B8%A9%E5%88%B0%E7%9A%84%E5%9D%91/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><ol><li><strong>调整VMware中Ubuntu系统显示尺寸大小，适应窗口无效时</strong><ol><li>使用CTRL+alt+t打开终端</li><li>使用命令xrandr 查看相应的屏幕分辨率的相关参数</li><li>使用命令 xrandr -s 相应分辨率（如1280x800）即可改为相应的显示尺寸</li></ol></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>github项目</title>
       <link href="/2020/03/05/github%E9%A1%B9%E7%9B%AE/"/>
       <url>/2020/03/05/github%E9%A1%B9%E7%9B%AE/</url>
@@ -65,7 +141,7 @@
       <link href="/2020/03/04/%E4%BC%98%E7%A7%80%E5%8D%9A%E6%96%87/"/>
       <url>/2020/03/04/%E4%BC%98%E7%A7%80%E5%8D%9A%E6%96%87/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2 id="技术专栏"><a href="#技术专栏" class="headerlink" title="技术专栏"></a>技术专栏</h2><ol><li><strong>网站整理</strong>：<a href="https://blog.csdn.net/qq_43901693/article/details/100606828" target="_blank" rel="noopener">https://blog.csdn.net/qq_43901693/article/details/100606828</a></li><li><strong>视频下载</strong>：<a href="https://www.v1tx.com/post/bilibili-video-download/" target="_blank" rel="noopener">https://www.v1tx.com/post/bilibili-video-download/</a></li><li><strong>微软商店应用推荐</strong>：<a href="https://post.m.smzdm.com/p/472098/" target="_blank" rel="noopener">https://post.m.smzdm.com/p/472098/</a></li><li><strong>使用Typora添加数学公式</strong>：<a href="https://blog.csdn.net/mingzhuo_126/article/details/82722455" target="_blank" rel="noopener">https://blog.csdn.net/mingzhuo_126/article/details/82722455</a></li><li><strong>数学公式对齐</strong>：<a href="https://blog.csdn.net/bendanban/article/details/77336206" target="_blank" rel="noopener">https://blog.csdn.net/bendanban/article/details/77336206</a></li><li><a href="https://blog.csdn.net/m0_37907797/article/details/102781027" target="_blank" rel="noopener">学习网站</a></li><li><a href="https://www.zhihu.com/question/21454056" target="_blank" rel="noopener">免费云计算服务</a></li><li><a href="https://www.jianshu.com/p/60dd8e9cd12f" target="_blank" rel="noopener"><strong>提问的智慧</strong></a></li></ol><hr><h2 id="算法专栏"><a href="#算法专栏" class="headerlink" title="算法专栏"></a>算法专栏</h2><ol><li><a href="https://www.kancloud.cn/kancloud/pack/70124" target="_blank" rel="noopener">背包问题九讲</a></li></ol><hr><h2 id="数学专栏"><a href="#数学专栏" class="headerlink" title="数学专栏"></a>数学专栏</h2><ol><li><strong>概率论笔记</strong>：<a href="https://zhuanlan.zhihu.com/p/42859784" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/42859784</a></li><li><strong>多维随机游走及应用</strong>：<a href="https://wenku.baidu.com/view/ced4b505bed5b9f3f90f1cd6.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/ced4b505bed5b9f3f90f1cd6.html</a></li><li></li></ol><hr><h2 id="开发专栏"><a href="#开发专栏" class="headerlink" title="开发专栏"></a>开发专栏</h2><ol><li><strong>GitHub+Hexo 搭建个人网站详细教程</strong>：<a href="https://zhuanlan.zhihu.com/p/26625249" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26625249</a></li><li><strong>hexo-theme-butterfly安裝文檔</strong>：<a href="https://jerryc.me/posts/21cfbf15/#%E5%AE%89%E8%A3%9D" target="_blank" rel="noopener">https://jerryc.me/posts/21cfbf15/#%E5%AE%89%E8%A3%9D</a></li><li><a href="https://blog.iljw.me/2019/05/jsdelivr-cdn-github.html" target="_blank" rel="noopener">使用 jsDelivr CDN 加速 Github 仓库的图片，以作为博客的图床</a></li><li><a href="zhihu.com/question/36514327?rf=37353035">CDN是什么？</a></li></ol><hr><h2 id="CTF专栏"><a href="#CTF专栏" class="headerlink" title="CTF专栏"></a>CTF专栏</h2><hr><h2 id="时评专栏"><a href="#时评专栏" class="headerlink" title="时评专栏"></a>时评专栏</h2><hr>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2 id="技术专栏"><a href="#技术专栏" class="headerlink" title="技术专栏"></a>技术专栏</h2><ol><li><strong>网站整理</strong>：<a href="https://blog.csdn.net/qq_43901693/article/details/100606828" target="_blank" rel="noopener">https://blog.csdn.net/qq_43901693/article/details/100606828</a></li><li><strong>视频下载</strong>：<a href="https://www.v1tx.com/post/bilibili-video-download/" target="_blank" rel="noopener">https://www.v1tx.com/post/bilibili-video-download/</a></li><li><strong>微软商店应用推荐</strong>：<a href="https://post.m.smzdm.com/p/472098/" target="_blank" rel="noopener">https://post.m.smzdm.com/p/472098/</a></li><li><strong>使用Typora添加数学公式</strong>：<a href="https://blog.csdn.net/mingzhuo_126/article/details/82722455" target="_blank" rel="noopener">https://blog.csdn.net/mingzhuo_126/article/details/82722455</a></li><li><strong>数学公式对齐</strong>：<a href="https://blog.csdn.net/bendanban/article/details/77336206" target="_blank" rel="noopener">https://blog.csdn.net/bendanban/article/details/77336206</a></li><li><a href="https://blog.csdn.net/m0_37907797/article/details/102781027" target="_blank" rel="noopener">学习网站</a></li><li><a href="https://www.zhihu.com/question/21454056" target="_blank" rel="noopener">免费云计算服务</a></li><li><a href="https://www.jianshu.com/p/60dd8e9cd12f" target="_blank" rel="noopener"><strong>提问的智慧</strong></a></li><li><a href="https://blog.csdn.net/LucienDuan/article/details/38233147" target="_blank" rel="noopener">VMware虚拟机三种联网方式</a></li><li></li></ol><hr><h2 id="算法专栏"><a href="#算法专栏" class="headerlink" title="算法专栏"></a>算法专栏</h2><ol><li><a href="https://www.kancloud.cn/kancloud/pack/70124" target="_blank" rel="noopener">背包问题九讲</a></li></ol><hr><h2 id="数学专栏"><a href="#数学专栏" class="headerlink" title="数学专栏"></a>数学专栏</h2><ol><li><strong>概率论笔记</strong>：<a href="https://zhuanlan.zhihu.com/p/42859784" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/42859784</a></li><li><strong>多维随机游走及应用</strong>：<a href="https://wenku.baidu.com/view/ced4b505bed5b9f3f90f1cd6.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/ced4b505bed5b9f3f90f1cd6.html</a></li><li></li></ol><hr><h2 id="开发专栏"><a href="#开发专栏" class="headerlink" title="开发专栏"></a>开发专栏</h2><ol><li><strong>GitHub+Hexo 搭建个人网站详细教程</strong>：<a href="https://zhuanlan.zhihu.com/p/26625249" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26625249</a></li><li><strong>hexo-theme-butterfly安裝文檔</strong>：<a href="https://jerryc.me/posts/21cfbf15/#%E5%AE%89%E8%A3%9D" target="_blank" rel="noopener">https://jerryc.me/posts/21cfbf15/#%E5%AE%89%E8%A3%9D</a></li><li><a href="https://blog.iljw.me/2019/05/jsdelivr-cdn-github.html" target="_blank" rel="noopener">使用 jsDelivr CDN 加速 Github 仓库的图片，以作为博客的图床</a></li><li><a href="zhihu.com/question/36514327?rf=37353035">CDN是什么？</a></li></ol><hr><h2 id="CTF专栏"><a href="#CTF专栏" class="headerlink" title="CTF专栏"></a>CTF专栏</h2><ol><li><a href="https://blog.csdn.net/tiaotiaolong99234/article/details/46243451" target="_blank" rel="noopener">Kali实现局域网ARP欺骗和ARP攻击</a></li></ol><hr><h2 id="时评专栏"><a href="#时评专栏" class="headerlink" title="时评专栏"></a>时评专栏</h2><hr>]]></content>
       
       
       <categories>
@@ -1408,7 +1484,7 @@
       <link href="/2019/09/15/%E4%BD%A0%E6%98%AF%E4%BA%BA%E9%97%B4%E5%9B%9B%E6%9C%88%E5%A4%A9/"/>
       <url>/2019/09/15/%E4%BD%A0%E6%98%AF%E4%BA%BA%E9%97%B4%E5%9B%9B%E6%9C%88%E5%A4%A9/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script>        <div id="aplayer-qmvgESWB" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-qmvgESWB"),            narrow: false,            autoplay: false,            showlrc: 3,            music: {              title: "你是人间的四月天",              author: "李宇春",              url: "http://lc-sxa9m4vi.cn-n1.lcfile.com/aacfe9d4470fd48eccdd/%E4%BD%A0%E6%98%AF%E4%BA%BA%E9%97%B4%E7%9A%84%E5%9B%9B%E6%9C%88%E5%A4%A9.mp3",              pic: "http://q4wib37p7.bkt.clouddn.com/Musiclychnsrjsyt.jpg",              lrc: "http://lc-sXa9M4Vi.cn-n1.lcfile.com/4c176bbd5b4cdcfa5418/Lychnsrjsyt.txt"            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script><h2 id="你是人间的四月天"><a href="#你是人间的四月天" class="headerlink" title="你是人间的四月天"></a>你是人间的四月天</h2><h3 id="林徽因"><a href="#林徽因" class="headerlink" title="林徽因"></a>林徽因</h3><p><strong>我说 你是人间的四月天；</strong></p><p><strong>笑响点亮了四面风；轻灵</strong><br><strong>在春的光艳中交舞着变。</strong></p><p><strong>你是四月早天里的云烟，</strong><br><strong>黄昏吹着风的软，星子在</strong><br><strong>无意中闪，细雨点洒在花前。</strong></p><p><strong>那轻，那娉婷，你是，鲜妍</strong><br><strong>百花的冠冕你戴着，你是</strong><br><strong>天真，庄严，你是夜夜的月圆。</strong></p><p><strong>雪化后那片鹅黄，你像；新鲜</strong><br><strong>初放芽的绿，你是；柔嫩喜悦，</strong><br><strong>水光浮动着你梦期待中白莲。</strong></p><p><strong>你是一树一树的花开，是燕</strong><br><strong>在梁间呢喃，——你是爱，是暖，</strong><br><strong>是希望，你是人间的四月天！</strong></p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script>        <div id="aplayer-gUdOloWF" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-gUdOloWF"),            narrow: false,            autoplay: false,            showlrc: 3,            music: {              title: "你是人间的四月天",              author: "李宇春",              url: "http://lc-sxa9m4vi.cn-n1.lcfile.com/aacfe9d4470fd48eccdd/%E4%BD%A0%E6%98%AF%E4%BA%BA%E9%97%B4%E7%9A%84%E5%9B%9B%E6%9C%88%E5%A4%A9.mp3",              pic: "http://q4wib37p7.bkt.clouddn.com/Musiclychnsrjsyt.jpg",              lrc: "http://lc-sXa9M4Vi.cn-n1.lcfile.com/4c176bbd5b4cdcfa5418/Lychnsrjsyt.txt"            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script><h2 id="你是人间的四月天"><a href="#你是人间的四月天" class="headerlink" title="你是人间的四月天"></a>你是人间的四月天</h2><h3 id="林徽因"><a href="#林徽因" class="headerlink" title="林徽因"></a>林徽因</h3><p><strong>我说 你是人间的四月天；</strong></p><p><strong>笑响点亮了四面风；轻灵</strong><br><strong>在春的光艳中交舞着变。</strong></p><p><strong>你是四月早天里的云烟，</strong><br><strong>黄昏吹着风的软，星子在</strong><br><strong>无意中闪，细雨点洒在花前。</strong></p><p><strong>那轻，那娉婷，你是，鲜妍</strong><br><strong>百花的冠冕你戴着，你是</strong><br><strong>天真，庄严，你是夜夜的月圆。</strong></p><p><strong>雪化后那片鹅黄，你像；新鲜</strong><br><strong>初放芽的绿，你是；柔嫩喜悦，</strong><br><strong>水光浮动着你梦期待中白莲。</strong></p><p><strong>你是一树一树的花开，是燕</strong><br><strong>在梁间呢喃，——你是爱，是暖，</strong><br><strong>是希望，你是人间的四月天！</strong></p>]]></content>
       
       
       <categories>
