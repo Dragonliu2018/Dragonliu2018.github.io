@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>金数据刷票</title>
+      <link href="/2021/01/24/%E9%87%91%E6%95%B0%E6%8D%AE%E5%88%B7%E7%A5%A8/"/>
+      <url>/2021/01/24/%E9%87%91%E6%95%B0%E6%8D%AE%E5%88%B7%E7%A5%A8/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h1 id="金数据刷票脚本"><a href="#金数据刷票脚本" class="headerlink" title="金数据刷票脚本"></a>金数据刷票脚本</h1><h2 id="01-前言"><a href="#01-前言" class="headerlink" title="01 前言"></a>01 前言</h2><p>　　好久没有写博客了，原因有二：一是整个人有向二师兄发展的趋势；二是略显迷茫，没有进入一个好的状态。最近平安**进行标语竞赛投票，在提交的时候我突然想到能否利用脚本重复投票？(这种想法是错误的) 于是上午看完球赛，下午就着手做这件事。</p><p><strong>声明：</strong></p><ul><li>本人不支持刷票，也没义务帮人刷票！</li><li>刷票后果由刷票人承担，本人只负责提供技术，用途如何与作者本人一点关系都没有！！</li><li>请根据实际进行投票，刷票可耻！</li><li>本文只对金数据做教程，对试验单位表示歉意</li><li>该漏洞已通过email发送给金数据</li></ul><p><img data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/Snipaste_2021-01-25_00-09-49.jpg" class="lozad"></p><h2 id="02-原理"><a href="#02-原理" class="headerlink" title="02 原理"></a>02 原理</h2><p>　　金数据<strong>表单-投票</strong>模块通过cookie判断是否重复投票，浏览器清除cookie或微信等账号退出再登陆仍能继续投票。利用网络爬虫(selenium)实现勾选目标选项、点击提交按钮，然后人工进行验证，依次循环投票。</p><h2 id="03-步骤"><a href="#03-步骤" class="headerlink" title="03 步骤"></a>03 步骤</h2><ol><li>配置python环境，注意<code>chromedriver.exe</code>要放到python环境下的<code>Scripts</code>文件夹</li><li>运行下面的脚本</li><li>每投一次票手动进行智能验证</li><li>经实验，一次运行两个程序，两个投票界面左右分屏，效率较高(200票/小时)</li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="comment">#全局变量</span></span><br><span class="line">flag = <span class="number">1</span><span class="comment">#标记是否是第一次打开浏览器</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 前台开启浏览器模式</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">openChrome</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 加启动配置</span></span><br><span class="line">    option = webdriver.ChromeOptions()</span><br><span class="line">    option.add_argument(<span class="string">'disable-infobars'</span>)</span><br><span class="line">    <span class="comment"># 打开chrome浏览器</span></span><br><span class="line">    driver = webdriver.Chrome(chrome_options=option)</span><br><span class="line">    <span class="keyword">return</span> driver</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清除浏览器cookies</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delCookies</span><span class="params">(driver)</span>:</span></span><br><span class="line">    cookies = driver.get_cookies()</span><br><span class="line">    <span class="comment"># print(f"main: cookies = &#123;cookies&#125;")</span></span><br><span class="line">    driver.delete_all_cookies()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 刷票</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">operationAuth</span><span class="params">(driver)</span>:</span></span><br><span class="line">    <span class="comment">#根据url定位到投票界面</span></span><br><span class="line">    url = <span class="string">"xxx"</span><span class="comment">#投票界面url</span></span><br><span class="line">    driver.get(url)</span><br><span class="line">    <span class="comment">#清除cookie并刷新界面</span></span><br><span class="line">    delCookies(driver)</span><br><span class="line">    driver.refresh()</span><br><span class="line">    <span class="comment">#首次进入界面时间较长，之后由于缓存变短</span></span><br><span class="line">    <span class="keyword">if</span> flag==<span class="number">1</span>:</span><br><span class="line">        time.sleep(<span class="number">6</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 选定复选框(注意这里的elements)</span></span><br><span class="line">    elem = driver.find_elements_by_class_name(<span class="string">"ant-checkbox"</span>)</span><br><span class="line">    elem[<span class="number">13</span>].click()<span class="comment">#指定目标选项，下标从0开始</span></span><br><span class="line">    <span class="comment"># 点击提交按钮</span></span><br><span class="line">    driver.find_element_by_class_name(<span class="string">"published-form__footer-buttons"</span>).click()</span><br><span class="line">    <span class="comment">#清除cookie</span></span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="comment"># print('清除cookie！')</span></span><br><span class="line">    delCookies(driver)</span><br><span class="line">    time.sleep(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法主入口</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 加启动配置</span></span><br><span class="line">    driver = openChrome()</span><br><span class="line">    num = <span class="number">0</span></span><br><span class="line">    <span class="comment"># 循环投票</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        operationAuth(driver)</span><br><span class="line">        num += <span class="number">1</span></span><br><span class="line">        print(<span class="string">'已投票(张数)： &#123;&#125;'</span>.format(num))</span><br><span class="line">        flag = <span class="number">0</span></span><br></pre></td></tr></table></figure><h2 id="04-改进"><a href="#04-改进" class="headerlink" title="04 改进"></a>04 改进</h2><ul><li><strong>问题1</strong>：重复投票时无法绕过智能检测，需要手动点击才能成功投票，未实现真正的自动化</li><li><strong>对策</strong><ul><li>点触验证码的识别(一般需要第三方平台，收费，实现有些费劲)</li><li>猜测金数据是通过对IP检验然后弹出验证码，于是采用IP代理池可能缓解此问题</li></ul></li></ul><h2 id="05-对金数据的建议"><a href="#05-对金数据的建议" class="headerlink" title="05 对金数据的建议"></a>05 对金数据的建议</h2><ul><li>QQ、微信退出再登陆仍可重复投票，所以每个账号对每次投票只能投一次</li><li>浏览器进行投票时，可要求先进行微信登陆或金数据账号登陆</li><li>检验机制从通过cookie检验修改为IP检验，针对短时间内同一IP重复投票的情况</li></ul><h2 id="06-参考"><a href="#06-参考" class="headerlink" title="06 参考"></a>06 参考</h2><ul><li><a href="https://www.unique-liu.com/241.html" target="_blank" rel="noopener">关于金数据刷票教程</a></li><li><a href="https://zhuanlan.zhihu.com/p/110779821" target="_blank" rel="noopener">开发日志：金数据表单自动提交脚本</a></li><li><a href="https://blog.csdn.net/u010694922/article/details/79485003" target="_blank" rel="noopener">python+selenium 自动填写表单并提交</a></li><li><a href="https://blog.csdn.net/zwq912318834/article/details/79215400" target="_blank" rel="noopener">python + selenium + chrome 如何清理浏览器缓存</a></li><li><a href="https://blog.csdn.net/xm_csdn/article/details/51942835" target="_blank" rel="noopener">selenium 处理 一个页面两个相同id的定位</a></li><li><a href="https://www.aneasystone.com/archives/2018/03/python-selenium-geetest-crack.html" target="_blank" rel="noopener">使用 Python + Selenium 破解滑块验证码</a></li><li><a href="https://blog.csdn.net/qq_30990097/article/details/81386750" target="_blank" rel="noopener">selenium基础：元素定位的8种方法</a></li><li><a href="https://blog.csdn.net/qq_32897143/article/details/80383502?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1.control" target="_blank" rel="noopener">史上最全！Selenium元素定位的30种方式</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 刷票 </tag>
+            
+            <tag> 浏览器爬虫 </tag>
+            
+            <tag> selenium </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>编译原理</title>
       <link href="/2020/11/14/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
       <url>/2020/11/14/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</url>
@@ -63,10 +92,16 @@
       
       <categories>
           
-          <category> CTF </category>
+          <category> 信息安全 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> CTF </tag>
+            
+        </tags>
       
     </entry>
     
@@ -82,12 +117,14 @@
       
       <categories>
           
-          <category> CTF </category>
+          <category> 信息安全 </category>
           
       </categories>
       
       
         <tags>
+            
+            <tag> CTF </tag>
             
             <tag> RSA </tag>
             
