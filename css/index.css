@@ -436,6 +436,14 @@ img:not([src]) {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
 }
+.swal-overlay {
+  background-color: transparent;
+}
+.password-error {
+  -webkit-box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+  border-radius: 4px;
+}
 .article-container pre,
 .article-container .highlight {
   overflow: auto;
