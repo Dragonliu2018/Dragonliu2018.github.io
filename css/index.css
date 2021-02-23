@@ -509,6 +509,7 @@ blockquote {
   margin: 0;
   width: auto;
   border: none;
+  display: none;
 }
 .article-container .highlight table:after {
   position: absolute;
