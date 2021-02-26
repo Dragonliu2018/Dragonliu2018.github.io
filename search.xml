@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>问卷星复制问题</title>
+      <link href="/2021/02/24/%E9%97%AE%E5%8D%B7%E6%98%9F%E5%A4%8D%E5%88%B6%E9%97%AE%E9%A2%98/"/>
+      <url>/2021/02/24/%E9%97%AE%E5%8D%B7%E6%98%9F%E5%A4%8D%E5%88%B6%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h1 id="01-问题"><a href="#01-问题" class="headerlink" title="01 问题"></a>01 问题</h1><p>　　最近在刷知识竞赛，采用问卷星进行考试。不能复制粘贴，使用识字软件又显得特麻烦。</p><h1 id="02-解决"><a href="#02-解决" class="headerlink" title="02 解决"></a>02 解决</h1><ol><li><p>谷歌浏览器打开知识竞赛链接，<code>F12</code>进入开发者模式；</p></li><li><p>点击<code>Console</code>，粘贴以下代码<strong>并按回车键</strong>：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javascript:(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="function"><span class="keyword">function</span> <span class="title">R</span>(<span class="params">a</span>)</span>&#123;ona = <span class="string">"on"</span>+a; <span class="keyword">if</span>(<span class="built_in">window</span>.addEventListener) <span class="built_in">window</span>.addEventListener(a, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123; <span class="keyword">for</span>(<span class="keyword">var</span> n=e.originalTarget; n; n=n.parentNode) n[ona]=<span class="literal">null</span>; &#125;, <span class="literal">true</span>); <span class="built_in">window</span>[ona]=<span class="literal">null</span>; <span class="built_in">document</span>[ona]=<span class="literal">null</span>; <span class="keyword">if</span>(<span class="built_in">document</span>.body) <span class="built_in">document</span>.body[ona]=<span class="literal">null</span>; &#125; R(<span class="string">"contextmenu"</span>); R(<span class="string">"click"</span>); R(<span class="string">"mousedown"</span>); R(<span class="string">"mouseup"</span>); R(<span class="string">"selectstart"</span>);&#125;)()</span><br></pre></td></tr></table></figure><p><img data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/Snipaste_2021-02-24_15-38-33.jpg" class="lozad"></p></li><li><p>退出开发者模式，虽然可以进行复制了，但是无法提交，需要<strong>另开窗口提交</strong></p></li><li><p><strong>以上方法对企业微信问卷无效！</strong>(未测试)</p></li></ol><h1 id="03-参考"><a href="#03-参考" class="headerlink" title="03 参考"></a>03 参考</h1><ul><li><a href="https://www.xx7z.com/archives/2011" target="_blank" rel="noopener">问卷星不能选中、不能右键、不能复制、粘贴解决办法。</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>算法模板</title>
       <link href="/2021/02/23/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF/"/>
       <url>/2021/02/23/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF/</url>
