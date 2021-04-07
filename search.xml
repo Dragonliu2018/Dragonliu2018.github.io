@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>C/C++复习</title>
+      <link href="/2021/04/07/c%E8%AF%AD%E8%A8%80%E5%A4%8D%E4%B9%A0/"/>
+      <url>/2021/04/07/c%E8%AF%AD%E8%A8%80%E5%A4%8D%E4%B9%A0/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h1 id="0-面试重点"><a href="#0-面试重点" class="headerlink" title="0 面试重点"></a>0 面试重点</h1><h1 id="1-C笔记"><a href="#1-C笔记" class="headerlink" title="1 C笔记"></a>1 C笔记</h1><ol><li>exe已停止工作：1)漏&amp;；2)分母为0</li><li>定义整型，输入实型：自动截取小数部分，eg:2.5-&gt;2(赋值亦是)。</li><li>输出数据出错：格式字符与变量类型未对应；为赋初值。特别注意除号“/”和等号“==”。</li><li>数据范围与补码：-1全1，正负0全0，负数min为“1+全0”;溢出取低位，小数对应2<sup>-1</sup>,2<sup>-2</sup>,2<sup>-3</sup>…小数转二进制数: x2取整数知道小数为0。</li><li>else就近结合。</li><li>|| 和 &amp;&amp; 的短路特性。</li><li>数组a[]: scanf(“%d”, a)指对a[0]赋值。</li><li>字符串：scanf(“%s”, a)-&gt;遇’ ‘, ‘\0’, ‘\t’为截点(‘\n’跳出)开始不计；puts()=printf(“%s”, a)-&gt;遇’\0’结束；gets()遇回车结束，前无截点。</li><li>x *= y+8 等价于 x = x + (y+8)</li><li>C语言的函数体中，可以调用但不能定义其他函数。</li><li>puts()自动换行，putchar()不自动换行。</li></ol><h1 id="2-C-笔记"><a href="#2-C-笔记" class="headerlink" title="2 C++笔记"></a>2 C++笔记</h1><ol><li>endl = ‘\n’ + flush(刷新缓冲区)</li><li>cin跳过空白字符，cin.get()读取包含空白字符的字符</li><li>浮点数和整型注意转化中的除号</li><li>递归调用次数可用二叉树解决</li><li>C++, 字符串拷贝用”=”, 字符串比较”==”</li><li>汉字占两个字符，故name[0]无法输出，”cout&lt;&lt;name[0]&lt;&lt;name[1]”输出一个汉字</li><li>cin对象遇’\n’结束</li><li>nullptr能够避免在整数(0或NULL)和指针(nullptr)之间发生混淆</li><li><strong>函数传参</strong>：数据较小，按值传递，但修改时用引用；数组用指针；结构体用指针或引用；对象用引用</li><li><strong>缺省函数</strong>：声明函数(最先且一次)时为其参数指定默认值</li><li><ul><li><strong>sizeof()</strong>: 测字节(包含’\0’)区分数组与指针</li><li><strong>strlen()</strong>: 不区分数组还是指针，读到’\0’为止返回长度(\t,\n不停)</li></ul></li><li><ul><li><strong>全局变量</strong>: int global -&gt; extern int global 声明到文件结尾</li><li><strong>局部变量</strong>: 从声明到函数结束</li><li><strong>静态变量</strong>: 函数退出保留值，下次调用</li></ul></li><li>getline()读取换行符，但向数组存储时并不存储</li><li><strong>拷贝构造函数</strong>：<ul><li>用对象初始化同类的另一个对象</li><li>函数形参是对象，当进行参数传递时将调用copyconstruct</li><li>函数返回值是对象，函数执行结束时，将调用拷贝构造函数对无名临时对象初始化</li></ul></li><li>初始化和赋值是不同概念</li><li>文本文件存储文件大小：char类型存储；二进制文件：”01”存储(内存大小)</li><li>引起缓存区刷新：缓存区满时(4K)；程序结束；flush语句；close语句；endl语句</li><li>解决<redefinition>：<em>#ifdef ``` #endif</em> 或 <em>#pragma once</em></redefinition></li><li>派生类的构造函数只能描述自己的成员和基类的初始化，不能去初始化基类的成员；基类的成员需要调用基类的构造函数初始化。</li><li>k = (a=1, b=2, a+b)逗号运算符</li><li>自身类的对象不能作为类的成员(存在无限初始化问题，构造成员变量-&gt;调用自身的构造函数)，而自身类对象的引用和指针可以。</li><li><ul><li><strong>虚函数</strong>：特殊的成员函数，用来实现运行时的多态；动态决议(运行时才绑定)；基类说明virtual后，子类可缺省virtual</li><li><strong>静态成员函数</strong>：静态决议(编译时就绑定)，属于整个class，并不针对某个类的实例，为所有对象所共用，作用域为全局；不能直接使用this指针；virtual不能是static</li></ul></li><li><strong>静态数据成员</strong>：class内声明：<em>static int num</em>; class外定义：<em>int className::num</em>(无static，默认0)</li><li><strong>继承中的析构函数</strong>：基类的指针可指向派生类对象(多态性); <em>if delete []p;</em>就会调用该指针指向的派生类析构函数，而其自动调用基类的析构函数，整个派生类的对象被完全释放。若析构函数不被声明成虚函数，则编译器是是静态绑定，再删除基类指针时，只会调用基类的析构函数而不调用派生类的析构函数，这样一来派生类对象析构不完全。</li><li>两个指针指向同一数组，可以相减，结果是两个指针之间的元素数目。</li><li>引用必须初始化</li><li><ul><li><strong>函数模板</strong>：一个模板，专门用来生产函数的</li><li><strong>模板函数</strong>：是函数模板的实例化<br><strong>注</strong>：类模板和模板类亦同</li></ul></li><li><strong>联编</strong>：程序自身彼此关联的过程，确定程序中的操作调用与执行该操作的代码之间的关系。<ul><li><strong>静态联编</strong>：联编工作出现在联编阶段，用对象名或者类名来限定要调用的函数；</li><li><strong>动态联编</strong>：联编工作在程序运行时执行，在程序运行时才确定将要调用的函数。</li></ul></li><li>虚基类子对象是由最远派生类的构造函数通过调用虚基类的构造函数进行初始化的；初始化列表列出对虚基类调用，如未列出则用虚基类构造函数；先虚后非虚。</li><li><strong>虚基类</strong>：多条继承路径上有一个公共的基类，公共的基类会产生多个实例。<em>virtual class</em>是为了实例化一次基类存在的。eg: ios类是istream和ostream类的虚基类。</li><li>char = int + ‘0’</li><li><ul><li><strong>指针数组</strong>：int *p[4]</li><li><strong>数组指针</strong>：int (*p)[4]</li></ul></li><li><strong>构造析构顺序</strong>：<br>1) 存在继承关系时，先执行父类的构造函数，再执行子类的构造函数。<br>2) 当一个类中含有对象成员时，在启动本类的构造函数之前，先分配对象空间，按对象成员的声明顺序执行他们各自的构造函数，再执行本类的构造函数。<br>3) 对于非静态的局部对象，他们的析构函数的执行顺序与构造函数相反。<br>4) 构造：父类-&gt;成员函数-&gt;子类</li><li><strong>Runtime Error</strong>: 除0操作；数组越界；栈溢出；未指定值的指针进行读写操作；已经释放空间的指针再次释放。</li><li><strong>数组</strong>：<ul><li><strong>int&amp;float&amp;double</strong>:初始化补零</li><li><strong>char</strong>: 初始化补’\0’</li><li><strong>对象</strong>：调用缺省构造函数</li></ul></li><li>常对象不能被更新，因此通过常对象只能调用他的常成员函数。</li><li>临时对象是在遇到其后第一个分号(语句结束处)析构的。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Course </category>
+          
+          <category> 面试 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>202104华为招聘面试流程</title>
       <link href="/2021/04/07/202104%E5%8D%8E%E4%B8%BA%E5%AE%9E%E4%B9%A0%E6%B5%81%E7%A8%8B/"/>
       <url>/2021/04/07/202104%E5%8D%8E%E4%B8%BA%E5%AE%9E%E4%B9%A0%E6%B5%81%E7%A8%8B/</url>
