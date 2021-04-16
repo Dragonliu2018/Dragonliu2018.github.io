@@ -4,6 +4,110 @@
   
     
     <entry>
+      <title>leetcode-53 最大子序和</title>
+      <link href="/2021/04/16/leetcode-53/"/>
+      <url>/2021/04/16/leetcode-53/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个整数数组 <code>nums</code> ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p><p>链接：<a href="https://leetcode-cn.com/problems/maximum-subarray/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-subarray/</a></p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>跟<code>leetcode-3 无重复字符的最长子串</code>思路略有差距，双指针不太行(采用贪心的策略维护窗口是错误的)，dp可以解。</p><h2 id="思路1-dp"><a href="#思路1-dp" class="headerlink" title="思路1 dp"></a>思路1 dp</h2><ol><li><strong>状态</strong>：$dp[i]$ 代表以$nums[i]$结尾的最大和</li><li><strong>状态转移方程</strong>：$dp[i] = max(dp[i-1]+nums[i], nums[i])$</li><li><strong>答案</strong>：$max(dp[0…n-1])$</li></ol><ul><li><strong>时间复杂度</strong>：循环执行 n 次，每次花费常数的时间代价，故渐进时间复杂度为 $O(n)$。</li><li><strong>空间复杂度</strong>：$O(n)$，可用滚动数组优化到$O(1)$。</li></ul><h2 id="思路2-分治"><a href="#思路2-分治" class="headerlink" title="思路2 分治"></a>思路2 分治</h2><ol><li></li></ol><ul><li><strong>时间复杂度</strong>： $O(n)$。</li><li><strong>空间复杂度</strong>：$O(n)$</li></ul><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><strong>dp+滚动数组</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">int</span> pre = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> ans = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++ )&#123;</span><br><span class="line">            pre = max(nums[i], pre+nums[i]);</span><br><span class="line">            ans = max(ans, pre);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p><strong>分治</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> dp </tag>
+            
+            <tag> 分治 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leetcode-518 零钱兑换 II</title>
+      <link href="/2021/04/16/leetcode-518/"/>
+      <url>/2021/04/16/leetcode-518/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给你一个整数数组 <code>nums</code> ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。</p><p>链接：<a href="https://leetcode-cn.com/problems/coin-change-2/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/coin-change-2/</a></p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>跟<code>leetcode-3 无重复字符的最长子串</code>思路差不多，可以用双指针或dp。</p><p>主要是正负问题</p><h2 id="思路1-双指针"><a href="#思路1-双指针" class="headerlink" title="思路1 双指针"></a>思路1 双指针</h2><ol><li>设立<strong>left</strong>指针和<strong>right</strong>指针维护一个窗口，</li><li>最后取各窗口里的元素乘积最大值即可。</li></ol><ul><li><strong>时间复杂度</strong>：两个指针分别扫数组一遍，所以为 $O(n)$。</li><li><strong>空间复杂度</strong>： $O(1)$。</li></ul><h2 id="思路2-dp"><a href="#思路2-dp" class="headerlink" title="思路2 dp"></a>思路2 dp</h2><ol><li><strong>状态</strong>：$dp[i]$ 代表$i$阶楼梯爬的方式数</li><li><strong>状态转移方程</strong>：$dp[n] = dp[n-1] + dp[n-2]$</li></ol><ul><li><strong>时间复杂度</strong>：循环执行 n 次，每次花费常数的时间代价，故渐进时间复杂度为 $O(n)$。</li><li><strong>空间复杂度</strong>：$O(n)$，当然也可以用滚动数组优化空间，故渐进空间复杂度为 $O(1)$。</li></ul><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><strong>双指针</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>dp</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> dp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leetcode-322 零钱兑换</title>
+      <link href="/2021/04/16/leetcode-322/"/>
+      <url>/2021/04/16/leetcode-322/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给你一个整数数组 <code>nums</code> ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。</p><p>链接：<a href="https://leetcode-cn.com/problems/coin-change/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/coin-change/</a></p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>跟<code>leetcode-3 无重复字符的最长子串</code>思路差不多，可以用双指针或dp。</p><p>主要是正负问题</p><h2 id="思路1-双指针"><a href="#思路1-双指针" class="headerlink" title="思路1 双指针"></a>思路1 双指针</h2><ol><li>设立<strong>left</strong>指针和<strong>right</strong>指针维护一个窗口，</li><li>最后取各窗口里的元素乘积最大值即可。</li></ol><ul><li><strong>时间复杂度</strong>：两个指针分别扫数组一遍，所以为 $O(n)$。</li><li><strong>空间复杂度</strong>： $O(1)$。</li></ul><h2 id="思路2-dp"><a href="#思路2-dp" class="headerlink" title="思路2 dp"></a>思路2 dp</h2><ol><li><strong>状态</strong>：$dp[i]$ 代表$i$阶楼梯爬的方式数</li><li><strong>状态转移方程</strong>：$dp[n] = dp[n-1] + dp[n-2]$</li></ol><ul><li><strong>时间复杂度</strong>：循环执行 n 次，每次花费常数的时间代价，故渐进时间复杂度为 $O(n)$。</li><li><strong>空间复杂度</strong>：$O(n)$，当然也可以用滚动数组优化空间，故渐进空间复杂度为 $O(1)$。</li></ul><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><strong>双指针</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>dp</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> dp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leetcode-152 乘积最大子数组</title>
+      <link href="/2021/04/16/leetcode-152/"/>
+      <url>/2021/04/16/leetcode-152/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给你一个整数数组 <code>nums</code> ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。</p><p>链接：<a href="https://leetcode-cn.com/problems/maximum-product-subarray/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-product-subarray/</a></p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>跟<code>leetcode-53 最大子序和</code>思路略有不同，因为存在负负得正的情况，所以<strong>当前位置的最优解未必是由前一个位置的最优解转移得到的</strong>。于是可以再维护一个 $dp_{\min}(i)$，它表示以第 i 个元素结尾的乘积最小子数组的乘积。</p><ol><li><strong>状态</strong>：$dp[i][j]$ 代表从结点$i$到结点$j$的最小路径和</li><li><strong>状态转移方程</strong>：$dp[i][j] = min(dp[i-1][j] + dp[i-1][j+1]) + arr[i][j]$</li><li><strong>答案</strong>：$min(dp[n][1…n+1])$</li><li><strong>注意</strong>：临界条件</li></ol><ul><li><strong>时间复杂度</strong>：两个指针分别扫数组一遍，所以为 $O(n)$。</li><li><strong>空间复杂度</strong>： $O(1)$。</li></ul><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><strong>dp</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>dp+滚动数组</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> dp </tag>
+            
+            <tag> 双指针 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>leetcode-120 三角形最小路径和</title>
       <link href="/2021/04/15/leetcode-120/"/>
       <url>/2021/04/15/leetcode-120/</url>
@@ -70,9 +174,9 @@
       
         <tags>
             
-            <tag> 滑动窗口 </tag>
-            
             <tag> 双指针 </tag>
+            
+            <tag> 滑动窗口 </tag>
             
         </tags>
       
@@ -375,11 +479,11 @@
             
             <tag> 并查集 </tag>
             
+            <tag> 最短路 </tag>
+            
             <tag> Kruskal </tag>
             
             <tag> 贪心 </tag>
-            
-            <tag> 最短路 </tag>
             
         </tags>
       
@@ -431,11 +535,11 @@
             
             <tag> 并查集 </tag>
             
-            <tag> 最小生成树 </tag>
-            
             <tag> Kruskal </tag>
             
             <tag> 贪心 </tag>
+            
+            <tag> 最小生成树 </tag>
             
         </tags>
       
