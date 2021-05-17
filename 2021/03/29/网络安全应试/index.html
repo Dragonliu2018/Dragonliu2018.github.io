@@ -1,0 +1,925 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>网络安全 | Dragon Liu</title><meta name="description" content="网络安全"><meta name="keywords" content><meta name="author" content="Dragon Liu"><meta name="copyright" content="Dragon Liu"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="http://q4wib37p7.bkt.clouddn.com/BlogFavicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="canonical" href="https://Dragonliu2018.github.io/2021/03/29/网络安全应试/"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="网络安全"><meta name="twitter:description" content="网络安全"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/QQ图片20210329174639.jpg"><meta property="og:type" content="article"><meta property="og:title" content="网络安全"><meta property="og:url" content="https://Dragonliu2018.github.io/2021/03/29/网络安全应试/"><meta property="og:site_name" content="Dragon Liu"><meta property="og:description" content="网络安全"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/QQ图片20210329174639.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="prev" title="华为机试" href="https://Dragonliu2018.github.io/2021/03/31/华为机试/"><link rel="next" title="java复习" href="https://Dragonliu2018.github.io/2021/03/28/java复习/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  highlight_copy: 'true',
+  highlight_lang: 'true',
+  highlight_shrink: 'true',
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    title: '添加书签',
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天'
+
+  
+}</script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-1-复习重点"><span class="toc-text">Part 1 复习重点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ch1-网络安全基础"><span class="toc-text">Ch1 网络安全基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-网络安全的总的目标"><span class="toc-text">* 1.1 网络安全的总的目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-防范技术-主流网络安全技术"><span class="toc-text">* 1.2 防范技术(主流网络安全技术)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-信息安全保障体系组成-PDRR"><span class="toc-text">1.3 信息安全保障体系组成(PDRR)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-网络体系结构的深入理解、各层加密的作用"><span class="toc-text">* 1.4 网络体系结构的深入理解、各层加密的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-帧、IP报文、TCP报文、UDP报文格式"><span class="toc-text">* 1.5 帧、IP报文、TCP报文、UDP报文格式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ch2-常见的网络攻击技术"><span class="toc-text">Ch2 常见的网络攻击技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-网络攻击"><span class="toc-text">2.1 网络攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-目的"><span class="toc-text">2.1.1 目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-来源"><span class="toc-text">2.1.2 来源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-3-方法"><span class="toc-text">2.1.3 方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-4-过程"><span class="toc-text">2.1.4 过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-物理层和数据链路层"><span class="toc-text">2.2 物理层和数据链路层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-MAC地址欺骗"><span class="toc-text">2.2.1 MAC地址欺骗</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-1-原理"><span class="toc-text">2.2.1.1 原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-2-防范"><span class="toc-text">2.2.1.2 防范</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-电磁信息泄露"><span class="toc-text">2.2.2 电磁信息泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-网络监听"><span class="toc-text">2.2.3 网络监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-4-重放攻击"><span class="toc-text">2.2.4 重放攻击</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-网络层"><span class="toc-text">2.3 网络层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-网络层扫描"><span class="toc-text">2.3.1 网络层扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-IP-欺骗"><span class="toc-text">* 2.3.2 IP 欺骗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-3-碎片攻击"><span class="toc-text">* 2.3.3 碎片攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-4-ICMP-攻击"><span class="toc-text">* 2.3.4 ICMP 攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-5-路由欺骗-课本P43"><span class="toc-text">* 2.3.5 路由欺骗(课本P43)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-6-ARP-欺骗"><span class="toc-text">* 2.3.6 ARP 欺骗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-传输层"><span class="toc-text">2.4 传输层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-1-端口扫描"><span class="toc-text">2.4.1 端口扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-2-TCP-初始序号预测"><span class="toc-text">* 2.4.2 TCP 初始序号预测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-3-SYN-flooding"><span class="toc-text">* 2.4.3 SYN flooding</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-4-TCP-欺骗"><span class="toc-text">* 2.4.4 TCP 欺骗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-5-FIN-flooding"><span class="toc-text">* 2.4.5 FIN flooding</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-应用层"><span class="toc-text">2.5 应用层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-1-缓冲区溢出（课本P52）"><span class="toc-text">* 2.5.1 缓冲区溢出（课本P52）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-1-1-概念"><span class="toc-text">2.5.1.1 概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-1-2-代码示例"><span class="toc-text">2.5.1.2 代码示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-1-3-原理"><span class="toc-text">2.5.1.3 原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-1-4-引起原因"><span class="toc-text">2.5.1.4 引起原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-1-5-防止"><span class="toc-text">2.5.1.5 防止</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-2-口令攻击"><span class="toc-text">* 2.5.2 口令攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-3-电子邮件攻击"><span class="toc-text">2.5.3 电子邮件攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-4-DNS-欺骗"><span class="toc-text">2.5.4 DNS 欺骗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-5-SQL-注入"><span class="toc-text">* 2.5.5 SQL 注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-6-IIS漏洞"><span class="toc-text">* 2.5.6 IIS漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-7-常见的应用层安全协议有："><span class="toc-text">* 2.5.7 常见的应用层安全协议有：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-网络病毒与木马"><span class="toc-text">2.6 网络病毒与木马</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-1-病毒"><span class="toc-text">* 2.6.1 病毒</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-2-特洛伊木马"><span class="toc-text">* 2.6.2 特洛伊木马</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-拒绝服务攻击"><span class="toc-text">* 2.7 拒绝服务攻击</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ch3-网络身份认证"><span class="toc-text">Ch3 网络身份认证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ch4-网络访问控制"><span class="toc-text">Ch4 网络访问控制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-访问控制策略"><span class="toc-text">* 4.1 访问控制策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-防火墙-—-访问控制技术"><span class="toc-text">4.2 防火墙 — 访问控制技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-1-防火墙体系结构"><span class="toc-text">4.2.1 防火墙体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-1-包过滤防火墙"><span class="toc-text">* 4.2.1.1 包过滤防火墙</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-2-双重宿主主机防火墙"><span class="toc-text">* 4.2.1.2 双重宿主主机防火墙</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-3-屏蔽主机防火墙"><span class="toc-text">* 4.2.1.3 屏蔽主机防火墙</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-4-屏蔽子网防火墙"><span class="toc-text">* 4.2.1.4 屏蔽子网防火墙</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-2-分布式防火墙"><span class="toc-text">* 4.2.2 分布式防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-3-问题"><span class="toc-text">4.2.3 问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ch5-虚拟专用网技术"><span class="toc-text">Ch5 虚拟专用网技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-Remote-access-VPN：PPTP-L2TP"><span class="toc-text">* 5.1 Remote access VPN：PPTP/L2TP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-Intranet-VPN：IPSec"><span class="toc-text">* 5.2 Intranet VPN：IPSec</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-Extranet-VPN：Socks-v5"><span class="toc-text">* 5.3 Extranet VPN：Socks v5</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ch6-入侵检测技术"><span class="toc-text">Ch6 入侵检测技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-基于主机的入侵检测系统"><span class="toc-text">* 6.1 基于主机的入侵检测系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-基于网络的入侵检测系统"><span class="toc-text">* 6.2 基于网络的入侵检测系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-基于应用的入侵检测系统"><span class="toc-text">6.3 基于应用的入侵检测系统</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实验"><span class="toc-text">实验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-scanner"><span class="toc-text">* 1 scanner</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-思路"><span class="toc-text">1.1 思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-关键接口调用"><span class="toc-text">1.2 关键接口调用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-sniffer"><span class="toc-text">* 2 sniffer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-思路"><span class="toc-text">2.1 思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-关键接口调用"><span class="toc-text">2.2 关键接口调用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-2-课后习题"><span class="toc-text">Part 2 课后习题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第1章-网络安全基础"><span class="toc-text">第1章 网络安全基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-什么是网络体系结构？比较ISO-OSI和TCP-IP这两个标准。"><span class="toc-text">1.1 什么是网络体系结构？比较ISO/OSI和TCP/IP这两个标准。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-路由器是一种常用的网络互联产品，如果某个单位购买了一台路由器，但是该单位没有专业维护人员，于是厂家就通过路由器的内部端口进行远程维护，请讨论这种行为的安全性？并分析其优缺点。"><span class="toc-text">1.2  路由器是一种常用的网络互联产品，如果某个单位购买了一台路由器，但是该单位没有专业维护人员，于是厂家就通过路由器的内部端口进行远程维护，请讨论这种行为的安全性？并分析其优缺点。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-查阅有关资料，分析TCP-IP网络层、传输层和应用层的安全缺陷。"><span class="toc-text">1.3  查阅有关资料，分析TCP/IP网络层、传输层和应用层的安全缺陷。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-在计算机网络安全特征中，如何保证用户的真实性？"><span class="toc-text">1.4  在计算机网络安全特征中，如何保证用户的真实性？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-TCP-IP存在各种安全问题，为什么还是目前使用的主流标准呢？"><span class="toc-text">1.5  TCP/IP存在各种安全问题，为什么还是目前使用的主流标准呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-简要概述“棱镜门”事件折射出的我国目前网络安全面临的主要威胁。"><span class="toc-text">1.6  简要概述“棱镜门”事件折射出的我国目前网络安全面临的主要威胁。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第2章-常见的网络攻击技术"><span class="toc-text">第2章 常见的网络攻击技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#网络攻击中的被动攻击和主动攻击"><span class="toc-text">网络攻击中的被动攻击和主动攻击</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重放攻击原理及防范"><span class="toc-text">重放攻击原理及防范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL注入攻击原理和步骤"><span class="toc-text">SQL注入攻击原理和步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#病毒是特洛伊木马吗，二者关系"><span class="toc-text">病毒是特洛伊木马吗，二者关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特洛伊木马为什么不容易发现和删除"><span class="toc-text">特洛伊木马为什么不容易发现和删除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析一种针对分布式拒绝服务攻击的防范措施"><span class="toc-text">分析一种针对分布式拒绝服务攻击的防范措施</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#交换机有被监听的风险吗"><span class="toc-text">交换机有被监听的风险吗</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三章"><span class="toc-text">第三章</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#能够用于身份认证的人体生物特征有哪些"><span class="toc-text">能够用于身份认证的人体生物特征有哪些</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PKI的核心服务有哪些"><span class="toc-text">PKI的核心服务有哪些</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PKI的认证服务有哪些优点"><span class="toc-text">PKI的认证服务有哪些优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PKI有哪些组成部分，它们之间存在哪些关系"><span class="toc-text">PKI有哪些组成部分，它们之间存在哪些关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PKI系统是如何实现认证、保密、不可否认性的"><span class="toc-text">PKI系统是如何实现认证、保密、不可否认性的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSO的作用，有哪些模型"><span class="toc-text">SSO的作用，有哪些模型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第四章"><span class="toc-text">第四章</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#举例说明自主访问控制、强制访问控制、RBAC三种技术的应用场合"><span class="toc-text">举例说明自主访问控制、强制访问控制、RBAC三种技术的应用场合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#个人防火墙是否存在安全缺陷"><span class="toc-text">个人防火墙是否存在安全缺陷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#防火墙有哪两种基本策略以及应用场景"><span class="toc-text">防火墙有哪两种基本策略以及应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#防火墙能否保证内部网络的绝对安全"><span class="toc-text">防火墙能否保证内部网络的绝对安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#包过滤防火墙工作于OSI哪一层，检测IP数据包的哪些部分"><span class="toc-text">包过滤防火墙工作于OSI哪一层，检测IP数据包的哪些部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#包过滤技术与Sniffer的异同点"><span class="toc-text">包过滤技术与Sniffer的异同点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相比双宿网关防火墙，屏蔽子网防火墙有哪些特点"><span class="toc-text">相比双宿网关防火墙，屏蔽子网防火墙有哪些特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较应用层代理、传输层代理和SOCKS代理的异同点"><span class="toc-text">比较应用层代理、传输层代理和SOCKS代理的异同点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概述分布式防火墙的工作原理及其优势"><span class="toc-text">概述分布式防火墙的工作原理及其优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#当前防火墙的最新发展状况"><span class="toc-text">当前防火墙的最新发展状况</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第五章习题"><span class="toc-text">第五章习题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-什么是-VPN？VPN-有哪些主要功能？"><span class="toc-text">1. 什么是 VPN？VPN 有哪些主要功能？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-根据访问方式的不同，VPN-可以分为哪几类？"><span class="toc-text">2. 根据访问方式的不同，VPN 可以分为哪几类？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-VPN-安全协议可以在哪些层次实现？各个层次分别包含哪些主要的安全协议？"><span class="toc-text">3. VPN 安全协议可以在哪些层次实现？各个层次分别包含哪些主要的安全协议？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-简要概述-PPTP-VPN-的工作原理，并指出其优缺点。"><span class="toc-text">4. 简要概述 PPTP VPN 的工作原理，并指出其优缺点。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-IPSec-的-AH-和-ESP-方式有何不同？为什么提供了-ESP-后还需要提供-AH？"><span class="toc-text">5. IPSec 的 AH 和 ESP 方式有何不同？为什么提供了 ESP 后还需要提供 AH？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-IPSec-的隧道操作提供了两种模式：隧道模式和传输模式，比较这两种方式各自的-优缺点，适用的场合。"><span class="toc-text">6.IPSec 的隧道操作提供了两种模式：隧道模式和传输模式，比较这两种方式各自的 优缺点，适用的场合。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-简要概述-MPLS-VPN-的组成部分及各部分功能。"><span class="toc-text">7.简要概述 MPLS VPN 的组成部分及各部分功能。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-MPLS-节点中的路由表是如何产生的？MPLS-VPN-中的标签在-IP-分组转发过程中-如何起作用？（我感觉考的可能性不大-老师给的重点里也没有这个）"><span class="toc-text">8.MPLS 节点中的路由表是如何产生的？MPLS VPN 中的标签在 IP 分组转发过程中 如何起作用？（我感觉考的可能性不大 老师给的重点里也没有这个）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-SSL-握手协议分为几个阶段？每个阶段的主要功能是什么"><span class="toc-text">9.SSL 握手协议分为几个阶段？每个阶段的主要功能是什么</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第六章习题"><span class="toc-text">第六章习题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-入侵检测系统弥补了防火墙的哪些不足？"><span class="toc-text">1.入侵检测系统弥补了防火墙的哪些不足？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-比较基于主机和基于网络的入侵检测系统的优点与缺点。"><span class="toc-text">2. 比较基于主机和基于网络的入侵检测系统的优点与缺点。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-根据检测原理，入侵检测系统可以分为几类？其原理分别是什么？"><span class="toc-text">3. 根据检测原理，入侵检测系统可以分为几类？其原理分别是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-操作系统审计痕迹与系统日志有哪些不同之处？"><span class="toc-text">4. 操作系统审计痕迹与系统日志有哪些不同之处？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-查阅资料，简要概述-P2DR2-安全模型的基本思想。"><span class="toc-text">5. 查阅资料，简要概述 P2DR2 安全模型的基本思想。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-按照实现方式分类，IPS-可以分为哪几类？简要概述它们各自的特点。"><span class="toc-text">6. 按照实现方式分类，IPS 可以分为哪几类？简要概述它们各自的特点。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-IDS-和-IPS-的区别与联系"><span class="toc-text">7. IDS 和 IPS 的区别与联系</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-3-去年试题"><span class="toc-text">Part 3 去年试题</span></a></li></ol></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/QQ图片20210329174639.jpg)"><div id="page-header"><span class="pull-left"> <a class="blog_title" id="site-name" href="/">Dragon Liu</a></span><div class="open toggle-menu pull-right"><div class="menu-icon-first"></div><div class="menu-icon-second"></div><div class="menu-icon-third"></div></div><div class="menu_mask"></div><span class="pull-right menus"><div class="mobile_author_icon"><img class="lozad avatar_img" src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/avatar.png" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/friend_404.gif'"></div><div class="mobile_post_data"><div class="mobile_data_item text-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">126</div></a></div></div><div class="mobile_data_item text-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">77</div></a></div></div><div class="mobile_data_item text-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">6</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 读书</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fa fa-photo"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/theme/"><i class="fa-fw fa fa-superpowers"></i><span> 主题</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><script>document.body.addEventListener('touchstart', function(){ });</script></div></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title"><div class="posttitle">网络安全</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2021-03-29<span class="post-meta__separator">|</span><i class="fa fa-history" aria-hidden="true"></i> 更新于 2021-05-17</time><span class="post-meta__separator mobile_hidden">|</span><span class="mobile_hidden"><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/课程/">课程</a></span><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">25k</span><span class="post-meta__separator">|</span><span>阅读时长: 76 分钟</span><span class="post-meta__separator">|</span><span>阅读量: </span><span id="busuanzi_value_page_pv"></span></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><h1 id="Part-1-复习重点"><a href="#Part-1-复习重点" class="headerlink" title="Part 1 复习重点"></a><center><font color="#DC143C">Part 1 复习重点</font></center></h1><h1 id="Ch1-网络安全基础"><a href="#Ch1-网络安全基础" class="headerlink" title="Ch1 网络安全基础"></a>Ch1 网络安全基础</h1><h2 id="1-1-网络安全的总的目标"><a href="#1-1-网络安全的总的目标" class="headerlink" title="* 1.1 网络安全的总的目标"></a>* 1.1 网络安全的总的目标</h2><p>保证信息的机密性、完整性、不可否认性和可用性。</p>
+<ul>
+<li>机密性：可以通过加密来处理；<code>截取</code></li>
+<li>完整性：不允许数据在传输过程中被修改；<code>修改</code></li>
+<li>不可否认性：防止时候抵赖，可以通过数字签名解决；``</li>
+<li>可用性：通过冗余方式。<code>中断</code></li>
+</ul>
+<h2 id="1-2-防范技术-主流网络安全技术"><a href="#1-2-防范技术-主流网络安全技术" class="headerlink" title="* 1.2 防范技术(主流网络安全技术)"></a>* 1.2 防范技术(主流网络安全技术)</h2><p><strong>Step1</strong>：身份认证，人体生物特征</p>
+<p><strong>Step2</strong>：访问控制：自主、强制、RBAC</p>
+<p><strong>Step3</strong>：防火墙—锁，内外隔离：集中式防火墙—&gt;分布式—&gt;嵌入式包过滤</p>
+<p>双宿主主机网关：proxy，其工作原理：减少IP地址，加速，审计，访问控制</p>
+<p>屏蔽子网防火墙：堡垒主机</p>
+<p>集中式防火墙的缺陷</p>
+<p>分布式防火墙的提出，所解决的问题</p>
+<p><strong>Step4</strong>：VPN（三种情况，判断各种场合应该采用哪种方式）：保证跨越公网传输的安全性</p>
+<p>Remote access VPN：PPTP/L2TP</p>
+<p>Intranet VPN：IPSec，开放框架，AH，ESP，IKE</p>
+<p>Extranet VPN：Socks v5</p>
+<p><strong>Step5</strong>：IDS：IDS是检测机制</p>
+<p>异常检测</p>
+<p>误用检测</p>
+<p>误报率、漏报率</p>
+<p>类型：基于主机的IDS，其分析的内容；基于网络的IDS，其分析的内容</p>
+<hr>
+<ul>
+<li>认证技术包括消息认证和身份鉴别。身份认证，人体生物特征</li>
+<li><strong>访问控制</strong>保证网络资源不被非法使用和访问。自主、强制、RBAC</li>
+<li><strong>防火墙</strong>技术是将内部网与外部网之间的访问进行全面控制的一种机制。防火墙—锁，内外隔离：集中式防火墙—&gt;分布式—&gt;嵌入式包过滤</li>
+<li>数字签名技术主要用以保证数据的完整性、有效性和不可抵赖性等。</li>
+<li>数据和网络<strong>备份、恢复</strong>也属于网络安全的支撑技术范围</li>
+<li>PKI (Public Key Infrastructure)是遵循既定标准的密钥管理平台,它能够为所有网络应用提供加密和数字签名等密码服务及所必需的密钥和证书管理体系。</li>
+<li>VPN（Virtual Private Network）技术利用不可信的公网资源建立可信的虚拟专用网，是保证局域网间通信安全的少数可行方案之一。</li>
+<li><strong>入侵检测</strong>技术是一种主动保护自己的网络和系统免遭非法攻击的网络安全技术。</li>
+<li><strong>反病毒</strong>技术是查找和清除计算机病毒的主要技术，其原理就是在杀毒扫描程序中嵌入病毒特征码引擎，然后根据病毒特征码数据库来进行对比式查杀。这种方法简单、有效，但只适用于已知病毒，并且其特征库需要不断升级。</li>
+<li><strong>网络隔离</strong>技术通过特殊硬件实现链路层的断开，使得各种网络攻击与入侵失去了物理通路的基础，从而避免了内部网络遭受外部攻击的可能性。</li>
+<li>系统和网络的<strong>扫描和评估</strong>：可帮助识别检测对象的系统资源，分析被攻击的可能指数，了解支撑系统本身的脆弱性，评估所有存在的安全风险。一些非常重要的专业应用网络，例如银行，不能承受一次入侵带来的损失，对扫描和评估技术有强烈的需求。</li>
+<li><strong>监控</strong>和<strong>审计</strong>是与网络管理直接挂钩的技术</li>
+<li><strong>安全套接层</strong>（SSL，Secure Socket Layer）协议是由Netscape公司1994年设计开发的安全协议，主要在传输层提高应用程序之间的数据安全性。SSL协议保证任何安装了安全套接层的C/S间的事务安全，提供了客户端和服务器的鉴别、数据完整性及信息机密性等安全服务。SSL采用在建立连接过程中采用公开密钥；在会话过程中使用对称密钥。加密的类型和强度由两端建立连接时协商决定。</li>
+<li>HTTPS是建立于SSL上的HTTP安全协议，利用SSL加强HTTP协议的安全性，已经成功应用于电子商务。</li>
+</ul>
+<h2 id="1-3-信息安全保障体系组成-PDRR"><a href="#1-3-信息安全保障体系组成-PDRR" class="headerlink" title="1.3 信息安全保障体系组成(PDRR)"></a>1.3 信息安全保障体系组成(PDRR)</h2><ul>
+<li>保护（Protect）:采用可能采取的手段保障信息的保密性、完整性、可用性、可控性和不可否认性。</li>
+<li>检测（Detect）:利用高技术提供的工具检查系统存在的可能提供黑客攻击、白领犯罪、病毒泛滥的脆弱性。</li>
+<li>反应（React）:对危及安全的事件、行为、过程及时作出响应处理，杜绝危害的进一步蔓延扩大，力求系统尚能提供正常服务。</li>
+<li>恢复（Restore）:一旦系统遭到破坏，尽快恢复系统功能，尽早提供正常的服务。</li>
+</ul>
+<h2 id="1-4-网络体系结构的深入理解、各层加密的作用"><a href="#1-4-网络体系结构的深入理解、各层加密的作用" class="headerlink" title="* 1.4 网络体系结构的深入理解、各层加密的作用"></a>* 1.4 网络体系结构的深入理解、各层加密的作用</h2><p><img height="330" width="495" data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/1.jpg" class="lozad"></p>
+<ul>
+<li>物理层， 只支持数据保密服务，保证信息流安全；</li>
+<li>链路层， 只支持数据保密服务，实现链路层的面向连接和无连接两种服务的加密；</li>
+<li>网络层， 对等实体认证服务、访问控制服务、数据保密服务、数据完整性服务、数据源点认证服务等；</li>
+<li>会话层， 不提供安全服务；</li>
+<li>表示层， 除信息流安全服务、有恢复连接完整性和无恢复连接完整性之外所有其他服务；</li>
+<li>应用层， 原则上能够支持所有安全服务。 </li>
+</ul>
+<h2 id="1-5-帧、IP报文、TCP报文、UDP报文格式"><a href="#1-5-帧、IP报文、TCP报文、UDP报文格式" class="headerlink" title="* 1.5 帧、IP报文、TCP报文、UDP报文格式"></a>* 1.5 帧、IP报文、TCP报文、UDP报文格式</h2><p>帧首部：目的MAC地址(6Bytes) + 源MAC地址(6Bytes) + Type(2Bytes，IPv4-0x0800)</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/6.png" class="lozad"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/12.png" class="lozad"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/1806965-20191129104148482-792923521.png" class="lozad"></p>
+<h1 id="Ch2-常见的网络攻击技术"><a href="#Ch2-常见的网络攻击技术" class="headerlink" title="Ch2 常见的网络攻击技术"></a>Ch2 常见的网络攻击技术</h1><h2 id="2-1-网络攻击"><a href="#2-1-网络攻击" class="headerlink" title="2.1 网络攻击"></a>2.1 网络攻击</h2><h3 id="2-1-1-目的"><a href="#2-1-1-目的" class="headerlink" title="2.1.1 目的"></a>2.1.1 目的</h3><ol>
+<li>窃取信息</li>
+<li>控制中间站点</li>
+<li>获取超级用户的权限</li>
+</ol>
+<h3 id="2-1-2-来源"><a href="#2-1-2-来源" class="headerlink" title="2.1.2 来源"></a>2.1.2 来源</h3><ol>
+<li>网络协议存在大量漏洞<ul>
+<li>网络层核心协议 IP 以分组转发的方式从源主机向目的主机传送数据，在整个过程中网络上传输的都是明文的数据，并且它仅依赖 IP 地址来验证源主机和目的主机，缺乏更有效的安全认证和保密机制；</li>
+<li>在传输层提供TCP和UDP两种协议，面向连接的TCP在建立连接时虽然采用了“三次握手”的机制，但 TCP 连接也能被欺骗、截取和操纵；</li>
+<li>UDP 协议则更容易受到 IP 源路由和拒绝服务的攻击；  </li>
+<li>应用层的 Finger、 FTP、 Telnet、 SMTP、 DNS、 SNMP、 HTTP 等协议也都存在着与安全有关的认证、访问控制、完整性、保密性等问题；</li>
+</ul>
+</li>
+<li>网络操作系统的漏洞 </li>
+<li>应用系统设计的漏洞  </li>
+<li>网络系统设计的漏洞  </li>
+<li>来自网络的恶意攻击不断  </li>
+<li>来自合法用户的攻击  </li>
+</ol>
+<p>互联网的开放性是导致网络安全威胁最根本的原因。  </p>
+<h3 id="2-1-3-方法"><a href="#2-1-3-方法" class="headerlink" title="2.1.3 方法"></a>2.1.3 方法</h3><p>根据攻击针对的 TCP/IP 参考模型的不同层次，可分为：</p>
+<ol>
+<li>数据链路层攻击  </li>
+<li>网络层攻击  </li>
+<li>传输层攻击  </li>
+<li>应用层攻击  </li>
+</ol>
+<p>根据攻击时是否主动修改信息，可分为：  </p>
+<ol>
+<li>被动攻击（Passive Attack） ：被动攻击是指攻击者只是监视着被攻击方的通信，但不进行任何篡改、拦截，通常被攻击方不易察觉。具体方法如下：<ul>
+<li>窃听：采用嗅探软件 Sniffer，或直接 wiretapping（搭线窃听）  </li>
+<li>流量分析（ Traffic analysis ）：通过对通信业务流的观察（出现、消失、总量、方向与频度）推断出有用的信息，比如主机的位置，业务的变化等等。  </li>
+</ul>
+</li>
+<li>主动攻击（Active Attack）：主动攻击则是攻击者通过将一些恶意代码（Malicious Mobile Code），如病毒（Virus） 、蠕虫（Worm）、特洛伊木马（trojan）、恶意脚本（ Java Script, Java Applet, Active X 等）<br>放入受害者的主机，从而达到自己目的的行为，如删除受害者资料、盗取受害者账号和密码、篡改或虚构信息欺诈、对自身行为抵赖（repudiation）等。通常主动攻击的后果更为直接也更严重。  </li>
+</ol>
+<h3 id="2-1-4-过程"><a href="#2-1-4-过程" class="headerlink" title="2.1.4 过程"></a>2.1.4 过程</h3><ol>
+<li>确定目标  </li>
+<li>搜集与攻击目标相关的信息，并找出系统的安全漏洞  </li>
+<li>实施攻击  </li>
+</ol>
+<h2 id="2-2-物理层和数据链路层"><a href="#2-2-物理层和数据链路层" class="headerlink" title="2.2 物理层和数据链路层"></a>2.2 物理层和数据链路层</h2><p><img data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/Snipaste_2021-05-15_23-30-25.png" class="lozad"></p>
+<h3 id="2-2-1-MAC地址欺骗"><a href="#2-2-1-MAC地址欺骗" class="headerlink" title="2.2.1 MAC地址欺骗"></a>2.2.1 MAC地址欺骗</h3><h4 id="2-2-1-1-原理"><a href="#2-2-1-1-原理" class="headerlink" title="2.2.1.1 原理"></a>2.2.1.1 原理</h4><p>以太网卡的 MAC 地址在系统初始化时被读入寄存器，发送数据帧时自动作为源物理地址，在接收到数据帧时同样自动比较该物理地址与数据帧的目的物理地址。因此，如果通过底层的 I/O 操作修改寄存器中的 MAC 地址，即把机器的 MAC 地址改为其它被信任的友好主机的 MAC 地址，就可以以其友好主机的身份与其他主机通信，这就是“MAC 地址欺骗”。有多种方法来修改 MAC 地址：  </p>
+<ol>
+<li>直接修改网卡 MAC 地址  </li>
+<li>利用 MAC 地址克隆  </li>
+</ol>
+<h4 id="2-2-1-2-防范"><a href="#2-2-1-2-防范" class="headerlink" title="2.2.1.2 防范"></a>2.2.1.2 防范</h4><ul>
+<li>追踪综合布线以确定没有非授权的机器挂接在网络上；</li>
+<li>确保线路上已授权的机器使用自身的MAC地址，即配置MAC地址和端口的映射。</li>
+</ul>
+<h3 id="2-2-2-电磁信息泄露"><a href="#2-2-2-电磁信息泄露" class="headerlink" title="2.2.2 电磁信息泄露"></a>2.2.2 电磁信息泄露</h3><p>电磁信息泄漏：指电子设备的杂散（寄生）电磁能量通过导线或空间向外扩散。</p>
+<p><strong>防范</strong>：</p>
+<ul>
+<li>只有强度和信噪比满足一定条件的信号才能够被截获和还原。因此，只要采取措施，弱化泄漏信号的强度，减小泄漏信号的信噪比，就可以达到电磁防护的目的。</li>
+<li>电磁防护措施：屏蔽、滤波、隔离、合理的接地与良好的搭接、选用低泄漏设备、合理的布局和使用干扰器等。</li>
+</ul>
+<h3 id="2-2-3-网络监听"><a href="#2-2-3-网络监听" class="headerlink" title="2.2.3 网络监听"></a>2.2.3 网络监听</h3><p>网络监听是指获取在网络上传输的、并非发给自己计算机的信息。  </p>
+<ul>
+<li>传统以太网：共享信道，任何主机发送的每一个以太网帧都会到达别的与该主机处于同一网段的所有主机的以太网接口。</li>
+<li>使用CSMA/CD协议时，以太网接口在检测到目的MAC不是自己的数据帧时，直接忽略，不交给上层协议。</li>
+<li>使一个以太网接口接收不属于它的数据帧: 设置为混杂模式，使用socket API时通过setsockopt函数进行设置。</li>
+</ul>
+<p><strong>防范</strong>：网络分段，利用交换器、动态集线器和桥等设备对数据流进行限制，链路层加密和禁用混杂模式的节点等。</p>
+<p><strong>工具</strong>：</p>
+<ol>
+<li>Snoop 监听工具  </li>
+<li>Sniffit 监听工具  </li>
+<li>Sniffer 监听工具  </li>
+</ol>
+<p><strong>防止网络监听</strong>：防止各种监听程序对网络的监听也有多种方法，如加密传输、采用安全拓扑结构等，但系统开销会比较大。  </p>
+<h3 id="2-2-4-重放攻击"><a href="#2-2-4-重放攻击" class="headerlink" title="2.2.4 重放攻击"></a>2.2.4 重放攻击</h3><p>重放攻击（Replay Attacks）又称重播攻击、回放攻击或新鲜性攻击（Freshness Attacks）等，是指攻击者向目的主机（A）发送一个或多个 A 已接收过的包（特别是在认证的过程中，用于认证用户身份所接收的包，这个包往往是其他主机所发出的合法认证包）。重放攻击会不断恶意或欺诈性地重复发起一个有效的数据传输，来达到欺骗系统的目的，主要用于身份认证过程，破坏认证的安全性。</p>
+<p><strong>防范</strong>：</p>
+<ol>
+<li><strong>挑战-应答机制</strong>  <ul>
+<li>客户端向系统申请登陆</li>
+<li>系统发送挑战值给客户端；</li>
+<li>客户端计算相应的应答值（可以用 MD5 算法等计算应答值）；</li>
+<li>客户端发送应答值给系统；</li>
+<li>系统通过同样的算法判断应答值是否正确； </li>
+<li>如果正确则通过认证，允许用户继续后面的操作，认证结束；</li>
+<li>不正确则断开连接，结束。  </li>
+</ul>
+</li>
+<li><strong>时间戳</strong>：当主机（A）接收到了一个报文，当且仅当该报文包含了一个时间戳，且该时间戳对于 A 而言是足够接近当前时刻的， A 才认为该报文是合法的。具体的处理方式是，双方设置大小适当的时间窗（间隔）， 该时间窗越大越能包容网络传输延时（即延迟大的报文也被认为是合法的，这对于网络条件不够良好的情况来说较为重要），越小越能防范重放攻击。  </li>
+<li><strong>序号</strong>：通信双方通过在报文中添加双方都认可的序列号， 来判断报文的新鲜性，进而判断是否合法。这要求通信双方必须事先协商一个初始序列号，并协商递增方法。这个初始序列号应该尽量避免具有一定的规律性。  </li>
+</ol>
+<h2 id="2-3-网络层"><a href="#2-3-网络层" class="headerlink" title="2.3 网络层"></a>2.3 网络层</h2><h3 id="2-3-1-网络层扫描"><a href="#2-3-1-网络层扫描" class="headerlink" title="2.3.1 网络层扫描"></a>2.3.1 网络层扫描</h3><p>常用的网络相关命令：</p>
+<ol>
+<li><strong>ping</strong>：检测网络目标主机存在与否以及网络是否正常（能否通达）。 Ping 的原理是通过向目标主机传送小数据包，目标主机接收并将该包反送回来，如果返回的数据包和发送的数据包一致，那就是说 Ping 命令成功了。  </li>
+<li><strong>Tracert</strong>：用来跟踪一个报文从源主机到目的主机所经过的路径 </li>
+</ol>
+<h3 id="2-3-2-IP-欺骗"><a href="#2-3-2-IP-欺骗" class="headerlink" title="* 2.3.2 IP 欺骗"></a>* 2.3.2 IP 欺骗</h3><p>IP 欺骗就是攻击者假冒他人 IP 地址，发送数据包。由于 IP 协议不对数据包中的 IP 地址进行认证，因此任何人不经授权就可伪造 IP 包的源地址。 IP 欺骗是利用不同主机之间的信任关系而进行欺骗攻击的一种手段，这种信任关<br>系以 IP 地址验证为基础。</p>
+<p>  <img data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/Snipaste_2021-05-16_01-05-14.png" class="lozad"></p>
+<p>引例：当用户的主机 A 要与某服务器 B 建立连接时，它的通信方式是先发请求告诉对方主机 B，说“我要和你通信了”，当 B 收到时，就回复一个确认请求包（ACK）给 A 主机。如果 A 是合法地址，就会再回复一个确认（ACK）给 B 主机，然后两台主机就可以建立一个通信渠道了。</p>
+<p>可是攻击者机器 A 发出包的源地址是一个虚假的 IP 地址，或者可以说是实际上不存在的一个地址，那么 B 发出的 ACK 自然无法找到目标地址，即无法获得对方回复的 ACK。而在缺省超时的时间范围以内，主机 B 的一部分资源要用于等待这个 ACK 的响应上，假如短时间内主机 A 接到大量来自虚假 IP 地址的请求包，它就要占用大量的资源来处理这些错误的等待。大量发送这类欺骗型的请求，其结果就是主机 B 上的系统资源耗尽以至瘫痪。</p>
+<p><strong>目的</strong>：</p>
+<ul>
+<li>只想隐藏自身的 IP 地址或伪造源 IP 和目的 IP 相同的不正常包而并不关心是否能收到目标主机的应答，这样很容易实现，例如 IP 包碎片攻击、 Land 攻击等；</li>
+<li>伪装成被目标主机信任的友好主机，并且希望得到非授权的服务，这时攻击者还需要使用正确的 TCP 序列号。  </li>
+</ul>
+<p><strong>防范</strong>：路由设置、捆绑、防止源路由</p>
+<h3 id="2-3-3-碎片攻击"><a href="#2-3-3-碎片攻击" class="headerlink" title="* 2.3.3 碎片攻击"></a>* 2.3.3 碎片攻击</h3><p>在具体物理网络中，数据链路层协议对于帧的最大长度都有限制，即存在最大传输单元（MTU， Maximum Transmission Unit）。  </p>
+<p>IP分组分片例题：一个数据报标识为 10000，分组总长度为 4980 字节，其中报文首部长度为 20 字节，数据部分长度为 4960 字节，使用互联网中某局域网进行传送，该局域网允许分片且 MTU为 1420 字节，那么这个数据报在进入这个局域网后会被分成 4 片（数据部分 4960，分成 4片，前 3 片的长度为 1400，第 4 片长度为 760。每片传输时再加上 20 字节的首部，形成一个完成的分组传递出去），各个分片的数据报首部相应字段如表 2.1：  </p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/Snipaste_2021-05-16_01-14-34.png" class="lozad"></p>
+<p>从上表可知，每个分片的数据不能重叠，这样在目的主机可以把同一标识的所有分片按照段偏移大小顺序排好，并且在看到 MF=0 的分片后进行重组。   </p>
+<p><strong>更正</strong>：标志位 DF=1 时，表示不允许路由器对该数据报分片，因为目的主机不能重组这些分片； DF=0 表示允许分段。<strong>所以上面的DF标志均为0</strong></p>
+<p><strong>原理</strong>：</p>
+<p> 　　IP首部有两个字节表示整个IP数据包的长度，所以IP数据包最长只能为0xFFFF，就是65535字节。如果有意发送总长度超过65535 的IP碎片，一些老的系统内核在处理的时候就会出现问题，导致崩溃或者拒绝服务。另外，如果分片之间偏移量经过精心构造，一些系统就无法处理，导致死机。所以说，漏洞的起因是出在重组算法上。</p>
+<p><strong>防范</strong>：</p>
+<p>　　现在的网络操作系统已经完善了 TCP/IP 协议栈的异常处理，并且各种入侵检测系统和防火墙也可以及时发现异常的 IP 碎片，从而阻止这种类型的攻击。  </p>
+<p>参考：<a href="https://www.cnblogs.com/wpjamer/p/4089192.html" target="_blank" rel="noopener">IP碎片原理：攻击和防护</a></p>
+<h3 id="2-3-4-ICMP-攻击"><a href="#2-3-4-ICMP-攻击" class="headerlink" title="* 2.3.4 ICMP 攻击"></a>* 2.3.4 ICMP 攻击</h3><p><img data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/Snipaste_2021-05-16_10-57-02.png" class="lozad"></p>
+<ol>
+<li><strong>IP 地址扫描</strong>：经常出现在整个攻击过程的开始阶段，为攻击者收集信息。这种攻击用 ping 命令就能实现，在 TCP/IP 实现中，用户的 ping 命令就是利用回应请求与应答报文（回应请求报文的类型=8，回应请求应答报文的类型=0）测试目的主机是否可以到达；如果攻击者成功接收到应答报文，则说明目的主机处于“活跃”状态，可以作为攻击目标。  </li>
+<li><strong>Ping of death</strong>：ICMP 报文作为 IP 报文的数据传输，由于 IP 报文的最大总长度为 65535 字节，因此早期路由器也限定 ICMP 包的最大长度为 64KB，并在读取 ICMP 首部后，根据其中的“类型”和“代码”字段判断为何种 ICMP 报文，并分配相应内存作为缓冲区。当出现畸形的 ICMP 包时，例如，声称自己的尺寸超过 ICMP 上限的包也就是加载的尺寸超过 64K 上限时，就会出现内存分配错误，导致 TCP/IP 堆栈崩溃，致使接受方死机。    </li>
+<li><strong>Ping flooding 和 Smurf</strong> ：<ul>
+<li>在某一时刻多台主机都对目标主机使用 ping 程序，致力于耗尽目标主机的网络带宽和处理能力。一个网站 1 秒钟收到数万个 ICMP 回应请求报文就可能使它过度繁忙而无法提供正常服务——这就是拒绝服务攻击方法。  </li>
+<li>Smurf 攻击则是攻击者伪造一个源地址为受害主机的地址、目标地址是反弹网络的广播地址的 ICMP 回应请求数据包，当反弹网络的所有主机返回 ICMP 回应应答数据包的时候将淹没受害主机。它的原理和 ping flooding 类似，若反弹网络规模较大，攻击的威力也很巨大。  </li>
+</ul>
+</li>
+<li><strong>ICMP 重定向报文</strong>：初始网关一旦检测到某数据报经非最优路径传输，它一边将该数据报转发出去，一边向主机发送一个路径重定向报文，告诉主机去往相应目的的最优路径。主机开机后经不断积累便能掌握越来越多的最优路径信息。通过 ICMP 重定向报文，能够保证主机拥有一个动态的既小且优的寻径表。但是， ICMP 没有认证功能，攻击者可以冒充初始网关向目标主机发送ICMP 重定向报文，诱使目标主机更改寻径表，其结果是到达某一 IP 子网的报文全部丢失或都经过一个攻击者能控制的网关。</li>
+<li><strong>ICMP 主机不可达和 TTL 超时报文</strong>：当数据报传输路径中的路由器发现传输错误时发送报文给源主机，主机接收到此类报文后会重新建立 TCP 连接。攻击者可以利用此类报文干扰正常的通信。   </li>
+</ol>
+<p><strong>防范</strong>：</p>
+<ul>
+<li>禁止不必要的ICMP， 严格限制ICMP报文的作用范围；</li>
+<li>禁止未经请求主动提供的ICMP应答数据包；</li>
+<li>严格限制ICMP重定向报文的应用范围, 即如果主机目前没有数据要发送到相应站点，就不按照收到的重定向报文改变路由表；</li>
+<li>主机与其他路由器的全局路由表也不能以重定向报文为依据修改等。</li>
+</ul>
+<h3 id="2-3-5-路由欺骗-课本P43"><a href="#2-3-5-路由欺骗-课本P43" class="headerlink" title="* 2.3.5 路由欺骗(课本P43)"></a>* 2.3.5 路由欺骗(课本P43)</h3><p>Internet 中 IP 包的传输路径完全由路由表决定，主机的路由表可以依据 ICMP 重定向报文而改变，路由器的路由表则要依据路由协议的路由更新报文来修改。前者属于 ICMP 攻击，后者则属于路由欺骗。</p>
+<p><strong>RIP 路由欺骗</strong>：RIP(Routing information Protocol)协议是早期用于自治域内传播路由信息的路由协议，路由器需要定时向它的相邻路由器们发生本地的 RIP 路由更新信息。由于 RIP v1.0 中没有提供对 RIP 数据包发送者的认证机制，所以其他路由器在收到更新 RIP 数据包时一般不作检查，这也给了攻击者可趁之机。攻击者可以声称他所控制的路由器 A 可以最快地到达某一站点 B，从而诱使发往 B 的数据包由 A 中转。  </p>
+<p><strong>防范</strong>：</p>
+<ul>
+<li>路由器在接受新路由前应先验证其是否可达，降低受此类攻击的概率。</li>
+<li>路由信息在网上可见，随着假路由信息在网上的传播范围扩大，其被发现的可能性也在增大。经常检查日志文件会有助于发现此类问题</li>
+<li>对RIP包进行身份认证，杜绝假冒路由器，但在广播型的协议中比较难实现</li>
+</ul>
+<p><strong>IP 源路由欺骗</strong>：如果发送方进行了源路由欺骗，比如说，C进行源路由欺骗，伪装成B的ip地址，给服务器A发送了一个包。此时A收到包后发现要返回信息，正常的话因为发送栏地址是B，应该返回给B 但是由于源路由信息记录了来时的路线，反推回去就把应该给B的信息给了C，而A没有意识到问题，B对此一无所知，C拿到了B才能拿到的信息 </p>
+<p><strong>防范</strong>：</p>
+<ul>
+<li>配置好路由器，抛弃那些由外部网进来的却声称是内部主机的报文；</li>
+<li>关闭主机和路由器上的源路由功能。</li>
+</ul>
+<h3 id="2-3-6-ARP-欺骗"><a href="#2-3-6-ARP-欺骗" class="headerlink" title="* 2.3.6 ARP 欺骗"></a>* 2.3.6 ARP 欺骗</h3><p><strong>防范</strong>：</p>
+<ul>
+<li>可参考MAC地址欺骗的防范；</li>
+<li>使用工具：如ARPWatch，监视局域网内所有MAC地址和IP地址映射对，一旦有改变将产生告警或日志。</li>
+</ul>
+<h2 id="2-4-传输层"><a href="#2-4-传输层" class="headerlink" title="2.4 传输层"></a>2.4 传输层</h2><ul>
+<li>TCP连接建立时的“三次握手”</li>
+<li>TCP连接能被欺骗、截取、操纵</li>
+<li>UDP易受IP源路由和拒绝服务的攻击</li>
+</ul>
+<h3 id="2-4-1-端口扫描"><a href="#2-4-1-端口扫描" class="headerlink" title="2.4.1 端口扫描"></a>2.4.1 端口扫描</h3><p><strong>原理</strong>：</p>
+<ul>
+<li>端口是TCP/IP体系中传输层的服务访问点，传输层到某端口的数据都被相应绑定到该端口的进程接收。</li>
+<li>攻击者试图和目标主机的一系列端口（一般是保留端口和常用端口）建立连接或请求通信，若目标主机有回应，则打开了相应的应用程序或服务，攻击者就可以使用应用层的一些攻击手段。</li>
+</ul>
+<p><strong>端口扫描技术</strong>：</p>
+<ol>
+<li>TCP connect() 扫描 </li>
+<li>TCP SYN 扫描</li>
+<li>TCP FIN 扫描</li>
+<li>UDP ICMP端口不能到达扫描</li>
+<li>慢速扫描</li>
+</ol>
+<p><strong>对端口扫描的防范</strong>：</p>
+<ul>
+<li>需要进行<strong>统计分析</strong>，即在单位时间内发现接收到超过上限数目的以扫描端口为目的的数据包请求时，判断为发现端口扫描攻击。</li>
+<li>可以在一段较长时间内对此类请求数据包进行联合分析，若发现某特定时间段内主机较为均匀地接受到此类数据包请求，则判断为慢速扫描。</li>
+</ul>
+<h3 id="2-4-2-TCP-初始序号预测"><a href="#2-4-2-TCP-初始序号预测" class="headerlink" title="* 2.4.2 TCP 初始序号预测"></a>* 2.4.2 TCP 初始序号预测</h3><p><strong>原理</strong>：</p>
+<ul>
+<li>TCP协议采用确认重传机制保证数据流的可靠性，确认以TCP的序号字段为基础。</li>
+<li>TCP在使用三次握手机制建立连接时的初始序号有一定的随机性，但是依据其实现机制不同，可对TCP初始序号进行预测。</li>
+</ul>
+<p><strong>产生初始序列号的方法</strong>：</p>
+<ul>
+<li>64K规则：每秒用一常量（12800）增加初始序列号，如果有某一个连接启动，则用另一个常量（64000）增加序列号计数器。</li>
+<li>与时间相关的产生规则：允许序列号产生器产生与时间相关的值。在计算机自举时产生初始值，依照每台计算机各自的时钟增加。由于各计算机上的时钟并不完全相等，增大了序列号的随机性</li>
+<li><strong>伪随机数产生规则</strong>：操作系统使用伪随机数产生器产生初始序列号</li>
+</ul>
+<h3 id="2-4-3-SYN-flooding"><a href="#2-4-3-SYN-flooding" class="headerlink" title="* 2.4.3 SYN flooding"></a>* 2.4.3 SYN flooding</h3><p><strong>原理</strong>：</p>
+<p>　　利用TCP连接三次握手过程，打开大量的半开TCP连接，使得目标机器不能进一步接受TCP连接。每个机器都需要为这种半开连接分配一定的资源，并且，这种半开连接的数量是有限制的，达到最大数量时，机器就不再接受进来的连接请求。</p>
+<p><strong>防范</strong>：</p>
+<ol>
+<li>缩短SYN Timeout（连接等待超时）时间</li>
+<li>根据源IP记录SYN连接</li>
+<li>负反馈策略</li>
+<li>容忍策略：基于SYN flooding攻击代码的一个缺陷</li>
+<li>利用DNS进行负载均衡</li>
+<li>利用防火墙技术</li>
+</ol>
+<h3 id="2-4-4-TCP-欺骗"><a href="#2-4-4-TCP-欺骗" class="headerlink" title="* 2.4.4 TCP 欺骗"></a>* 2.4.4 TCP 欺骗</h3><p><strong>分类</strong>：</p>
+<ul>
+<li><strong>非盲攻击</strong>：攻击者和被欺骗的目的主机在同一个网络上，攻击者可以简单地使用协议分析器（嗅探器）捕获TCP报文段，从而获得需要的序列号。攻击步骤如下：<ul>
+<li>攻击者X要确定目标主机A的被信任主机B不在工作状态，若其在工作状态，也可用SYN flooding等攻击手段使其处于拒绝服务状态。</li>
+<li>攻击者X伪造数据包：B -&gt; A : SYN(ISN C)，源IP地址使用B，初始序列号ISN为C，给目标主机发送TCP的SYN包请求建立连接。</li>
+<li>目标主机回应数据包：A -&gt; B : SYN(ISN S) , ACK(ISN C)，初始序列号为S，确认序号为C。由于B处于拒绝服务状态，不会发出响应包。攻击者X使用嗅探器捕获TCP报文，得到初始序列号S。</li>
+<li>攻击者X伪造数据包：B -&gt;A : ACK(ISN S)，完成三次握手建立TCP连接</li>
+<li>攻击者X一直使用B的IP地址与A进行通信</li>
+</ul>
+</li>
+<li><strong>盲攻击</strong>：由于攻击者和被欺骗的目标主机不在同一个网络上，攻击者无法使用嗅探器捕获TCP报文段。攻击步骤与非盲攻击几乎相同，在第三步用TCP初始序列号预测技术得到初始序列号。第五步，攻击者X可以发送第一个数据包，但收不到A的响应包，难实现交互。</li>
+</ul>
+<p><strong>防范</strong>：</p>
+<ul>
+<li>使用伪随机数发生器产生TCP初始序号</li>
+<li>路由器拒绝来自外网而源IP是内网的数据包</li>
+<li>TCP报文加密</li>
+</ul>
+<h3 id="2-4-5-FIN-flooding"><a href="#2-4-5-FIN-flooding" class="headerlink" title="* 2.4.5 FIN flooding"></a>* 2.4.5 FIN flooding</h3><p>FIN攻击：攻击者构造好TCP报文段后向目标主机发送，目标主机接收之后，将不再接收被欺骗主机以后发送来的数据，认为在FIN包之后的数据是由网络错误造成的。</p>
+<h2 id="2-5-应用层"><a href="#2-5-应用层" class="headerlink" title="2.5 应用层"></a>2.5 应用层</h2><ul>
+<li>认证、访问控制、完整性、保密性等所有安全问题</li>
+<li>Finger,FTP,Telnet,E-mail,DNS,SNMP,…</li>
+<li>Web,Notes, Exchange, MIS, OA, DSS…</li>
+</ul>
+<h3 id="2-5-1-缓冲区溢出（课本P52）"><a href="#2-5-1-缓冲区溢出（课本P52）" class="headerlink" title="* 2.5.1 缓冲区溢出（课本P52）"></a>* 2.5.1 缓冲区溢出（课本P52）</h3><h4 id="2-5-1-1-概念"><a href="#2-5-1-1-概念" class="headerlink" title="2.5.1.1 概念"></a>2.5.1.1 概念</h4><p>　　缓冲区溢出是指当计算机向缓冲区内填充数据位数时超过了缓冲区本身的容量，溢出的数据覆盖了其他程序或系统的合法数据。</p>
+<p>　　如果所有程序都严格地先申请足够的缓冲区长度，然后检查数据的长度，不允许输入超过缓冲区长度的数据存入缓冲区，那么就不会产生缓冲区溢出的问题。但是，大多数程序员习惯于假设数据长度总是与所分配的储存空间相匹配，这就为缓冲区溢出埋下隐患。(<strong>原因</strong>)</p>
+<p>　　缓冲区可以设在堆栈（stack，自动变量）、堆（heap，动态分配的内存区）或静态资料区。缓冲区溢出是一种非常普遍而危险的漏洞，其中最为危险的是堆栈溢出，因为攻击者可以利用堆栈溢出，在函数返回时改变返回程序的地址，让其跳转到任意地址，可以利用它使系统崩溃导致拒绝服务，也可以利用它执行非授权指令，甚至可以取得系统特权，进而进行各种非法操作。  </p>
+<h4 id="2-5-1-2-代码示例"><a href="#2-5-1-2-代码示例" class="headerlink" title="2.5.1.2 代码示例"></a>2.5.1.2 代码示例</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">( <span class="keyword">char</span> *str )</span> </span>&#123; </span><br><span class="line">    <span class="keyword">char</span> buffer[<span class="number">16</span>]; </span><br><span class="line">    <span class="built_in">strcpy</span>( buffer, str ); </span><br><span class="line">&#125; </span><br><span class="line">Main( ) &#123;</span><br><span class="line">    <span class="keyword">char</span> buffer[<span class="number">256</span>];</span><br><span class="line">	   <span class="keyword">int</span> i;</span><br><span class="line">	   <span class="keyword">for</span> ( i = <span class="number">0</span>; i&lt;<span class="number">256</span>; i++ )</span><br><span class="line">		  buffer[i] = ‘A’ ;</span><br><span class="line">	   fun( buffer ) ;</span><br><span class="line">    <span class="built_in">printf</span>( ‘%s’, buffer ) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译执行这段代码后出现这样的提示： <strong>Segmentation fault （core dumped ），这意味着发生了缓冲区溢出。</strong></p>
+<p>如果在 buffer 中保存的不是字符 A，而是攻击者想执行的代码（shellcode： Unix/Linux  环境下外壳代码），其溢出部分的长度覆盖了调用函数 fun 的返回地址（ret），使它指向缓冲区中 shellcode（其内容是取得高级权限的恶意代码）的开头。那么，在当前执行进程（或函数）返回的时就可以跳转到 shellcode 处，并且攻击者会获得管理员权限，这样就可以在目标主机上植入木马，修改建立一个新的 socket 连接等。  </p>
+<h4 id="2-5-1-3-原理"><a href="#2-5-1-3-原理" class="headerlink" title="2.5.1.3 原理"></a>2.5.1.3 原理</h4><p>当程序中发生函数调用时，步骤如下：</p>
+<ol>
+<li>把参数压入堆栈；</li>
+<li>保存指令寄存器（IP）中的内容，作为返回地址（RET）；</li>
+<li>将基址寄存器（FP）压入堆栈；</li>
+<li>把当前的栈指针（SP）拷贝到 FP，做为新的基地址；</li>
+<li>为本地变量分配空间，把 SP 减去适当的数值。</li>
+</ol>
+<p>在上面的小例子中，从 buf 开始的 256 个字节都将被*str 的内容<code>A</code>覆盖，包括 sfp、 ret，甚至*str。而‘A’的十六进值为 0x41，所以函数的返回地址变成了 0x41414141，超出了程序的地址空间，所以会出现段错误 Segmentation fault （core dumped） 。  </p>
+<p>下一步，在溢出的缓冲区中写入想执行的代码，再覆盖返回地址（ ret）的内容，使它指向缓冲区的开头，就可以达到运行其它指令的目的 。如果攻击者想要执行的代码已经在被攻击的程序中了，他只要对代码传递一些参数。例如，攻击代码要求执行 exec（“/bin/sh”） ，而在 libc 库中的代码执行 exec （arg），其中 arg 是字符串的指针参数，攻击者只要把传入的参数指针改向指向“/bin/sh”即可。  </p>
+<h4 id="2-5-1-4-引起原因"><a href="#2-5-1-4-引起原因" class="headerlink" title="2.5.1.4 引起原因"></a>2.5.1.4 引起原因</h4><ul>
+<li>程序员层面：在概念中有所涉及</li>
+<li>程序层面：结合原理作答</li>
+</ul>
+<h4 id="2-5-1-5-防止"><a href="#2-5-1-5-防止" class="headerlink" title="2.5.1.5 防止"></a>2.5.1.5 防止</h4><p>栈保护措施 canary机制、栈不可执行（NX）、地址随机化（PIE、ASLR）机制。</p>
+<h3 id="2-5-2-口令攻击"><a href="#2-5-2-口令攻击" class="headerlink" title="* 2.5.2 口令攻击"></a>* 2.5.2 口令攻击</h3><p>获得用户口令的方法还有猜测、字典攻击、暴力破解、利用工具破解等  </p>
+<p><strong>字典攻击</strong>：字典攻击的做法是将字典中的大量单词送到函数 crypt()中，看看是否有与/etc/passwd 文件中加密口令相匹配的单词。如果有一个单词与目标口令匹配，则认为口令被破解，并将其相应的明码正文单词保存到文件。  </p>
+<h3 id="2-5-3-电子邮件攻击"><a href="#2-5-3-电子邮件攻击" class="headerlink" title="2.5.3 电子邮件攻击"></a>2.5.3 电子邮件攻击</h3><h3 id="2-5-4-DNS-欺骗"><a href="#2-5-4-DNS-欺骗" class="headerlink" title="2.5.4 DNS 欺骗"></a>2.5.4 DNS 欺骗</h3><p><strong>欺骗方法</strong>：</p>
+<ul>
+<li>将用户想要浏览的网页的URL改写为指向攻击者自己的服务器，当用户浏览目标网页的时候，实际上是向攻击者服务器发出请求</li>
+<li>DNS协议不对转换或信息的更新进行身份认证，攻击者可以将不正确的信息掺进来并把用户引向攻击者自己的主机</li>
+</ul>
+<p><strong>防范</strong>：用DNS转换得到的IP地址或域名再次作反向转换进行验证</p>
+<h3 id="2-5-5-SQL-注入"><a href="#2-5-5-SQL-注入" class="headerlink" title="* 2.5.5 SQL 注入"></a>* 2.5.5 SQL 注入</h3><p>SQL 注入攻击最常见的原因是动态构造了 SQL 语句，却没有使用正确的参数。</p>
+<p><strong>寻找容易受到 SQL 注入攻击的网站的步骤如下</strong>：</p>
+<ol>
+<li>首先寻找动态网站，即那些可以带查询字符串的网站，能够与用户进行动态交互的，这样的网站有很多。例如： <a href="http://www.***.com.cn/viewtext.asp?id=144581；" target="_blank" rel="noopener">http://www.***.com.cn/viewtext.asp?id=144581；</a></li>
+<li>给这个网站发送一个请求，改变其中的“id=…”语句，带一个额外的单引号，试图取消其中的 SQL 语句，例如 id=144581’ ；</li>
+<li>分析返回的回复，在其中查找 “SQL”、 “query”这类关键字，这些往往表示应用返回了详细的错误消息；</li>
+<li>检查错误消息，如果表示了发送到 SQL 服务器的参数没有被正确加码，就意味着可对该网站进行 SQL 注入攻击 。    </li>
+</ol>
+<p><strong>步骤</strong>：</p>
+<ol>
+<li>判定 SQL 注入漏洞  </li>
+<li>分析数据库服务器类型  </li>
+<li>确定 XP_CMDSHELL 可执行情况  </li>
+<li>发现 WEB 虚拟目录  </li>
+<li>上传 ASP 木马  </li>
+<li>得到系统的管理员权限 </li>
+</ol>
+<h3 id="2-5-6-IIS漏洞"><a href="#2-5-6-IIS漏洞" class="headerlink" title="* 2.5.6 IIS漏洞"></a>* 2.5.6 IIS漏洞</h3><ul>
+<li>IIS是Internet Information Services的缩写，意为互联网信息服务，是由微软公司提供的基于运行Microsoft Windows的互联网基本服务。</li>
+<li>IIS的安全脆弱性曾长时间被业内诟病，一旦IIS出现远程执行漏洞威胁将会非常严重。远程执行代码漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，当 HTTP.sys 未正确分析经特殊设计的 HTTP 请求时会导致此漏洞。 成功利用此漏洞的攻击者可以在系统帐户的上下文中执行任意代码，可以导致IIS服务器所在机器蓝屏或读取其内存中的机密数据。</li>
+</ul>
+<p><strong>参考</strong>：<a href="https://www.aqniu.com/learn/43996.html" target="_blank" rel="noopener">https://www.aqniu.com/learn/43996.html</a></p>
+<h3 id="2-5-7-常见的应用层安全协议有："><a href="#2-5-7-常见的应用层安全协议有：" class="headerlink" title="* 2.5.7 常见的应用层安全协议有："></a>* 2.5.7 常见的应用层安全协议有：</h3><ul>
+<li>PGP（Pretty Good Privacy），用于邮件安全；</li>
+<li>S-HTTP，Web上使用的超文本传输协议（HTTP）的安全增强版本；</li>
+<li>安全电子交易SET，用于电子商务；</li>
+<li>SSH，允许用户安全地登录到远程主机上执行命令或传输文件；</li>
+<li>Kerberos，用于客户/服务器环境下网络服务的鉴别等。</li>
+</ul>
+<h2 id="2-6-网络病毒与木马"><a href="#2-6-网络病毒与木马" class="headerlink" title="2.6 网络病毒与木马"></a>2.6 网络病毒与木马</h2><h3 id="2-6-1-病毒"><a href="#2-6-1-病毒" class="headerlink" title="* 2.6.1 病毒"></a>* 2.6.1 病毒</h3><ul>
+<li>计算机病毒是指编制或者在计算机程序中插入的破坏计算机功能或者破坏数据，影响计算机使用并且能够自我复制的一组计算机指令或者程序代码  </li>
+<li>病毒的特征可以概括为：人为的特制程序，具有自我复制能力，很强的感染性，一定的潜伏性，特定的触发性，很大的破坏性。 </li>
+</ul>
+<h3 id="2-6-2-特洛伊木马"><a href="#2-6-2-特洛伊木马" class="headerlink" title="* 2.6.2 特洛伊木马"></a>* 2.6.2 特洛伊木马</h3><ul>
+<li>木马的特点包括隐蔽性、顽固性、潜伏性</li>
+</ul>
+<h2 id="2-7-拒绝服务攻击"><a href="#2-7-拒绝服务攻击" class="headerlink" title="* 2.7 拒绝服务攻击"></a>* 2.7 拒绝服务攻击</h2><ul>
+<li>拒绝服务（DoS,Denial of Service)攻击：耗尽目标主机的资源，使目标主机不能对外提供正常的服务。</li>
+<li>IGMPNuke、Land、smurf、teardrop、SYN flooding、winnuke、UDP flooding等都属于DoS攻击</li>
+<li>分布式拒绝服务（DDoS，Distributed Denial of Service)是DoS的进一步演化。</li>
+<li>DDoS引进了client/server机制，增加了分布式的概念。集中几百上千台主机向目标主机进行攻击，使DoS的威力以几十几百倍的程度激增。DDoS囊括了已经出现的各种DoS方法，其破坏能力巨大。</li>
+</ul>
+<p><strong>防范</strong>：</p>
+<ul>
+<li>优化路由和网络结构，调整路由表以将拒绝服务攻击的影响减到最小；</li>
+<li>应用路由器的带宽分配技术；</li>
+<li>优化可能成为攻击目标的主机，禁止所有不必要的服务；</li>
+<li>定期扫描漏洞，及时安装补丁程序，定期升级系统软件；</li>
+<li>当检测到DoS时，若发现攻击数据包来自某些ISP时应尽快和他们取得联系；</li>
+<li>负载均衡技术和蜜罐（honeypot）技术。 </li>
+</ul>
+<h1 id="Ch3-网络身份认证"><a href="#Ch3-网络身份认证" class="headerlink" title="Ch3 网络身份认证"></a>Ch3 网络身份认证</h1><h1 id="Ch4-网络访问控制"><a href="#Ch4-网络访问控制" class="headerlink" title="Ch4 网络访问控制"></a>Ch4 网络访问控制</h1><h2 id="4-1-访问控制策略"><a href="#4-1-访问控制策略" class="headerlink" title="* 4.1 访问控制策略"></a>* 4.1 访问控制策略</h2><ul>
+<li>自主访问控制（discretionary policies)，基于身份的访问控制IBAC(Identity Based Access Control) </li>
+<li>强制访问控制(mandatory policies)，系统根据主体被信任的程度和客体所包含的信息的机密性或敏感程度来决定主体对客体的访问权，可通过给主、客体赋以安全标记来实现。</li>
+<li>基于角色的访问控制(role-based policies)：RBAC（Rule Based Access Control）</li>
+</ul>
+<h2 id="4-2-防火墙-—-访问控制技术"><a href="#4-2-防火墙-—-访问控制技术" class="headerlink" title="4.2 防火墙 — 访问控制技术"></a>4.2 防火墙 — 访问控制技术</h2><p><strong>缺点</strong>：</p>
+<ol>
+<li>不能防止内部的攻击</li>
+<li>会限制或者关闭有用而又存在安全隐患的服务</li>
+<li>不能防止数据驱动型攻击</li>
+<li>不能防止绕过防火墙的攻击</li>
+<li>不能防止带毒文件</li>
+<li>不能防止新出现的网络安全问题</li>
+</ol>
+<h3 id="4-2-1-防火墙体系结构"><a href="#4-2-1-防火墙体系结构" class="headerlink" title="4.2.1 防火墙体系结构"></a>4.2.1 防火墙体系结构</h3><h4 id="4-2-1-1-包过滤防火墙"><a href="#4-2-1-1-包过滤防火墙" class="headerlink" title="* 4.2.1.1 包过滤防火墙"></a>* 4.2.1.1 包过滤防火墙</h4><p><strong>原理</strong>：</p>
+<ul>
+<li>包过滤防火墙用路由器实现对所接收的每个数据包做允许或拒绝的决定。路由器审查每个数据包，以便确定其是否与某一条包过滤规则匹配。</li>
+<li>包的进入接口和出接口如果有<strong>匹配</strong>并且规则<strong>允许</strong>该数据包，那么该数据包就会按照路由表中的信息被<strong>转发</strong>。</li>
+<li>如果<strong>匹配</strong>并且规则<strong>拒绝</strong>该数据包，那么该数据包就会被<strong>丢弃</strong>。</li>
+<li>如果没有匹配规则，用户配置的缺省参数会决定是转发还是丢弃数据包。</li>
+</ul>
+<p><strong>数据包过滤检查网络层的IP头和传输层的头</strong>：</p>
+<ul>
+<li>IP源地址</li>
+<li>IP目标地址</li>
+<li>传输层协议类型（TCP包、UDP包和ICMP包）</li>
+<li>TCP或UDP包的目的端口</li>
+<li>TCP或UDP包的源端口</li>
+<li>ICMP消息类型</li>
+<li>TCP包头的确认位(ACK位)</li>
+<li>TCP包的序号、确认序号等</li>
+</ul>
+<p><strong>优点</strong>：</p>
+<ul>
+<li><p>速度快，性能高</p>
+</li>
+<li><p>对用户透明</p>
+</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li><p>维护比较困难(定义数据包过滤器比较复杂，需要管理员对TCP/IP深入了解）</p>
+</li>
+<li><p>安全性低（ IP欺骗:外部主机伪装其他可信任外部主机的IP）</p>
+</li>
+<li><p>不提供有用的日志，或根本就不提供</p>
+</li>
+<li><p>不防范数据驱动型攻击</p>
+</li>
+<li><p>无法对网络上流动的信息提供全面的控制</p>
+</li>
+</ul>
+<p><strong>针对包过滤防火墙的攻击</strong>：</p>
+<ul>
+<li>IP地址欺骗，例如，假冒内部的IP地址<ul>
+<li>对策：在外部接口上禁止内部地址</li>
+</ul>
+</li>
+<li><p>源路由攻击，即由源指定路由</p>
+<ul>
+<li>对策：禁止这样的选项</li>
+</ul>
+</li>
+<li><p>小碎片攻击，利用IP分片功能把TCP头部切分到不同的分片中</p>
+<ul>
+<li>对策：丢弃分片太小的分片</li>
+</ul>
+</li>
+<li><p>利用复杂协议和管理员的配置失误进入防火墙</p>
+<ul>
+<li>例如，利用ftp协议对内部进行探查</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-2-1-2-双重宿主主机防火墙"><a href="#4-2-1-2-双重宿主主机防火墙" class="headerlink" title="* 4.2.1.2 双重宿主主机防火墙"></a>* 4.2.1.2 双重宿主主机防火墙</h4><p><strong>原理</strong>：</p>
+<ul>
+<li><p>双重宿主主机至少有两个网络接口，位于内部网络和外部网络之间。双宿主机防火墙体系禁止网络层的转发功能，完全阻止了内外网络之间的IP层通信。</p>
+</li>
+<li><p>网络间的通信可通过应用层数据共享或应用层代理服务实现。</p>
+</li>
+<li><p>双宿主机的服务方式：用户直接登录到双重宿主主机上；在双重宿主主机上运行代理服务器。</p>
+<ul>
+<li>第一种方式，要在双宿主机上开许多帐号，不安全。</li>
+<li>第二种方式，要在双宿主机上运行各种代理服务器，要访问外部站点时，必须先经过代理服务器认证，才可以通过代理访问因特网。如HTTP，SMTP这些存储转发型服务很适合于进行代理。</li>
+</ul>
+</li>
+</ul>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>节约IP地址</li>
+<li>缓存，加快速度</li>
+<li>安全可靠</li>
+<li>过滤</li>
+<li>日志</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li><p>灵活性差</p>
+</li>
+<li><p>对主机的依赖性高</p>
+</li>
+</ul>
+<h4 id="4-2-1-3-屏蔽主机防火墙"><a href="#4-2-1-3-屏蔽主机防火墙" class="headerlink" title="* 4.2.1.3 屏蔽主机防火墙"></a>* 4.2.1.3 屏蔽主机防火墙</h4><p><strong>原理</strong>：</p>
+<ul>
+<li><p>屏蔽主机防火墙由包过滤路由器和堡垒主机组成。</p>
+</li>
+<li><p>包过滤路由器配置在内部网和外部网之间，堡垒主机配置在内部网络上。</p>
+</li>
+<li><p>在路由器上进行规则配置，使得外部系统只能访问堡垒主机，到内部系统其他主机的信息全部被阻塞。</p>
+</li>
+<li><p>内部系统是否允许直接访问Internet，或者是要求使用堡垒主机上的代理服务来访问Internet由机构的安全策略来决定。</p>
+</li>
+</ul>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>安全性更高，双重保护：实现了网络层安全（包过滤）和应用层安全（代理服务）</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li><p>过滤路由器能否正确配置是安全与否的关键。</p>
+</li>
+<li><p>过滤路由器的路由表应严格保护，如果遭到破坏，则数据包就不会被路由到堡垒主机上，堡垒主机将被绕过，整个内部网络对侵袭者就是开放的。</p>
+</li>
+</ul>
+<h4 id="4-2-1-4-屏蔽子网防火墙"><a href="#4-2-1-4-屏蔽子网防火墙" class="headerlink" title="* 4.2.1.4 屏蔽子网防火墙"></a>* 4.2.1.4 屏蔽子网防火墙</h4><p><strong>原理</strong>：</p>
+<ul>
+<li><p>用两个包过滤路由器和一个堡垒主机。</p>
+</li>
+<li><p>周边网络是处于Internet和内部网络之间的防护层。包含堡垒主机和一些信息服务器，可能会受到攻击，因此又被称为非军事区网络（DMZ网络）。</p>
+</li>
+<li><p>堡垒主机位于DMZ内，是整个防御体系的核心，可被认为是应用层网关，可以运行各种代理服务程序。</p>
+</li>
+<li><p>屏蔽子网体系结构在本质上与屏蔽主机体系结构一样，但添加了额外的一层保护体系——周边网络。堡垒主机位于周边网络上，周边网络和内部网络被内部过滤路由器分开。</p>
+</li>
+</ul>
+<p><strong>对于进来的信息</strong></p>
+<ul>
+<li><p>外部路由器用于防范通常的外部攻击（如IP欺骗），并管理外部网到DMZ网络的访问，它只允许外部系统访问堡垒主机。</p>
+</li>
+<li><p>内部路由器提供第二层防御，管理DMZ网络到内部网的访问，只接受来自堡垒主机的数据包。</p>
+</li>
+</ul>
+<p><strong>对于出去的信息</strong></p>
+<ul>
+<li><p>内部路由器管理内部网到DMZ网络的访问，它允许内部系统只访问堡垒主机。</p>
+</li>
+<li><p>外部路由器管理DMZ网络到外部网的访问，只接受来自堡垒主机的数据包。</p>
+</li>
+</ul>
+<p><strong>安全性更高</strong></p>
+<ul>
+<li><p>支持网络层和应用层安全功能。</p>
+</li>
+<li><p><strong>DMZ网络的作用</strong>：即使堡垒主机被入侵者控制，也只能侦听周边网络的数据，而不能侦听到内部网的数据。因为内部路由器会阻止内部网络上的数据包流入DMZ网络。</p>
+</li>
+</ul>
+<h3 id="4-2-2-分布式防火墙"><a href="#4-2-2-分布式防火墙" class="headerlink" title="* 4.2.2 分布式防火墙"></a>* 4.2.2 分布式防火墙</h3><p><img data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/Snipaste_2021-05-16_13-57-12.png" class="lozad"></p>
+<p><strong>集中式防火墙的缺陷</strong>：</p>
+<ol>
+<li><strong>防外不防内</strong>：传统防火墙一般位于网络的入口处，对于外来的攻击可以有效地抵制，但是对于网络内部的攻击却是无能为力。传统防火墙是基于这样一个假设，即每一个外部用户都是一个潜在的敌人，而内部用户均是可信任的。然而实际环境中，大多数的攻击来自于内部，即使用户是诚实可靠的，一些恶意的病毒，蠕虫代码亦会将诚实的用户变成一个不知情的攻击者。</li>
+<li><strong>瓶颈问题</strong>：防火墙位于网络的接入口，其吞吐量直接影响网络的性能。虽然计算机硬件的处理能力在不断提高，但是更快的网络速度和更复杂的协议相结合产生的效果对防火墙的计算能力提出了严峻的挑战，使得防火墙易成为网络的瓶颈和单点失效点。</li>
+<li><strong>易被绕过</strong>：现在计算机接入网络的方式多种多样，人们可以很轻易地建立一个非授权的接入点。各种隧道技术、无线接入技术和拨号访问都可以绕过防火墙的安全机制。纵然防火墙的策略定义得很完善，对它无法控制的接入也是无可奈何。对于这种网络外部的远程访问，亟需一种行之有效的保护和防范措施。</li>
+<li><strong>端到端的加密对传统防火墙也是一个威胁</strong>：传统防火墙的分组过滤方法需要察看分组包头的信息来进行过滤，防火墙无法从加密的报文中获取其所需的信息。</li>
+<li><strong>策略的制定和维护复杂</strong>：传统防火墙根据网络的拓扑结构制定规则。在大型的网络中，往往有多个接入点和内部防火墙，这使得策略管理非常复杂，一般没有一种通用的管理机制，通常主要依靠网络管理员的能力和经验。</li>
+</ol>
+<p><strong>分布式防火墙的提出</strong>：</p>
+<ul>
+<li>传统防火墙的很多缺陷主要集中在依赖于网络拓扑结构和单一接入控制。</li>
+<li>在这种模式下，策略仍是由一个中心统一定义，而策略的执行却是由各个端结点完成。如此便消除了单一接入点，内网外网的划分并不依赖于网络的拓扑结构，因此内网的定义具有更多的逻辑意义，可以包含局域网内无线接入的用户、拨号用户、通过 VPN 连接的用户，而不仅限于传统意义上某个房间或某栋建筑中的网络。</li>
+<li>相应地，防火墙的策略也不需按照网络拓扑结构来制定访问控制列表，管理员可以更专<br>注于对被保护的对象来制定规则。   </li>
+</ul>
+<p><strong>分布式防火墙解决的问题</strong>：</p>
+<ul>
+<li>这种分布式防火墙最大的优点是防火墙不再受限于拓扑结构，并且将单点防护变成了多点防护，即全民皆兵，从而大大提高了防护能力和数据交换效率。</li>
+<li>同时，分布式防火墙不会再有边界防火墙存在的瓶颈问题，吞吐量不再受防火墙的速率限制，某一点的连接失败不再会隔离整个网络。  </li>
+</ul>
+<h3 id="4-2-3-问题"><a href="#4-2-3-问题" class="headerlink" title="4.2.3 问题"></a>4.2.3 问题</h3><p>所有返回数据包目的IP都是200.0.0.1，防火墙如何识别并送回真正主机？</p>
+<p>1、防火墙记住所有发送包的目的端口；</p>
+<p>2、防火墙记住所有发送包的TCP序列号。</p>
+<h1 id="Ch5-虚拟专用网技术"><a href="#Ch5-虚拟专用网技术" class="headerlink" title="Ch5 虚拟专用网技术"></a>Ch5 虚拟专用网技术</h1><h2 id="5-1-Remote-access-VPN：PPTP-L2TP"><a href="#5-1-Remote-access-VPN：PPTP-L2TP" class="headerlink" title="* 5.1 Remote access VPN：PPTP/L2TP"></a>* 5.1 Remote access VPN：PPTP/L2TP</h2><p>远程访问VPN：在公司总部和远地雇员之间建立VPN</p>
+<p>二层隧道协议：L2F/L2TP 、PPTP</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/Snipaste_2021-05-16_14-51-04.png" class="lozad"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/Snipaste_2021-05-16_14-52-08.png" class="lozad"></p>
+<h2 id="5-2-Intranet-VPN：IPSec"><a href="#5-2-Intranet-VPN：IPSec" class="headerlink" title="* 5.2 Intranet VPN：IPSec"></a>* 5.2 Intranet VPN：IPSec</h2><p>内部网VPN：在公司总部和它的分支机构之间建立VPN</p>
+<p>三层隧道协议：GRE、IPSec</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/Snipaste_2021-05-16_14-52-57.png" class="lozad"></p>
+<p><strong>IPSec体系结构</strong>：</p>
+<ul>
+<li><p>IPSec不是某种特殊的加密算法或认证算法，也没有在它的数据结构中指定某种特殊的加密算法或认证算法</p>
+</li>
+<li><p>IPSec是开放的框架结构，定义在IP数据包格式中，为目前流行的数据加密或认证的实现提供数据结构，为这些算法的实现提供统一的体系结构</p>
+</li>
+<li><p>有利于数据安全方面的措施进一步发展和标准化</p>
+</li>
+<li><p>不同的加密算法都可以利用IPSec定义的体系结构在网络数据传输过程中实施</p>
+</li>
+<li><p>IPSec（IP Security）：IETF IPsec工作组制定。设计目标是在IPv4和IPv6环境中为网络层流量提供灵活的安全服务。</p>
+</li>
+<li><p>IPSec协议提供的安全服务包括：<strong>访问控制、无连接完整性、数据源鉴别、重放攻击保护、机密性、有限的流量保密等。</strong></p>
+</li>
+<li><p>IPSec包括<strong>安全协议部分</strong>(定义对通信的安全保护机制)和<strong>密钥协商部分</strong>（定义如何为安全协议协商安全参数、对通信实体的身份进行鉴别）</p>
+</li>
+<li><p>IPSec安全协议部分：</p>
+<ul>
+<li>ESP机制为通信提供机密性、完整性保护；</li>
+<li>AH机制为通信提供完整性保护</li>
+<li>ESP和AH机制都能为通信提供重放攻击保护</li>
+</ul>
+</li>
+<li><p>IPSec密钥协商部分</p>
+<ul>
+<li>使用IKE(Internet Key Exchange)协议实现安全协议的自动安全参数协商。安全参数包括加密及鉴别算法、加密及鉴别密钥、通信的保护模式(传输或隧道模式)、密钥的生存期等。</li>
+</ul>
+</li>
+<li><p>封装安全有效载荷（ESP）</p>
+<ul>
+<li><p>Encapsulation security payload</p>
+</li>
+<li><p>确保IP数据包的机密性、数据的完整性以及数据源的身份验证</p>
+</li>
+<li><p>覆盖了为了包加密（可选身份验证）与ESP的使用相关的包格式和常规问题</p>
+</li>
+</ul>
+</li>
+<li><p>验证头（AH）</p>
+<ul>
+<li><p>Authentication Header</p>
+</li>
+<li><p>包含使用AH进行包身份验证相关的包格式和一般问题</p>
+</li>
+</ul>
+</li>
+<li><p>加密算法：描述各种加密算法如何用于ESP中</p>
+</li>
+<li><p>验证算法：描述各种身份验证算法如何用于AH中和ESP身份验证选项</p>
+</li>
+</ul>
+<p><strong>IPSec协议存在问题</strong>：</p>
+<ol>
+<li><p>IKE协议的安全性；</p>
+</li>
+<li><p>与现有网络机制的兼容性；</p>
+</li>
+<li><p>缺乏对远程拨号接入的支持；</p>
+</li>
+<li><p>不支持组播、多协议</p>
+</li>
+</ol>
+<p><strong>对IPSec的总体评价</strong>：</p>
+<ul>
+<li><p><strong>优点</strong></p>
+<ul>
+<li>安全性明显优于其它隧道协议</li>
+</ul>
+</li>
+<li><p><strong>缺点</strong></p>
+<ul>
+<li>过于复杂</li>
+<li>存在安全漏洞</li>
+<li>安全性分析困难</li>
+</ul>
+</li>
+<li><p><strong>根本的解决方案</strong>：</p>
+<ul>
+<li>IPSec修补不能解决根本问题，必须彻底改变制定IPSec的委员会模式。</li>
+</ul>
+</li>
+</ul>
+<p><strong>几种隧道技术比较</strong>：</p>
+<ul>
+<li><p><strong>应用范围</strong>：</p>
+<ul>
+<li><p>PPTP、L2TP：主要用在远程客户机访问局域网方案中；</p>
+</li>
+<li><p>IPSec：主要用在网关到网关或主机方案中，不支持远程拨号访问。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>安全性</strong>：</p>
+<ul>
+<li>PPTP提供认证和加密功能，但安全强度低</li>
+<li>L2TP提供认证和对控制报文的加密，但不能对传输中的数据加密。</li>
+<li>IPSec提供了完整的安全解决方案。</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-3-Extranet-VPN：Socks-v5"><a href="#5-3-Extranet-VPN：Socks-v5" class="headerlink" title="* 5.3 Extranet VPN：Socks v5"></a>* 5.3 Extranet VPN：Socks v5</h2><p>外连网VPN：在公司与商业伙伴、顾客、供应商、投资者之间建立VPN</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/Snipaste_2021-05-16_15-21-04.png" class="lozad"></p>
+<ol>
+<li>应用客户端向SOCKS v5服务器发送一个认证方法列表，里面包含了它所支持的所有认证方法；SOCKS v5服务器检查服务器安全策略，如果客户端提供的认证方法列表中有适合服务器已经定义好的安全策略的方法，SOCKS 服务器选择一个认证方法；如果没有，放弃本次通信</li>
+<li>SOCKS服务器选择好一个认证方法后，它发送给客户端一个应答说明它选择了哪一个方法和客户端进行认证，应用客户端和SOCKS服务器之间的认证过程开始</li>
+<li>认证结束后，应用客户端发送请求给SOCKS服务器，请求中包含了客户端想要连结的应用服务器的地址和端口</li>
+<li>SOCKS服务器开始发送请求给客户请求的应用服务器。如果使用的是TCP的话，SOCKS 服务器和应用服务器进行通信并且在应用客户端和应用服务器之间建立一条代理电路。代理电路建立之后，SOCKS服务器将会通知应用客户端</li>
+<li>随着代理电路的建立，应用客户端和应用服务器端开始进行通信。SOCKS服务器截获每一次来自客户端和应用服务器端的数据并且在它们之间进行数据的转发</li>
+</ol>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li><p><strong>冗余的安全</strong></p>
+<ul>
+<li>每个层次进行加密处理</li>
+</ul>
+</li>
+<li><p><strong>不支持ICMP报文转发</strong></p>
+<ul>
+<li>SOCKS协议将不支持ICMP报文的转发：</li>
+<li>“Ping” 将不会通过SOCKS防火墙工作</li>
+<li>错误的状态将不会被广播给正在执行的应用程序</li>
+<li>防火墙将SOCKS和其他的安全特性结合起来使用，增加了一个“ICMP代理”来透明的传递Ping（或其它的ICMP报文）消息</li>
+</ul>
+</li>
+<li><strong>不支持多路广播</strong><ul>
+<li>不支持IP/UDP多路广播。IP多路广播技术在一台主机加入或者离开一个“多点传送地址组”的时候使用Internet组管理协议（IGMP：位于网络层）发出通知。解决方法：创建一个真正的多点广播代理，用它作为一个多点广播通信的特别通道。</li>
+</ul>
+</li>
+</ul>
+<h1 id="Ch6-入侵检测技术"><a href="#Ch6-入侵检测技术" class="headerlink" title="Ch6 入侵检测技术"></a>Ch6 入侵检测技术</h1><ul>
+<li>入侵检测是指对入侵行为的发觉。通过在计算机网络或系统中的若干关键点收集信息并进行分析，判断网络或系统中是否有违反安全策略的行为和被攻击的迹象。</li>
+<li>入侵检测系统(IDS, Intrusion Detection System)，是完成入侵检测功能的软件、硬件及其组合，试图检测、识别和隔离“入侵”企图或计算机的不恰当未授权使用。 </li>
+</ul>
+<h2 id="6-1-基于主机的入侵检测系统"><a href="#6-1-基于主机的入侵检测系统" class="headerlink" title="* 6.1 基于主机的入侵检测系统"></a>* 6.1 基于主机的入侵检测系统</h2><p>监视并分析主机的审计记录和日志文件。</p>
+<p><strong>检测内容</strong>：系统调用、端口调用、系统日志、安全审记、应用日志</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li><p>视野集中</p>
+</li>
+<li><p>易于用户自定义</p>
+</li>
+<li><p>保护更加周密</p>
+</li>
+<li><p>对网络流量不敏感 </p>
+</li>
+</ul>
+<h2 id="6-2-基于网络的入侵检测系统"><a href="#6-2-基于网络的入侵检测系统" class="headerlink" title="* 6.2 基于网络的入侵检测系统"></a>* 6.2 基于网络的入侵检测系统</h2><p>通过网络适配器或其他特殊硬件监视并分析所有原始网络包。</p>
+<p><strong>检测内容</strong>：包头信息+有效数据部分（数据包=包头信息+有效数据部分）</p>
+<p><strong>优点</strong></p>
+<ul>
+<li><p>在共享网段上对通信数据进行侦听采集数据</p>
+</li>
+<li><p>主机资源消耗少</p>
+</li>
+<li><p>提供对网络通用的保护</p>
+</li>
+</ul>
+<p><strong>存在问题</strong></p>
+<ul>
+<li><p>如何适应高速网络环境</p>
+</li>
+<li><p>非共享网络上如何采集数据</p>
+</li>
+</ul>
+<h2 id="6-3-基于应用的入侵检测系统"><a href="#6-3-基于应用的入侵检测系统" class="headerlink" title="6.3 基于应用的入侵检测系统"></a>6.3 基于应用的入侵检测系统</h2><p>基于主机入侵检测系统的特例。用监控传感器监控某软件应用程序的日志文件。</p>
+<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><h2 id="1-scanner"><a href="#1-scanner" class="headerlink" title="* 1 scanner"></a>* 1 scanner</h2><h3 id="1-1-思路"><a href="#1-1-思路" class="headerlink" title="1.1 思路"></a>1.1 思路</h3><p>采用TCP Connect方式扫描，如果能与目标端口成功建立连接则目标端口开放。</p>
+<h3 id="1-2-关键接口调用"><a href="#1-2-关键接口调用" class="headerlink" title="1.2 关键接口调用"></a>1.2 关键接口调用</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> net = socket(AF_INET, SOCK_STREAM, <span class="number">0</span>);<span class="comment">//创建socket标识符</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">sa</span>;</span></span><br><span class="line"><span class="keyword">int</span> err = connect(net, (struct sockaddr *)&amp;sa, <span class="keyword">sizeof</span>(sa));<span class="comment">//建立连接</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-sniffer"><a href="#2-sniffer" class="headerlink" title="* 2 sniffer"></a>* 2 sniffer</h2><h3 id="2-1-思路"><a href="#2-1-思路" class="headerlink" title="2.1 思路"></a>2.1 思路</h3><p><img data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/QQ图片20210516164728.png" class="lozad"></p>
+<p>采用RAW SOCKET方式获取二层数据包，随后拆开数据链路层输出双方mac地址，并将payload传入下一层拆包拆出IP头和IP层payload。随后根据IP头中解析出来的Protocol选择合适的协议解析过程进行具体的解析。</p>
+<h3 id="2-2-关键接口调用"><a href="#2-2-关键接口调用" class="headerlink" title="2.2 关键接口调用"></a>2.2 关键接口调用</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sr = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ALL));  <span class="comment">//创建socket标识符</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> *buffer = (<span class="keyword">unsigned</span> <span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">2048</span>);</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr</span> <span class="title">saddr</span>;</span></span><br><span class="line"><span class="keyword">int</span> saddr_size = <span class="keyword">sizeof</span>(saddr);</span><br><span class="line">recvfrom(sr, buffer, <span class="number">2048</span>, <span class="number">0</span>, &amp;saddr, (<span class="keyword">socklen_t</span> *)&amp;saddr_size);<span class="comment">//获取数据链路层数据包</span></span><br><span class="line"><span class="comment">/* 获取MAX首部 */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ether_header</span> *<span class="title">ethhdr</span> = (<span class="title">struct</span> <span class="title">ether_header</span> *)<span class="title">buffer</span>;</span><span class="comment">//具体操作看结构体</span></span><br><span class="line"><span class="comment">/* 获取IP首部 */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">iphdr</span> *<span class="title">iph</span> = (<span class="title">struct</span> <span class="title">iphdr</span> *)<span class="title">buffer</span>;</span><span class="comment">//具体操作看结构体</span></span><br><span class="line"><span class="comment">/* 获取TCP首部 */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">iphdr</span> *<span class="title">iph</span> = (<span class="title">struct</span> <span class="title">iphdr</span> *)<span class="title">buffer</span>;</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">short</span> iphdrlen = iph-&gt;ihl * <span class="number">4</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tcphdr</span> *<span class="title">tcph</span> = (<span class="title">struct</span> <span class="title">tcphdr</span> *)(<span class="title">buffer</span> + <span class="title">iphdrlen</span>);</span><span class="comment">//具体操作看结构体</span></span><br><span class="line"><span class="comment">/* 获取UDP首部 */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">iphdr</span> *<span class="title">iph</span> = (<span class="title">struct</span> <span class="title">iphdr</span> *)<span class="title">buffer</span>;</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">short</span> iphdrlen = iph-&gt;ihl * <span class="number">4</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">udphdr</span> *<span class="title">udph</span> = (<span class="title">struct</span> <span class="title">udphdr</span> *)(<span class="title">buffer</span> + <span class="title">iphdrlen</span>);</span><span class="comment">//具体操作看结构体</span></span><br></pre></td></tr></table></figure>
+<h1 id="Part-2-课后习题"><a href="#Part-2-课后习题" class="headerlink" title="Part 2 课后习题"></a><center><font color="#DC143C">Part 2 课后习题</font></center></h1><h1 id="第1章-网络安全基础"><a href="#第1章-网络安全基础" class="headerlink" title="第1章 网络安全基础"></a>第1章 网络安全基础</h1><h2 id="1-1-什么是网络体系结构？比较ISO-OSI和TCP-IP这两个标准。"><a href="#1-1-什么是网络体系结构？比较ISO-OSI和TCP-IP这两个标准。" class="headerlink" title="1.1 什么是网络体系结构？比较ISO/OSI和TCP/IP这两个标准。"></a>1.1 什么是网络体系结构？比较ISO/OSI和TCP/IP这两个标准。</h2><p>网络体系结构是指通信系统的整体设计，它为网络硬件、软件、协议、存取控制和拓扑提供标准。</p>
+<p>比较两种标准：</p>
+<ol>
+<li><strong>定义</strong>：OSI（Open System Interconnect），即开放式系统互连，一般都叫OSI参考模型，是ISO组织在1985年研究的网络互连模型。TCP/IP（Transmission Control Protocol/Internet Protocol，传输控制协议/网际协议）是指能够在多个不同网络间实现信息传输的协议簇。</li>
+<li><strong>层次结构</strong>：OSI参考模型与TCP/IP模型都采用了分层体系结构，将庞大而复杂的问题转化为着干个较小且易于处理的子问题。不同的是OSl参考模型划分7层，分别是物理层、数据链路层、网络层、传输层、会话层、表示层和应用层，而TCP/IP参考模型最多划分了5个层次，分别是物理层，数据链路层、网络层、传输层和应用层，将OSI参考模型中的高三层合并为一层统称应用层。有些情况甚至只有三个或四个层次。</li>
+<li><strong>层次关系</strong>：相同之处：都是对等的层间通信；不同之处：TCP/IP参考模型比OSI参考模型层次更清晰简练。</li>
+<li><strong>功能</strong>：在功能上，大致相同，在两个模型中，传输层及以上的各层都是为了通信的进程提供点到点、与网络无关的传输服务；TCP/IP参考模型比OSI参考模型有更好的网络管理功能。</li>
+<li><strong>数据传输原理</strong>：在OSI参考模型中数据的传输和TCP/IP模型原理是完全一样的，只不过OSI参考模型还要加上对表示层和会话层数据单元的封装。</li>
+<li><strong>缺陷</strong>：OSI模型将“服务”与“协议”的定义结合起来，使得参考模型变得格外复杂，使它的实现是困难的。同时，寻址、流控与差错控制在每一层里都重复出现，必然降低系统效率。而TCP/IP在服务、接口与协议的区别上不清楚。一个好的软件工程应该将功能与实现方法区分开来，TCP/IP恰恰没有很好地做到这点，这就使得TCP/IP模型对于使用新技术的指导意义不够。另外，TCP/IP的网络层本身并不是实际的一层，它定义了网络层与数据链路层的接口。物理层与数据链路层的划分是必要和合理的，一个好的参考模型应该将它们区分开来，而TCP/IP参考模型却没有做到这点。</li>
+</ol>
+<h2 id="1-2-路由器是一种常用的网络互联产品，如果某个单位购买了一台路由器，但是该单位没有专业维护人员，于是厂家就通过路由器的内部端口进行远程维护，请讨论这种行为的安全性？并分析其优缺点。"><a href="#1-2-路由器是一种常用的网络互联产品，如果某个单位购买了一台路由器，但是该单位没有专业维护人员，于是厂家就通过路由器的内部端口进行远程维护，请讨论这种行为的安全性？并分析其优缺点。" class="headerlink" title="1.2  路由器是一种常用的网络互联产品，如果某个单位购买了一台路由器，但是该单位没有专业维护人员，于是厂家就通过路由器的内部端口进行远程维护，请讨论这种行为的安全性？并分析其优缺点。"></a>1.2  路由器是一种常用的网络互联产品，如果某个单位购买了一台路由器，但是该单位没有专业维护人员，于是厂家就通过路由器的内部端口进行远程维护，请讨论这种行为的安全性？并分析其优缺点。</h2><p>安全性：不安全。通过路由器的内部端口进行远程维护，会引发一系列问题：一方面可能会遭到网络中的攻击；另一方面该单位的重要信息可能会被厂家窃取。如22端口的ssh远程连接，可以通过爆破/openssh漏洞方式入侵；23端口的Telnet远程连接，可以通过爆破/嗅探/弱口令方式入侵。</p>
+<p>优点：方便快捷，节约维护成本。</p>
+<p>缺点：安全性较差，可能造成信息泄露等安全问题。</p>
+<h2 id="1-3-查阅有关资料，分析TCP-IP网络层、传输层和应用层的安全缺陷。"><a href="#1-3-查阅有关资料，分析TCP-IP网络层、传输层和应用层的安全缺陷。" class="headerlink" title="1.3  查阅有关资料，分析TCP/IP网络层、传输层和应用层的安全缺陷。"></a>1.3  查阅有关资料，分析TCP/IP网络层、传输层和应用层的安全缺陷。</h2><p>网络层：</p>
+<ol>
+<li>网络层协议IP以“尽力传输”作为在网络间转发数据分组的目标，因此IP协议只提供了简单的认证——基于IP地址的认证，并且没有对数据进行任何加密，直接采用明文传输。因此，有很多手段可以针对Internet网络层的缺点进行攻击，包括被动的扫描和各种类型的主动攻击，如IP地址欺骗、碎片攻击、ICMP攻击、路由攻击、ARP攻击。</li>
+</ol>
+<p>传输层：</p>
+<ol>
+<li>TCP 协议：就是通过预测初始序列号来伪造 TCP 包，并且不需要得到回应。这样就可以使攻击者伪装成一台和服务器在同一个局域网上的一台可信任的机器。</li>
+<li>在TCP连接时，首先进行的是三次握手操作。如果发起连接请求的主机（客户端）在发出第一个连接请求的SYN包后突然掉线或者宕机，则被请求端（服务器端）在发出响应这个请求的SYN/ACK包后会因为得不到确认包而处于等待状态，称为半连接握手。在服务器端，通常有一个专门用于处理这种半连接的缓存（堆栈），所有未完成握手的连接会在缓存中排队，服务器端会不断重新尝试着发出SYN/ACK包，只有在等待一段时间后仍然得不到客户端的确认包，服务器才关闭这个连接。如果在短时间内大量出现这样的半连接握手，服务器就会忙于应付而无法响应正常的SYN请求，当这种半连接足够多时，服务器会因为堆栈溢出而崩溃。</li>
+<li>TCP传输的可靠性依赖于三次握手所实现的事先连接和收发双方不断的相互确认。如果在规定时间内没有收到确认数据包，那么原先传输的数据包为被重新传输。如果攻击者通过某种方法使得目标主机无法收到通信对方的确认数据包，那么目标主机会一直不断重新发出数据包，并一直等待，直到资源耗尽而崩溃。</li>
+<li>在很多操作系统中，为了方便测试而开放了7号端口（echo）和19号端口（ chargen ）。7号端口会将收到的字符一字不差的送回去，如果其中遇到回车符号，则会双倍返还。攻击者首先构造一个目标端口号为7的UDP包，将其封装在一个源地址为目标主机、目标地址是目标主机所在网络的广播地址的IP包内并将其发出。目标网络路由器接收到这样的广播包后会向网络中的所有主机都转发这个数据包，因为目标端口是7号端口，因此所有收到广播报文的主机都会向目标主机发出回送报文，只要目标网络内主机数量足够多，就可以很快淹没目标主机，从而达到攻击的目的。</li>
+</ol>
+<p>应用层：</p>
+<ol>
+<li>用于实现网络设备名字到IP地址映射的网络服务的DNS，可能遭受DNS攻击，将用户引向攻击者指定的主机。</li>
+<li>电子邮件系统中存在诸多安全漏洞，比如Hotmail Service漏洞、sendmail漏洞等。</li>
+<li>远程登录协议(Telnet)，可以通过爆破/嗅探/弱口令方式入侵。</li>
+<li>ssh远程连接，可以通过爆破/openssh漏洞方式入侵</li>
+</ol>
+<h2 id="1-4-在计算机网络安全特征中，如何保证用户的真实性？"><a href="#1-4-在计算机网络安全特征中，如何保证用户的真实性？" class="headerlink" title="1.4  在计算机网络安全特征中，如何保证用户的真实性？"></a>1.4  在计算机网络安全特征中，如何保证用户的真实性？</h2><ol>
+<li><strong>数字签名</strong>：保障信息的真实性，保证信息的不可否认性。</li>
+<li><strong>公证</strong>：请求网络管理或者中介机构证明信息来源者身份的真实性。</li>
+<li><strong>身份识别与确认</strong>：用户和密码、验证用户的手机号码、求用户提交身份证的正反面、要求用户提供手持身份证照片、对用户进行视频验证、生物特征识别技术等。</li>
+</ol>
+<h2 id="1-5-TCP-IP存在各种安全问题，为什么还是目前使用的主流标准呢？"><a href="#1-5-TCP-IP存在各种安全问题，为什么还是目前使用的主流标准呢？" class="headerlink" title="1.5  TCP/IP存在各种安全问题，为什么还是目前使用的主流标准呢？"></a>1.5  TCP/IP存在各种安全问题，为什么还是目前使用的主流标准呢？</h2><p>　　TCP/IP刚开始出现时，主要在大学、研究所和政府机构使用，设计者认为大家都是君子，因此对网络安全方面考虑较少。随着Internet的快速发展，越来越多的人开始使用TCP/IP。TCP/IP的用户数量非常庞大，事实上已成为通用的工业标准，而且目前又不能设计出一种全新的协议来取代TCP/IP，因此TCP/IP还是目前使用的主流标准。</p>
+<p>　　当然，为解决TCP/IP存在的安全问题，在各个层次加上相应的安全协议。</p>
+<h2 id="1-6-简要概述“棱镜门”事件折射出的我国目前网络安全面临的主要威胁。"><a href="#1-6-简要概述“棱镜门”事件折射出的我国目前网络安全面临的主要威胁。" class="headerlink" title="1.6  简要概述“棱镜门”事件折射出的我国目前网络安全面临的主要威胁。"></a>1.6  简要概述“棱镜门”事件折射出的我国目前网络安全面临的主要威胁。</h2><ol>
+<li><strong>源于国家层面的威胁</strong>：随着信息技术的发展，国家以及政治阵营间的竞争和对抗已从既有的军事、经济竞争和意识形态渗透延伸至网络信息对抗与防御，从而产生了国家间的震慑与威胁。其中最具代表性的当属美国。美国网络安全体系中所包含的中央情报局、国家安全局和国土安全部扮演了网络信息防御、渗透和打击的核心角色。目前，在全球范围内仅有美国提出了主动就进行网络攻击的战略部署，在其国家安全局领导下的网络作战部队无论在规模、防御和攻击能力还是技术水平方面都是其他各国难以抗衡的。作为全球范围内最大的情报组织，美国中央情报局在全球诸多国家和地区已秘密开展各项渗透工作。</li>
+<li><strong>恐怖组织的威胁</strong>：美国“9*11”恐怖袭击事件之后，恐怖组织以及极端宗教、民族分裂三股势力发展迅猛。这三股势力已开始利用网络技术和手段进行各种鼓吹和发展活动。不仅如此，利用网络系统的漏洞对各国重点行业关键信息系统和基础设施进行网络攻击已成为近年来这三股势力进行破坏和恐怖活动的新型手段。恐怖活动的网络化不仅是我国面临的重要网络安全威胁，也已成为全球各国开展反恐工作的重点关注对象。</li>
+<li><strong>经济犯罪的威胁</strong>：随着信息技术在金融服务中的广泛应用，许多跨国犯罪团伙和组织利用普通民众网络安全意识淡薄的特点预谋、策划以及实施的网络诈骗和电信诈骗案件一直持续增加。 通过对国内破获的网络诈骗案件的分析可知金融服务系统的安全漏洞是犯罪分子寻找可乘之机的主要根源。 安全漏洞具有不可完全消除的特性。随着金融信息服务的日益普及，网络经济犯罪的可乘之机也日益增加，所造成的危害和影响也随之逐渐增大。</li>
+<li><strong>黑客团体的威胁</strong>：黑客团体在网络空间安全方面所造成的威胁也已日益增强。他们大多打着反对全球化、参与国际热点政治事件、鼓吹“无政府主义”和宣扬极端思潮的旗号在全球范围内进行网络攻击。 黑客团体不仅对中国的网络安全造成了巨大威胁，对世界各国所造成的威胁也是不容小觑的。</li>
+<li><strong>极端个人的威胁</strong>：随着“维基解密””“棱镜门”等事件的爆发，极端个人利用网络技术挑战整个国家乃至世界的趋势也日益受到关注。</li>
+</ol>
+<h1 id="第2章-常见的网络攻击技术"><a href="#第2章-常见的网络攻击技术" class="headerlink" title="第2章 常见的网络攻击技术"></a>第2章 常见的网络攻击技术</h1><h2 id="网络攻击中的被动攻击和主动攻击"><a href="#网络攻击中的被动攻击和主动攻击" class="headerlink" title="网络攻击中的被动攻击和主动攻击"></a>网络攻击中的被动攻击和主动攻击</h2><p>被动攻击即窃听,是对系统的保密性进行攻击,如搭线窃听、对文件或程序的非法复制等,以获取他人的信息。被动攻击又分为两类:一类是获取消息的内容，另一类是进行业务流分析；抗击这种攻击的重点在于预防而非检测；主动攻击包括对数据流的篡改或产生某些假的数据流。分为3类：①中断 是对系统的可用性进行攻击。②篡改 是对系统的完整性进行攻击。③伪造 是对系统的真实性进行攻击。抗击主动攻击的主要途径是检测,以及对此攻击造成的破坏进行恢复。</p>
+<h2 id="重放攻击原理及防范"><a href="#重放攻击原理及防范" class="headerlink" title="重放攻击原理及防范"></a>重放攻击原理及防范</h2><p>原理：重放攻击(replay attack) 又称重播攻击、回放攻击或新鲜性攻击(freshness attack)等，是指攻击者向目标主机(A)发送一个或多个A已接收过的包(特别是在认证的过程中，用于认证用户身份所接收的包，这个包往往是其他主机所发出的合法认证包)。重放攻击会不断恶意或欺诈性地重复发起一个有效的数据传输来达到欺骗系统的目的，主要用于身份认证过程，破坏认证的安全性。</p>
+<p>防范：挑战—应答机制：(1)客户端向系统申请登录。(2)系统发送挑战值（数值一般特别大）给客户端。(3)客户端计算相应的应答值(可以用MD5算法等计算应答值)。(4)客户端发送应答值给系统。(5)系统通过同样的算法判断应答值是否正确。(6)如果正确则通过认证，允许用户继续后面的操作,认证结束;如果不正确则断开连接,结束。</p>
+<p>时间戳：当主机A接收到一个报文时，当且仅当该报文包含了一 个时间戳，且该时间戳对于 A而言是足够接 近当前时刻的,A才认为该报文是合法的。</p>
+<p>序号：通信双方通过在报文中添加双方都认可的序列号（尽量避免具有一定的规律性）来判断报文的新鲜性，进而判断是否合法。</p>
+<h2 id="SQL注入攻击原理和步骤"><a href="#SQL注入攻击原理和步骤" class="headerlink" title="SQL注入攻击原理和步骤"></a>SQL注入攻击原理和步骤</h2><p>原理：SQL注入攻击通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作；</p>
+<p>步骤：1）判断是否存在SQL注入漏洞；2）分析数据库服务器类型；3）确定XP_CMDSHELL可执行情况；4）发现Web虚拟目录；5）上传ASP木马；6）得到系统的管理员权限；</p>
+<h2 id="病毒是特洛伊木马吗，二者关系"><a href="#病毒是特洛伊木马吗，二者关系" class="headerlink" title="病毒是特洛伊木马吗，二者关系"></a>病毒是特洛伊木马吗，二者关系</h2><p>不是；病毒特征是自我复制、传播、破坏电脑文件，对电脑造成数据上不可逆转的损坏。而木马特征是伪装成正常应用骗取用户信任而入侵，潜伏在电脑中盗取用户资料与信息，一般不会自我复制。</p>
+<h2 id="特洛伊木马为什么不容易发现和删除"><a href="#特洛伊木马为什么不容易发现和删除" class="headerlink" title="特洛伊木马为什么不容易发现和删除"></a>特洛伊木马为什么不容易发现和删除</h2><p>木马拥有较强的隐蔽性，通常隐藏在其他文件中不易被发现；其次木马有很强的顽固性，即使发现了也很难发现。例如木马schoolbus 1.60版本和 2.0版本，启动位置是在 c:\windows\system\runonce.exe中，用户很难修改这个文件，只有重新安装这个文件才可以排除木马；再者木马还有一定的潜伏的能力：表面上的木马被发现并删除以后，后备的木马在一定的条件下会跳出来。</p>
+<h2 id="分析一种针对分布式拒绝服务攻击的防范措施"><a href="#分析一种针对分布式拒绝服务攻击的防范措施" class="headerlink" title="分析一种针对分布式拒绝服务攻击的防范措施"></a>分析一种针对分布式拒绝服务攻击的防范措施</h2><p>目前基于目标计算机系统的防范方法主要三类：网关防范、路由器防范、主机防范；</p>
+<p>网关防范就是利用专门技术和设备在网关上防范DDOS攻击，例如用透明桥接入网络的方正防火墙或方正黑鲨等硬件产品。网关防范主要采用的技术有SynCookie方法、基于IP访问记录的HIP方法、客户计算瓶颈方法。SynCookie方法是在建立TCP连接时，要求客户端响应一个数字回执，来证明自己的真实性。SynCookie方法解决了目标计算机系统的半开连接队列的有限资源问题，从而成为目前被最广泛采用的DDOS防范方法；</p>
+<p>HIP方法采用行为统计方法区分攻击包和正常包，对所有访问IP建立信任级别。当发生DDOS攻击时，信任级别高的IP有优先访问权，从而解决了识别问题。</p>
+<p>客户计算瓶颈方法则将访问时的资源瓶颈从服务器端转移到客户端，从而大大提升分布式拒绝服务攻击的代价，例如资源访问定价方法。</p>
+<h2 id="交换机有被监听的风险吗"><a href="#交换机有被监听的风险吗" class="headerlink" title="交换机有被监听的风险吗"></a>交换机有被监听的风险吗</h2><p>交换机就像十字路口，网线就像马路，理论上通过网线和交换机的数据是可以被监听的，就像马路上开的车是什么车牌，只要在路边上的人，都能看到。</p>
+<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><h2 id="能够用于身份认证的人体生物特征有哪些"><a href="#能够用于身份认证的人体生物特征有哪些" class="headerlink" title="能够用于身份认证的人体生物特征有哪些"></a>能够用于身份认证的人体生物特征有哪些</h2><p>声音、指纹、面部、视网膜、掌纹、虹膜、笔迹、击键、DNA</p>
+<h2 id="PKI的核心服务有哪些"><a href="#PKI的核心服务有哪些" class="headerlink" title="PKI的核心服务有哪些"></a>PKI的核心服务有哪些</h2><p>认证、完整性、密钥管理、简单机密性</p>
+<h2 id="PKI的认证服务有哪些优点"><a href="#PKI的认证服务有哪些优点" class="headerlink" title="PKI的认证服务有哪些优点"></a>PKI的认证服务有哪些优点</h2><p>(1)使用PKI的认证可以进行实体强鉴别;(2)实体可用自己的签名私钥向本地或远程环境的实体认证自己的身份，实现了网络环境身份鉴别;(3)签名和私钥可以用于数据来源认证。</p>
+<h2 id="PKI有哪些组成部分，它们之间存在哪些关系"><a href="#PKI有哪些组成部分，它们之间存在哪些关系" class="headerlink" title="PKI有哪些组成部分，它们之间存在哪些关系"></a>PKI有哪些组成部分，它们之间存在哪些关系</h2><p>一个PKI 系统需要多个组件实体之间的联合操作，主要包括认证中心CA、注册中心（Registration Authority, RA）、LDAP（LightWeight Directory Access Protocol）目录服务器、应用接口等;</p>
+<p>CA 是整个PKI 系统中的可信第三方，它保证了公钥证书的合法性，是整个PKI 系统的核心，负责对用户证书的签发、作废、更新和管理；RA 负责对证书申请用户进行审查，对通过审核的用户进行注册，并协助CA 对证书的签发和管理；目录服务器用于存取证书和证书作废表（CRL, Certificate Revocation List）信息；一个完整的PKI 必须提供良好的应用接口系统，使得各种各样的应用能够以安全、一致、可信的方式与PKI 交互，确保安全网络环境的完整性和易用性。</p>
+<h2 id="PKI系统是如何实现认证、保密、不可否认性的"><a href="#PKI系统是如何实现认证、保密、不可否认性的" class="headerlink" title="PKI系统是如何实现认证、保密、不可否认性的"></a>PKI系统是如何实现认证、保密、不可否认性的</h2><p>PKI采用证书管理密钥，通过可信 CA将用户的身份信息与其公钥相捆绑，提供身份认证服务；基于PKI的认证服务通过数字签名和密码技术来确认身份。、</p>
+<h2 id="SSO的作用，有哪些模型"><a href="#SSO的作用，有哪些模型" class="headerlink" title="SSO的作用，有哪些模型"></a>SSO的作用，有哪些模型</h2><p>作用：一次登录，全部访问</p>
+<p>模型：基于经纪人的SSO模型，基于代理的SSO模型、基于网关的SSO模型、基于令牌的SSO模型</p>
+<h1 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h1><h2 id="举例说明自主访问控制、强制访问控制、RBAC三种技术的应用场合"><a href="#举例说明自主访问控制、强制访问控制、RBAC三种技术的应用场合" class="headerlink" title="举例说明自主访问控制、强制访问控制、RBAC三种技术的应用场合"></a>举例说明自主访问控制、强制访问控制、RBAC三种技术的应用场合</h2><p><strong>DAC（自主访问控制） 就是让客体的所有者来定义访问控制规则</strong>。想象一下，你想要从图书馆中拿走一本书。这个时候，管理员说，“你经过这本书的所有人同意了吗？”这个过程就是 DAC。</p>
+<p><strong>MAC (强制访问控制）是一种基于安全级别标签的访问控制策略</strong>。我们还是用图书馆的例子来解释一下，当你在图书馆排队借书的时候，听到管理员说：“初中生不能借阅高中生的书籍。”这就是一种强制访问控制。在互联网中，主体和客体被划分为“秘密、私人、敏感、公开”这四个级别。MAC 要求对所有的主体和客体都打上对应的标签，然后根据标签来制定访问控制规则。</p>
+<p><strong>rule-BAC（RBAC) 就是制定某种规则，将主体、请求和客体的信息结合起来进行判定</strong>。在 rule-BAC 的控制机制中，如果你想要在图书馆借书，管理员会说，“根据规定，持有阅览证就可以借书。”</p>
+<h2 id="个人防火墙是否存在安全缺陷"><a href="#个人防火墙是否存在安全缺陷" class="headerlink" title="个人防火墙是否存在安全缺陷"></a>个人防火墙是否存在安全缺陷</h2><p>存在，个人防火墙主要的缺点就是对公共网络只有一个物理接口。要记住，真正的防火墙应当监视并控制两个或更多的网络接口之间的通信。这样一来的话，个人防火墙本身可能会容易受到威胁，或者说是具有这样一个弱点，网络通信可以绕过防火墙的规则。</p>
+<h2 id="防火墙有哪两种基本策略以及应用场景"><a href="#防火墙有哪两种基本策略以及应用场景" class="headerlink" title="防火墙有哪两种基本策略以及应用场景"></a>防火墙有哪两种基本策略以及应用场景</h2><p>策略：1）未经明确允许的一律禁止；2）未经明确禁止的一律允许</p>
+<p>从安全性的角度考虑的话第一种策略更可取一些，从灵活性以及使用方便性的角度考虑的话，第二种策略则</p>
+<p>更适合</p>
+<h2 id="防火墙能否保证内部网络的绝对安全"><a href="#防火墙能否保证内部网络的绝对安全" class="headerlink" title="防火墙能否保证内部网络的绝对安全"></a>防火墙能否保证内部网络的绝对安全</h2><p>不能，防火墙在设置好的情况下,只能防止外部网络对你内部网络的入侵，无法禁止内部用户对网络主机的各种攻击，对此必须要求内部人员了解网络攻击的各种类型，并懂得保护自己的用户口令和周期性变换口令的必要性。</p>
+<h2 id="包过滤防火墙工作于OSI哪一层，检测IP数据包的哪些部分"><a href="#包过滤防火墙工作于OSI哪一层，检测IP数据包的哪些部分" class="headerlink" title="包过滤防火墙工作于OSI哪一层，检测IP数据包的哪些部分"></a>包过滤防火墙工作于OSI哪一层，检测IP数据包的哪些部分</h2><p>网络层和传输层；</p>
+<p>检查以下内容：</p>
+<p>1）源IP 地址和目的IP 地址；<br>2）上层协议（ICP、UDP、ICMP 等）；<br>3）TCP/UDP 源端口和TCP/UDP 目标端口；<br>4）ICMP 消息类型；<br>5）TCP 包头中的ACK 位等。</p>
+<h2 id="包过滤技术与Sniffer的异同点"><a href="#包过滤技术与Sniffer的异同点" class="headerlink" title="包过滤技术与Sniffer的异同点"></a>包过滤技术与Sniffer的异同点</h2><p>同：都可以监听网络上的IP包；异：包过滤技术还可以决定检测到的包的舍弃与否；包过滤技术的原理在于利用路由器监视并过滤网络上流入流出的IP包，拒绝发送可疑的，而sniffer是一种利用以太网的特性把网络适配卡置为杂乱模式状态的工具，一旦网卡设置为这种模式，它就能接收传输在网络上的每一个信息包。</p>
+<h2 id="相比双宿网关防火墙，屏蔽子网防火墙有哪些特点"><a href="#相比双宿网关防火墙，屏蔽子网防火墙有哪些特点" class="headerlink" title="相比双宿网关防火墙，屏蔽子网防火墙有哪些特点"></a>相比双宿网关防火墙，屏蔽子网防火墙有哪些特点</h2><p>1、双宿网关防火墙中内部网络与外部网络之间是一个代理服务器，而屏蔽子网防火墙中内外网络之间是DMZ，其中包括两个路由器和一个堡垒主机；</p>
+<p>2、双宿网关防火墙中代理服务器是通过一台主机进行内部网络与外部网络之间的隔离，因此，充当代理服务器的主机很容易收到外部攻击。入侵者只要破坏了这一层的保护就可以很容易地进入内部网络。屏蔽子网防火墙中对代理服务器的改进是在内网和外网之间建立一个子网进行隔离，在此构造下堡垒主机是最容易受侵袭的，万一发生堡垒主机被入侵控制的情况，对于采用屏蔽子网的网络体系结构，入侵者仍然不能直接侵袭内部网络，因为内部网络受到内部过滤路由器的保护；</p>
+<p>3、双宿网关防火墙对内外网络通信的安全检测都是通过代理服务器进行的，而屏蔽子网防火墙则分别通过内部防火墙和外部防火墙来进行对内外网络信息的安全检测。</p>
+<h2 id="比较应用层代理、传输层代理和SOCKS代理的异同点"><a href="#比较应用层代理、传输层代理和SOCKS代理的异同点" class="headerlink" title="比较应用层代理、传输层代理和SOCKS代理的异同点"></a>比较应用层代理、传输层代理和SOCKS代理的异同点</h2><p>异：应用层代理工作在TCP/IP模型的应用层之上，它只能用于支持代理的应用层协议（如HTTP，FTP）。它提供的控制最多，但是不灵活，必须要有相应的协议支持。如果协议不支持代理（如SMTP和POP），那就只能在应用层以下代理，也即传输层代理。传输层代理直接与TCP层交互，更加灵活。要求代理服务器具有部分真正服务器的功能：监听特定TCP或UDP端口，接收客户端的请求同时向客户端发出相应的响应。另一种代理需要改变客户端的IP栈，即SOCKS代理。它是可用的最强大、最灵活的代理标准协议。SOCKS4允许代理服务器内部的客户端完全地连接到外部的服务器，SOCKS5增加了对客户端的授权和认证，因此它是一种安全性较高的代理。</p>
+<p>同：能节约IP地址、能通过缓存加快浏览速度、都有较好的安全性、都可以进行过滤、都有强大的日志功能、都对服务器的主机有强大的依赖性。</p>
+<h2 id="概述分布式防火墙的工作原理及其优势"><a href="#概述分布式防火墙的工作原理及其优势" class="headerlink" title="概述分布式防火墙的工作原理及其优势"></a>概述分布式防火墙的工作原理及其优势</h2><p>原理：安全策略的制定采用由中心策略服务器集中定义方式，而安全策略的执行则由相关主机节点独立实施；安全日志由主机节点分散产生，而安全日志的保存则集中到中心策略服务器上。由此，我们可以看出分布式防火墙规则的制定还是采用集中定义和更新的方式，然后将这些定义好的规则策略分发到各个相关节点，最后再在每个受保护的主机节点上独立实施执行。</p>
+<p>优势：防火墙不再受限于拓扑结构，并且将单点防护变成了多点防护，即全民皆兵，从而大大提高了防护能力和数据交换效率。同时，分布式防火墙不会再有边界防火墙存在的瓶颈问题，吞吐量不再受防火墙的速率限制，某一点的连接失败不再会隔离整个网络。</p>
+<h2 id="当前防火墙的最新发展状况"><a href="#当前防火墙的最新发展状况" class="headerlink" title="当前防火墙的最新发展状况"></a>当前防火墙的最新发展状况</h2><p>1、防火墙的防御能力，从简单包过滤技术到统一威胁管理技术，在过去多年也已经发生了巨大的革新，而随着AI技术的快速发展及在防火墙中的不断应用，新一代防火墙的防御能力将再次得到升华。可以预期，随着AI算力的不断提升及AI算法的不断成熟，融入AI技术的新一代防火墙必将成为未来防火墙市场发展的主流。</p>
+<p>2、多级过滤技术，是指防火墙采用多级过滤措施，并辅以鉴别手段。在分组过滤（网络层）一级，过滤掉所有的源路由分组和假冒的IP源地址；在传输层一级，遵循过滤规则，过滤掉所有禁止出或/和入的协议和有害数据包如nuke包、圣诞树包等；在应用网关（应用层）一级，能利用FTP、SMTP等各种网关，控制和监测Internet提供的所用通用服务。</p>
+<p>3、使防火墙具有病毒防护功能。现在通常被称之为”病毒防火墙”，当然目前主要还是在个人防火墙中体现，因为它是纯软件形式，更容易实现。</p>
+<h1 id="第五章习题"><a href="#第五章习题" class="headerlink" title="第五章习题"></a>第五章习题</h1><h2 id="1-什么是-VPN？VPN-有哪些主要功能？"><a href="#1-什么是-VPN？VPN-有哪些主要功能？" class="headerlink" title="1. 什么是 VPN？VPN 有哪些主要功能？"></a>1. 什么是 VPN？VPN 有哪些主要功能？</h2><p><strong>定义：</strong>通过私有隧道技术在公共网络上仿真一条点到点专线，从而达到信息安全传输的目的。这就是VPN</p>
+<p><strong>主要功能：</strong></p>
+<ul>
+<li><p>数据封装 ：VPN 技术提供带寻址报头的数据封装机制； </p>
+</li>
+<li><p>认证：VPN 连接中包括两种认证方式——单向认证和双向认证。单向认证是指在 VPN 连接建立之前，VPN 服务器对请求建立连接的 VPN 客户机进行身份验证，核 查其是否为合法的授权用户。如果使用双向验证，还需进行 VPN 客户机对 VPN 服 务器的身份验证，以防伪装的非法服务器提供错误信息；</p>
+</li>
+<li><p>数据完整性和合法性认证：检查链路上传输的数据是否出自源端以及在传输过程中 是否经过篡改。VPN 链路中传输的数据包含密码检查，密钥只由发送者和接受者 双方共享； </p>
+</li>
+<li>数据加密：数据由发送者加密，接收者解密，以确保其在公共网络上的传输安全。 加解密过程要求发送方和接收方共享密钥。</li>
+</ul>
+<h2 id="2-根据访问方式的不同，VPN-可以分为哪几类？"><a href="#2-根据访问方式的不同，VPN-可以分为哪几类？" class="headerlink" title="2. 根据访问方式的不同，VPN 可以分为哪几类？"></a>2. 根据访问方式的不同，VPN 可以分为哪几类？</h2><p>按照不同的用途，虚拟专用网可以分为三类： </p>
+<ul>
+<li>内联网 VPN：在机构的各个分支机构之间建立的虚拟专用网，称为“内联网虚拟专 用网”；</li>
+<li>远程访问 VPN：在分支机构与远地员工等移动用户之间建立虚拟专用网，称为“远 程访问虚拟专用网”；</li>
+<li>外联网 VPN：在某个机构与其它相关业务单位、合作伙伴等之间建立虚拟专用网， 称为“外联网虚拟专用网”。</li>
+</ul>
+<h2 id="3-VPN-安全协议可以在哪些层次实现？各个层次分别包含哪些主要的安全协议？"><a href="#3-VPN-安全协议可以在哪些层次实现？各个层次分别包含哪些主要的安全协议？" class="headerlink" title="3. VPN 安全协议可以在哪些层次实现？各个层次分别包含哪些主要的安全协议？"></a>3. VPN 安全协议可以在哪些层次实现？各个层次分别包含哪些主要的安全协议？</h2><p><img data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/image-20210515212948750.png" class="lozad"></p>
+<h2 id="4-简要概述-PPTP-VPN-的工作原理，并指出其优缺点。"><a href="#4-简要概述-PPTP-VPN-的工作原理，并指出其优缺点。" class="headerlink" title="4. 简要概述 PPTP VPN 的工作原理，并指出其优缺点。"></a>4. 简要概述 PPTP VPN 的工作原理，并指出其优缺点。</h2><p><strong>工作原理：</strong>点对点隧道协议 PPTP 是一种支持多协议虚拟专用网的网络技术，它可以使远程用户通 过 Internet 安全地访问用户内部网。通过点对点隧道协议，远程用户可以通过 Windows XP、 Windows Vista 等操作系统以及其它支持点对点协议（PPP，Point-to-Point Protocol）的系统 拨号连接到 Internet 服务提供商（ISP，Internet Service Provider），再通过 Internet 与其内部 网连接。 PPTP 工作在 OSI 模型的第二层（数据链路层），它在所有通信流之上简单的建立了一 条加密隧道。PPTP 已被嵌入到 Windows 98 以后的各种微软操作系统中，用于 Microsoft 的 路由和远程访问服务。</p>
+<p><strong>优点</strong>是简单易行： PPTP/L2TP 对使用微软操作系统的用户来说很方便，因为微软已把它作为路由软 件的一部分； PPTP/L2TP 位于数据链路层，包括 IPv4 在内的多张网络协议可以采用它们作为链 路协议，支持流量控制；PPTP/L2TP 通过减少丢包来减少重传、改善网络性能。</p>
+<p><strong>缺点</strong>：PPTP 和 L2TP 对 PPP 协议本身并没有做任何修改，只是将用户的 PPP 帧基于 GRE 封装成 IP 报文。在两台计算机之间创建和打开数据通道，一旦通道打开，源和目 的用户身份就不再需要，这样可能带来问题；PPTP/L2TP 不对两个节点间的信息传输进行监视或控制； PPTP 和 L2TP 限制同时最多只能连接 255 个用户，可扩展性不强，且不适合于向 Ipv6 的转移； 端用户需要在连接前手工建立加密信道； 没有提供内在的安全机制，认证和加密受到限制，没有强加密和认证支持； 不支持企业与外部客户以及供应商之间会话的保密性需求，不支持外联网 VPN。 安全程度差是 PPTP/L2TP 最大的弱点。因此，PPTP 和 L2TP 最适合用于客户远程访问 虚拟专用网，而对于安全要求高的内部信息，用 PPTP/L2TP 传输与用明文传输的差别并不 大。</p>
+<h2 id="5-IPSec-的-AH-和-ESP-方式有何不同？为什么提供了-ESP-后还需要提供-AH？"><a href="#5-IPSec-的-AH-和-ESP-方式有何不同？为什么提供了-ESP-后还需要提供-AH？" class="headerlink" title="5. IPSec 的 AH 和 ESP 方式有何不同？为什么提供了 ESP 后还需要提供 AH？"></a>5. IPSec 的 AH 和 ESP 方式有何不同？为什么提供了 ESP 后还需要提供 AH？</h2><p>AH和ESP的最大区别有两个：一个是AH不提供加密服务，另一个是它们验证的范围不同，ESP不验证IP报头，而AH同时验证部分报头，所以需要结合使用AH和ESP才能保证IP报头的机密性和完整性。 AH为IP报头提供尽可能多的验证保护，验证失败的包将被丢弃，不交给上层协议解密，这种操作模式可以减少拒绝服务攻击成功的机会。</p>
+<p>AH 机制主要为通信提供完整性保护，当用户对于数据的保密性要求不高时，AH 能够 确保数据的完整性、提供数据源认证和防重放攻击，但 AH 不提供加密功能，数据以明文传 送。AH 不支持网络地址转换 NAT 和端口地址转换 PAT。</p>
+<p>ESP 机制能够确保数据的完整性、提供数据源认证、数据加密和防重放攻击。如果对数 据的保密性有要求，或者有局域网内用内部地址，采用了 NAT，那么就只能选择 ESP。应 用 ESP 时，接收方对于数据分组先认证后解密，可以降低 DoS 攻击的危险。</p>
+<h2 id="6-IPSec-的隧道操作提供了两种模式：隧道模式和传输模式，比较这两种方式各自的-优缺点，适用的场合。"><a href="#6-IPSec-的隧道操作提供了两种模式：隧道模式和传输模式，比较这两种方式各自的-优缺点，适用的场合。" class="headerlink" title="6.IPSec 的隧道操作提供了两种模式：隧道模式和传输模式，比较这两种方式各自的 优缺点，适用的场合。"></a>6.IPSec 的隧道操作提供了两种模式：隧道模式和传输模式，比较这两种方式各自的 优缺点，适用的场合。</h2><p><strong>隧道模式:</strong>适合点到点的连接，即主机与主机之间的 VPN 可以用传输模式。其数 据分组中的原始 IP 报头保留不动，在后面插入 AH 认证头或 ESP 的头部和尾部，仅对数据 净荷进行认证或加密，网络中的寻址直接根据数据的原始 IP 地址进行。</p>
+<p><strong>传输模式：</strong>适合用于 VPN 安全网关之间的连接， 即用于路由器、防火墙、VPN 集中器等网络设备之间。发送端的 VPN 安全网关对原始 IP 报文整体加密，再在前面加入一 个新的 IP 包头，用新的 IP 地址（接收端 VPN 的地址）将数据分组路由到接收端。</p>
+<p><strong>优缺点：</strong>在隧道模式下，IPSec 把 IPv4 数据包整体封装中，可以保护端到端的安全性。隧道模式 具有更高的安全性，但也会带来较大的系统开销。另外，采用隧道方式时，是对整个 IP 数 据包认证或加密，即隧道协议只能在 IP 协议之上进行，这种模式不支持其他网络协议。</p>
+<p><strong>使用场景：</strong>隧道模式可以适用于任何场景  传输模式只能适合pc到pc的场景</p>
+<h2 id="7-简要概述-MPLS-VPN-的组成部分及各部分功能。"><a href="#7-简要概述-MPLS-VPN-的组成部分及各部分功能。" class="headerlink" title="7.简要概述 MPLS VPN 的组成部分及各部分功能。"></a>7.简要概述 MPLS VPN 的组成部分及各部分功能。</h2><p>MPLS VPN 网络主要由 CE、PE 和 P 三大部分组成，</p>
+<ul>
+<li>用户网络边缘路由器 CE（Custom Edge Router）直接与服务提供商网络相连，它“感 知”不到 VPN 的存在；</li>
+<li>骨干网边缘路由器 PE（Provider Edge Router）与用户的 CE 直接相连，负责 VPN 业务接入，处理 VPN-IPv4 路由，是 MPLS 三层 VPN 的主要实现者；</li>
+<li>骨干网核心路由器 P（Provider Router）负责快速转发数据，不与 CE 直接相连。</li>
+<li>在 MPLS VPN 中，P、PE 设备需要支持 MPLS 的基本功能，CE 设备不必支持 MPLS。</li>
+</ul>
+<h2 id="8-MPLS-节点中的路由表是如何产生的？MPLS-VPN-中的标签在-IP-分组转发过程中-如何起作用？（我感觉考的可能性不大-老师给的重点里也没有这个）"><a href="#8-MPLS-节点中的路由表是如何产生的？MPLS-VPN-中的标签在-IP-分组转发过程中-如何起作用？（我感觉考的可能性不大-老师给的重点里也没有这个）" class="headerlink" title="8.MPLS 节点中的路由表是如何产生的？MPLS VPN 中的标签在 IP 分组转发过程中 如何起作用？（我感觉考的可能性不大 老师给的重点里也没有这个）"></a>8.MPLS 节点中的路由表是如何产生的？MPLS VPN 中的标签在 IP 分组转发过程中 如何起作用？（我感觉考的可能性不大 老师给的重点里也没有这个）</h2><p>路由器之间通过 IP 路由协议或静态路由产生正常的路由表；</p>
+<p>（1）MPLS 入口路由器根据目的地址查找路由表，找到其下一跳路由器的转发标签； （2）将该 IP 分组打上标签，转发给下一跳路由器； （3）下一跳路由器查找其 MPLS 标签转发表，替换分组中原有的标签后，继续转发； 当打有标签的 IP 包到达某路由器时，分组中上一站路由器的出站标签对应当前 路由器的入站标签。路由器不再根据目的地址查找路由表，而是根据标签查找 MPLS 标签转发表，选择出站的通路； （4）转发动作持续进行，直至到达出口路由器。出口路由器根据分组的目的地址查找 其 MPLS 标签转发表，发现自身就是目的地网络，于是弹出标签，送给相应端口 处理，标签交换过程结束。</p>
+<h2 id="9-SSL-握手协议分为几个阶段？每个阶段的主要功能是什么"><a href="#9-SSL-握手协议分为几个阶段？每个阶段的主要功能是什么" class="headerlink" title="9.SSL 握手协议分为几个阶段？每个阶段的主要功能是什么"></a>9.SSL 握手协议分为几个阶段？每个阶段的主要功能是什么</h2><p>SSL 握手协议包含两个阶段，第一个阶段用于建立私密性通信信道，第二个阶段用于客 户认证。</p>
+<h1 id="第六章习题"><a href="#第六章习题" class="headerlink" title="第六章习题"></a>第六章习题</h1><h2 id="1-入侵检测系统弥补了防火墙的哪些不足？"><a href="#1-入侵检测系统弥补了防火墙的哪些不足？" class="headerlink" title="1.入侵检测系统弥补了防火墙的哪些不足？"></a>1.入侵检测系统弥补了防火墙的哪些不足？</h2><p>入侵检测系统的建立可以尽早地发现异常网络访问行为，尽早地检测到入侵行为，并可 以尽早地消除入侵。如果说防火墙是网络的第一道关口，那么，入侵检测系统则是网络的第 二道关口。</p>
+<h2 id="2-比较基于主机和基于网络的入侵检测系统的优点与缺点。"><a href="#2-比较基于主机和基于网络的入侵检测系统的优点与缺点。" class="headerlink" title="2. 比较基于主机和基于网络的入侵检测系统的优点与缺点。"></a>2. 比较基于主机和基于网络的入侵检测系统的优点与缺点。</h2><p>p179 p180 太多了</p>
+<p>基于主机的入侵检查系统在速度上没有基于网络的入侵检查系统快捷</p>
+<h2 id="3-根据检测原理，入侵检测系统可以分为几类？其原理分别是什么？"><a href="#3-根据检测原理，入侵检测系统可以分为几类？其原理分别是什么？" class="headerlink" title="3. 根据检测原理，入侵检测系统可以分为几类？其原理分别是什么？"></a>3. 根据检测原理，入侵检测系统可以分为几类？其原理分别是什么？</h2><p>两类 基于主机 和基于网络 </p>
+<p>基于主机的入侵检测系统是通过学习以前的攻击形式，并选择合适的方法来抵御未来的 攻击。基于主机的 IDS 仍使用验证记录，但自动化程度大大提高，并发展了可迅速做出响 应的检测技术。通常，基于主机的 IDS 可监测系统、事件和 Window 下的安全记录以及 UNIX 环境下的系统记录。当有文件发生变化时，IDS 将新的记录条目与攻击标记相比较，看它们 是否匹配。如果匹配，系统就会向管理员报警并向别的目标报告，以便采取相应的措施进行 处理。</p>
+<p>基于网络的入侵检测系统对网络上流经的数据包进行分析。基于网络的 IDS 通常利用 一个运行在“混乱模式”下网络的适配器来实时监视并分析通过网络的所有通信业务。所谓 “混乱模式”是指能够监听本网段内的所有网络包。一旦检测到了攻击行为，IDS 的响应模块 进行通知、报警并对攻击采取相应的反应。反应因产品而异，但通常都包括通知管理员、中 断连接并保存会话记录。</p>
+<h2 id="4-操作系统审计痕迹与系统日志有哪些不同之处？"><a href="#4-操作系统审计痕迹与系统日志有哪些不同之处？" class="headerlink" title="4. 操作系统审计痕迹与系统日志有哪些不同之处？"></a>4. 操作系统审计痕迹与系统日志有哪些不同之处？</h2><p>系统日志会因人而异，不同操作人登录只有本人系统日志；操作系统审痕迹包括了所有有权才操作者的登陆轨迹，还包括了系统内部必要的痕迹</p>
+<p>操作系统审计迹一般是由操作系统的内核产生，它比系统日志保护得更好，更加详细。系统日志则比较简单明了，比较容易理解。许多基于主机的IDS被设计成一种支持集中式IDS的管理和报告基础结构，这种基础结构允许一个管理控制台跟踪多个主机。</p>
+<h2 id="5-查阅资料，简要概述-P2DR2-安全模型的基本思想。"><a href="#5-查阅资料，简要概述-P2DR2-安全模型的基本思想。" class="headerlink" title="5. 查阅资料，简要概述 P2DR2 安全模型的基本思想。"></a>5. 查阅资料，简要概述 P2DR2 安全模型的基本思想。</h2><p>形成“策略、防护、检测、响应、恢复”（Policy、Protection、 Detection、 Response、 Recovery）的P2DR2模型。这是一种动态的、自适应的安全处理模型。在风险处理时可以参考此模型，以适应安全风险和安全需求的不断变化，提供持续的安全保障。</p>
+<h2 id="6-按照实现方式分类，IPS-可以分为哪几类？简要概述它们各自的特点。"><a href="#6-按照实现方式分类，IPS-可以分为哪几类？简要概述它们各自的特点。" class="headerlink" title="6. 按照实现方式分类，IPS 可以分为哪几类？简要概述它们各自的特点。"></a>6. 按照实现方式分类，IPS 可以分为哪几类？简要概述它们各自的特点。</h2><p>1）防火墙与 IDS 的联动系统 2）在线网络入侵检测系统 3）七层交换机  4）应用入侵防御系统 5）混合交换机</p>
+<p>在线 NIDS 具有如下特点：  能够监视和保护大范围的服务器和网络；  不仅能够处理已知攻击，还可以通过配置通用规则，处理一些未知攻击；  作为传统 NIDS 的变体，仍然受限于 PC 架构下网卡抓包方式的性能问题。</p>
+<p>七层交换机具有如下特点：  采用专门的硬件来获得高性能，速度快，并且能够进行负载均衡和冗余配置；  无法进行完全的通话过程还原和深层次入侵分析，只能检测特征明显的已知攻击。</p>
+<p>应用入侵防御系统具有如下特点：  是一种 IPS 的软件实现，实施白名单过滤机制，对应用提供细粒度的防护；  实施前必须充分测试被保护的应用系统，且一旦应用升级，需要重新测试；  关键技术在于特定应用与操作系统间的交互机制和应用服务器的内存管理。</p>
+<h2 id="7-IDS-和-IPS-的区别与联系"><a href="#7-IDS-和-IPS-的区别与联系" class="headerlink" title="7. IDS 和 IPS 的区别与联系"></a>7. IDS 和 IPS 的区别与联系</h2><p>IPS 并不是防火墙和入侵检测系统的简单组合，它是一种有取舍地吸取了防火墙和入侵检测系统功能的一个新产品，其目的是为网络提供深层次的、有效的安全防护。 IPS 的防火墙功能比较简单，它串联在网络上，主要起对攻击行为进行阻断的作用，其本身 也可以当作 IP 防火墙来使用.IPS 的检测功能类似于 IDS，但相比较 IDS 缺乏实用价值的 响应机制而言，IPS 检测到攻击后可以采取行动有效阻止攻击，因此可以说 IPS 是一种建立 在 IDS 基础上的新生网络安全产品。</p>
+<h1 id="Part-3-去年试题"><a href="#Part-3-去年试题" class="headerlink" title="Part 3 去年试题"></a><center><font color="#DC143C">Part 3 去年试题</font></center></h1></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Dragon Liu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://Dragonliu2018.github.io/2021/03/29/网络安全应试/">https://Dragonliu2018.github.io/2021/03/29/网络安全应试/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Dragonliu2018.github.io">Dragon Liu</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/QQ图片20210329174639.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="prev-post pull-left"><a href="/2021/03/31/华为机试/"><img class="prev_cover lozad" data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/56_1500258024335_B16F33991AAD19B106ACB5FC96798E75.png" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/404.jpg'"><div class="label">上一篇</div><div class="prev_info"><span>华为机试</span></div></a></div><div class="next-post pull-right"><a href="/2021/03/28/java复习/"><img class="next_cover lozad" data-src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/java.png" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/404.jpg'"><div class="label">下一篇</div><div class="next_info"><span>java复习</span></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = false == true ? true : false;
+var verify = false == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'Pbjl2Wajl9och0xVbR5eqoH1-gzGzoHsz',
+  appKey:'PgxFh1wV6pyMMllhxs7NJijb',
+  placeholder:'Please leave your footprints',
+  avatar:'monsterid',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang:'zh-cn',
+  recordIP: true
+});</script></div></div></div><footer><div id="footer"><div class="copyright">&copy;2019 - 2021 By Dragon Liu</div><div class="framework-info"><span>驱动 </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly"><span>Butterfly</span></a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://dragonliu.tk">blog</a>!</div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><section class="rightside" id="rightside"><a id="to_comment" href="#post-comment"><i class="scroll_to_comment fa fa-comments"></i></a><i class="fa fa-book" id="readmode" title="阅读模式"> </i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换">繁</a><i class="nightshift fa fa-moon-o" id="nightshift" title="夜间模式"></i></section><div class=" " id="post_bottom"><div id="post_bottom_items"><a id="mobile_to_comment" href="#post-comment"><i class="mobile_scroll_to_comment fa fa-comments"></i></a><i class="fa fa-list" id="mobile_toc"></i><div id="toc_mobile"><div class="toc_mobile_headline">目录</div><ol class="toc_mobile_items"><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#Part-1-复习重点"><span class="toc_mobile_items-number">1.</span> <span class="toc_mobile_items-text">Part 1 复习重点</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#Ch1-网络安全基础"><span class="toc_mobile_items-number">2.</span> <span class="toc_mobile_items-text">Ch1 网络安全基础</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-1-网络安全的总的目标"><span class="toc_mobile_items-number">2.1.</span> <span class="toc_mobile_items-text">* 1.1 网络安全的总的目标</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-2-防范技术-主流网络安全技术"><span class="toc_mobile_items-number">2.2.</span> <span class="toc_mobile_items-text">* 1.2 防范技术(主流网络安全技术)</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-3-信息安全保障体系组成-PDRR"><span class="toc_mobile_items-number">2.3.</span> <span class="toc_mobile_items-text">1.3 信息安全保障体系组成(PDRR)</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-4-网络体系结构的深入理解、各层加密的作用"><span class="toc_mobile_items-number">2.4.</span> <span class="toc_mobile_items-text">* 1.4 网络体系结构的深入理解、各层加密的作用</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-5-帧、IP报文、TCP报文、UDP报文格式"><span class="toc_mobile_items-number">2.5.</span> <span class="toc_mobile_items-text">* 1.5 帧、IP报文、TCP报文、UDP报文格式</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#Ch2-常见的网络攻击技术"><span class="toc_mobile_items-number">3.</span> <span class="toc_mobile_items-text">Ch2 常见的网络攻击技术</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#2-1-网络攻击"><span class="toc_mobile_items-number">3.1.</span> <span class="toc_mobile_items-text">2.1 网络攻击</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-1-1-目的"><span class="toc_mobile_items-number">3.1.1.</span> <span class="toc_mobile_items-text">2.1.1 目的</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-1-2-来源"><span class="toc_mobile_items-number">3.1.2.</span> <span class="toc_mobile_items-text">2.1.2 来源</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-1-3-方法"><span class="toc_mobile_items-number">3.1.3.</span> <span class="toc_mobile_items-text">2.1.3 方法</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-1-4-过程"><span class="toc_mobile_items-number">3.1.4.</span> <span class="toc_mobile_items-text">2.1.4 过程</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#2-2-物理层和数据链路层"><span class="toc_mobile_items-number">3.2.</span> <span class="toc_mobile_items-text">2.2 物理层和数据链路层</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-2-1-MAC地址欺骗"><span class="toc_mobile_items-number">3.2.1.</span> <span class="toc_mobile_items-text">2.2.1 MAC地址欺骗</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#2-2-1-1-原理"><span class="toc_mobile_items-number">3.2.1.1.</span> <span class="toc_mobile_items-text">2.2.1.1 原理</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#2-2-1-2-防范"><span class="toc_mobile_items-number">3.2.1.2.</span> <span class="toc_mobile_items-text">2.2.1.2 防范</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-2-2-电磁信息泄露"><span class="toc_mobile_items-number">3.2.2.</span> <span class="toc_mobile_items-text">2.2.2 电磁信息泄露</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-2-3-网络监听"><span class="toc_mobile_items-number">3.2.3.</span> <span class="toc_mobile_items-text">2.2.3 网络监听</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-2-4-重放攻击"><span class="toc_mobile_items-number">3.2.4.</span> <span class="toc_mobile_items-text">2.2.4 重放攻击</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#2-3-网络层"><span class="toc_mobile_items-number">3.3.</span> <span class="toc_mobile_items-text">2.3 网络层</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-3-1-网络层扫描"><span class="toc_mobile_items-number">3.3.1.</span> <span class="toc_mobile_items-text">2.3.1 网络层扫描</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-3-2-IP-欺骗"><span class="toc_mobile_items-number">3.3.2.</span> <span class="toc_mobile_items-text">* 2.3.2 IP 欺骗</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-3-3-碎片攻击"><span class="toc_mobile_items-number">3.3.3.</span> <span class="toc_mobile_items-text">* 2.3.3 碎片攻击</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-3-4-ICMP-攻击"><span class="toc_mobile_items-number">3.3.4.</span> <span class="toc_mobile_items-text">* 2.3.4 ICMP 攻击</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-3-5-路由欺骗-课本P43"><span class="toc_mobile_items-number">3.3.5.</span> <span class="toc_mobile_items-text">* 2.3.5 路由欺骗(课本P43)</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-3-6-ARP-欺骗"><span class="toc_mobile_items-number">3.3.6.</span> <span class="toc_mobile_items-text">* 2.3.6 ARP 欺骗</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#2-4-传输层"><span class="toc_mobile_items-number">3.4.</span> <span class="toc_mobile_items-text">2.4 传输层</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-4-1-端口扫描"><span class="toc_mobile_items-number">3.4.1.</span> <span class="toc_mobile_items-text">2.4.1 端口扫描</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-4-2-TCP-初始序号预测"><span class="toc_mobile_items-number">3.4.2.</span> <span class="toc_mobile_items-text">* 2.4.2 TCP 初始序号预测</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-4-3-SYN-flooding"><span class="toc_mobile_items-number">3.4.3.</span> <span class="toc_mobile_items-text">* 2.4.3 SYN flooding</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-4-4-TCP-欺骗"><span class="toc_mobile_items-number">3.4.4.</span> <span class="toc_mobile_items-text">* 2.4.4 TCP 欺骗</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-4-5-FIN-flooding"><span class="toc_mobile_items-number">3.4.5.</span> <span class="toc_mobile_items-text">* 2.4.5 FIN flooding</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#2-5-应用层"><span class="toc_mobile_items-number">3.5.</span> <span class="toc_mobile_items-text">2.5 应用层</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-5-1-缓冲区溢出（课本P52）"><span class="toc_mobile_items-number">3.5.1.</span> <span class="toc_mobile_items-text">* 2.5.1 缓冲区溢出（课本P52）</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#2-5-1-1-概念"><span class="toc_mobile_items-number">3.5.1.1.</span> <span class="toc_mobile_items-text">2.5.1.1 概念</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#2-5-1-2-代码示例"><span class="toc_mobile_items-number">3.5.1.2.</span> <span class="toc_mobile_items-text">2.5.1.2 代码示例</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#2-5-1-3-原理"><span class="toc_mobile_items-number">3.5.1.3.</span> <span class="toc_mobile_items-text">2.5.1.3 原理</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#2-5-1-4-引起原因"><span class="toc_mobile_items-number">3.5.1.4.</span> <span class="toc_mobile_items-text">2.5.1.4 引起原因</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#2-5-1-5-防止"><span class="toc_mobile_items-number">3.5.1.5.</span> <span class="toc_mobile_items-text">2.5.1.5 防止</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-5-2-口令攻击"><span class="toc_mobile_items-number">3.5.2.</span> <span class="toc_mobile_items-text">* 2.5.2 口令攻击</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-5-3-电子邮件攻击"><span class="toc_mobile_items-number">3.5.3.</span> <span class="toc_mobile_items-text">2.5.3 电子邮件攻击</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-5-4-DNS-欺骗"><span class="toc_mobile_items-number">3.5.4.</span> <span class="toc_mobile_items-text">2.5.4 DNS 欺骗</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-5-5-SQL-注入"><span class="toc_mobile_items-number">3.5.5.</span> <span class="toc_mobile_items-text">* 2.5.5 SQL 注入</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-5-6-IIS漏洞"><span class="toc_mobile_items-number">3.5.6.</span> <span class="toc_mobile_items-text">* 2.5.6 IIS漏洞</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-5-7-常见的应用层安全协议有："><span class="toc_mobile_items-number">3.5.7.</span> <span class="toc_mobile_items-text">* 2.5.7 常见的应用层安全协议有：</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#2-6-网络病毒与木马"><span class="toc_mobile_items-number">3.6.</span> <span class="toc_mobile_items-text">2.6 网络病毒与木马</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-6-1-病毒"><span class="toc_mobile_items-number">3.6.1.</span> <span class="toc_mobile_items-text">* 2.6.1 病毒</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-6-2-特洛伊木马"><span class="toc_mobile_items-number">3.6.2.</span> <span class="toc_mobile_items-text">* 2.6.2 特洛伊木马</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#2-7-拒绝服务攻击"><span class="toc_mobile_items-number">3.7.</span> <span class="toc_mobile_items-text">* 2.7 拒绝服务攻击</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#Ch3-网络身份认证"><span class="toc_mobile_items-number">4.</span> <span class="toc_mobile_items-text">Ch3 网络身份认证</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#Ch4-网络访问控制"><span class="toc_mobile_items-number">5.</span> <span class="toc_mobile_items-text">Ch4 网络访问控制</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#4-1-访问控制策略"><span class="toc_mobile_items-number">5.1.</span> <span class="toc_mobile_items-text">* 4.1 访问控制策略</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#4-2-防火墙-—-访问控制技术"><span class="toc_mobile_items-number">5.2.</span> <span class="toc_mobile_items-text">4.2 防火墙 — 访问控制技术</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#4-2-1-防火墙体系结构"><span class="toc_mobile_items-number">5.2.1.</span> <span class="toc_mobile_items-text">4.2.1 防火墙体系结构</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#4-2-1-1-包过滤防火墙"><span class="toc_mobile_items-number">5.2.1.1.</span> <span class="toc_mobile_items-text">* 4.2.1.1 包过滤防火墙</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#4-2-1-2-双重宿主主机防火墙"><span class="toc_mobile_items-number">5.2.1.2.</span> <span class="toc_mobile_items-text">* 4.2.1.2 双重宿主主机防火墙</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#4-2-1-3-屏蔽主机防火墙"><span class="toc_mobile_items-number">5.2.1.3.</span> <span class="toc_mobile_items-text">* 4.2.1.3 屏蔽主机防火墙</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#4-2-1-4-屏蔽子网防火墙"><span class="toc_mobile_items-number">5.2.1.4.</span> <span class="toc_mobile_items-text">* 4.2.1.4 屏蔽子网防火墙</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#4-2-2-分布式防火墙"><span class="toc_mobile_items-number">5.2.2.</span> <span class="toc_mobile_items-text">* 4.2.2 分布式防火墙</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#4-2-3-问题"><span class="toc_mobile_items-number">5.2.3.</span> <span class="toc_mobile_items-text">4.2.3 问题</span></a></li></ol></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#Ch5-虚拟专用网技术"><span class="toc_mobile_items-number">6.</span> <span class="toc_mobile_items-text">Ch5 虚拟专用网技术</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#5-1-Remote-access-VPN：PPTP-L2TP"><span class="toc_mobile_items-number">6.1.</span> <span class="toc_mobile_items-text">* 5.1 Remote access VPN：PPTP/L2TP</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#5-2-Intranet-VPN：IPSec"><span class="toc_mobile_items-number">6.2.</span> <span class="toc_mobile_items-text">* 5.2 Intranet VPN：IPSec</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#5-3-Extranet-VPN：Socks-v5"><span class="toc_mobile_items-number">6.3.</span> <span class="toc_mobile_items-text">* 5.3 Extranet VPN：Socks v5</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#Ch6-入侵检测技术"><span class="toc_mobile_items-number">7.</span> <span class="toc_mobile_items-text">Ch6 入侵检测技术</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#6-1-基于主机的入侵检测系统"><span class="toc_mobile_items-number">7.1.</span> <span class="toc_mobile_items-text">* 6.1 基于主机的入侵检测系统</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#6-2-基于网络的入侵检测系统"><span class="toc_mobile_items-number">7.2.</span> <span class="toc_mobile_items-text">* 6.2 基于网络的入侵检测系统</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#6-3-基于应用的入侵检测系统"><span class="toc_mobile_items-number">7.3.</span> <span class="toc_mobile_items-text">6.3 基于应用的入侵检测系统</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#实验"><span class="toc_mobile_items-number">8.</span> <span class="toc_mobile_items-text">实验</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-scanner"><span class="toc_mobile_items-number">8.1.</span> <span class="toc_mobile_items-text">* 1 scanner</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#1-1-思路"><span class="toc_mobile_items-number">8.1.1.</span> <span class="toc_mobile_items-text">1.1 思路</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#1-2-关键接口调用"><span class="toc_mobile_items-number">8.1.2.</span> <span class="toc_mobile_items-text">1.2 关键接口调用</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#2-sniffer"><span class="toc_mobile_items-number">8.2.</span> <span class="toc_mobile_items-text">* 2 sniffer</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-1-思路"><span class="toc_mobile_items-number">8.2.1.</span> <span class="toc_mobile_items-text">2.1 思路</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2-2-关键接口调用"><span class="toc_mobile_items-number">8.2.2.</span> <span class="toc_mobile_items-text">2.2 关键接口调用</span></a></li></ol></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#Part-2-课后习题"><span class="toc_mobile_items-number">9.</span> <span class="toc_mobile_items-text">Part 2 课后习题</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#第1章-网络安全基础"><span class="toc_mobile_items-number">10.</span> <span class="toc_mobile_items-text">第1章 网络安全基础</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-1-什么是网络体系结构？比较ISO-OSI和TCP-IP这两个标准。"><span class="toc_mobile_items-number">10.1.</span> <span class="toc_mobile_items-text">1.1 什么是网络体系结构？比较ISO/OSI和TCP/IP这两个标准。</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-2-路由器是一种常用的网络互联产品，如果某个单位购买了一台路由器，但是该单位没有专业维护人员，于是厂家就通过路由器的内部端口进行远程维护，请讨论这种行为的安全性？并分析其优缺点。"><span class="toc_mobile_items-number">10.2.</span> <span class="toc_mobile_items-text">1.2  路由器是一种常用的网络互联产品，如果某个单位购买了一台路由器，但是该单位没有专业维护人员，于是厂家就通过路由器的内部端口进行远程维护，请讨论这种行为的安全性？并分析其优缺点。</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-3-查阅有关资料，分析TCP-IP网络层、传输层和应用层的安全缺陷。"><span class="toc_mobile_items-number">10.3.</span> <span class="toc_mobile_items-text">1.3  查阅有关资料，分析TCP/IP网络层、传输层和应用层的安全缺陷。</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-4-在计算机网络安全特征中，如何保证用户的真实性？"><span class="toc_mobile_items-number">10.4.</span> <span class="toc_mobile_items-text">1.4  在计算机网络安全特征中，如何保证用户的真实性？</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-5-TCP-IP存在各种安全问题，为什么还是目前使用的主流标准呢？"><span class="toc_mobile_items-number">10.5.</span> <span class="toc_mobile_items-text">1.5  TCP/IP存在各种安全问题，为什么还是目前使用的主流标准呢？</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-6-简要概述“棱镜门”事件折射出的我国目前网络安全面临的主要威胁。"><span class="toc_mobile_items-number">10.6.</span> <span class="toc_mobile_items-text">1.6  简要概述“棱镜门”事件折射出的我国目前网络安全面临的主要威胁。</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#第2章-常见的网络攻击技术"><span class="toc_mobile_items-number">11.</span> <span class="toc_mobile_items-text">第2章 常见的网络攻击技术</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#网络攻击中的被动攻击和主动攻击"><span class="toc_mobile_items-number">11.1.</span> <span class="toc_mobile_items-text">网络攻击中的被动攻击和主动攻击</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#重放攻击原理及防范"><span class="toc_mobile_items-number">11.2.</span> <span class="toc_mobile_items-text">重放攻击原理及防范</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#SQL注入攻击原理和步骤"><span class="toc_mobile_items-number">11.3.</span> <span class="toc_mobile_items-text">SQL注入攻击原理和步骤</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#病毒是特洛伊木马吗，二者关系"><span class="toc_mobile_items-number">11.4.</span> <span class="toc_mobile_items-text">病毒是特洛伊木马吗，二者关系</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#特洛伊木马为什么不容易发现和删除"><span class="toc_mobile_items-number">11.5.</span> <span class="toc_mobile_items-text">特洛伊木马为什么不容易发现和删除</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#分析一种针对分布式拒绝服务攻击的防范措施"><span class="toc_mobile_items-number">11.6.</span> <span class="toc_mobile_items-text">分析一种针对分布式拒绝服务攻击的防范措施</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#交换机有被监听的风险吗"><span class="toc_mobile_items-number">11.7.</span> <span class="toc_mobile_items-text">交换机有被监听的风险吗</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#第三章"><span class="toc_mobile_items-number">12.</span> <span class="toc_mobile_items-text">第三章</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#能够用于身份认证的人体生物特征有哪些"><span class="toc_mobile_items-number">12.1.</span> <span class="toc_mobile_items-text">能够用于身份认证的人体生物特征有哪些</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#PKI的核心服务有哪些"><span class="toc_mobile_items-number">12.2.</span> <span class="toc_mobile_items-text">PKI的核心服务有哪些</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#PKI的认证服务有哪些优点"><span class="toc_mobile_items-number">12.3.</span> <span class="toc_mobile_items-text">PKI的认证服务有哪些优点</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#PKI有哪些组成部分，它们之间存在哪些关系"><span class="toc_mobile_items-number">12.4.</span> <span class="toc_mobile_items-text">PKI有哪些组成部分，它们之间存在哪些关系</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#PKI系统是如何实现认证、保密、不可否认性的"><span class="toc_mobile_items-number">12.5.</span> <span class="toc_mobile_items-text">PKI系统是如何实现认证、保密、不可否认性的</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#SSO的作用，有哪些模型"><span class="toc_mobile_items-number">12.6.</span> <span class="toc_mobile_items-text">SSO的作用，有哪些模型</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#第四章"><span class="toc_mobile_items-number">13.</span> <span class="toc_mobile_items-text">第四章</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#举例说明自主访问控制、强制访问控制、RBAC三种技术的应用场合"><span class="toc_mobile_items-number">13.1.</span> <span class="toc_mobile_items-text">举例说明自主访问控制、强制访问控制、RBAC三种技术的应用场合</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#个人防火墙是否存在安全缺陷"><span class="toc_mobile_items-number">13.2.</span> <span class="toc_mobile_items-text">个人防火墙是否存在安全缺陷</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#防火墙有哪两种基本策略以及应用场景"><span class="toc_mobile_items-number">13.3.</span> <span class="toc_mobile_items-text">防火墙有哪两种基本策略以及应用场景</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#防火墙能否保证内部网络的绝对安全"><span class="toc_mobile_items-number">13.4.</span> <span class="toc_mobile_items-text">防火墙能否保证内部网络的绝对安全</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#包过滤防火墙工作于OSI哪一层，检测IP数据包的哪些部分"><span class="toc_mobile_items-number">13.5.</span> <span class="toc_mobile_items-text">包过滤防火墙工作于OSI哪一层，检测IP数据包的哪些部分</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#包过滤技术与Sniffer的异同点"><span class="toc_mobile_items-number">13.6.</span> <span class="toc_mobile_items-text">包过滤技术与Sniffer的异同点</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#相比双宿网关防火墙，屏蔽子网防火墙有哪些特点"><span class="toc_mobile_items-number">13.7.</span> <span class="toc_mobile_items-text">相比双宿网关防火墙，屏蔽子网防火墙有哪些特点</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#比较应用层代理、传输层代理和SOCKS代理的异同点"><span class="toc_mobile_items-number">13.8.</span> <span class="toc_mobile_items-text">比较应用层代理、传输层代理和SOCKS代理的异同点</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#概述分布式防火墙的工作原理及其优势"><span class="toc_mobile_items-number">13.9.</span> <span class="toc_mobile_items-text">概述分布式防火墙的工作原理及其优势</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#当前防火墙的最新发展状况"><span class="toc_mobile_items-number">13.10.</span> <span class="toc_mobile_items-text">当前防火墙的最新发展状况</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#第五章习题"><span class="toc_mobile_items-number">14.</span> <span class="toc_mobile_items-text">第五章习题</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-什么是-VPN？VPN-有哪些主要功能？"><span class="toc_mobile_items-number">14.1.</span> <span class="toc_mobile_items-text">1. 什么是 VPN？VPN 有哪些主要功能？</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#2-根据访问方式的不同，VPN-可以分为哪几类？"><span class="toc_mobile_items-number">14.2.</span> <span class="toc_mobile_items-text">2. 根据访问方式的不同，VPN 可以分为哪几类？</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#3-VPN-安全协议可以在哪些层次实现？各个层次分别包含哪些主要的安全协议？"><span class="toc_mobile_items-number">14.3.</span> <span class="toc_mobile_items-text">3. VPN 安全协议可以在哪些层次实现？各个层次分别包含哪些主要的安全协议？</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#4-简要概述-PPTP-VPN-的工作原理，并指出其优缺点。"><span class="toc_mobile_items-number">14.4.</span> <span class="toc_mobile_items-text">4. 简要概述 PPTP VPN 的工作原理，并指出其优缺点。</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#5-IPSec-的-AH-和-ESP-方式有何不同？为什么提供了-ESP-后还需要提供-AH？"><span class="toc_mobile_items-number">14.5.</span> <span class="toc_mobile_items-text">5. IPSec 的 AH 和 ESP 方式有何不同？为什么提供了 ESP 后还需要提供 AH？</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#6-IPSec-的隧道操作提供了两种模式：隧道模式和传输模式，比较这两种方式各自的-优缺点，适用的场合。"><span class="toc_mobile_items-number">14.6.</span> <span class="toc_mobile_items-text">6.IPSec 的隧道操作提供了两种模式：隧道模式和传输模式，比较这两种方式各自的 优缺点，适用的场合。</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#7-简要概述-MPLS-VPN-的组成部分及各部分功能。"><span class="toc_mobile_items-number">14.7.</span> <span class="toc_mobile_items-text">7.简要概述 MPLS VPN 的组成部分及各部分功能。</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#8-MPLS-节点中的路由表是如何产生的？MPLS-VPN-中的标签在-IP-分组转发过程中-如何起作用？（我感觉考的可能性不大-老师给的重点里也没有这个）"><span class="toc_mobile_items-number">14.8.</span> <span class="toc_mobile_items-text">8.MPLS 节点中的路由表是如何产生的？MPLS VPN 中的标签在 IP 分组转发过程中 如何起作用？（我感觉考的可能性不大 老师给的重点里也没有这个）</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#9-SSL-握手协议分为几个阶段？每个阶段的主要功能是什么"><span class="toc_mobile_items-number">14.9.</span> <span class="toc_mobile_items-text">9.SSL 握手协议分为几个阶段？每个阶段的主要功能是什么</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#第六章习题"><span class="toc_mobile_items-number">15.</span> <span class="toc_mobile_items-text">第六章习题</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-入侵检测系统弥补了防火墙的哪些不足？"><span class="toc_mobile_items-number">15.1.</span> <span class="toc_mobile_items-text">1.入侵检测系统弥补了防火墙的哪些不足？</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#2-比较基于主机和基于网络的入侵检测系统的优点与缺点。"><span class="toc_mobile_items-number">15.2.</span> <span class="toc_mobile_items-text">2. 比较基于主机和基于网络的入侵检测系统的优点与缺点。</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#3-根据检测原理，入侵检测系统可以分为几类？其原理分别是什么？"><span class="toc_mobile_items-number">15.3.</span> <span class="toc_mobile_items-text">3. 根据检测原理，入侵检测系统可以分为几类？其原理分别是什么？</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#4-操作系统审计痕迹与系统日志有哪些不同之处？"><span class="toc_mobile_items-number">15.4.</span> <span class="toc_mobile_items-text">4. 操作系统审计痕迹与系统日志有哪些不同之处？</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#5-查阅资料，简要概述-P2DR2-安全模型的基本思想。"><span class="toc_mobile_items-number">15.5.</span> <span class="toc_mobile_items-text">5. 查阅资料，简要概述 P2DR2 安全模型的基本思想。</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#6-按照实现方式分类，IPS-可以分为哪几类？简要概述它们各自的特点。"><span class="toc_mobile_items-number">15.6.</span> <span class="toc_mobile_items-text">6. 按照实现方式分类，IPS 可以分为哪几类？简要概述它们各自的特点。</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#7-IDS-和-IPS-的区别与联系"><span class="toc_mobile_items-number">15.7.</span> <span class="toc_mobile_items-text">7. IDS 和 IPS 的区别与联系</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#Part-3-去年试题"><span class="toc_mobile_items-number">16.</span> <span class="toc_mobile_items-text">Part 3 去年试题</span></a></li></ol></div></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script async src="/js/search/local-search.js"></script><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="/js/third-party/fireworks.js"></script><script src="/js/nightshift.js"></script><script id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zindex="-1" data-click="false"></script><script color="0,0,255" opacity="0.7" zindex="-1" count="99" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN/js/canvas-nest.js"></script><script src="/js/tw_cn.js"></script><script>translateInitilization()
+
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@1.2.2/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script><script>const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+observer.observe();</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script type="text/javascript" src="/js/dytitle.js"></script>
+<script src="//code.tidio.co/tpwa8ucmrevvxpnhenh6elnstjmuuz5v.js" async></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":100,"height":100,"position":"left"},"mobile":{"show":false},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body></html>
