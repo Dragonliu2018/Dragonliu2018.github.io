@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>Cuckoo Sandbox 安装教程 | Dragon&#39;s Security Blogs</title>
+  <meta name="description" content="0 简介Cuckoo Sandbox 是一个开源的自动分析可疑文件的软件。它通过在独立环境内使用自定义组件来监控恶意进程的行为。 它可以分析出以下几种类型的结果:   跟踪恶意软件产生函数调用. 恶意软件执行期间的文件操作，包括新建，删除以及文件下载. 恶意软件的内存转储. PCAP格式的网络流量捕获. 恶意软件运行时的截屏. 虚拟机的完整内存转储文件.   Cuckoo 由一个宿主机（管理组件）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cuckoo Sandbox 安装教程">
+<meta property="og:url" content="https://dragonliu2018.github.io/2022/01/30/Cuckoo-Sandbox-安装教程/index.html">
+<meta property="og:site_name" content="Dragon Liu">
+<meta property="og:description" content="0 简介Cuckoo Sandbox 是一个开源的自动分析可疑文件的软件。它通过在独立环境内使用自定义组件来监控恶意进程的行为。 它可以分析出以下几种类型的结果:   跟踪恶意软件产生函数调用. 恶意软件执行期间的文件操作，包括新建，删除以及文件下载. 恶意软件的内存转储. PCAP格式的网络流量捕获. 恶意软件运行时的截屏. 虚拟机的完整内存转储文件.   Cuckoo 由一个宿主机（管理组件）">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s2.loli.net/2022/01/30/laJ2s3Nh5oUg8IM.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/31/zCv8PyLSDpwJUKO.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/31/2uWvZkIcfxSatzw.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/31/VLlkqKRCxXSA6ng.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/31/jqlO5M3kPba9XQI.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/31/5L1zeiETygwM62b.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/31/gQFULNs62cT57HO.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/01/1iFaKsx5WJmSNjy.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/01/N6IvV85oZwDY2c7.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/01/FVwSXrlKARNyiUx.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/01/9ytdwx5N42ojqbs.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/01/gvr4TaikESyMt3j.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/01/spFXaOW65ntdRCG.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/01/spFXaOW65ntdRCG.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/01/pZKmeODJ7wCASx2.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/01/ToqhEst3VQnkKmb.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/01/vDYqUjB2SOiP5r6.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/01/k39m7tVqcN2YoTC.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/01/54dthCes9iuBKDy.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/01/k39m7tVqcN2YoTC.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/01/LkHXv6ydEUP7btW.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/01/a1xFih5vb9jWVew.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/01/hcsV7YUqwFgCrv1.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/02/IOe5Xy8GCtPLVjK.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/02/6FYTpnrKShyx1li.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/02/OxT9wCd6FBkUehX.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/31/vRTVYMeOB6nWCXi.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/31/zCv8PyLSDpwJUKO.png">
+<meta property="og:updated_time" content="2022-07-04T07:55:26.784Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cuckoo Sandbox 安装教程">
+<meta name="twitter:description" content="0 简介Cuckoo Sandbox 是一个开源的自动分析可疑文件的软件。它通过在独立环境内使用自定义组件来监控恶意进程的行为。 它可以分析出以下几种类型的结果:   跟踪恶意软件产生函数调用. 恶意软件执行期间的文件操作，包括新建，删除以及文件下载. 恶意软件的内存转储. PCAP格式的网络流量捕获. 恶意软件运行时的截屏. 虚拟机的完整内存转储文件.   Cuckoo 由一个宿主机（管理组件）">
+<meta name="twitter:image" content="https://s2.loli.net/2022/01/30/laJ2s3Nh5oUg8IM.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://dragonliu2018.github.io/2022/01/30/Cuckoo-Sandbox-安装教程/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Dragon Liu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/dragonliu2018" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Dragon&#39;s Blogs</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Security</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Nanjing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</br>dragonliu2018@gmail.com</br>电脑端观看效果更佳！</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WP/">WP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/恶意代码/">恶意代码</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/环境与工具/">环境与工具</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/">CTF</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/CTF/" style="font-size: 13px;">CTF</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/恶意代码/">恶意代码</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/03/10/【恶意家族进化分析】勒索病毒WannaCry家族/" class="title">【恶意家族进化分析】勒索病毒WannaCry家族</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-03-10T07:48:19.000Z" itemprop="datePublished">2022-03-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/恶意代码/">恶意代码</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/02/28/恶意样本收集/" class="title">恶意样本收集</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-02-28T14:49:09.000Z" itemprop="datePublished">2022-02-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/环境与工具/">环境与工具</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/01/30/Cuckoo-Sandbox-安装教程/" class="title">Cuckoo Sandbox 安装教程</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-30T13:56:31.000Z" itemprop="datePublished">2022-01-30</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/WP/">WP</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/11/2021年NUAACTF校赛-WP/" class="title">2021年nuaa校赛 WP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-11T13:28:09.000Z" itemprop="datePublished">2021-12-11</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/WP/">WP</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/10/30/中科大2021年Hackergame-WP/" class="title">中科大2021年Hackergame WP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-30T13:27:28.000Z" itemprop="datePublished">2021-10-30</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0-简介"><span class="toc-number">1.</span> <span class="toc-text">0 简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-环境准备"><span class="toc-number">2.</span> <span class="toc-text">1 环境准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-host安装"><span class="toc-number">3.</span> <span class="toc-text">2 host安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-创建-Ubuntu20-04-LTS-虚拟机"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 创建 Ubuntu20.04 LTS 虚拟机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-依赖"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 依赖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-安装-Python-库-Ubuntu-Debian-based"><span class="toc-number">3.2.1.</span> <span class="toc-text">2.2.1 安装 Python 库 (Ubuntu/Debian-based)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-虚拟化软件"><span class="toc-number">3.2.2.</span> <span class="toc-text">2.2.2 虚拟化软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-安装-tcpdump"><span class="toc-number">3.2.3.</span> <span class="toc-text">2.2.3 安装 tcpdump</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-4-安装-Volatility"><span class="toc-number">3.2.4.</span> <span class="toc-text">2.2.4 安装 Volatility</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-5-安装-M2Crypto"><span class="toc-number">3.2.5.</span> <span class="toc-text">2.2.5 安装 M2Crypto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-6-安装-guacd-未完成"><span class="toc-number">3.2.6.</span> <span class="toc-text">2.2.6 安装 guacd(未完成)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-Cuckoo-安装"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 Cuckoo 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-创建用户（没使用，使用dragon用户下）"><span class="toc-number">3.3.1.</span> <span class="toc-text">2.3.1 创建用户（没使用，使用dragon用户下）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-安装-Cuckoo"><span class="toc-number">3.3.2.</span> <span class="toc-text">2.3.2 安装 Cuckoo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-Cuckoo-工作目录"><span class="toc-number">3.4.</span> <span class="toc-text">2.4 Cuckoo 工作目录</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-guest安装-在Ubuntu20-04中的VirtualBox中"><span class="toc-number">4.</span> <span class="toc-text">3 guest安装(在Ubuntu20.04中的VirtualBox中)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-设置virtualbox环境"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 设置virtualbox环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-创建Win7-x64虚拟机"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 创建Win7-x64虚拟机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-进行配置"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 进行配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-安装软件"><span class="toc-number">4.4.</span> <span class="toc-text">3.4 安装软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-安装客户端"><span class="toc-number">4.5.</span> <span class="toc-text">3.5 安装客户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-创建沙盒环境"><span class="toc-number">4.6.</span> <span class="toc-text">3.6 创建沙盒环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-7-配置cuckoo服务"><span class="toc-number">4.7.</span> <span class="toc-text">3.7 配置cuckoo服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-8-启动cuckoo"><span class="toc-number">4.8.</span> <span class="toc-text">3.8 启动cuckoo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-guest安装-在Vmware中，与Ubuntu并列，未完成，失败"><span class="toc-number">5.</span> <span class="toc-text">4 guest安装(在Vmware中，与Ubuntu并列，未完成，失败)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-创建win7-x64虚拟机"><span class="toc-number">5.1.</span> <span class="toc-text">4.1 创建win7-x64虚拟机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-依赖"><span class="toc-number">5.2.</span> <span class="toc-text">4.2 依赖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-1-安装python"><span class="toc-number">5.2.1.</span> <span class="toc-text">4.2.1 安装python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-2-其他软件"><span class="toc-number">5.2.2.</span> <span class="toc-text">4.2.2 其他软件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-网络配置"><span class="toc-number">5.3.</span> <span class="toc-text">4.3 网络配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-1-Windows-设置"><span class="toc-number">5.3.1.</span> <span class="toc-text">4.3.1 Windows 设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-2-虚拟网络"><span class="toc-number">5.3.2.</span> <span class="toc-text">4.3.2 虚拟网络</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-安装客户端"><span class="toc-number">5.4.</span> <span class="toc-text">4.3 安装客户端</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-参考"><span class="toc-number">6.</span> <span class="toc-text">5 参考</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Cuckoo-Sandbox-安装教程" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Cuckoo Sandbox 安装教程
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/01/30/Cuckoo-Sandbox-安装教程/" class="article-date">
+	  <time datetime="2022-01-30T13:56:31.000Z" itemprop="datePublished">2022-01-30</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/环境与工具/">环境与工具</a>
+  </span>
+
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/01/30/Cuckoo-Sandbox-安装教程/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5.4k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 22(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="0-简介"><a href="#0-简介" class="headerlink" title="0 简介"></a>0 简介</h1><p>Cuckoo Sandbox 是一个开源的自动分析可疑文件的软件。它通过在独立环境内使用自定义组件来监控恶意进程的行为。</p>
+<p>它可以分析出以下几种类型的结果:</p>
+<blockquote>
+<ul>
+<li>跟踪恶意软件产生函数调用.</li>
+<li>恶意软件执行期间的文件操作，包括新建，删除以及文件下载.</li>
+<li>恶意软件的内存转储.</li>
+<li>PCAP格式的网络流量捕获.</li>
+<li>恶意软件运行时的截屏.</li>
+<li>虚拟机的完整内存转储文件.</li>
+</ul>
+</blockquote>
+<p>Cuckoo 由一个宿主机（管理组件）加上多个沙箱（物理机或者虚拟机）组成。 宿主机上的管理组件负责了一个样本分析的全部过程，样本的执行过程都是在沙箱中进行。</p>
+<p><img src="https://s2.loli.net/2022/01/30/laJ2s3Nh5oUg8IM.png" width="500" height="300" alt="图片名称" align="center" id="37"></p>
+<ul>
+<li><a href="https://cuckoosandbox.org/" target="_blank" rel="noopener">官网</a></li>
+<li><a href="https://cuckoo.sh/docs/" target="_blank" rel="noopener">官方文档-英文</a></li>
+<li><a href="https://cuckoo-sandbox.readthedocs.io/zh_CN/latest/index.html" target="_blank" rel="noopener">官方文档-中文</a></li>
+</ul>
+<h1 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1 环境准备"></a>1 环境准备</h1><p>本次搭建Cuckoo环境，主要参考<a href="https://blog.csdn.net/ElsonHY/article/details/115607255" target="_blank" rel="noopener">教程</a>，使用一个宿主机+一个沙箱(guest)的模式，具体如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">软件</th>
+<th style="text-align:center">host</th>
+<th style="text-align:center">guest1</th>
+<th style="text-align:center">guest2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">VMware 16 Pro</td>
+<td style="text-align:center">Ubuntu20.04 LTS(推荐GNU/Linux)</td>
+<td style="text-align:center">VM window7-64bit(推荐64位Win7或WinXP)</td>
+<td style="text-align:center">VM Ubuntu虚拟机 virtualbox win7</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>其中Win7需要关闭UAC(User Access Control)。</p>
+<p>guest打算使用VMWare下直接虚拟机——win7，但是失败了；</p>
+<p>成功实现的guest是Ubuntu下的virtualbox下的win7。</p>
+<h1 id="2-host安装"><a href="#2-host安装" class="headerlink" title="2 host安装"></a>2 host安装</h1><h2 id="2-1-创建-Ubuntu20-04-LTS-虚拟机"><a href="#2-1-创建-Ubuntu20-04-LTS-虚拟机" class="headerlink" title="2.1 创建 Ubuntu20.04 LTS 虚拟机"></a>2.1 创建 Ubuntu20.04 LTS 虚拟机</h2><p>网上好多参考教程</p>
+<font color="red">注意:</font>
+
+<ul>
+<li>Ubuntu20.04虚拟机需要至少4GB的RAM和60–80GB的硬盘，因为你将在里面运行一个windows7虚拟机</li>
+<li>请确保不要将您的用户名称为“cuckoo”，否则这可能会与以后的安装冲突。</li>
+<li>确保您的虚拟机已启用VT-x功能</li>
+</ul>
+<p>Vmware中虚拟机启用VT-x功能后，再打开Ubuntu虚拟机出现报错<code>此平台不支持虚拟化的 AMD-V/RVI。</code></p>
+<p>解决：关闭 <code>Windows 功能</code> 里的 <code>虚拟机平台</code>，重启后即可。</p>
+<h2 id="2-2-依赖"><a href="#2-2-依赖" class="headerlink" title="2.2 依赖"></a>2.2 依赖</h2><h3 id="2-2-1-安装-Python-库-Ubuntu-Debian-based"><a href="#2-2-1-安装-Python-库-Ubuntu-Debian-based" class="headerlink" title="2.2.1 安装 Python 库 (Ubuntu/Debian-based)"></a>2.2.1 安装 Python 库 (Ubuntu/Debian-based)</h3><p>Cuckoo的管理组件完全由Python脚本编写，所以就需要适合的Python版本。 当前，我们完全兼容的Python版本是 <strong>2.7</strong>。</p>
+<p>老版本的Python和Python 3（未来可能会支持） 目前都是不支持的。</p>
+<hr>
+<p><strong>依赖库：</strong><font color="red">(注意：Ubuntu20中已将python2移除)</font></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># step1 安装python2</span></span><br><span class="line">sudo apt install python2</span><br><span class="line"></span><br><span class="line"><span class="comment"># step2 安装pip2，Ubuntu 20已经无法通过apt来安装python2的pip2了</span></span><br><span class="line">wget https://bootstrap.pypa.io/pip/2.7/get-pip.py</span><br><span class="line">sudo python2 get-pip.py</span><br><span class="line"><span class="comment"># 使用：python2 -m pip install numpy</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># step3 安装Virtualenv</span></span><br><span class="line">sudo apt-get install virtualenv</span><br><span class="line"><span class="comment"># 使用： virtualenv --python=python2 env</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># step4 安装其他的</span></span><br><span class="line">sudo apt install python-dev libffi-dev libssl-dev</span><br><span class="line">sudo apt-get install libjpeg-dev zlib1g-dev swig</span><br><span class="line">sudo apt install python-setuptools</span><br></pre></td></tr></table></figure>
+<hr>
+<p>如果要使用我们基于Django开发的Web界面, 则MongoDB是必须要安装的：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mongodb</span><br></pre></td></tr></table></figure>
+<hr>
+<p>如果要使用PostgreSQL数据库(推荐), PostgreSQL也必须安装：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install postgresql libpq-dev</span><br></pre></td></tr></table></figure>
+<hr>
+<p>如果使用KVM的话，则需要安装KVM相关依赖：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install qemu-kvm</span><br><span class="line">sudo apt-get install libvirt-dev libvirt-daemon libvirt-clients</span><br><span class="line"><span class="comment"># 未完成</span></span><br><span class="line">libvirt-bin ubuntu-vm-builder bridge-utils python-libvirt</span><br></pre></td></tr></table></figure>
+<p>安装Yara：（可选）</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -H pip install yara-python==3.6.3</span><br></pre></td></tr></table></figure>
+<p>安装ssdeep：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y ssdeep</span><br></pre></td></tr></table></figure>
+<p>安装pydeep：(可选，未完成)</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install -U pip setuptools</span><br></pre></td></tr></table></figure>
+<p>安装openpyxl：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -H pip install openpyxl</span><br></pre></td></tr></table></figure>
+<p>安装ujson:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -H pip install ujson</span><br></pre></td></tr></table></figure>
+<p>现在安装jupyter：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -H pip install jupyter</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-2-虚拟化软件"><a href="#2-2-2-虚拟化软件" class="headerlink" title="2.2.2 虚拟化软件"></a>2.2.2 虚拟化软件</h3><p>Cuckoo沙箱支持大部分的虚拟化软件，可以很方便的添加和使用各种虚拟化支持。</p>
+<p>本文档以VirtualBox为例，选择哪种虚拟机软件并不影响后续的分析。</p>
+<p>安装VirtualBox：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install virtualbox</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-3-安装-tcpdump"><a href="#2-2-3-安装-tcpdump" class="headerlink" title="2.2.3 安装 tcpdump"></a>2.2.3 安装 tcpdump</h3><p>Tcpdump用于抓取恶意软件运行过程中产生的所有流量。</p>
+<p>安装命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install tcpdump apparmor-utils</span><br><span class="line">sudo aa-disable /usr/sbin/tcpdump</span><br></pre></td></tr></table></figure>
+<p><code>AppArmor</code> 只有当PCAP文件生成没有权限的时候才需要，可以参考 <a href="https://cuckoo-sandbox.readthedocs.io/zh_CN/latest/faq/index.html#tcpdump-permission-denied" target="_blank" rel="noopener">Permission denied for tcpdump</a></p>
+<p>Tcpdump需要root权限，如果不想运行在root用户下，需要做以下设置：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">setcap</span> cap_net_raw,cap_net_admin=eip /usr/sbin/tcpdump</span><br></pre></td></tr></table></figure>
+<p>可以用以下命令验证是否配置正确：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">getcap</span> /usr/sbin/tcpdump</span><br><span class="line">/usr/sbin/tcpdump = cap_net_admin,cap_net_raw+eip</span><br></pre></td></tr></table></figure>
+<p>如果没有<code>setcap</code>命令， 则需要安装下面的包:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install libcap2-bin</span></span><br></pre></td></tr></table></figure>
+<p>或者 (<strong>不推荐</strong>)</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chmod +s /usr/sbin/tcpdump</span><br></pre></td></tr></table></figure>
+<p>需要注意的是 setcap 命令不安全，有可能造成提权漏洞，我们建议将Cuckoo安装在专有的环境里。</p>
+<h3 id="2-2-4-安装-Volatility"><a href="#2-2-4-安装-Volatility" class="headerlink" title="2.2.4 安装 Volatility"></a>2.2.4 安装 Volatility</h3><p>Volatility 用于分析内存转储文件的可选工具. Cuckoo与Volatility配合，可以更深度和全面的分析，可以防止恶意软件利用rookit技术逃逸沙箱的监控。</p>
+<p>为了能够工作正常，Cuckoo要求Volatility版本不低于 2.3， 推荐最新版本2.5。 可以从官网下载 <a href="https://github.com/volatilityfoundation" target="_blank" rel="noopener">official repository</a>.</p>
+<p>可以查阅Volatility官方文档的安装说明.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/volatilityfoundation/volatility.git </span><br><span class="line"><span class="built_in">cd</span> volatility</span><br><span class="line">sudo python setup.py build</span><br><span class="line">sudo python setup.py install</span><br></pre></td></tr></table></figure>
+<p>安装Distorm3：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -H pip install distorm3==3.4.4</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-5-安装-M2Crypto"><a href="#2-2-5-安装-M2Crypto" class="headerlink" title="2.2.5 安装 M2Crypto"></a>2.2.5 安装 M2Crypto</h3><p>当前 <code>M2Crypto</code> 库需要 <a href="http://www.swig.org/" target="_blank" rel="noopener">SWIG</a> 支持. Ubuntu/Debian-like 系统下可以通过以下命令安装:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install swig</span><br></pre></td></tr></table></figure>
+<p><code>SWIG</code> 安装好之后，通过以下命令安装 <code>M2Crypto</code>:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo python2 -m pip install m2crypto</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-6-安装-guacd-未完成"><a href="#2-2-6-安装-guacd-未完成" class="headerlink" title="2.2.6 安装 guacd(未完成)"></a>2.2.6 安装 guacd(未完成)</h3><p><code>guacd</code> 是RDP，SSH，VNC等远程控制的代理层， 是Cuckoo的Web界面的远程终端中使用，可选。</p>
+<p>没有它，远程控制功能就无法使用，版本要求0.9.9及以上。我们推荐安装最新版本 使用如下命令安装:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install libguac-client-rdp0 libguac-client-vnc0 libguac-client-ssh0 guacd</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-Cuckoo-安装"><a href="#2-3-Cuckoo-安装" class="headerlink" title="2.3 Cuckoo 安装"></a>2.3 Cuckoo 安装</h2><h3 id="2-3-1-创建用户（没使用，使用dragon用户下）"><a href="#2-3-1-创建用户（没使用，使用dragon用户下）" class="headerlink" title="2.3.1 创建用户（没使用，使用dragon用户下）"></a>2.3.1 创建用户（没使用，使用dragon用户下）</h3><p>Cuckoo可以运行在已有用户下面，也可以新建一个用户来跑Cuckoo。 但是要保证虚拟机和Cuckoo运行在相同的用户下。（让一个单独的用户来运行沙盒是一种很好的安全习惯。）</p>
+<p>创建新用户：（密码为root，其他回车即可）</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser cuckoo</span><br></pre></td></tr></table></figure>
+<p>若使用virtualBox则创建一个cuckoo用户，将其添加到vboxusers组里（VirtualBox安装后创建）。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -a -G vboxusers cuckoo</span><br></pre></td></tr></table></figure>
+<p>将该用户添加到sudo组。输入：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser cuckoo sudo</span><br></pre></td></tr></table></figure>
+<p>如果使用KVM，要将用户加入到Libvirtd用户组:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -a -G libvirtd cuckoo</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-2-安装-Cuckoo"><a href="#2-3-2-安装-Cuckoo" class="headerlink" title="2.3.2 安装 Cuckoo"></a>2.3.2 安装 Cuckoo</h3><p>全局安装Cuckoo是没有问题的，但是 <strong>强力推荐</strong> 用 <code>virtualenv</code> 来安装：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ virtualenv --python=python2 venv</span><br><span class="line">$ . venv/bin/activate</span><br><span class="line">(venv)$ pip install -U pip setuptools</span><br><span class="line">(venv)$ pip install -U cuckoo</span><br></pre></td></tr></table></figure>
+<font color="green">提醒：cuckoo下载较慢，30min左右</font>
+
+<p>为什么推荐使用 <code>virtualenv</code> 呢:</p>
+<ul>
+<li>Cuckoo的依赖并不是用的最新版本，可能会与系统已有的版本冲突.</li>
+<li>系统中其他软件的安装，可能会导致Cuckoo的依赖产生问题.</li>
+<li>使用virtualenv，可以让非root用户也可以安装相关软件.</li>
+<li>简单来说virtualenv是最佳实践.</li>
+</ul>
+<h2 id="2-4-Cuckoo-工作目录"><a href="#2-4-Cuckoo-工作目录" class="headerlink" title="2.4 Cuckoo 工作目录"></a>2.4 Cuckoo 工作目录</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换用户cuckoo</span></span><br><span class="line">su cuckoo</span><br><span class="line"><span class="comment"># 进入虚拟环境</span></span><br><span class="line">. ./venv/bin/activate</span><br><span class="line"><span class="comment"># 首次运行</span></span><br><span class="line">cuckoo -d</span><br></pre></td></tr></table></figure>
+<p>出现以下界面：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">/home/dragon/graduation/venv/lib/python2.7/site-packages/sflock/decode/office.py:12: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support <span class="keyword">for</span> it is now deprecated <span class="keyword">in</span> cryptography, and will be removed <span class="keyword">in</span> the next release.</span><br><span class="line">  from cryptography.hazmat.backends import default_backend</span><br><span class="line"></span><br><span class="line">    sSSs   .S       S.     sSSs   .S    S.     sSSs_sSSs      sSSs_sSSs</span><br><span class="line">   d%%SP  .SS       SS.   d%%SP  .SS    SS.   d%%SP~YS%%b    d%%SP~YS%%b</span><br><span class="line">  d%S<span class="string">'    S%S       S%S  d%S'</span>    S%S    S&amp;S  d%S<span class="string">'     `S%b  d%S'</span>     `S%b</span><br><span class="line">  S%S     S%S       S%S  S%S     S%S    d*S  S%S       S%S  S%S       S%S</span><br><span class="line">  S&amp;S     S&amp;S       S&amp;S  S&amp;S     S&amp;S   .S*S  S&amp;S       S&amp;S  S&amp;S       S&amp;S</span><br><span class="line">  S&amp;S     S&amp;S       S&amp;S  S&amp;S     S&amp;S_sdSSS   S&amp;S       S&amp;S  S&amp;S       S&amp;S</span><br><span class="line">  S&amp;S     S&amp;S       S&amp;S  S&amp;S     S&amp;S~YSSY%b  S&amp;S       S&amp;S  S&amp;S       S&amp;S</span><br><span class="line">  S&amp;S     S&amp;S       S&amp;S  S&amp;S     S&amp;S    `S%  S&amp;S       S&amp;S  S&amp;S       S&amp;S</span><br><span class="line">  S*b     S*b       d*S  S*b     S*S     S%  S*b       d*S  S*b       d*S</span><br><span class="line">  S*S.    S*S.     .S*S  S*S.    S*S     S&amp;  S*S.     .S*S  S*S.     .S*S</span><br><span class="line">   SSSbs   SSSbs_sdSSS    SSSbs  S*S     S&amp;   SSSbs_sdSSS    SSSbs_sdSSS</span><br><span class="line">    YSSP    YSSP~YSSY      YSSP  S*S     SS    YSSP~YSSY      YSSP~YSSY</span><br><span class="line">                                 SP</span><br><span class="line">                                 Y</span><br><span class="line"></span><br><span class="line"> Cuckoo Sandbox 2.0.7</span><br><span class="line"> www.cuckoosandbox.org</span><br><span class="line"> Copyright (c) 2010-2018</span><br><span class="line"></span><br><span class="line">=======================================================================</span><br><span class="line">    Welcome to Cuckoo Sandbox, this appears to be your first run!</span><br><span class="line">    We will now <span class="built_in">set</span> you up with our default configuration.</span><br><span class="line">    You will be able to see and modify the Cuckoo configuration,</span><br><span class="line">    Yara rules, Cuckoo Signatures, and much more to your likings</span><br><span class="line">    by exploring the /home/cuckoo/.cuckoo directory.</span><br><span class="line"></span><br><span class="line">    Among other configurable items of most interest is the</span><br><span class="line">    new location <span class="keyword">for</span> your Cuckoo configuration:</span><br><span class="line">              /home/cuckoo/.cuckoo/conf</span><br><span class="line">=======================================================================</span><br><span class="line"></span><br><span class="line">Cuckoo has finished setting up the default configuration.</span><br><span class="line">Please modify the default settings <span class="built_in">where</span> required and</span><br><span class="line">start Cuckoo again (by running `cuckoo` or `cuckoo -d`).</span><br></pre></td></tr></table></figure>
+<h1 id="3-guest安装-在Ubuntu20-04中的VirtualBox中"><a href="#3-guest安装-在Ubuntu20-04中的VirtualBox中" class="headerlink" title="3 guest安装(在Ubuntu20.04中的VirtualBox中)"></a>3 guest安装(在Ubuntu20.04中的VirtualBox中)</h1><h2 id="3-1-设置virtualbox环境"><a href="#3-1-设置virtualbox环境" class="headerlink" title="3.1 设置virtualbox环境"></a>3.1 设置virtualbox环境</h2><p>安装网络工具：<code>sudo apt install -y net-tools</code>，现在键入<code>ifconfig</code>以查找虚拟机的IP地址信息。</p>
+<p><img src="https://s2.loli.net/2022/01/31/zCv8PyLSDpwJUKO.png" width="600" height="300" alt="图片名称" align="center" id="39"></p>
+<p>创建一个只支持主机的网络适配器：<code>vboxmanage hostonlyif create</code></p>
+<p>为虚拟接口设置IP地址：<code>vboxmanage hostonlyif ipconfig vboxnet0 --ip 192.168.56.1</code></p>
+<p>再次运行<code>ifconfig</code>，将看到刚刚设置的接口和IP地址：</p>
+<p><img src="https://s2.loli.net/2022/01/31/2uWvZkIcfxSatzw.png" width="600" height="300" alt="图片名称" align="center" id="41"></p>
+<p>我们要使这些更改在重新启动后仍然有效，并在系统启动期间自动设置。所以我们需要建立一个新的目录：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /opt/systemd/</span><br></pre></td></tr></table></figure>
+<p>然后：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /opt/systemd/vboxhostonly</span><br></pre></td></tr></table></figure>
+<p>并将以下代码复制到文件中：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">!/bin/bash</span><br><span class="line">hostonlyif create</span><br><span class="line">vboxmanage hostonlyif ipconfig vboxnet0 --ip 192.168.56.1</span><br></pre></td></tr></table></figure>
+<p>现在我们需要使文件可执行：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/systemd/</span><br><span class="line">sudo chmod a+x vboxhostonly</span><br></pre></td></tr></table></figure>
+<p>现在我们需要创建一个服务：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo touch /etc/systemd/system/vboxhostonlynic.service</span><br></pre></td></tr></table></figure>
+<p>编辑文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/systemd/system/vboxhostonlynic.service</span><br></pre></td></tr></table></figure>
+<p>然后：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Description=Setup VirtualBox Hostonly Adapter</span><br><span class="line">After=vboxdrv.service</span><br><span class="line">[Service]</span><br><span class="line">Type=oneshot</span><br><span class="line">ExecStart=/opt/systemd/vboxhostonly</span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>现在安装服务并确保它在引导时加载:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl <span class="built_in">enable</span> vboxhostonlynic.service</span><br></pre></td></tr></table></figure>
+<p>网络部分完成。</p>
+<h2 id="3-2-创建Win7-x64虚拟机"><a href="#3-2-创建Win7-x64虚拟机" class="headerlink" title="3.2 创建Win7-x64虚拟机"></a>3.2 创建Win7-x64虚拟机</h2><p>选择镜像 <a href="https://msdn.itellyou.cn/" target="_blank" rel="noopener">win7-x64-sp1</a> </p>
+<p>启动Oracle VirtualBox Manager</p>
+<p>单击New图标创建一个新的虚拟机<code>guest1</code>，选择合适的操作系统：</p>
+<p><img src="https://s2.loli.net/2022/01/31/VLlkqKRCxXSA6ng.png" width="550" height="300" alt="图片名称" align="center" id="42"></p>
+<p>现在单击下一步。选择要分配的RAM大小。理想情况下，最小值为4GB。我将设置为4096MB（4GB）:</p>
+<p><img src="https://s2.loli.net/2022/01/31/jqlO5M3kPba9XQI.png" width="550" height="300" alt="图片名称" align="center" id="43"></p>
+<p>单击下一步。通过单击“创建”创建虚拟硬盘：</p>
+<p><img src="https://s2.loli.net/2022/01/31/5L1zeiETygwM62b.png" width="550" height="300" alt="图片名称" align="center" id="44"></p>
+<p>选择VDI并单击Next，选择“动态分配”，然后单击“下一步”。</p>
+<p>选择你的硬盘大小。我已设置为32GB，现在单击“创建”。</p>
+<p>现在你需要把Windows7ISO文件装载到你的Ubuntu虚拟机上。</p>
+<p>单击“确定”。这将把Windows7.iso安装到虚拟机中。现在单击VirtualBox中的设置，然后转到存储。现在单击CD（空）。在右侧或光盘驱动器上，单击CD旁边的向下箭头，然后选择主机驱动器作为CD选项。</p>
+<p><img src="https://s2.loli.net/2022/01/31/gQFULNs62cT57HO.png" width="550" height="300" alt="图片名称" align="center" id="45"></p>
+<p>单击“确定”关闭，然后开始启动虚拟机。按照正常的Windows7安装。我把我的Windows7虚拟机叫做guest1。</p>
+<p>现在您的Windows7虚拟机已构建，请登录。（卡顿的原因可能是Ubuntu虚拟机磁盘空间不足，<a href="http://dragonliu.tk/2022/02/02/VMWare虚拟机Ubuntu20-04-LTS磁盘空间不足的解决方法整理/" target="_blank" rel="noopener">解决方法</a>）</p>
+<h2 id="3-3-进行配置"><a href="#3-3-进行配置" class="headerlink" title="3.3 进行配置"></a>3.3 进行配置</h2><p>我们将进行一些更改，以使虚拟机故意易受攻击。转到“开始”并键入组。您应该看到“编辑组策略”选项。</p>
+<p><img src="https://s2.loli.net/2022/02/01/1iFaKsx5WJmSNjy.png" width="550" height="300" alt="图片名称" align="center" id="46"></p>
+<p>展开“计算机配置”&gt;“Windows设置”&gt;“安全设置”&gt;“本地策略”&gt;“安全选项”。向下滚动到用户帐户控制选项。</p>
+<p><img src="https://s2.loli.net/2022/02/01/N6IvV85oZwDY2c7.png" width="550" height="300" alt="图片名称" align="center" id="47"></p>
+<p>右键单击“用户帐户控制：管理员批准模式中管理员的提升权限提示的行为”，然后选择“属性”。使用下拉菜单选择“不提示，直接提升”，然后单击“确定”。</p>
+<p><img src="https://s2.loli.net/2022/02/01/FVwSXrlKARNyiUx.png" width="550" height="300" alt="图片名称" align="center" id="48"></p>
+<p>右键单击“用户帐户控制：检测应用程序安装并提示提升”，然后选择属性。选中“禁用”选项，然后单击“确定”。</p>
+<p><img src="https://s2.loli.net/2022/02/01/9ytdwx5N42ojqbs.png" width="550" height="300" alt="图片名称" align="center" id="49"></p>
+<p>右键单击“用户帐户控制：以管理员批准模式运行所有管理员”，然后选择属性。选中“禁用”选项，然后单击“确定”。</p>
+<p><img src="https://s2.loli.net/2022/02/01/gvr4TaikESyMt3j.png" width="550" height="300" alt="图片名称" align="center" id="50"></p>
+<p>现在我们关闭windows防火墙和自动更新，原因为他们可能影响恶意软件的行为。</p>
+<p><img src="https://s2.loli.net/2022/02/01/spFXaOW65ntdRCG.png" width="550" height="300" alt="图片名称" align="center" id="51"></p>
+<p><img src="https://s2.loli.net/2022/02/01/spFXaOW65ntdRCG.png" width="550" height="300" alt="图片名称" align="center" id="52"></p>
+<p>接下来我们需要禁用Windows Defender，将“自动扫描”和“实时保护”关闭：</p>
+<p><img src="https://s2.loli.net/2022/02/01/pZKmeODJ7wCASx2.png" width="550" height="300" alt="图片名称" align="center" id="53"></p>
+<h2 id="3-4-安装软件"><a href="#3-4-安装软件" class="headerlink" title="3.4 安装软件"></a>3.4 安装软件</h2><p>单击VirtualBox窗口中的设备并选择InstallVirtualBox Guest Additions完成安装；</p>
+<p>添加一个共享文件夹，使用<code>Downloads</code>文件夹：</p>
+<p><img src="https://s2.loli.net/2022/02/01/ToqhEst3VQnkKmb.png" width="550" height="300" alt="图片名称" align="center" id="54"></p>
+<p>转到Windows中的文件资源管理器并键入<code>\\vboxsvr\*Downloads</code> 即可访问Ubuntu中的文件夹。</p>
+<p>物理机下载<a href="https://www.python.org/ftp/python/2.7.8/python-2.7.8.amd64.msi" target="_blank" rel="noopener">python2.7</a>，将此安装包放入共享文件夹并从Windows7虚拟机运行，安装的时侯选择 add python to path；</p>
+<p>下载<a href="https://pypi.python.org/packages/2.7/P/Pillow/Pillow-2.5.3.win-amd64-py2.7.exe#md5=33c3a581ff1538b4f79b4651084090c8" target="_blank" rel="noopener">Python Pillow</a>，将安装包放入共享文件夹并从Windows 7虚拟机运行。</p>
+<p>（未完成）现在安装Adobe Reader、Flash、Java和Microsoft Office（可选）以及您认为可能需要的任何其他应用程序。</p>
+<p>（未完成）打开Internet Explorer和Adobe Reader以及任何其他可能有可能干扰cuckoo客户端操作的闪屏的应用程序。</p>
+<h2 id="3-5-安装客户端"><a href="#3-5-安装客户端" class="headerlink" title="3.5 安装客户端"></a>3.5 安装客户端</h2><p>上传<code>agent.py</code>文件至win7虚拟机：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/cuckoo/.cuckoo/agent</span><br><span class="line">cp agent.py ~/Downloads</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/02/01/vDYqUjB2SOiP5r6.png" width="550" height="300" alt="图片名称" align="center" id="55"></p>
+<p>自启动：复制agent.py文件并将其放置在<code>C:\Users\*USERNAME*\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</code><br>这将在启动虚拟机时启动agent.py。在Windows7虚拟机上，需要显示隐藏的文件和文件夹才能看到AppData文件夹。<br>您可以通过进入“文件资源管理器”，然后进入“组织”&gt;“文件夹选项”来完成此操作。</p>
+<p><img src="https://s2.loli.net/2022/02/01/k39m7tVqcN2YoTC.png" width="400" height="300" alt="图片名称" align="center" id="56"></p>
+<p><img src="https://s2.loli.net/2022/02/01/54dthCes9iuBKDy.png" width="500" height="300" alt="图片名称" align="center" id="57"></p>
+<p>一旦您对安装了所有必需的软件感到满意，请重新启动Windows7虚拟机并登录。你应该得到一个空白的命令窗口出现。如果出现网络弹出窗口，请单击“允许”。</p>
+<p><img src="https://s2.loli.net/2022/02/01/k39m7tVqcN2YoTC.png" width="400" height="300" alt="图片名称" align="center" id="58"></p>
+<p><img src="https://s2.loli.net/2022/02/01/LkHXv6ydEUP7btW.png" width="400" height="300" alt="图片名称" align="center" id="59"></p>
+<p>现在可以最小化虚拟机。</p>
+<h2 id="3-6-创建沙盒环境"><a href="#3-6-创建沙盒环境" class="headerlink" title="3.6 创建沙盒环境"></a>3.6 创建沙盒环境</h2><p>现在我们已经创建了Windows7虚拟机，我们需要设置网络来创建沙盒环境。单击VirtualBox管理器，然后单击Windows 7虚拟机的设置。选择网络，然后更改附加到：仅主机适配器，然后在名称中选择vboxnet0。单击“确定”。</p>
+<p><img src="https://s2.loli.net/2022/02/01/a1xFih5vb9jWVew.png" width="600" height="300" alt="图片名称" align="center" id="59"></p>
+<p>现在你需要让这个持久化。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y iptables-persistent</span><br></pre></td></tr></table></figure>
+<p>现在我们需要配置IP转发，以便将internet连接从主机路由到来宾虚拟机。我们将使用iptables设置这些网络转发规则：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -A FORWARD -o eth0 -i vboxnet0 -s 192.168.56.0/24 -m conntrack --ctstate NEW -j ACCEPT</span><br><span class="line">sudo iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT</span><br><span class="line">sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</span><br></pre></td></tr></table></figure>
+<p>您可以通过运行<code>sudo iptables-L</code>来检查您的规则</p>
+<p>现在在内核中启用IP转发，以便将这些设置设置为活动（WWW Internet访问需要）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 1 | sudo tee -a /proc/sys/net/ipv4/ip_forward</span><br><span class="line">sudo sysctl -w net.ipv4.ip_forward=1</span><br></pre></td></tr></table></figure>
+<p>现在我们需要确保IP转发在重新启动后启动：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
+<p>把#从<code>net.ipv4.ip_forward=1</code>项移除，保存退出。<br>现在运行<code>sudo su -</code>然后<code>iptables-save &gt; /etc/iptables/rules.v4</code></p>
+<p>现在我们需要配置Windows7虚拟机的IP地址信息。在中打开网络适配器并设置以下信息：</p>
+<p><img src="https://s2.loli.net/2022/02/01/hcsV7YUqwFgCrv1.png" width="400" height="300" alt="图片名称" align="center" id="60"></p>
+<p>单击“确定”和“确定”之后，您应该再次获得internet连接。</p>
+<p>我们现在要拍摄虚拟机的快照，所以单击Machine&gt;takesnapshot。将其命名为Snapshot 1，然后单击ok。</p>
+<h2 id="3-7-配置cuckoo服务"><a href="#3-7-配置cuckoo服务" class="headerlink" title="3.7 配置cuckoo服务"></a>3.7 配置cuckoo服务</h2><p>我们现在需要在ubuntu20上完成cuckoo服务的配置。所有cuckoo配置文件都位于</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.cuckoo/conf</span><br></pre></td></tr></table></figure>
+<p>或您的主目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> .cuckoo/</span><br></pre></td></tr></table></figure>
+<p>切换到config目录：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/cuckoo/.cuckoo/conf</span><br></pre></td></tr></table></figure>
+<p>通过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim cuckoo.conf</span><br></pre></td></tr></table></figure>
+<p>编辑buckoo.conf文件确保设置了以下内容：<code>machine=virtualbox</code><br>和<code>memory_dump=yes</code><br>和<code>resultserver ip=192.168.56.1</code>，<br>保存退出即可</p>
+<p>通过</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim auxiliary.conf</span><br></pre></td></tr></table></figure>
+<p>编辑auxiliary.conf文件确保启用了<br><code>sniffer=yes</code></p>
+<p>保存退出</p>
+<p>通过</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim virtualbox.conf</span><br></pre></td></tr></table></figure>
+<p>编辑virtualbox.conf文件，并确保<br>virtualbox mode=gui<br>和machines=cuckoo1<br>（如果需要，将名称更改为您的Windows 7虚拟机名称，label=cuckoo1和platform=Windows和ip=192.168.56.101和snapshot=snapshot 1），<br>保存退出</p>
+<p>通过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim processing.conf</span><br></pre></td></tr></table></figure>
+<p>编辑processing.conf文件，<br>确保<code>memory enabled=yes</code>，</p>
+<p>保存退出</p>
+<p>使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim memory.conf</span><br></pre></td></tr></table></figure>
+<p>编辑memory.conf文件，<br>确保<code>basic guest_profile=Win7SP1x64</code>，</p>
+<p>保存退出</p>
+<p>通过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim reporting.conf</span><br></pre></td></tr></table></figure>
+<p>编辑reporting.conf文件，确保singlefile启用<br><code>report.html enabled=yes</code>和<code>mongodb enabled=yes</code>的创建，</p>
+<p>保存退出</p>
+<h2 id="3-8-启动cuckoo"><a href="#3-8-启动cuckoo" class="headerlink" title="3.8 启动cuckoo"></a>3.8 启动cuckoo</h2><p>现在关闭Windows7虚拟机，然后重新启动Ubuntu虚拟机。以<font color="red"><strong>同一用户身份</strong></font>重新登录（不要以cuckoo用户身份登录）</p>
+<p><strong>dragon</strong>用户下激活虚拟环境：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  graduation . ./venv/bin/activate</span><br><span class="line">(venv) ➜  graduation</span><br></pre></td></tr></table></figure>
+<p>现在要使用cuckoo你首先需要更新cuckoo的签名，所以打开一个终端并键入</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(venv) ➜  graduation cuckoo community                 </span><br><span class="line">/home/dragon/graduation/venv/lib/python2.7/site-packages/sflock/decode/office.py:12: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support <span class="keyword">for</span> it is now deprecated <span class="keyword">in</span> cryptography, and will be removed <span class="keyword">in</span> the next release.</span><br><span class="line">  from cryptography.hazmat.backends import default_backend</span><br><span class="line">2022-02-02 20:54:28,277 [cuckoo.apps.apps] INFO: Downloading.. https://github.com/cuckoosandbox/community/archive/master.tar.gz</span><br><span class="line">2022-02-02 20:54:33,956 [cuckoo] INFO: Finished fetching &amp; extracting the community files!</span><br></pre></td></tr></table></figure>
+<p>现在在终端窗口1中键入<code>cuckoo</code>并按回车键。你将得到启动cuckoo，它将坐在等待分析任务。</p>
+<p>在第二个终端窗口中键入 <code>cuckoo web runserver 0.0.0.0:8000</code></p>
+<p><img src="https://s2.loli.net/2022/02/02/IOe5Xy8GCtPLVjK.png" width="800" height="400" alt="图片名称" align="center" id="61"></p>
+<p>现在您可以通过<code>127.0.0.1:8000</code>访问cuckoo网络服务器，或者通过浏览器访问本地网络上的虚拟机IP地址。</p>
+<p><img src="https://s2.loli.net/2022/02/02/6FYTpnrKShyx1li.png" width="800" height="400" alt="图片名称" align="center" id="62"></p>
+<p>然后提交分析即可，生成报告如下：</p>
+<p><img src="https://s2.loli.net/2022/02/02/OxT9wCd6FBkUehX.png" width="800" height="400" alt="图片名称" align="center" id="63"></p>
+<h1 id="4-guest安装-在Vmware中，与Ubuntu并列，未完成，失败"><a href="#4-guest安装-在Vmware中，与Ubuntu并列，未完成，失败" class="headerlink" title="4 guest安装(在Vmware中，与Ubuntu并列，未完成，失败)"></a>4 guest安装(在Vmware中，与Ubuntu并列，未完成，失败)</h1><h2 id="4-1-创建win7-x64虚拟机"><a href="#4-1-创建win7-x64虚拟机" class="headerlink" title="4.1 创建win7-x64虚拟机"></a>4.1 创建win7-x64虚拟机</h2><ul>
+<li><p>镜像下载：<a href="https://msdn.itellyou.cn/" target="_blank" rel="noopener">MSDN</a> （需要Service Pack 1，否则vmtools安装报错：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win7企业版安装vmtool提示无法进行，需要更新到SP1</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/01/31/vRTVYMeOB6nWCXi.png" width="600" height="300" alt="图片名称" align="center" id="38"></p>
+<p>此<a href="https://blog.csdn.net/kinnisoy/article/details/105299515" target="_blank" rel="noopener">教程</a>无效    </p>
+</li>
+<li><p>按照步骤安装即可</p>
+</li>
+<li><p>安装VMware Tools（如果安装失败：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Windows 无法验证此驱动程序软件的发布者</span><br></pre></td></tr></table></figure>
+<p>使用此<a href="http://softwareupdate.vmware.com/cds/vmw-desktop/ws/15.5.0/14665864/windows/packages/tools-windows.tar" target="_blank" rel="noopener">ISO映像文件</a>安装即可，教程的<a href="https://blog.csdn.net/DCTANT/article/details/117886423" target="_blank" rel="noopener">评论</a>中提及的</p>
+</li>
+</ul>
+<h2 id="4-2-依赖"><a href="#4-2-依赖" class="headerlink" title="4.2 依赖"></a>4.2 依赖</h2><h3 id="4-2-1-安装python"><a href="#4-2-1-安装python" class="headerlink" title="4.2.1 安装python"></a>4.2.1 安装python</h3><p>Python 是 Cuckoo 客户端（分析器） 正常工作的必须软件。</p>
+<ol>
+<li>官网下载安装 Python2.7 版本；</li>
+<li>如果安装的时侯选择 add python to path,则会自动完成环境变量配置；否则需要手动添加</li>
+</ol>
+<p>Cuckoo 客户端组件依赖于部分额外的Python 库， 包括: <a href="https://python-pillow.org/" target="_blank" rel="noopener">Python Pillow</a>: 截图组件需要用到。下载<a href="https://pypi.python.org/packages/2.7/P/Pillow/Pillow-2.5.3.win-amd64-py2.7.exe#md5=33c3a581ff1538b4f79b4651084090c8" target="_blank" rel="noopener">安装包</a>后双击运行即可。</p>
+<p>这些组件不是必须要安装的， 但是不安装的话，分析组件的部分功能就无法正常使用。</p>
+<h3 id="4-2-2-其他软件"><a href="#4-2-2-其他软件" class="headerlink" title="4.2.2 其他软件"></a>4.2.2 其他软件</h3><p>至此，Cuckoo 正常工作所需的软件的已经安装完成了。</p>
+<p>不过根据你需要分析的文件类型， 也同时需要安装相应的软件， 例如(谷歌)浏览器，PDF阅读器，Office软件等。 记得要关闭这些软件的检查更新和自动更新。</p>
+<p>这些额外的软件是否需要安装，完全取决于你是否所需。 可以阅读 <a href="https://cuckoo-sandbox.readthedocs.io/zh_CN/latest/introduction/sandboxing.html" target="_blank" rel="noopener">沙箱</a> 章节了解更多的信息.</p>
+<h2 id="4-3-网络配置"><a href="#4-3-网络配置" class="headerlink" title="4.3 网络配置"></a>4.3 网络配置</h2><h3 id="4-3-1-Windows-设置"><a href="#4-3-1-Windows-设置" class="headerlink" title="4.3.1 Windows 设置"></a>4.3.1 Windows 设置</h3><p>在配置底层网络之前，可能需要调整一些windows虚拟机的内部配置。</p>
+<p>最重要的事情是关闭控制面板中的 <em>Windows 防火墙</em> 和 <em>自动更新</em>。 这些都会影响恶意软件的行为，进而影响Cuckoo对这些行为的分析。</p>
+<h3 id="4-3-2-虚拟网络"><a href="#4-3-2-虚拟网络" class="headerlink" title="4.3.2 虚拟网络"></a>4.3.2 虚拟网络</h3><p>现在可以决定虚拟机如何访问互联网或者本地局域网。</p>
+<p>以前老的版本中， Cuckoo 虚拟机和宿主机之间的数据是通过共享文件夹进行交互。 从0.4版本起，则通过XMLRPC 协议来交互。</p>
+<p>所以，需要配置给虚拟机配置静态IP，配置完成后，通过PING来测试虚拟机与宿主机之间 的通信是否正常。不要使用DHCP， 每次IP都不同的情况下，无法正常通信。</p>
+<p>这些配置都要依赖于你的需求和所选的虚拟机软件的特性。</p>
+<blockquote>
+<p>警告：虚拟网络报错! 虚拟网络配置是非常重要的部分。大部分Cuckoo遇到的问题都与网络配置有关系。 在你配置完成之后， 尽量用PING和TELNET工具测试是否正常。</p>
+</blockquote>
+<p>推荐使用 <em>Host-Only</em> 模式的虚拟网络。</p>
+<hr>
+<p><strong>win7虚拟机使用nat模式配置静态IP上网：（未完成）</strong> <a href="https://blog.csdn.net/qq_40657585/article/details/108268552" target="_blank" rel="noopener">链接</a></p>
+<p>查看ubuntu20.04 LTS的ip地址，配置window7客户机的ipv4地址的默认网关和DNS地址为ubuntu的ip地址，如下：</p>
+<p><img src="https://s2.loli.net/2022/01/31/zCv8PyLSDpwJUKO.png" width="600" height="300" alt="图片名称" align="center" id="39"></p>
+<hr>
+<p>使用NAT模式DHCP：</p>
+<ul>
+<li>Ubuntu：192.168.10.128</li>
+<li>Win7：192.168.10.134</li>
+</ul>
+<hr>
+<h2 id="4-3-安装客户端"><a href="#4-3-安装客户端" class="headerlink" title="4.3 安装客户端"></a>4.3 安装客户端</h2><p>从0.4版本起， Cuckoo设计了以跨平台的交互客户端，可以在Windows， Android， Linux 和Mac OSX 系统上运行。</p>
+<p>只有安装和启动了Cuckoo 客户端， 分析才能工作正常。</p>
+<p>客户端的安装和启动是十分简单的。</p>
+<p>在 <code>$CWD/agent/</code> 目录中，可以找到 <code>agent.py</code> 文件。 把文件拷贝到虚拟机中， 然后将脚本启动起来。 客户端会启动一个小型的API服务，用于与宿主机通信。</p>
+<p>在Windows系统中， 只要将脚本名称 从 <code>agent.py</code> 改为 <strong>agent.pyw</strong> ， 可以在运行的时候不显示终端的窗口。</p>
+<p>将脚本拷贝到 启动 目录， 即可实现脚本开机自启动。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">reg add <span class="string">"hklm\software\Microsoft\Windows NT\CurrentVersion\WinLogon"</span> /v DefaultUserName /d &lt;USERNAME&gt; /t REG_SZ /f</span><br><span class="line">reg add <span class="string">"hklm\software\Microsoft\Windows NT\CurrentVersion\WinLogon"</span> /v DefaultPassword /d &lt;PASSWORD&gt; /t REG_SZ /f</span><br><span class="line">reg add <span class="string">"hklm\software\Microsoft\Windows NT\CurrentVersion\WinLogon"</span> /v AutoAdminLogon /d 1 /t REG_SZ /f</span><br><span class="line">reg add <span class="string">"hklm\system\CurrentControlSet\Control\TerminalServer"</span> /v AllowRemoteRPC /d 0x01 /t REG_DWORD /f</span><br><span class="line">reg add <span class="string">"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"</span> /v LocalAccountTokenFilterPolicy /d 0x01 /t REG_DWORD /f</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">reg add <span class="string">"hklm\software\Microsoft\Windows NT\CurrentVersion\WinLogon"</span> /v DefaultUserName /d guest2 /t REG_SZ /f</span><br><span class="line">reg add <span class="string">"hklm\software\Microsoft\Windows NT\CurrentVersion\WinLogon"</span> /v DefaultPassword /d root /t REG_SZ /f</span><br><span class="line">reg add <span class="string">"hklm\software\Microsoft\Windows NT\CurrentVersion\WinLogon"</span> /v AutoAdminLogon /d 1 /t REG_SZ /f</span><br><span class="line">reg add <span class="string">"hklm\system\CurrentControlSet\Control\TerminalServer"</span> /v AllowRemoteRPC /d 0x01 /t REG_DWORD /f</span><br><span class="line">reg add <span class="string">"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"</span> /v LocalAccountTokenFilterPolicy /d 0x01 /t REG_DWORD /f</span><br></pre></td></tr></table></figure>
+<h1 id="5-参考"><a href="#5-参考" class="headerlink" title="5 参考"></a>5 参考</h1><ul>
+<li><a href="https://fl4g.cn/2018/06/06/Cuckoo-Sandbox%E5%AD%A6%E4%B9%A0-%E5%AE%89%E8%A3%85%E7%AF%87/" target="_blank" rel="noopener">Cuckoo-Sandbox学习-安装篇</a></li>
+<li><a href="https://blog.csdn.net/ElsonHY/article/details/115607255" target="_blank" rel="noopener">Ubuntu20.04系统Cuckoo sandbox所需环境搭建及安装(超详细图文)</a></li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://dragonliu2018.github.io/2022/01/30/Cuckoo-Sandbox-安装教程/" title="Cuckoo Sandbox 安装教程" target="_blank" rel="external">https://dragonliu2018.github.io/2022/01/30/Cuckoo-Sandbox-安装教程/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/dragonliu2018" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/dragonliu2018" target="_blank"><span class="text-dark">Dragon&#39;s Blogs</span><small class="ml-1x">Security</small></a></h3>
+        <div>Life is painting a picture, not doing a sum.</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2022/02/28/恶意样本收集/" title="恶意样本收集"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2021/12/11/2021年NUAACTF校赛-WP/" title="2021年nuaa校赛 WP"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Pbjl2Wajl9och0xVbR5eqoH1-gzGzoHsz',
+    appKey: 'PgxFh1wV6pyMMllhxs7NJijb',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

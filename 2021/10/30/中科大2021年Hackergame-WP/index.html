@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>中科大2021年Hackergame WP | Dragon&#39;s Security Blogs</title>
+  <meta name="description" content="1 签到改变URL中的参数，使其在当前日期：http://202.38.93.111:10000/?page=1635000000  2 进制十六——参上使用文字识别工具识别十六进制串，转成字符串即可：https://www.bejson.com/convert/ox2str/  3 去吧！追寻自由的电波此mp3文件明显是加速处理后的文件，拖到Pr减速可以听到是一个一个的英语单词，根据前四个单词的">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="中科大2021年Hackergame WP">
+<meta property="og:url" content="https://dragonliu2018.github.io/2021/10/30/中科大2021年Hackergame-WP/index.html">
+<meta property="og:site_name" content="Dragon Liu">
+<meta property="og:description" content="1 签到改变URL中的参数，使其在当前日期：http://202.38.93.111:10000/?page=1635000000  2 进制十六——参上使用文字识别工具识别十六进制串，转成字符串即可：https://www.bejson.com/convert/ox2str/  3 去吧！追寻自由的电波此mp3文件明显是加速处理后的文件，拖到Pr减速可以听到是一个一个的英语单词，根据前四个单词的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2021/10/23/wxnQA8e1C6P2zK9.png">
+<meta property="og:image" content="https://i.loli.net/2021/10/23/tqYaVTK3URO1wDl.png">
+<meta property="og:image" content="https://i.loli.net/2021/10/23/ABcamulY4bJEHTt.png">
+<meta property="og:updated_time" content="2022-07-04T07:54:45.107Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="中科大2021年Hackergame WP">
+<meta name="twitter:description" content="1 签到改变URL中的参数，使其在当前日期：http://202.38.93.111:10000/?page=1635000000  2 进制十六——参上使用文字识别工具识别十六进制串，转成字符串即可：https://www.bejson.com/convert/ox2str/  3 去吧！追寻自由的电波此mp3文件明显是加速处理后的文件，拖到Pr减速可以听到是一个一个的英语单词，根据前四个单词的">
+<meta name="twitter:image" content="https://i.loli.net/2021/10/23/wxnQA8e1C6P2zK9.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://dragonliu2018.github.io/2021/10/30/中科大2021年Hackergame-WP/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Dragon Liu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/dragonliu2018" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Dragon&#39;s Blogs</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Security</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Nanjing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</br>dragonliu2018@gmail.com</br>电脑端观看效果更佳！</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WP/">WP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/恶意代码/">恶意代码</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/环境与工具/">环境与工具</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/">CTF</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/CTF/" style="font-size: 13px;">CTF</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/恶意代码/">恶意代码</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/03/10/【恶意家族进化分析】勒索病毒WannaCry家族/" class="title">【恶意家族进化分析】勒索病毒WannaCry家族</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-03-10T07:48:19.000Z" itemprop="datePublished">2022-03-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/恶意代码/">恶意代码</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/02/28/恶意样本收集/" class="title">恶意样本收集</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-02-28T14:49:09.000Z" itemprop="datePublished">2022-02-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/环境与工具/">环境与工具</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/01/30/Cuckoo-Sandbox-安装教程/" class="title">Cuckoo Sandbox 安装教程</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-30T13:56:31.000Z" itemprop="datePublished">2022-01-30</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/WP/">WP</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/11/2021年NUAACTF校赛-WP/" class="title">2021年nuaa校赛 WP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-11T13:28:09.000Z" itemprop="datePublished">2021-12-11</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/WP/">WP</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/10/30/中科大2021年Hackergame-WP/" class="title">中科大2021年Hackergame WP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-30T13:27:28.000Z" itemprop="datePublished">2021-10-30</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-签到"><span class="toc-number">1.</span> <span class="toc-text">1 签到</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-进制十六——参上"><span class="toc-number">2.</span> <span class="toc-text">2 进制十六——参上</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-去吧！追寻自由的电波"><span class="toc-number">3.</span> <span class="toc-text">3 去吧！追寻自由的电波</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-猫咪问答-Pro-Max"><span class="toc-number">4.</span> <span class="toc-text">4 猫咪问答 Pro Max</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-卖瓜"><span class="toc-number">5.</span> <span class="toc-text">5 卖瓜</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-透明的文件"><span class="toc-number">6.</span> <span class="toc-text">6 透明的文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-旅行照片"><span class="toc-number">7.</span> <span class="toc-text">7 旅行照片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-FLAG-助力大红包"><span class="toc-number">8.</span> <span class="toc-text">8 FLAG 助力大红包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-Amnesia"><span class="toc-number">9.</span> <span class="toc-text">9 Amnesia</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#轻度失忆"><span class="toc-number">9.1.</span> <span class="toc-text">轻度失忆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#记忆清除"><span class="toc-number">9.2.</span> <span class="toc-text">记忆清除</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-图之上的信息"><span class="toc-number">10.</span> <span class="toc-text">10 图之上的信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-Easy-RSA"><span class="toc-number">11.</span> <span class="toc-text">11 Easy RSA</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-加密的-U-盘"><span class="toc-number">12.</span> <span class="toc-text">12 加密的 U 盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-赛博厨房"><span class="toc-number">13.</span> <span class="toc-text">13 赛博厨房</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-0"><span class="toc-number">13.1.</span> <span class="toc-text">Level 0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-1"><span class="toc-number">13.2.</span> <span class="toc-text">Level 1</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-中科大2021年Hackergame-WP" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      中科大2021年Hackergame WP
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2021/10/30/中科大2021年Hackergame-WP/" class="article-date">
+	  <time datetime="2021-10-30T13:27:28.000Z" itemprop="datePublished">2021-10-30</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/WP/">WP</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/CTF/">CTF</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/10/30/中科大2021年Hackergame-WP/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 745(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="1-签到"><a href="#1-签到" class="headerlink" title="1 签到"></a>1 签到</h1><p>改变URL中的参数，使其在当前日期：<code>http://202.38.93.111:10000/?page=1635000000</code></p>
+<p><img src="https://i.loli.net/2021/10/23/wxnQA8e1C6P2zK9.png" width="600" height="300" alt="图片名称" align="center" id="168"></p>
+<h1 id="2-进制十六——参上"><a href="#2-进制十六——参上" class="headerlink" title="2 进制十六——参上"></a>2 进制十六——参上</h1><p>使用文字识别工具识别十六进制串，转成字符串即可：<a href="https://www.bejson.com/convert/ox2str/" target="_blank" rel="noopener">https://www.bejson.com/convert/ox2str/</a></p>
+<p><img src="https://i.loli.net/2021/10/23/tqYaVTK3URO1wDl.png" width="700" height="300" alt="图片名称" align="center" id="169"></p>
+<h1 id="3-去吧！追寻自由的电波"><a href="#3-去吧！追寻自由的电波" class="headerlink" title="3 去吧！追寻自由的电波"></a>3 去吧！追寻自由的电波</h1><p>此mp3文件明显是加速处理后的文件，拖到Pr减速可以听到是一个一个的英语单词，根据前四个单词的首字母(f l a g)可以判定是取所有的首字母，左右花括号可以直译即可。</p>
+<h1 id="4-猫咪问答-Pro-Max"><a href="#4-猫咪问答-Pro-Max" class="headerlink" title="4 猫咪问答 Pro Max"></a>4 猫咪问答 Pro Max</h1><ul>
+<li>问题1：<a href="https://web.archive.org/web/20181004003308/http://sec.ustc.edu.cn/doku.php/codes" target="_blank" rel="noopener">https://web.archive.org/web/20181004003308/http://sec.ustc.edu.cn/doku.php/codes</a></li>
+<li>问题2：<a href="https://lug.ustc.edu.cn/wiki/intro/" target="_blank" rel="noopener">https://lug.ustc.edu.cn/wiki/intro/</a></li>
+<li>问题3：<a href="https://lug.ustc.edu.cn/news/2016/06/new-activity-room-in-west-library/" target="_blank" rel="noopener">https://lug.ustc.edu.cn/news/2016/06/new-activity-room-in-west-library/</a></li>
+<li>问题4：<a href="http://sigbovik.org/2021/proceedings.pdf" target="_blank" rel="noopener">http://sigbovik.org/2021/proceedings.pdf</a></li>
+<li>问题5：<a href="https://datatracker.ietf.org/doc/html/rfc8962" target="_blank" rel="noopener">https://datatracker.ietf.org/doc/html/rfc8962</a></li>
+</ul>
+<h1 id="5-卖瓜"><a href="#5-卖瓜" class="headerlink" title="5 卖瓜"></a>5 卖瓜</h1><p>使用<code>9斤的瓜</code>凑，大数使其溢出为负数，然后获得商并使用其凑<code>9斤的瓜</code>。重复几次可以凑出来。</p>
+<h1 id="6-透明的文件"><a href="#6-透明的文件" class="headerlink" title="6 透明的文件"></a>6 透明的文件</h1><p>…</p>
+<h1 id="7-旅行照片"><a href="#7-旅行照片" class="headerlink" title="7 旅行照片"></a>7 旅行照片</h1><p>百度搜索<code>海边KFC</code>关键字，打开百度地图，根据海的位置确定方位，根据阴影判断是下午(两个选择爆破下)，题目3需要爆破，题目4和5根据百度搜索内容就可得到。</p>
+<p><img src="https://i.loli.net/2021/10/23/ABcamulY4bJEHTt.png" width="600" height="300" alt="图片名称" align="center" id="170"></p>
+<h1 id="8-FLAG-助力大红包"><a href="#8-FLAG-助力大红包" class="headerlink" title="8 FLAG 助力大红包"></a>8 FLAG 助力大红包</h1><p>…</p>
+<h1 id="9-Amnesia"><a href="#9-Amnesia" class="headerlink" title="9 Amnesia"></a>9 Amnesia</h1><h2 id="轻度失忆"><a href="#轻度失忆" class="headerlink" title="轻度失忆"></a>轻度失忆</h2><p>编译后 ELF 文件的 <code>.data</code> 和 <code>.rodata</code> 段会被清零。所以不能使用字符串赋值，putchar即可。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'H'</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'e'</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'l'</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'l'</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'o'</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">','</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">' '</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'w'</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'o'</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'r'</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'l'</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'d'</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'!'</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="记忆清除"><a href="#记忆清除" class="headerlink" title="记忆清除"></a>记忆清除</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;asm/unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line">__attribute__((used, constructor, section(<span class="string">".init"</span>))) <span class="function"><span class="keyword">void</span> <span class="title">pre_array</span><span class="params">()</span></span>; </span><br><span class="line"><span class="keyword">void</span> _start() __attribute__((section(<span class="string">".init"</span>)));</span><br><span class="line"><span class="function"><span class="keyword">ssize_t</span> <span class="title">my_write</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *buf)</span> __<span class="title">attribute__</span><span class="params">((section(<span class="string">".init"</span>)))</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">ssize_t</span> <span class="title">my_write</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *buf)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fd = STDOUT_FILENO;</span><br><span class="line">    <span class="keyword">ssize_t</span> ret;</span><br><span class="line">    <span class="keyword">size_t</span> <span class="built_in">size</span> = <span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">asm</span> <span class="title">volatile</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="string">"int $0x80"</span></span></span></span><br><span class="line"><span class="function"><span class="params">        : <span class="string">"=a"</span>(ret)</span></span></span><br><span class="line"><span class="function"><span class="params">        : <span class="string">"0"</span>(__NR_write), <span class="string">"b"</span>(fd), <span class="string">"c"</span>(buf), <span class="string">"d"</span>(<span class="built_in">size</span>)</span></span></span><br><span class="line"><span class="function"><span class="params">        : <span class="string">"memory"</span> <span class="comment">// the kernel dereferences pointer args</span></span></span></span><br><span class="line"><span class="function"><span class="params">    )</span></span>;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre_array</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="keyword">char</span> test1 = <span class="string">'H'</span>;</span><br><span class="line">    my_write((<span class="keyword">const</span> <span class="keyword">void</span> *)&amp;test1);</span><br><span class="line">    test1 = <span class="string">'e'</span>;</span><br><span class="line">    my_write((<span class="keyword">const</span> <span class="keyword">void</span> *)&amp;test1);</span><br><span class="line">    test1 = <span class="string">'l'</span>;</span><br><span class="line">    my_write((<span class="keyword">const</span> <span class="keyword">void</span> *)&amp;test1);</span><br><span class="line">    test1 = <span class="string">'l'</span>;</span><br><span class="line">    my_write((<span class="keyword">const</span> <span class="keyword">void</span> *)&amp;test1);</span><br><span class="line">    test1 = <span class="string">'o'</span>;</span><br><span class="line">    my_write((<span class="keyword">const</span> <span class="keyword">void</span> *)&amp;test1);</span><br><span class="line">    test1 = <span class="string">','</span>;</span><br><span class="line">    my_write((<span class="keyword">const</span> <span class="keyword">void</span> *)&amp;test1);</span><br><span class="line">    test1 = <span class="string">' '</span>;</span><br><span class="line">    my_write((<span class="keyword">const</span> <span class="keyword">void</span> *)&amp;test1);</span><br><span class="line">    test1 = <span class="string">'w'</span>;</span><br><span class="line">    my_write((<span class="keyword">const</span> <span class="keyword">void</span> *)&amp;test1);</span><br><span class="line">    test1 = <span class="string">'o'</span>;</span><br><span class="line">    my_write((<span class="keyword">const</span> <span class="keyword">void</span> *)&amp;test1);</span><br><span class="line">    test1 = <span class="string">'r'</span>;</span><br><span class="line">    my_write((<span class="keyword">const</span> <span class="keyword">void</span> *)&amp;test1);</span><br><span class="line">    test1 = <span class="string">'l'</span>;</span><br><span class="line">    my_write((<span class="keyword">const</span> <span class="keyword">void</span> *)&amp;test1);</span><br><span class="line">    test1 = <span class="string">'d'</span>;</span><br><span class="line">    my_write((<span class="keyword">const</span> <span class="keyword">void</span> *)&amp;test1);</span><br><span class="line">    test1 = <span class="string">'!'</span>;</span><br><span class="line">    my_write((<span class="keyword">const</span> <span class="keyword">void</span> *)&amp;test1);</span><br><span class="line">    <span class="comment">/* exit system call */</span></span><br><span class="line">    <span class="keyword">asm</span>(<span class="string">"movl $1,%eax;"</span></span><br><span class="line">        <span class="string">"xorl %ebx,%ebx;"</span></span><br><span class="line">        <span class="string">"int  $0x80"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*<span class="keyword">init_array_t</span>)</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="keyword">init_array_t</span> __attribute__ ((section(<span class="string">".preinit_array"</span>))) my_init_a1 = pre_array;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="10-图之上的信息"><a href="#10-图之上的信息" class="headerlink" title="10 图之上的信息"></a>10 图之上的信息</h1><h1 id="11-Easy-RSA"><a href="#11-Easy-RSA" class="headerlink" title="11 Easy RSA"></a>11 Easy RSA</h1><h1 id="12-加密的-U-盘"><a href="#12-加密的-U-盘" class="headerlink" title="12 加密的 U 盘"></a>12 加密的 U 盘</h1><h1 id="13-赛博厨房"><a href="#13-赛博厨房" class="headerlink" title="13 赛博厨房"></a>13 赛博厨房</h1><h2 id="Level-0"><a href="#Level-0" class="headerlink" title="Level 0"></a>Level 0</h2><p>自然语言编程，按照每天给出的条件编程即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">向右 2 步</span><br><span class="line">拿起 1 个物品</span><br><span class="line">向下 1 步</span><br><span class="line">向左 2 步</span><br><span class="line">放下 1 个物品</span><br><span class="line">向右 1 步</span><br><span class="line">向上 1 步</span><br><span class="line">拿起 1 个物品</span><br><span class="line">向下 1 步</span><br><span class="line">向左 1 步</span><br><span class="line">放下 1 个物品</span><br></pre></td></tr></table></figure>
+<h2 id="Level-1"><a href="#Level-1" class="headerlink" title="Level 1"></a>Level 1</h2><p><code>do...while</code>循环思路</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">向右 1 步</span><br><span class="line">拿起 73 个物品</span><br><span class="line">向下 1 步</span><br><span class="line">向左 1 步</span><br><span class="line">放下 1 个物品</span><br><span class="line">如果手上的物品大于等于 0 向上跳转 1 行</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://dragonliu2018.github.io/2021/10/30/中科大2021年Hackergame-WP/" title="中科大2021年Hackergame WP" target="_blank" rel="external">https://dragonliu2018.github.io/2021/10/30/中科大2021年Hackergame-WP/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/dragonliu2018" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/dragonliu2018" target="_blank"><span class="text-dark">Dragon&#39;s Blogs</span><small class="ml-1x">Security</small></a></h3>
+        <div>Life is painting a picture, not doing a sum.</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2021/12/11/2021年NUAACTF校赛-WP/" title="2021年nuaa校赛 WP"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2021/03/04/MAC地址欺骗/" title="MAC地址泛洪与欺骗"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Pbjl2Wajl9och0xVbR5eqoH1-gzGzoHsz',
+    appKey: 'PgxFh1wV6pyMMllhxs7NJijb',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

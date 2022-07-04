@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>CTF编码加密整理 | Dragon&#39;s Security Blogs</title>
+  <meta name="description" content="01 常见编码0x01 莫尔斯电码(Morse Code)01 原理　　摩尔斯电码也被称作摩斯密码，是一种时通时断的信号代码，通过不同的排列顺序来表达不同的英文字母、数字和标点符号。 02 特征 由. -组成的字符串； 由0 1组成的字符串，且为空格间隔得一组一组的。  03 解题 通道1(英文字母小写) 通道2(英文字母大写) 通道3(英文字母小写) 01破解脚本  12345678910111">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CTF编码加密整理">
+<meta property="og:url" content="https://dragonliu2018.github.io/2020/07/13/CTF编码加密整理/index.html">
+<meta property="og:site_name" content="Dragon Liu">
+<meta property="og:description" content="01 常见编码0x01 莫尔斯电码(Morse Code)01 原理　　摩尔斯电码也被称作摩斯密码，是一种时通时断的信号代码，通过不同的排列顺序来表达不同的英文字母、数字和标点符号。 02 特征 由. -组成的字符串； 由0 1组成的字符串，且为空格间隔得一组一组的。  03 解题 通道1(英文字母小写) 通道2(英文字母大写) 通道3(英文字母小写) 01破解脚本  12345678910111">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/eac4b74543a98226aab284e78a82b9014b90ebfb.png">
+<meta property="og:updated_time" content="2022-07-04T07:55:21.455Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CTF编码加密整理">
+<meta name="twitter:description" content="01 常见编码0x01 莫尔斯电码(Morse Code)01 原理　　摩尔斯电码也被称作摩斯密码，是一种时通时断的信号代码，通过不同的排列顺序来表达不同的英文字母、数字和标点符号。 02 特征 由. -组成的字符串； 由0 1组成的字符串，且为空格间隔得一组一组的。  03 解题 通道1(英文字母小写) 通道2(英文字母大写) 通道3(英文字母小写) 01破解脚本  12345678910111">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/eac4b74543a98226aab284e78a82b9014b90ebfb.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://dragonliu2018.github.io/2020/07/13/CTF编码加密整理/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Dragon Liu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/dragonliu2018" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Dragon&#39;s Blogs</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Security</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Nanjing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</br>dragonliu2018@gmail.com</br>电脑端观看效果更佳！</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WP/">WP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/恶意代码/">恶意代码</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/环境与工具/">环境与工具</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/">CTF</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/CTF/" style="font-size: 13px;">CTF</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/恶意代码/">恶意代码</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/03/10/【恶意家族进化分析】勒索病毒WannaCry家族/" class="title">【恶意家族进化分析】勒索病毒WannaCry家族</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-03-10T07:48:19.000Z" itemprop="datePublished">2022-03-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/恶意代码/">恶意代码</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/02/28/恶意样本收集/" class="title">恶意样本收集</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-02-28T14:49:09.000Z" itemprop="datePublished">2022-02-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/环境与工具/">环境与工具</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/01/30/Cuckoo-Sandbox-安装教程/" class="title">Cuckoo Sandbox 安装教程</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-30T13:56:31.000Z" itemprop="datePublished">2022-01-30</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/WP/">WP</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/11/2021年NUAACTF校赛-WP/" class="title">2021年nuaa校赛 WP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-11T13:28:09.000Z" itemprop="datePublished">2021-12-11</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/WP/">WP</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/10/30/中科大2021年Hackergame-WP/" class="title">中科大2021年Hackergame WP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-30T13:27:28.000Z" itemprop="datePublished">2021-10-30</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-CTF编码加密整理" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CTF编码加密整理
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/07/13/CTF编码加密整理/" class="article-date">
+	  <time datetime="2020-07-13T01:04:26.000Z" itemprop="datePublished">2020-07-13</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Crypto/">Crypto</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/CTF/">CTF</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/07/13/CTF编码加密整理/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="01-常见编码"><a href="#01-常见编码" class="headerlink" title="01 常见编码"></a>01 常见编码</h1><h2 id="0x01-莫尔斯电码-Morse-Code"><a href="#0x01-莫尔斯电码-Morse-Code" class="headerlink" title="0x01 莫尔斯电码(Morse Code)"></a>0x01 莫尔斯电码(Morse Code)</h2><h3 id="01-原理"><a href="#01-原理" class="headerlink" title="01 原理"></a>01 原理</h3><p>　　摩尔斯电码也被称作摩斯密码，是一种时通时断的<a href="https://baike.baidu.com/item/信号/32683" target="_blank" rel="noopener">信号</a>代码，通过不同的排列顺序来表达不同的英文字母、数字和标点符号。</p>
+<h3 id="02-特征"><a href="#02-特征" class="headerlink" title="02 特征"></a>02 特征</h3><ol>
+<li>由<code>. -</code>组成的字符串；</li>
+<li>由<code>0 1</code>组成的字符串，且为空格间隔得一组一组的。</li>
+</ol>
+<h3 id="03-解题"><a href="#03-解题" class="headerlink" title="03 解题"></a>03 解题</h3><ul>
+<li><a href="http://ctf.ssleye.com/morse.html" target="_blank" rel="noopener">通道1(英文字母小写)</a></li>
+<li><a href="http://www.zhongguosou.com/zonghe/moErSiCodeConverter.aspx" target="_blank" rel="noopener">通道2(英文字母大写)</a></li>
+<li><a href="http://moersima.00cha.net/" target="_blank" rel="noopener">通道3(英文字母小写)</a></li>
+<li>01破解脚本</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">string = <span class="string">'...'</span></span><br><span class="line">dic= &#123;    <span class="string">'01'</span>: <span class="string">'A'</span>,</span><br><span class="line">        <span class="string">'1000'</span>: <span class="string">'B'</span>,</span><br><span class="line">        <span class="string">'1010'</span>: <span class="string">'C'</span>,</span><br><span class="line">         <span class="string">'100'</span>: <span class="string">'D'</span>,</span><br><span class="line">           <span class="string">'0'</span>: <span class="string">'E'</span>,</span><br><span class="line">        <span class="string">'0010'</span>: <span class="string">'F'</span>,</span><br><span class="line">         <span class="string">'110'</span>: <span class="string">'G'</span>,</span><br><span class="line">        <span class="string">'0000'</span>: <span class="string">'H'</span>,</span><br><span class="line">          <span class="string">'00'</span>: <span class="string">'I'</span>,</span><br><span class="line">        <span class="string">'0111'</span>: <span class="string">'J'</span>,</span><br><span class="line">         <span class="string">'101'</span>: <span class="string">'K'</span>,</span><br><span class="line">        <span class="string">'0100'</span>: <span class="string">'L'</span>,</span><br><span class="line">          <span class="string">'11'</span>: <span class="string">'M'</span>,</span><br><span class="line">          <span class="string">'10'</span>: <span class="string">'N'</span>,</span><br><span class="line">        <span class="string">'111'</span>: <span class="string">'O'</span>,</span><br><span class="line">        <span class="string">'0110'</span>: <span class="string">'P'</span>,</span><br><span class="line">        <span class="string">'1101'</span>: <span class="string">'Q'</span>,</span><br><span class="line">        <span class="string">'010'</span>: <span class="string">'R'</span>,</span><br><span class="line">        <span class="string">'000'</span>: <span class="string">'S'</span>,</span><br><span class="line">        <span class="string">'1'</span>: <span class="string">'T'</span>,</span><br><span class="line">        <span class="string">'001'</span>: <span class="string">'U'</span>,</span><br><span class="line">        <span class="string">'0001'</span>: <span class="string">'V'</span>,</span><br><span class="line">        <span class="string">'011'</span>: <span class="string">'W'</span>,</span><br><span class="line">        <span class="string">'1001'</span>: <span class="string">'X'</span>,</span><br><span class="line">        <span class="string">'1011'</span>: <span class="string">'Y'</span>,</span><br><span class="line">        <span class="string">'1100'</span>: <span class="string">'Z'</span>,</span><br><span class="line">        <span class="string">'01111'</span>: <span class="string">'1'</span>,</span><br><span class="line">        <span class="string">'00111'</span>: <span class="string">'2'</span>,</span><br><span class="line">        <span class="string">'00011'</span>: <span class="string">'3'</span>,</span><br><span class="line">        <span class="string">'00001'</span>: <span class="string">'4'</span>,</span><br><span class="line">        <span class="string">'00000'</span>: <span class="string">'5'</span>,</span><br><span class="line">        <span class="string">'10000'</span>: <span class="string">'6'</span>,</span><br><span class="line">        <span class="string">'11000'</span>: <span class="string">'7'</span>,</span><br><span class="line">        <span class="string">'11100'</span>: <span class="string">'8'</span>,</span><br><span class="line">        <span class="string">'11110'</span>: <span class="string">'9'</span>,</span><br><span class="line">        <span class="string">'11111'</span>: <span class="string">'0'</span>,</span><br><span class="line">        <span class="string">'001100'</span>: <span class="string">'?'</span>,</span><br><span class="line">        <span class="string">'10010'</span>: <span class="string">'/'</span>,</span><br><span class="line">        <span class="string">'101101'</span>: <span class="string">'()'</span>,</span><br><span class="line">        <span class="string">'100001'</span>: <span class="string">'-'</span>,</span><br><span class="line">        <span class="string">'010101'</span>: <span class="string">'.'</span>,</span><br><span class="line">        <span class="string">'110011'</span>:<span class="string">','</span>,</span><br><span class="line">        <span class="string">'011010'</span>:<span class="string">'@'</span>,</span><br><span class="line">        <span class="string">'111000'</span>:<span class="string">':'</span>,</span><br><span class="line">        <span class="string">'101010'</span>:<span class="string">':'</span>,</span><br><span class="line">        <span class="string">'10001'</span>:<span class="string">'='</span>,</span><br><span class="line">        <span class="string">'011110'</span>:<span class="string">"'"</span>,</span><br><span class="line">        <span class="string">'101011'</span>:<span class="string">'!'</span>,</span><br><span class="line">        <span class="string">'001101'</span>:<span class="string">'_'</span>,</span><br><span class="line">        <span class="string">'010010'</span>:<span class="string">'"'</span>,</span><br><span class="line">        <span class="string">'10110'</span>:<span class="string">'('</span>,</span><br><span class="line">        <span class="string">'1111011'</span>:<span class="string">'&#123;'</span>,</span><br><span class="line">        <span class="string">'1111101'</span>:<span class="string">'&#125;'</span></span><br><span class="line">        &#125;; </span><br><span class="line"></span><br><span class="line">flag = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> key:</span><br><span class="line">    flag += dic[item]</span><br><span class="line">print( flag )</span><br><span class="line">print( flag.lower() )</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="0x02-Base64-32-16编码"><a href="#0x02-Base64-32-16编码" class="headerlink" title="0x02 Base64/32/16编码"></a>0x02 Base64/32/16编码</h2><h3 id="01-原理-1"><a href="#01-原理-1" class="headerlink" title="01 原理"></a>01 原理</h3><p>　　base64、base32、base16可以分别编码转化8位字节为6位、5位、4位，16、32、64分别表示用多少个字符来编码。以base64为例：Base64编码要求把3个8位字节转化为4个6位的字节，之后在6位的前面补两个0，形成8位一个字节的形式，6位2进制能表示的最大数是2的6次方是64，这也是为什么是64个字符(A-Z,a-z，0-9，+，/这64个编码字符，=号不属于编码字符，而是填充字符)的原因。</p>
+<h3 id="02-特征-1"><a href="#02-特征-1" class="headerlink" title="02 特征"></a>02 特征</h3><p>　　有大写、小写、数字，密文末尾一般为<code>==</code>。</p>
+<h3 id="03-解题-1"><a href="#03-解题-1" class="headerlink" title="03 解题"></a>03 解题</h3><ul>
+<li><a href="http://ctf.ssleye.com/base64.html" target="_blank" rel="noopener">通道1</a></li>
+<li><a href="https://tool.bugku.com/safe/base64.php" target="_blank" rel="noopener">通道2</a></li>
+</ul>
+<hr>
+<h2 id="0x03-Escape-Unescape编码"><a href="#0x03-Escape-Unescape编码" class="headerlink" title="0x03 Escape/Unescape编码"></a>0x03 Escape/Unescape编码</h2><h3 id="01-原理-2"><a href="#01-原理-2" class="headerlink" title="01 原理"></a>01 原理</h3><p>　　Escape/Unescape加密解码/编码解码,又叫%u编码，采用UTF-16BE模式， Escape编码/加密,就是字符对应UTF-16 16进制表示方式前面加%u。Unescape解码/解密，就是去掉”%u”后，将16进制字符还原后，由utf-16转码到自己目标字符。如：字符“中”，UTF-16BE是：“6d93”，因此Escape是“%u6d93”。</p>
+<h3 id="02-特征-2"><a href="#02-特征-2" class="headerlink" title="02 特征"></a>02 特征</h3><p>　　密文中含有<code>%u</code>。</p>
+<h3 id="03-解题-2"><a href="#03-解题-2" class="headerlink" title="03 解题"></a>03 解题</h3><ul>
+<li><a href="http://ctf.ssleye.com/escape.html" target="_blank" rel="noopener">通道1</a></li>
+<li>工具Converter：Unescape</li>
+</ul>
+<hr>
+<h2 id="0x04-HTML编码"><a href="#0x04-HTML编码" class="headerlink" title="0x04 HTML编码"></a>0x04 HTML编码</h2><h3 id="01-原理-3"><a href="#01-原理-3" class="headerlink" title="01 原理"></a>01 原理</h3><p>完整编码手册：<a href="http://www.w3school.com.cn/tags/html_ref_entities.html" target="_blank" rel="noopener">我跳</a></p>
+<h3 id="02-特征-3"><a href="#02-特征-3" class="headerlink" title="02 特征"></a>02 特征</h3><p>由元素<code>&amp;#x26;</code>构成，26可为别的数字。</p>
+<h3 id="03-解题-3"><a href="#03-解题-3" class="headerlink" title="03 解题"></a>03 解题</h3><ul>
+<li><a href="http://ctf.ssleye.com/html_en.html" target="_blank" rel="noopener">通道1</a></li>
+<li><a href="https://tool.chinaz.com/tools/htmlencode.aspx" target="_blank" rel="noopener">通道2</a></li>
+<li>工具Converter：Decode HTML</li>
+</ul>
+<hr>
+<h2 id="0x05-Unicode编码"><a href="#0x05-Unicode编码" class="headerlink" title="0x05 Unicode编码"></a>0x05 Unicode编码</h2><h3 id="01-原理-4"><a href="#01-原理-4" class="headerlink" title="01 原理"></a>01 原理</h3><p>Unicode编码有以下四种编码方式：</p>
+<ul>
+<li>源文本： <code>The</code></li>
+<li>&amp;#x [Hex]： <code>&amp;#x0054;&amp;#x0068;&amp;#x0065;</code></li>
+<li>&amp;# [Decimal]： <code>&amp;#00084;&amp;#00104;&amp;#00101;</code></li>
+<li>\U [Hex]： <code>\U0054\U0068\U0065</code></li>
+<li>\U+ [Hex]： <code>\U+0054\U+0068\U+0065</code>　　</li>
+</ul>
+<h3 id="02-解题"><a href="#02-解题" class="headerlink" title="02 解题"></a>02 解题</h3><ul>
+<li><a href="https://tool.chinaz.com/tools/unicode.aspx" target="_blank" rel="noopener">通道1</a></li>
+<li><a href="http://www.mxcz.net/tools/Unicode.aspx" target="_blank" rel="noopener">通道2</a></li>
+</ul>
+<hr>
+<h2 id="0x06-URL编码"><a href="#0x06-URL编码" class="headerlink" title="0x06 URL编码"></a>0x06 URL编码</h2><h3 id="01-原理-5"><a href="#01-原理-5" class="headerlink" title="01 原理"></a>01 原理</h3><p>　　url编码又叫百分号编码，是统一资源定位(URL)编码方式。URL地址（常说网址）规定了常用地数字，字母可以直接使用，另外一批作为特殊用户字符也可以直接用（/,:@等），剩下的其它所有字符必须通过%xx编码处理。 现在已经成为一种规范了，基本所有程序语言都有这种编码，如js：有encodeURI、encodeURIComponent，PHP有 urlencode、urldecode等。编码方法很简单，在该字节ascii码的的16进制字符前面加%. 如 空格字符，ascii码是32，对应16进制是’20’，那么urlencode编码结果是:%20。</p>
+<h3 id="02-解题-1"><a href="#02-解题-1" class="headerlink" title="02 解题"></a>02 解题</h3><ul>
+<li><a href="https://tool.chinaz.com/tools/urlencode.aspx" target="_blank" rel="noopener">通道1</a></li>
+<li><a href="http://web.chacuo.net/charseturlencode" target="_blank" rel="noopener">通道2</a></li>
+</ul>
+<hr>
+<h1 id="02-代换密码"><a href="#02-代换密码" class="headerlink" title="02 代换密码"></a>02 代换密码</h1><h2 id="0x01-凯撒密码-Caesar-Cipher"><a href="#0x01-凯撒密码-Caesar-Cipher" class="headerlink" title="0x01 凯撒密码(Caesar Cipher)"></a>0x01 凯撒密码(Caesar Cipher)</h2><h3 id="01-原理-6"><a href="#01-原理-6" class="headerlink" title="01 原理"></a>01 原理</h3><p>　　凯撒密码(Caesar Cipher或称恺撒加密、恺撒变换、变换加密、位移加密)是一种替换加密，明文中的所有字母都在字母表上向后（或向前）按照一个固定数目进行偏移后被替换成密文。例，当偏移量是3的时候，所有的字母A将被替换成D，B变成E，以此类推。</p>
+<ul>
+<li><strong>加密</strong>：$c=E_3(m)=m+3(\bmod 26)　0\leq m\leq 25$</li>
+<li><strong>解密</strong>：$m=D_3(c)=c-3(\bmod 26)　0\leq c\leq 25$</li>
+</ul>
+<p>凯撒有两种编码脚本，一种是字母26内循环移位，一种是127次非字母内的循环移位。</p>
+<h3 id="02-样例"><a href="#02-样例" class="headerlink" title="02 样例"></a>02 样例</h3><ul>
+<li>c =  xyz</li>
+<li>m = abc</li>
+</ul>
+<h3 id="03-解题-4"><a href="#03-解题-4" class="headerlink" title="03 解题"></a>03 解题</h3><ul>
+<li>CTFcrackTools工具(所有结果罗列)</li>
+<li><a href="http://ctf.ssleye.com/caesar.html" target="_blank" rel="noopener">通道2(单个情况)</a></li>
+<li>127次非字母内的循环移位脚本</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">c = <span class="string">"""..."""</span> <span class="comment">#密文</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> range(<span class="number">127</span>):</span><br><span class="line">    m = <span class="string">''</span> <span class="comment">#明文</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> c:</span><br><span class="line">        temp = chr( (ord(i) + p) % <span class="number">127</span> )</span><br><span class="line">        <span class="keyword">if</span> <span class="number">32</span> &lt; ord(temp) &lt; <span class="number">127</span>:</span><br><span class="line">            m += temp</span><br><span class="line">            flag = <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            flag = <span class="number">0</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">if</span> flag == <span class="number">1</span>:</span><br><span class="line">        print(<span class="string">'****%d****:'</span>%p, m)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="0x02-Brainfuck加密"><a href="#0x02-Brainfuck加密" class="headerlink" title="0x02 Brainfuck加密"></a>0x02 Brainfuck加密</h2><h3 id="01-原理-7"><a href="#01-原理-7" class="headerlink" title="01 原理"></a>01 原理</h3><p>　　Brainfuck是一种极小化的计算机语言，它是由Urban Müller在1993年创建的。由于fuck在英语中是脏话，这种语言有时被称为brainf＊ck或brainf＊＊k，甚至被简称为BF。brainfuck语言用<code>&gt; &lt; + - . , [ ]</code>八种符号来替换C语言的各种语法和命令。</p>
+<h3 id="02-解题-2"><a href="#02-解题-2" class="headerlink" title="02 解题"></a>02 解题</h3><ul>
+<li><a href="https://tool.bugku.com/brainfuck/" target="_blank" rel="noopener">通道1</a></li>
+<li><a href="https://www.splitbrain.org/services/ook" target="_blank" rel="noopener">通道2</a></li>
+</ul>
+<hr>
+<h2 id="0x03-Ook加密"><a href="#0x03-Ook加密" class="headerlink" title="0x03 Ook加密"></a>0x03 Ook加密</h2><h3 id="01-原理-8"><a href="#01-原理-8" class="headerlink" title="01 原理"></a>01 原理</h3><p>　　Ook密码中只含<code>Ook. Ook? Ook!</code>三个不同的语法元素。</p>
+<h3 id="02-解题-3"><a href="#02-解题-3" class="headerlink" title="02 解题"></a>02 解题</h3><ul>
+<li><a href="https://tool.bugku.com/brainfuck/" target="_blank" rel="noopener">通道1</a></li>
+<li><a href="https://www.splitbrain.org/services/ook" target="_blank" rel="noopener">通道2</a></li>
+</ul>
+<hr>
+<h2 id="0x04-加密"><a href="#0x04-加密" class="headerlink" title="0x04 .!?加密"></a>0x04 .!?加密</h2><h3 id="01-原理-9"><a href="#01-原理-9" class="headerlink" title="01 原理"></a>01 原理</h3><p>　　.!?密码中只含<code>. ? !</code>三个不同的语法元素，使用Ook解密即可。</p>
+<h3 id="02-解题-4"><a href="#02-解题-4" class="headerlink" title="02 解题"></a>02 解题</h3><ul>
+<li><a href="https://tool.bugku.com/brainfuck/" target="_blank" rel="noopener">通道1</a></li>
+<li><a href="https://www.splitbrain.org/services/ook" target="_blank" rel="noopener">通道2</a></li>
+</ul>
+<hr>
+<h2 id="0x05-社会主义核心价值观"><a href="#0x05-社会主义核心价值观" class="headerlink" title="0x05 社会主义核心价值观"></a>0x05 社会主义核心价值观</h2><h3 id="01-原理-10"><a href="#01-原理-10" class="headerlink" title="01 原理"></a>01 原理</h3><p>　　富强、民主、文明、和谐，自由、平等、公正、法治，爱国、敬业、诚信、友善。</p>
+<h3 id="02-解题-5"><a href="#02-解题-5" class="headerlink" title="02 解题"></a>02 解题</h3><ul>
+<li><a href="http://ctf.ssleye.com/cvencode.html" target="_blank" rel="noopener">通道1</a></li>
+<li><a href="http://www.atoolbox.net/Tool.php?Id=850" target="_blank" rel="noopener">通道2</a></li>
+</ul>
+<hr>
+<h2 id="0x06-标准银河字母"><a href="#0x06-标准银河字母" class="headerlink" title="0x06 标准银河字母"></a>0x06 标准银河字母</h2><h3 id="01-原理-11"><a href="#01-原理-11" class="headerlink" title="01 原理"></a>01 原理</h3><p>　　标准银河字母（Standard Galactic Alphabet）出自游戏《<a href="https://baike.baidu.com/item/指挥官基恩/10345602" target="_blank" rel="noopener">指挥官基恩</a>》系列。是系列中使用的书写系统。字母对应如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/eac4b74543a98226aab284e78a82b9014b90ebfb.png" width="1000" height="150" alt="图片名称" align="center" id="185"></p>
+<hr>
+<h2 id="0x07-仿射加密"><a href="#0x07-仿射加密" class="headerlink" title="0x07 仿射加密"></a>0x07 仿射加密</h2><h3 id="01-原理-12"><a href="#01-原理-12" class="headerlink" title="01 原理"></a>01 原理</h3><p>　　仿射密码是一种表单代换密码，字母表的每个字母相应的值使用一个简单的数学函数对应一个数值，再把对应数值转换成字母。</p>
+<ul>
+<li><strong>加密</strong>：$c = E_{a,b}(m) \equiv am+b(\bmod 26)$</li>
+<li><strong>解密</strong>：$m = D_{a,b} \equiv a^{-1}(c-d)(\bmod 26)$</li>
+</ul>
+<p>　　其中，a、b是密钥，为满足$0\leq a,b\leq 25$和$gcd(a,26) = 1$的整数。其中$gcd(a,26) = 1$表示a和26的最大公因子，$a<em>{-1}$表示a的逆元，即$a</em>{-1}*a \equiv 1(\mod26)$。</p>
+<h3 id="02-解题-6"><a href="#02-解题-6" class="headerlink" title="02 解题"></a>02 解题</h3><ul>
+<li><strong>常规解法</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"></span><br><span class="line">a = ... <span class="comment">#密钥</span></span><br><span class="line">b = ... <span class="comment">#密钥</span></span><br><span class="line">text = <span class="string">"..."</span> <span class="comment">#密文</span></span><br><span class="line">flag = <span class="string">""</span>    <span class="comment">#明文</span></span><br><span class="line"> </span><br><span class="line">text_list = []</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> text:</span><br><span class="line">    text_list.append( ord(i) - <span class="number">97</span> )</span><br><span class="line"></span><br><span class="line">aa = gmpy2.invert(a, <span class="number">26</span>) <span class="comment">#求解模逆元</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> text_list:</span><br><span class="line">    tmp = (aa * (i - b)) % <span class="number">26</span></span><br><span class="line">    flag += chr(tmp + <span class="number">97</span>)</span><br><span class="line"></span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>暴力破解</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">text = <span class="string">"..."</span></span><br><span class="line"> </span><br><span class="line">text_list = []</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> text:</span><br><span class="line">    text_list.append( ord(i) - <span class="number">97</span> )</span><br><span class="line"> </span><br><span class="line">flag = <span class="string">""</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> text_list:</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">26</span>):</span><br><span class="line">        c = (<span class="number">17</span> * j - <span class="number">8</span>) % <span class="number">26</span></span><br><span class="line">        <span class="keyword">if</span>(c == i):</span><br><span class="line">            flag += chr(j + <span class="number">97</span>)</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="0x08"><a href="#0x08" class="headerlink" title="0x08"></a>0x08</h2><h3 id="01-原理-13"><a href="#01-原理-13" class="headerlink" title="01 原理"></a>01 原理</h3><p>　　</p>
+<h3 id="02-解题-7"><a href="#02-解题-7" class="headerlink" title="02 解题"></a>02 解题</h3><ul>
+<li><a href>通道1</a></li>
+<li><a href>通道2</a></li>
+</ul>
+<hr>
+<h1 id="03-换位加密"><a href="#03-换位加密" class="headerlink" title="03 换位加密"></a>03 换位加密</h1><h2 id="0x01-栅栏密码-Rail-fence-Cipher"><a href="#0x01-栅栏密码-Rail-fence-Cipher" class="headerlink" title="0x01 栅栏密码(Rail-fence Cipher)"></a>0x01 栅栏密码(Rail-fence Cipher)</h2><h3 id="01-原理-14"><a href="#01-原理-14" class="headerlink" title="01 原理"></a>01 原理</h3><p>　　栅栏密码(Rail-fence Cipher)就是把要加密的明文分成N个一组，然后把每组的第1个字符组合，每组第2个字符组合…每组的第N(最后一个分组可能不足N个)个字符组合，最后把他们全部连接起来就是密文。</p>
+<h3 id="02-样例-1"><a href="#02-样例-1" class="headerlink" title="02 样例"></a>02 样例</h3><ul>
+<li>c = KYsd3js2E{a2jda}<ul>
+<li>KYsd3js2</li>
+<li>E{a2jda}</li>
+</ul>
+</li>
+<li>m = <code>KEY{sad23jjdsa2}</code></li>
+</ul>
+<h3 id="03-解题-5"><a href="#03-解题-5" class="headerlink" title="03 解题"></a>03 解题</h3><ul>
+<li>CTFcrackTools工具(所有结果罗列)</li>
+<li><a href="http://ctf.ssleye.com/railfence.html" target="_blank" rel="noopener">通道2(不区分大小写)</a></li>
+<li><a href="https://www.qqxiuzi.cn/bianma/zhalanmima.php" target="_blank" rel="noopener">通道3(区分大小写)</a></li>
+</ul>
+<hr>
+<h2 id="0x02-转盘加密"><a href="#0x02-转盘加密" class="headerlink" title="0x02 转盘加密"></a>0x02 转盘加密</h2><h3 id="01-原理-15"><a href="#01-原理-15" class="headerlink" title="01 原理"></a>01 原理</h3><p><strong>题目</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1： &lt;ZWAXJGDLUBVIQHKYPNTCRMOSFE &lt;</span><br><span class="line">2： &lt;KPBELNACZDTRXMJQOYHGVSFUWI &lt;</span><br><span class="line">3： &lt;BDMAIZVRNSJUWFHTEQGYXPLOCK &lt;</span><br><span class="line">4： &lt;RPLNDVHGFCUKTEBSXQYIZMJWAO &lt;</span><br><span class="line">5： &lt;IHFRLABEUOTSGJVDKCPMNZQWXY &lt;</span><br><span class="line">6： &lt;AMKGHIWPNYCJBFZDRUSLOQXVET &lt;</span><br><span class="line">7： &lt;GWTHSPYBXIZULVKMRAFDCEONJQ &lt;</span><br><span class="line">8： &lt;NOZUTWDCVRJLXKISEFAPMYGHBQ &lt;</span><br><span class="line">9： &lt;QWATDSRFHENYVUBMCOIKZGJXPL &lt;</span><br><span class="line">10：&lt;WABMCXPLTDSRJQZGOIKFHENYVU &lt;</span><br><span class="line">11：&lt;XPLTDAOIKFZGHENYSRUBMCQWVJ &lt;</span><br><span class="line">12：&lt;TDSWAYXPLVUBOIKZGJRFHENMCQ &lt;</span><br><span class="line">13：&lt;BMCSRFHLTDENQWAOXPYVUIKZGJ &lt;</span><br><span class="line">14：&lt;XPHKZGJTDSENYVUBMLAOIRFCQW &lt;</span><br><span class="line"></span><br><span class="line">密钥： 2,5,1,3,6,4,9,7,8,14,10,13,11,12</span><br><span class="line">密文：HCBTSXWCRQGLES</span><br><span class="line">flag格式 flag&#123;你解密的内容&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>解答</strong></p>
+<p>这个转盘加密，比如第一个密钥匙：2、密文匙：H</p>
+<p>把转盘第二行单独提出来  2： &lt;KPBELNACZDTRXMJQOY<strong>HGVSFUWI</strong> &lt; ；从H的地方一直剪切，把剪切的内容放在最前面，变成   2： &lt;<strong>HGVSFUWI</strong>KPBELNACZDTRXMJQOY &lt;</p>
+<p>依次类推把14行都按这样的方式整一遍就得到这个：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">2：  &lt;HGVSFUWIKPBELNACZDTRXMJQOY &lt;</span><br><span class="line">5：  &lt;CPMNZQWXYIHFRLABEUOTSGJVDK &lt;</span><br><span class="line">1：  &lt;BVIQHKYPNTCRMOSFEZWAXJGDLU &lt;</span><br><span class="line">3：  &lt;TEQGYXPLOCKBDMAIZVRNSJUWFH &lt;</span><br><span class="line">6：  &lt;SLOQXVETAMKGHIWPNYCJBFZDRU &lt;</span><br><span class="line">4：  &lt;XQYIZMJWAORPLNDVHGFCUKTEBS &lt;</span><br><span class="line">9：  &lt;WATDSRFHENYVUBMCOIKZGJXPLQ &lt;</span><br><span class="line">7：  &lt;CEONJQGWTHSPYBXIZULVKMRAFD &lt;</span><br><span class="line">8：  &lt;RJLXKISEFAPMYGHBQNOZUTWDCV &lt;</span><br><span class="line">14：	&lt;QWXPHKZGJTDSENYVUBMLAOIRFC &lt;</span><br><span class="line">10：	&lt;GOIKFHENYVUWABMCXPLTDSRJQZ &lt;</span><br><span class="line">13：	&lt;LTDENQWAOXPYVUIKZGJBMCSRFH &lt;</span><br><span class="line">11：	&lt;ENYSRUBMCQWVJXPLTDAOIKFZGH &lt;</span><br><span class="line">12：	&lt;SWAYXPLVUBOIKZGJRFHENMCQTD &lt;</span><br></pre></td></tr></table></figure>
+<p>flag在倒数第六列。</p>
+<p>flag{XSXSBUGKUADMIN}，可能要转化为小写。</p>
+<hr>
+<h1 id="04-文件加密"><a href="#04-文件加密" class="headerlink" title="04 文件加密"></a>04 文件加密</h1><h2 id="0x01-zip压缩包破解"><a href="#0x01-zip压缩包破解" class="headerlink" title="0x01 zip压缩包破解"></a>0x01 zip压缩包破解</h2><p><a href>我跳</a></p>
+<h2 id="0x02-Linux-shadow-文件破解密码"><a href="#0x02-Linux-shadow-文件破解密码" class="headerlink" title="0x02 Linux shadow 文件破解密码"></a>0x02 Linux shadow 文件破解密码</h2><p>john爆破：<code>john filename</code></p>
+<h1 id="05-其他加密"><a href="#05-其他加密" class="headerlink" title="05 其他加密"></a>05 其他加密</h1><h2 id="01-键盘布局加密"><a href="#01-键盘布局加密" class="headerlink" title="01 键盘布局加密"></a>01 键盘布局加密</h2><p>密文：<code>r5yG lp9I BjM tFhBT6uh y7iJ QsZ bhM</code></p>
+<p>明文：<code>TONGYUAN</code></p>
+<h1 id="0x-参考"><a href="#0x-参考" class="headerlink" title="0x 参考"></a>0x 参考</h1><ul>
+<li><a href="http://blog.neargle.com/SecNewsBak/drops/CTF中那些脑洞大开的编码和加密 .html" target="_blank" rel="noopener">CTF中那些脑洞大开的编码和加密</a></li>
+<li>具体请看：<a href="https://ctf-wiki.github.io/ctf-wiki/crypto/classical/introduction-zh/" target="_blank" rel="noopener">https://ctf-wiki.github.io/ctf-wiki/crypto/classical/introduction-zh/</a></li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://dragonliu2018.github.io/2020/07/13/CTF编码加密整理/" title="CTF编码加密整理" target="_blank" rel="external">https://dragonliu2018.github.io/2020/07/13/CTF编码加密整理/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/dragonliu2018" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/dragonliu2018" target="_blank"><span class="text-dark">Dragon&#39;s Blogs</span><small class="ml-1x">Security</small></a></h3>
+        <div>Life is painting a picture, not doing a sum.</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/11/08/中科大2020年Hackergame-WP/" title="中科大2020年Hackergame WP"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/07/07/RSA题型整理/" title="RSA题型整理"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Pbjl2Wajl9och0xVbR5eqoH1-gzGzoHsz',
+    appKey: 'PgxFh1wV6pyMMllhxs7NJijb',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

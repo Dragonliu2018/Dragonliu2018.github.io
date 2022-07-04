@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>MAC地址泛洪与欺骗 | Dragon&#39;s Security Blogs</title>
+  <meta name="description" content="1 理论1.1 原理　　MAC地址欺骗是数据链路层攻击，它是利用交换机端口学习的漏洞，通过客户端向交换机发送欺骗报文、攻击交换机的CAM表的方式，使交换机CAM表的记录与真实的主机对应MAC地址不一致，从而使交换机将报文错误转发给攻击者。 　　MAC地址泛洪攻击，每台交换机的CAM表都有最大记录条数，当交换机端口学习得到的记录大于交换机CAM表条数上限时，交换机收到一个网络帧，只要其目标主机的MA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MAC地址泛洪与欺骗">
+<meta property="og:url" content="https://dragonliu2018.github.io/2021/03/04/MAC地址欺骗/index.html">
+<meta property="og:site_name" content="Dragon Liu">
+<meta property="og:description" content="1 理论1.1 原理　　MAC地址欺骗是数据链路层攻击，它是利用交换机端口学习的漏洞，通过客户端向交换机发送欺骗报文、攻击交换机的CAM表的方式，使交换机CAM表的记录与真实的主机对应MAC地址不一致，从而使交换机将报文错误转发给攻击者。 　　MAC地址泛洪攻击，每台交换机的CAM表都有最大记录条数，当交换机端口学习得到的记录大于交换机CAM表条数上限时，交换机收到一个网络帧，只要其目标主机的MA">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/Snipaste_2021-03-05_11-19-37.jpg">
+<meta property="og:updated_time" content="2022-07-04T07:55:35.783Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MAC地址泛洪与欺骗">
+<meta name="twitter:description" content="1 理论1.1 原理　　MAC地址欺骗是数据链路层攻击，它是利用交换机端口学习的漏洞，通过客户端向交换机发送欺骗报文、攻击交换机的CAM表的方式，使交换机CAM表的记录与真实的主机对应MAC地址不一致，从而使交换机将报文错误转发给攻击者。 　　MAC地址泛洪攻击，每台交换机的CAM表都有最大记录条数，当交换机端口学习得到的记录大于交换机CAM表条数上限时，交换机收到一个网络帧，只要其目标主机的MA">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/Snipaste_2021-03-05_11-19-37.jpg">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://dragonliu2018.github.io/2021/03/04/MAC地址欺骗/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Dragon Liu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/dragonliu2018" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Dragon&#39;s Blogs</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Security</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Nanjing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</br>dragonliu2018@gmail.com</br>电脑端观看效果更佳！</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WP/">WP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/恶意代码/">恶意代码</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/环境与工具/">环境与工具</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/">CTF</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/CTF/" style="font-size: 13px;">CTF</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/恶意代码/">恶意代码</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/03/10/【恶意家族进化分析】勒索病毒WannaCry家族/" class="title">【恶意家族进化分析】勒索病毒WannaCry家族</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-03-10T07:48:19.000Z" itemprop="datePublished">2022-03-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/恶意代码/">恶意代码</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/02/28/恶意样本收集/" class="title">恶意样本收集</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-02-28T14:49:09.000Z" itemprop="datePublished">2022-02-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/环境与工具/">环境与工具</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/01/30/Cuckoo-Sandbox-安装教程/" class="title">Cuckoo Sandbox 安装教程</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-30T13:56:31.000Z" itemprop="datePublished">2022-01-30</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/WP/">WP</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/11/2021年NUAACTF校赛-WP/" class="title">2021年nuaa校赛 WP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-11T13:28:09.000Z" itemprop="datePublished">2021-12-11</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/WP/">WP</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/10/30/中科大2021年Hackergame-WP/" class="title">中科大2021年Hackergame WP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-30T13:27:28.000Z" itemprop="datePublished">2021-10-30</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-理论"><span class="toc-number">1.</span> <span class="toc-text">1 理论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-原理"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-知识储备"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 知识储备</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-实战"><span class="toc-number">2.</span> <span class="toc-text">2 实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-MAC地址欺骗"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 MAC地址欺骗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-MAC地址泛洪攻击"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 MAC地址泛洪攻击</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-存在问题"><span class="toc-number">3.</span> <span class="toc-text">3 存在问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-参考"><span class="toc-number">4.</span> <span class="toc-text">4 参考</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-MAC地址欺骗" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MAC地址泛洪与欺骗
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2021/03/04/MAC地址欺骗/" class="article-date">
+	  <time datetime="2021-03-04T13:47:39.000Z" itemprop="datePublished">2021-03-04</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </span>
+
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/04/MAC地址欺骗/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.1k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="1-理论"><a href="#1-理论" class="headerlink" title="1 理论"></a>1 理论</h1><h2 id="1-1-原理"><a href="#1-1-原理" class="headerlink" title="1.1 原理"></a>1.1 原理</h2><p>　　MAC地址欺骗是数据链路层攻击，它是利用<strong>交换机端口学习的漏洞</strong>，通过客户端向交换机发送欺骗报文、攻击交换机的CAM表的方式，使交换机CAM表的记录与真实的主机对应MAC地址不一致，从而使交换机将报文错误转发给攻击者。</p>
+<p>　　MAC地址泛洪攻击，每台交换机的CAM表都有最大记录条数，当交换机端口学习得到的记录大于交换机CAM表条数上限时，交换机收到一个网络帧，只要其目标主机的MAC地址不存在于该交换机CAM表中，那么该帧会以广播的方式发向交换机的每一个端口，此时的交换机就相当于一个集线器HUB，我们就可以监听网络中的所有通讯报文。</p>
+<p>　　与ARP攻击不同：MAC地址欺骗改变的是端口/MAC地址映射关系，ARP攻击改变的是IP/MAC地址映射关系。</p>
+<p>　　MAC地址泛洪攻击针对路由器不行，原因是路由器仅仅转发特定地址的数据包，不传送不支持路由协议的数据包传送和未知目标网络数据包的传送，从而可以防止广播风暴。参考：<a href="https://www.cnblogs.com/Lynn-Zhang/articles/5754336.html" target="_blank" rel="noopener">交换机和路由器的区别在哪里 一针见血通俗解答</a></p>
+<p>　　实验网络拓扑如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Dragonliu2018/FigureBed@master/img/Snipaste_2021-03-05_11-19-37.jpg" width="700" height="400" alt="图片名称" align="center" id="32"></p>
+<h2 id="1-2-知识储备"><a href="#1-2-知识储备" class="headerlink" title="1.2 知识储备"></a>1.2 知识储备</h2><ul>
+<li><strong>MAC地址</strong>：它是一个用来确认网络设备位置的位址。在<a href="https://baike.baidu.com/item/OSI模型" target="_blank" rel="noopener">OSI模型</a>中，第三层网络层负责<a href="https://baike.baidu.com/item/IP地址" target="_blank" rel="noopener">IP地址</a>，第二层数据链路层则负责MAC位址。MAC地址用于在网络中唯一标示一个<a href="https://baike.baidu.com/item/网卡" target="_blank" rel="noopener">网卡</a>，一台设备若有一或多个网卡，则每个网卡都需要并会有一个唯一的MAC地址。由网络设备制造商生产时烧录在网卡(Network lnterface Card)的<a href="https://baike.baidu.com/item/EPROM/1690813" target="_blank" rel="noopener">EPROM</a>(一种闪存芯片，通常可以通过程序擦写)。<a href="https://baike.baidu.com/item/IP地址/150859" target="_blank" rel="noopener">IP地址</a>与MAC地址在计算机里都是以<a href="https://baike.baidu.com/item/二进制/361457" target="_blank" rel="noopener">二进制</a>表示的，IP地址是32位的，而MAC地址则是48位的，通常表示为12个16进制数，如：00-16-EA-AE-3C-40就是一个MAC地址。</li>
+<li><strong>交换机</strong>：主要功能是在局域网内的主机之间转发数据帧，工作核心是<strong>端口/MAC地址映射表</strong>，这张表里记录了交换机每个端口同与之相连的主机MAC地址之间的对应关系。交换机接收从主机上传来的比特流之后，要先将其缓存成数据帧，然后通过分析帧头中的MAC地址，交换机就可以判断出数据的发送方和接收方，在映射表里查找与数据帧的目的MAC地址相对应的端口。若找到则发给目的主机；若找不到则以广播的方式将这个数据帧向除了源端口以外的其它所有端口转发，从而将数据发送给了目的主机，并记录端口与MAC地址的对应关系。</li>
+</ul>
+<h1 id="2-实战"><a href="#2-实战" class="headerlink" title="2 实战"></a>2 实战</h1><h2 id="2-1-MAC地址欺骗"><a href="#2-1-MAC地址欺骗" class="headerlink" title="2.1 MAC地址欺骗"></a>2.1 MAC地址欺骗</h2><ol>
+<li><strong>准备</strong>：没有交换机物理设备，vmware中桥接模式中有虚拟交换机(但是无法登陆后台)，所以只能利用路由器测试(也无法进入后台)，只能查看现象了。</li>
+<li>此处未进行实践，可参考：<a href="https://blog.csdn.net/redwand/article/details/105388491?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_baidulandingword-0&amp;spm=1001.2101.3001.4242" target="_blank" rel="noopener">MAC地址欺骗与MAC地址泛洪攻击（eNSP环境演示）</a></li>
+</ol>
+<h2 id="2-2-MAC地址泛洪攻击"><a href="#2-2-MAC地址泛洪攻击" class="headerlink" title="2.2 MAC地址泛洪攻击"></a>2.2 MAC地址泛洪攻击</h2><ol>
+<li>以<code>kali</code>为攻击机，使用<code>macof</code>命令向网络中发送大量网络不存在的源mac地址，堵塞交换机(路由器)的CAM表；</li>
+<li>攻击前，<code>Win物理机</code>可以ping通kali、node01、node02、node03；</li>
+<li>攻击后，按道理此时的路由器中的CAM表中存在大量陌生MAC地址记录，但是目前无法查看；现象为：请求超时或间断ping通，但可以ping通外网及局域网内其它主机。</li>
+</ol>
+<h1 id="3-存在问题"><a href="#3-存在问题" class="headerlink" title="3 存在问题"></a>3 存在问题</h1><ul>
+<li>没有物理交换机，虚拟交换机无法登陆后台</li>
+<li>用路由器测试，但是无法登录后台查看CAM表，可参考：<a href="https://cloud.tencent.com/developer/article/1482014" target="_blank" rel="noopener">小米路由器开启SSH</a></li>
+</ul>
+<h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4 参考"></a>4 参考</h1><ul>
+<li><a href="https://baike.baidu.com/item/MAC%E5%9C%B0%E5%9D%80/1254181?fr=aladdin" target="_blank" rel="noopener">百度百科-MAC地址</a></li>
+<li><a href="https://blog.csdn.net/weixin_34234829/article/details/85088965?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.baidujs&amp;dist_request_id=&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.baidujs" target="_blank" rel="noopener">MAC泛洪<em>*</em>的实施与防御</a></li>
+<li><a href="https://blog.csdn.net/redwand/article/details/105388491?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_baidulandingword-0&amp;spm=1001.2101.3001.4242" target="_blank" rel="noopener">MAC地址欺骗与MAC地址泛洪攻击（eNSP环境演示）</a></li>
+<li><a href="https://www.youtube.com/watch?v=FiDq8g0gBsI" target="_blank" rel="noopener">亁颐堂现任明教教主CCNA Security 2019 7 第三天 2 MAC泛洪MAC欺骗</a></li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://dragonliu2018.github.io/2021/03/04/MAC地址欺骗/" title="MAC地址泛洪与欺骗" target="_blank" rel="external">https://dragonliu2018.github.io/2021/03/04/MAC地址欺骗/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/dragonliu2018" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/dragonliu2018" target="_blank"><span class="text-dark">Dragon&#39;s Blogs</span><small class="ml-1x">Security</small></a></h3>
+        <div>Life is painting a picture, not doing a sum.</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2021/10/30/中科大2021年Hackergame-WP/" title="中科大2021年Hackergame WP"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2021/02/17/ARP欺骗-断网攻击/" title="ARP攻击"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Pbjl2Wajl9och0xVbR5eqoH1-gzGzoHsz',
+    appKey: 'PgxFh1wV6pyMMllhxs7NJijb',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

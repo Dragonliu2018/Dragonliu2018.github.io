@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>2021年nuaa校赛 WP | Dragon&#39;s Security Blogs</title>
+  <meta name="description" content="官方wp：链接  1 pwn1.1 thread123456789unsigned int __fastcall Sale_Handler(void *a1)&amp;#123;  unsigned int result; // eax  balance += 90 * Size;  result = sleep(0);  Size = 0;  return result;&amp;#125; 生产者-消费者问">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021年nuaa校赛 WP">
+<meta property="og:url" content="https://dragonliu2018.github.io/2021/12/11/2021年NUAACTF校赛-WP/index.html">
+<meta property="og:site_name" content="Dragon Liu">
+<meta property="og:description" content="官方wp：链接  1 pwn1.1 thread123456789unsigned int __fastcall Sale_Handler(void *a1)&amp;#123;  unsigned int result; // eax  balance += 90 * Size;  result = sleep(0);  Size = 0;  return result;&amp;#125; 生产者-消费者问">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2022-07-04T07:55:56.728Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2021年nuaa校赛 WP">
+<meta name="twitter:description" content="官方wp：链接  1 pwn1.1 thread123456789unsigned int __fastcall Sale_Handler(void *a1)&amp;#123;  unsigned int result; // eax  balance += 90 * Size;  result = sleep(0);  Size = 0;  return result;&amp;#125; 生产者-消费者问">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://dragonliu2018.github.io/2021/12/11/2021年NUAACTF校赛-WP/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Dragon Liu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/dragonliu2018" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Dragon&#39;s Blogs</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Security</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Nanjing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</br>dragonliu2018@gmail.com</br>电脑端观看效果更佳！</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WP/">WP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/恶意代码/">恶意代码</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/环境与工具/">环境与工具</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/">CTF</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/CTF/" style="font-size: 13px;">CTF</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/恶意代码/">恶意代码</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/03/10/【恶意家族进化分析】勒索病毒WannaCry家族/" class="title">【恶意家族进化分析】勒索病毒WannaCry家族</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-03-10T07:48:19.000Z" itemprop="datePublished">2022-03-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/恶意代码/">恶意代码</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/02/28/恶意样本收集/" class="title">恶意样本收集</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-02-28T14:49:09.000Z" itemprop="datePublished">2022-02-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/环境与工具/">环境与工具</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/01/30/Cuckoo-Sandbox-安装教程/" class="title">Cuckoo Sandbox 安装教程</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-30T13:56:31.000Z" itemprop="datePublished">2022-01-30</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/WP/">WP</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/11/2021年NUAACTF校赛-WP/" class="title">2021年nuaa校赛 WP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-11T13:28:09.000Z" itemprop="datePublished">2021-12-11</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/WP/">WP</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/10/30/中科大2021年Hackergame-WP/" class="title">中科大2021年Hackergame WP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-30T13:27:28.000Z" itemprop="datePublished">2021-10-30</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-pwn"><span class="toc-number">1.</span> <span class="toc-text">1 pwn</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-thread"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 thread</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Misc"><span class="toc-number">2.</span> <span class="toc-text">2 Misc</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-baby-mix"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 baby_mix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-questionnaire"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 questionnaire</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-我们生活在南京（一）——穿越时空的电波"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 我们生活在南京（一）——穿越时空的电波</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-我们生活在南京（二）——等幅电报？"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 我们生活在南京（二）——等幅电报？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-re"><span class="toc-number">3.</span> <span class="toc-text">3 re</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-IDA-Start"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 IDA Start</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-crypto"><span class="toc-number">4.</span> <span class="toc-text">4 crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-checkin"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 checkin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-easyRSA"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 easyRSA</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-2021年NUAACTF校赛-WP" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2021年nuaa校赛 WP
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2021/12/11/2021年NUAACTF校赛-WP/" class="article-date">
+	  <time datetime="2021-12-11T13:28:09.000Z" itemprop="datePublished">2021-12-11</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/WP/">WP</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/CTF/">CTF</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/12/11/2021年NUAACTF校赛-WP/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 361(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <blockquote>
+<p>官方wp：<a href="https://github.com/Asuri-Team/NUAACTF2021-Challenges/blob/main/WP.md" target="_blank" rel="noopener">链接</a></p>
+</blockquote>
+<h1 id="1-pwn"><a href="#1-pwn" class="headerlink" title="1 pwn"></a>1 pwn</h1><h2 id="1-1-thread"><a href="#1-1-thread" class="headerlink" title="1.1 thread"></a>1.1 thread</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> __fastcall <span class="title">Sale_Handler</span><span class="params">(<span class="keyword">void</span> *a1)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> result; <span class="comment">// eax</span></span><br><span class="line"></span><br><span class="line">  balance += <span class="number">90</span> * Size;</span><br><span class="line">  result = sleep(<span class="number">0</span>);</span><br><span class="line">  Size = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>生产者-消费者问题，利用<code>Sale_Handler</code>函数中的<code>sleep</code>函数等待的漏洞，不断执行<code>Sale_Handler</code>函数，导致<code>balance</code>变量会累加。</p>
+<p>执行脚本如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##coding=utf8</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="comment">## 构造与程序交互的对象</span></span><br><span class="line">sh = remote(<span class="string">'118.195.147.196'</span>, <span class="number">9231</span>)</span><br><span class="line"><span class="comment">#sh = process('./thread')</span></span><br><span class="line"><span class="comment">## 构造payload</span></span><br><span class="line"><span class="comment">## 向程序发送字符串</span></span><br><span class="line">sh.recvuntil(<span class="string">'it\n'</span>)</span><br><span class="line">sh.sendline(<span class="string">'1'</span>)</span><br><span class="line">sh.recvuntil(<span class="string">'buy?\n'</span>)</span><br><span class="line">sh.sendline(<span class="string">'10'</span>)</span><br><span class="line">sh.sendline(<span class="string">'2'</span>)</span><br><span class="line">sh.sendline(<span class="string">'2'</span>)</span><br><span class="line">sh.sendline(<span class="string">'2'</span>)</span><br><span class="line">sh.sendline(<span class="string">'2'</span>)</span><br><span class="line"><span class="comment">## 将代码交互转换为手工交互</span></span><br><span class="line">sh.interactive()</span><br></pre></td></tr></table></figure>
+<h1 id="2-Misc"><a href="#2-Misc" class="headerlink" title="2 Misc"></a>2 Misc</h1><h2 id="2-1-baby-mix"><a href="#2-1-baby-mix" class="headerlink" title="2.1 baby_mix"></a>2.1 baby_mix</h2><p>base16-》32-》58-》64</p>
+<h2 id="2-2-questionnaire"><a href="#2-2-questionnaire" class="headerlink" title="2.2 questionnaire"></a>2.2 questionnaire</h2><p>问卷</p>
+<h2 id="2-3-我们生活在南京（一）——穿越时空的电波"><a href="#2-3-我们生活在南京（一）——穿越时空的电波" class="headerlink" title="2.3 我们生活在南京（一）——穿越时空的电波"></a>2.3 我们生活在南京（一）——穿越时空的电波</h2><p>音频倒序，取单词首字母</p>
+<h2 id="2-4-我们生活在南京（二）——等幅电报？"><a href="#2-4-我们生活在南京（二）——等幅电报？" class="headerlink" title="2.4 我们生活在南京（二）——等幅电报？"></a>2.4 我们生活在南京（二）——等幅电报？</h2><p><strong>AudacityPortable</strong>打开文件，切换成频谱图，</p>
+<p>转成摩斯电码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">..-. .-.. .- --. -.-. .-- .. ..... ....- - .-. ....- -.. .. - .. ----- -. -- ...-- - .... ----- -..</span><br></pre></td></tr></table></figure>
+<p>解密</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FLAGCWI54TR4DITI0NM3TH0D</span><br><span class="line">//转小写</span><br><span class="line">flag&#123;cwi54tr4diti0nm3th0d&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="3-re"><a href="#3-re" class="headerlink" title="3 re"></a>3 re</h1><h2 id="3-1-IDA-Start"><a href="#3-1-IDA-Start" class="headerlink" title="3.1 IDA Start"></a>3.1 IDA Start</h2><p>IDA打开文件，<code>alt+t</code>搜索<code>flag</code></p>
+<h1 id="4-crypto"><a href="#4-crypto" class="headerlink" title="4 crypto"></a>4 crypto</h1><h2 id="4-1-checkin"><a href="#4-1-checkin" class="headerlink" title="4.1 checkin"></a>4.1 checkin</h2><p>仿射密码，a=11, b=11</p>
+<ul>
+<li><a href="http://www.hiencode.com/affine.html" target="_blank" rel="noopener">http://www.hiencode.com/affine.html</a></li>
+</ul>
+<h2 id="4-2-easyRSA"><a href="#4-2-easyRSA" class="headerlink" title="4.2 easyRSA"></a>4.2 easyRSA</h2><p>共模攻击模板题目</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> libnum <span class="keyword">import</span> n2s, s2n</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> invert, gcdext</span><br><span class="line"></span><br><span class="line">n = <span class="number">0x00b0bee5e3e9e5a7e8d00b493355c618fc8c7d7d03b82e409951c182f398dee3104580e7ba70d383ae5311475656e8a964d380cb157f48c951adfa65db0b122ca40e42fa709189b719a4f0d746e2f6069baf11cebd650f14b93c977352fd13b1eea6d6e1da775502abff89d3a8b3615fd0db49b88a976bc20568489284e181f6f11e270891c8ef80017bad238e363039a458470f1749101bc29949d3a4f4038d463938851579c7525a69984f15b5667f34209b70eb261136947fa123e549dfff00601883afd936fe411e006e4e93d1a00b0fea541bbfc8c5186cb6220503a94b2413110d640c77ea54ba3220fc8f4cc6ce77151e29b3e06578c478bd1bebe04589ef9a197f6f806db8b3ecd826cad24f5324ccdec6e8fead2c2150068602c8dcdc59402ccac9424b790048ccdd9327068095efa010b7f196c74ba8c37b128f9e1411751633f78b7b9e56f71f77a1b4daad3fc54b5e7ef935d9a72fb176759765522b4bbc02e314d5c06b64d5054b7b096c601236e6ccf45b5e611c805d335dbab0c35d226cc208d8ce4736ba39a0354426fae006c7fe52d5267dcfb9c3884f51fddfdf4a9794bcfe0e1557113749e6c8ef421dba263aff68739ce00ed80fd0022ef92d3488f76deb62bdef7bea6026f22a1d25aa2a92d124414a8021fe0c174b9803e6bb5fad75e186a946a17280770f1243f4387446ccceb2222a965cc30b3929</span></span><br><span class="line">e1 = <span class="number">17</span> <span class="comment">#填写e1</span></span><br><span class="line">e2 = <span class="number">65537</span> <span class="comment">#填写e2</span></span><br><span class="line"></span><br><span class="line">s = gcdext(e1, e2)</span><br><span class="line">s1 = s[<span class="number">1</span>]</span><br><span class="line">s2 = -s[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#读取密文</span></span><br><span class="line">file1 = open(<span class="string">'flag.enc1'</span>, <span class="string">'rb'</span>)</span><br><span class="line">c1 = file1.read()</span><br><span class="line">c1 = s2n(c1)<span class="comment">#字符串转数字</span></span><br><span class="line"></span><br><span class="line">file2 = open(<span class="string">'flag.enc2'</span>, <span class="string">'rb'</span>)</span><br><span class="line">c2 = file2.read()</span><br><span class="line">c2 = s2n(c2)<span class="comment">#字符串转数字</span></span><br><span class="line"></span><br><span class="line">c2 = invert(c2, n)</span><br><span class="line">m = (pow(c1,s1,n) * pow(c2 , s2 , n)) % n</span><br><span class="line"><span class="keyword">print</span> (n2s(m))</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://dragonliu2018.github.io/2021/12/11/2021年NUAACTF校赛-WP/" title="2021年nuaa校赛 WP" target="_blank" rel="external">https://dragonliu2018.github.io/2021/12/11/2021年NUAACTF校赛-WP/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/dragonliu2018" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/dragonliu2018" target="_blank"><span class="text-dark">Dragon&#39;s Blogs</span><small class="ml-1x">Security</small></a></h3>
+        <div>Life is painting a picture, not doing a sum.</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2022/01/30/Cuckoo-Sandbox-安装教程/" title="Cuckoo Sandbox 安装教程"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2021/10/30/中科大2021年Hackergame-WP/" title="中科大2021年Hackergame WP"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Pbjl2Wajl9och0xVbR5eqoH1-gzGzoHsz',
+    appKey: 'PgxFh1wV6pyMMllhxs7NJijb',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

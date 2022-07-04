@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>RSA题型整理 | Dragon&#39;s Security Blogs</title>
+  <meta name="description" content="0x00 前期准备01 基础知识　　RSA加密算法是一种非对称加密算法，在公开密钥加密和电子商业中被广泛使用。RSA是由罗纳德·李维斯特（Ron Rivest）、阿迪·萨莫尔（Adi Shamir）和伦纳德·阿德曼（Leonard Adleman）在1977年一起提出的。当时他们三人都在麻省理工学院工作。RSA 就是他们三人姓氏开头字母拼在一起组成的。 1.1 安全保证安全性依赖于大整数分解的难题">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RSA题型整理">
+<meta property="og:url" content="https://dragonliu2018.github.io/2020/07/07/RSA题型整理/index.html">
+<meta property="og:site_name" content="Dragon Liu">
+<meta property="og:description" content="0x00 前期准备01 基础知识　　RSA加密算法是一种非对称加密算法，在公开密钥加密和电子商业中被广泛使用。RSA是由罗纳德·李维斯特（Ron Rivest）、阿迪·萨莫尔（Adi Shamir）和伦纳德·阿德曼（Leonard Adleman）在1977年一起提出的。当时他们三人都在麻省理工学院工作。RSA 就是他们三人姓氏开头字母拼在一起组成的。 1.1 安全保证安全性依赖于大整数分解的难题">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2022-07-04T07:55:48.440Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RSA题型整理">
+<meta name="twitter:description" content="0x00 前期准备01 基础知识　　RSA加密算法是一种非对称加密算法，在公开密钥加密和电子商业中被广泛使用。RSA是由罗纳德·李维斯特（Ron Rivest）、阿迪·萨莫尔（Adi Shamir）和伦纳德·阿德曼（Leonard Adleman）在1977年一起提出的。当时他们三人都在麻省理工学院工作。RSA 就是他们三人姓氏开头字母拼在一起组成的。 1.1 安全保证安全性依赖于大整数分解的难题">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://dragonliu2018.github.io/2020/07/07/RSA题型整理/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Dragon Liu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/dragonliu2018" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Dragon&#39;s Blogs</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Security</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Nanjing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</br>dragonliu2018@gmail.com</br>电脑端观看效果更佳！</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WP/">WP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/恶意代码/">恶意代码</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/环境与工具/">环境与工具</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/">CTF</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/CTF/" style="font-size: 13px;">CTF</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/恶意代码/">恶意代码</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/03/10/【恶意家族进化分析】勒索病毒WannaCry家族/" class="title">【恶意家族进化分析】勒索病毒WannaCry家族</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-03-10T07:48:19.000Z" itemprop="datePublished">2022-03-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/恶意代码/">恶意代码</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/02/28/恶意样本收集/" class="title">恶意样本收集</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-02-28T14:49:09.000Z" itemprop="datePublished">2022-02-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/环境与工具/">环境与工具</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/01/30/Cuckoo-Sandbox-安装教程/" class="title">Cuckoo Sandbox 安装教程</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-30T13:56:31.000Z" itemprop="datePublished">2022-01-30</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/WP/">WP</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/11/2021年NUAACTF校赛-WP/" class="title">2021年nuaa校赛 WP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-11T13:28:09.000Z" itemprop="datePublished">2021-12-11</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/WP/">WP</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/10/30/中科大2021年Hackergame-WP/" class="title">中科大2021年Hackergame WP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-30T13:27:28.000Z" itemprop="datePublished">2021-10-30</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-RSA题型整理" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      RSA题型整理
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/07/07/RSA题型整理/" class="article-date">
+	  <time datetime="2020-07-07T02:09:17.000Z" itemprop="datePublished">2020-07-07</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Crypto/">Crypto</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/CTF/">CTF</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/07/07/RSA题型整理/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.2k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 15(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="0x00-前期准备"><a href="#0x00-前期准备" class="headerlink" title="0x00 前期准备"></a>0x00 前期准备</h1><h2 id="01-基础知识"><a href="#01-基础知识" class="headerlink" title="01 基础知识"></a>01 基础知识</h2><p>　　<strong>RSA加密算法</strong>是一种<a href="https://zh.wikipedia.org/wiki/非对称加密演算法" target="_blank" rel="noopener">非对称加密算法</a>，在<a href="https://zh.wikipedia.org/wiki/公开密钥加密" target="_blank" rel="noopener">公开密钥加密</a>和<a href="https://zh.wikipedia.org/wiki/电子商业" target="_blank" rel="noopener">电子商业</a>中被广泛使用。RSA是由<a href="https://zh.wikipedia.org/wiki/罗纳德·李维斯特" target="_blank" rel="noopener">罗纳德·李维斯特</a>（Ron Rivest）、<a href="https://zh.wikipedia.org/wiki/阿迪·萨莫尔" target="_blank" rel="noopener">阿迪·萨莫尔</a>（Adi Shamir）和<a href="https://zh.wikipedia.org/wiki/伦纳德·阿德曼" target="_blank" rel="noopener">伦纳德·阿德曼</a>（Leonard Adleman）在1977年一起提出的。当时他们三人都在<a href="https://zh.wikipedia.org/wiki/麻省理工学院" target="_blank" rel="noopener">麻省理工学院</a>工作。RSA 就是他们三人姓氏开头字母拼在一起组成的。</p>
+<h3 id="1-1-安全保证"><a href="#1-1-安全保证" class="headerlink" title="1.1 安全保证"></a>1.1 安全保证</h3><p>安全性依赖于大整数分解的难题：寻找两个不同的大素数是容易的，但将两个大素数的乘积分解成原来的两个素数是极其困难的。  </p>
+<h3 id="1-2-具体内容"><a href="#1-2-具体内容" class="headerlink" title="1.2 具体内容"></a>1.2 具体内容</h3><p>假设Bob想给Alice送一个消息m：</p>
+<ol>
+<li>选择两个大素数 p 和 q ，计算$n=p q$；</li>
+<li>随机选取整数e和 d ，满足$e d \equiv 1(\bmod \varphi(n))$  ，其中$\varphi(n)$ 为 $n$的欧拉函数；（$r = \varphi(n)=\varphi(p) \varphi(q)=(p-1)(q-1)$，选择一个小于 r 的整数 e，使 r 与 e 互质，并求得 e 关于 r 的<a href="https://zh.wikipedia.org/wiki/模反元素" target="_blank" rel="noopener">模逆元</a>，命名为 d 求 $ e d \equiv 1(\bmod r)$。模逆元存在，当且仅当 e 与 r 互质。）</li>
+<li>发布e和 n 为公钥， d 为私钥；  </li>
+<li>设明文为m，加密函数为$c \equiv E(m) \equiv m^{e}(\bmod n)$，其中$1&lt;m, c&lt;n$；</li>
+<li>解密函数为 $m \equiv D(c) \equiv c^{d}(\bmod n)$。</li>
+</ol>
+<p>$(n, e)$ 是公钥, $(n, d)$ 是私钥。Alice将她的公钥$(n, e)$ 传给Bob，而将她的私钥 $(n, d)$ 藏起来。</p>
+<h3 id="1-3-证明"><a href="#1-3-证明" class="headerlink" title="1.3 证明"></a>1.3 证明</h3><p>下面使用欧拉定理证明解密函数的正确性，即已知1-4，证明 5 成立。  </p>
+<p><strong>证明</strong>：由于 $c \equiv m^{e}(\bmod n),$ 所以 $c^{d} \equiv m^{e d}(\bmod n),$ 即证 $m^{e d} \equiv m(\bmod n)$</p>
+<ol>
+<li>当 $(m, n)=1$ 时，由欧拉定理知 $, m^{\varphi(n)} \equiv 1(\bmod n),$ 而由条件2知 $e d \equiv 1(\bmod \varphi(n)),$ 即存<br>在整数 $k ，$ 使得 $e d=k \varphi(n)+1,$ 因此 $, \quad m^{e d} \equiv m^{k \varphi(n)+1} \equiv m(\bmod n)$；</li>
+<li>当 $(m, n) \neq 1$ 时，由于 $n=p q,$ 因此 $(m, n)=p$ 或 $(m, n)=q,$ 即 $p|m$ 或 $q | m$ ，<br>若 $p| m,$ 则显然 $m^{e d} \equiv m^{k \varphi(n)+1} \equiv m \equiv 0(\bmod p)$；<br>若 $p\nmid m,$ 则由欧拉定理知 $m^{p-1} \equiv 1(\bmod p),$ 于是$m^{k \varphi(n)+1} \equiv m^{k(p-1)(q-1)+1} \equiv m(\bmod p)$；<br>因此，对任意$m$，$m^{e d} \equiv m^{k \varphi(n)+1} \equiv m(\bmod p)$ 成立，同理可证，对任意 $m, \quad m^{e d} \equiv m^{k \varphi(n)+1} \equiv m(\bmod q)$ 成立，因此 $m^{e d} \equiv m(\bmod n)$ 成立。(同余性质10-最小公倍数)</li>
+</ol>
+<h3 id="1-4-安全性"><a href="#1-4-安全性" class="headerlink" title="1.4 安全性"></a>1.4 安全性</h3><p>假设偷听者Eve获得了Alice的公钥 $n$ 和 e 以及Bob的加密消息 $c,$ 但她无法直接获得Alice的私钥 $d 。$ 要获得 $d,$ 最简单的方法是将 $n$ 分解为 $p$ 和 $q,$ 这样她可以得到同余方程$d e=1(\bmod (p-1)(q-1))$ 并解出 $d,$ 然后代入解密公式$m\equiv c^{d} (\bmod n)$导出$m$(破密) 。<br>但至今为止还没有人找到一个多项式时间的算法来分解一个大的整数的因子，同时也还没有人能够证明这种算法不存在 (见因数分解)<br>至今为止也没有人能够证明对$n$进行因数分解是唯一的从$c$导出$m$的方法，直到今天也还没有找到比它更简单的方法。（至少没有公开的方法）<br>因此今天一般认为只要$n$足够大，那么黑客就没有办法了。<br>假如$n$的长度小于或等于256位，那么用一台个人电脑在几个小时内就可以分解它的因子了。1999年，数百台电脑合作分解了一个512位长的$n$。一个由Shamir 和Tromer在2003年从理论上构建的硬件TWIRL，使人们开始质疑1024位长的$n$的安全性，目前推荐$n$的长度至少为2048位。<br>1994年<a href="https://zh.wikipedia.org/wiki/彼得·秀爾" target="_blank" rel="noopener">彼得·秀尔</a>（Peter Shor）证明一台<a href="https://zh.wikipedia.org/wiki/量子计算机" target="_blank" rel="noopener">量子计算机</a>可以在多项式时间内进行因数分解。假如量子计算机有朝一日可以成为一种可行的技术的话，那么秀尔的算法可以淘汰RSA和相关的派生算法。（即依赖于分解大整数困难性的加密算法）<br>假如有人能够找到一种有效的分解大整数的算法的话，或者假如量子计算机可行的话，那么在解密和制造更长的钥匙之间就会展开一场竞争。但从原理上来说RSA在这种情况下是不可靠的。</p>
+<h3 id="1-5-参考"><a href="#1-5-参考" class="headerlink" title="1.5 参考"></a>1.5 参考</h3><ul>
+<li>《信息安全数学基础》(主编：常相茂 周玉倩)</li>
+<li><a href="https://zh.wikipedia.org/wiki/RSA%E5%8A%A0%E5%AF%86%E6%BC%94%E7%AE%97%E6%B3%95#%E5%AE%89%E5%85%A8" target="_blank" rel="noopener">维基百科</a></li>
+</ul>
+<h2 id="02-Ubuntu-安装gmpy2模块"><a href="#02-Ubuntu-安装gmpy2模块" class="headerlink" title="02 Ubuntu 安装gmpy2模块"></a>02 Ubuntu 安装gmpy2模块</h2><p>PARI/GP是一个比较强大的数论库，“针对数论中的快速计算（大数分解，代数数论，椭圆曲线…）而设计”。</p>
+<p><strong>需要的依赖库 gmp mpfr mpc</strong></p>
+<h3 id="gmp-库安装"><a href="#gmp-库安装" class="headerlink" title="gmp 库安装"></a>gmp 库安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libgmp-dev</span><br></pre></td></tr></table></figure>
+<h3 id="mpfr-库安装"><a href="#mpfr-库安装" class="headerlink" title="mpfr 库安装"></a>mpfr 库安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libmpfr-dev</span><br></pre></td></tr></table></figure>
+<h3 id="mpc-库安装"><a href="#mpc-库安装" class="headerlink" title="mpc 库安装"></a>mpc 库安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libmpc-dev</span><br></pre></td></tr></table></figure>
+<h3 id="gmpy2-安装"><a href="#gmpy2-安装" class="headerlink" title="gmpy2 安装"></a>gmpy2 安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#python3</span></span><br><span class="line">sudo pip3 install gmpy2</span><br><span class="line"><span class="comment">#python2</span></span><br><span class="line">sudo pip install gmpy2</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="0x01-已知n、e、c，求m"><a href="#0x01-已知n、e、c，求m" class="headerlink" title="0x01 已知n、e、c，求m"></a>0x01 已知n、e、c，求m</h1><h2 id="01-思路"><a href="#01-思路" class="headerlink" title="01 思路"></a>01 思路</h2><ol>
+<li>利用 <a href="http://factordb.com/" target="_blank" rel="noopener">http://factordb.com/</a> 分解n获得p和q；</li>
+<li>计算d；</li>
+<li>解密得明文m。</li>
+</ol>
+<h2 id="02-代码"><a href="#02-代码" class="headerlink" title="02 代码"></a>02 代码</h2><ul>
+<li><strong>代码1</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> long_to_bytes,bytes_to_long,getPrime,isPrime</span><br><span class="line"><span class="keyword">import</span> primefac</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">modinv</span><span class="params">(a, n)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> primefac.modinv(a, n) % n</span><br><span class="line">n = ...</span><br><span class="line">e = ...</span><br><span class="line">c = ...</span><br><span class="line">p = ...</span><br><span class="line">q = ...</span><br><span class="line"></span><br><span class="line">phi_n = (p<span class="number">-1</span>)*(q<span class="number">-1</span>)</span><br><span class="line">d = modinv(e, phi_n) % phi_n <span class="comment">#求模逆元</span></span><br><span class="line">m = pow(c, d, n) <span class="comment">#求明文</span></span><br><span class="line"><span class="keyword">print</span> long_to_bytes(m)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>代码2</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"></span><br><span class="line"><span class="comment">#分解n得p,q</span></span><br><span class="line">p = gmpy2.mpz(...) <span class="comment">#填写p</span></span><br><span class="line">q = gmpy2.mpz(...) <span class="comment">#填写q</span></span><br><span class="line">e = gmpy2.mpz(...) <span class="comment">#填写e</span></span><br><span class="line">c = gmpy2.mpz(...) <span class="comment">#填写c</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#计算d</span></span><br><span class="line">phi_n = (p - <span class="number">1</span>) * (q - <span class="number">1</span>)</span><br><span class="line">d = gmpy2.invert(e, phi_n) <span class="comment">#求解模逆元</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"private key:"</span></span><br><span class="line"><span class="keyword">print</span> d</span><br><span class="line"></span><br><span class="line"><span class="comment">#求明文</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"plaintext:"</span></span><br><span class="line">M  =  pow(c, d, p*q)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'[10进制]: '</span> + str(M)</span><br><span class="line">flag = str( hex(M) )[<span class="number">2</span>:] <span class="comment">#[2:-1]</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'[16进制]: '</span> + flag</span><br><span class="line"><span class="keyword">print</span> <span class="string">'[ASCII码]: '</span> + flag.decode(<span class="string">'hex'</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="0x02-低加密指数分解攻击-e-1"><a href="#0x02-低加密指数分解攻击-e-1" class="headerlink" title="0x02 低加密指数分解攻击(e = 1)"></a>0x02 低加密指数分解攻击(e = 1)</h1><h2 id="01-思路-1"><a href="#01-思路-1" class="headerlink" title="01 思路"></a>01 思路</h2><ol>
+<li>加密过程：$c \equiv E(m) \equiv m^{e}(\bmod n) \equiv m(\bmod n)$，所以明文与密文模n同余；</li>
+<li>$m = c + n*k (k=0,1,2,3…)$，暴力破解即可。</li>
+</ol>
+<h2 id="02-代码-1"><a href="#02-代码-1" class="headerlink" title="02 代码"></a>02 代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line"></span><br><span class="line">n = ... <span class="comment">#填写n</span></span><br><span class="line">c = ... <span class="comment">#填写c</span></span><br><span class="line"></span><br><span class="line">max_num = <span class="number">6</span> <span class="comment">#遍历上限</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> range( max_num ):</span><br><span class="line">    m = c + n*k</span><br><span class="line">    <span class="keyword">print</span> libnum.n2s(m)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="0x03-Rabin加密-e-2"><a href="#0x03-Rabin加密-e-2" class="headerlink" title="0x03 Rabin加密(e=2)"></a>0x03 Rabin加密(e=2)</h1><h2 id="01-思路-2"><a href="#01-思路-2" class="headerlink" title="01 思路"></a>01 思路</h2><p>理论知识：<a href="http://dragonliu.tk/2020/07/08/Rabin加密/" target="_blank" rel="noopener">我跳</a></p>
+<h2 id="02-代码-2"><a href="#02-代码-2" class="headerlink" title="02 代码"></a>02 代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"></span><br><span class="line"><span class="comment">#从文件中读取密文</span></span><br><span class="line">f = open(<span class="string">'flag.enc'</span>,<span class="string">'r'</span>)</span><br><span class="line">c = f.read()</span><br><span class="line">c = libnum.s2n(c)<span class="comment">#字符串转数字</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#分解n</span></span><br><span class="line">p = ... <span class="comment">#填写p</span></span><br><span class="line">q = ... <span class="comment">#填写p</span></span><br><span class="line">n = p * q</span><br><span class="line"></span><br><span class="line"><span class="comment">#求解mp与mq</span></span><br><span class="line">mp = pow(c, (p+<span class="number">1</span>)/<span class="number">4</span>, p)</span><br><span class="line">mq = pow(c, (q+<span class="number">1</span>)/<span class="number">4</span>, q)</span><br><span class="line"></span><br><span class="line"><span class="comment">#求解yp与yq</span></span><br><span class="line">yp = gmpy2.invert(p, q)</span><br><span class="line">yq = gmpy2.invert(q, p)</span><br><span class="line"></span><br><span class="line"><span class="comment">#获得四个解</span></span><br><span class="line">r1 = (yp*p*mq + yq*q*mp) % n</span><br><span class="line">r2 = (-r1) % n</span><br><span class="line">r3 = (yp*p*mq - yq*q*mp) % n</span><br><span class="line">r4 = (-r3) % n</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> libnum.n2s( r1 )<span class="comment">#数字转字符串</span></span><br><span class="line"><span class="keyword">print</span> libnum.n2s( r2 )</span><br><span class="line"><span class="keyword">print</span> libnum.n2s( r3 )</span><br><span class="line"><span class="keyword">print</span> libnum.n2s( r4 )</span><br></pre></td></tr></table></figure>
+<p>当$p = q$时，使用python命令行将16进制转十进制，然后直接求解$c$模 n 时的平方根：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">n = ...;</span><br><span class="line">c = ...;</span><br><span class="line"><span class="keyword">PowerMod</span>[c, <span class="number">1</span>/<span class="number">2</span>, n]</span><br></pre></td></tr></table></figure>
+<p>Wolfram 语言在线编辑：<a href="https://www.wolframcloud.com/" target="_blank" rel="noopener">我跳</a></p>
+<hr>
+<h1 id="0x04-flag-enc-pubkey-pem"><a href="#0x04-flag-enc-pubkey-pem" class="headerlink" title="0x04 flag.enc + pubkey.pem"></a>0x04 flag.enc + pubkey.pem</h1><h2 id="01-思路-3"><a href="#01-思路-3" class="headerlink" title="01 思路"></a>01 思路</h2><ol>
+<li>解压得到两个文件【flag.enc】和【pubkey.pem】，其中【flag.enc】从文件名含有flag可以判断是加密后的密文，【pubkey.pem】是公钥文件，通过公钥文件可以得到e和n；</li>
+<li>通过openssl对公钥文件【pubkey.pem】进行分解，使用命令【openssl rsa -pubin -text -modulus -in warmup -in pubkey.pem】，得到 e【Exponent】和 n【Modulus】；</li>
+<li>其他根据类型判断。</li>
+</ol>
+<h2 id="02-代码-3"><a href="#02-代码-3" class="headerlink" title="02 代码"></a>02 代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> rsa</span><br><span class="line"></span><br><span class="line"><span class="comment">#分解n得p,q</span></span><br><span class="line">n = ... <span class="comment">#填写n</span></span><br><span class="line">p = ... <span class="comment">#填写p</span></span><br><span class="line">q = ... <span class="comment">#填写q</span></span><br><span class="line">e = ... <span class="comment">#填写e</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#计算私钥</span></span><br><span class="line">phi_n = (p - <span class="number">1</span>) * (q - <span class="number">1</span>)</span><br><span class="line">d = int( gmpy2.invert(e, phi_n) ) <span class="comment">#求解模逆元</span></span><br><span class="line">privatekey = rsa.PrivateKey(n , e , d , p , q) <span class="comment">#根据已知参数，计算私钥</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./flag.enc"</span> , <span class="string">"rb"</span>) <span class="keyword">as</span> f: <span class="comment">#填写文件</span></span><br><span class="line">    <span class="keyword">print</span> rsa.decrypt(f.read(), privatekey).decode()  <span class="comment">#使用私钥对密文进行解密，并打印</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="0x05-共模攻击"><a href="#0x05-共模攻击" class="headerlink" title="0x05 共模攻击"></a>0x05 共模攻击</h1><h2 id="01-思路-4"><a href="#01-思路-4" class="headerlink" title="01 思路"></a>01 思路</h2><p>用相同的N，不同的e进行加密的，可以使用共模攻击。</p>
+<h2 id="02-代码-4"><a href="#02-代码-4" class="headerlink" title="02 代码"></a>02 代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> libnum <span class="keyword">import</span> n2s, s2n</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> invert, gcdext</span><br><span class="line"></span><br><span class="line">n  = ... <span class="comment">#填写n</span></span><br><span class="line">e1 = ... <span class="comment">#填写e1</span></span><br><span class="line">e2 = ... <span class="comment">#填写e2</span></span><br><span class="line"></span><br><span class="line">s = gcdext(e1, e2)  </span><br><span class="line">s1 = s[<span class="number">1</span>]</span><br><span class="line">s2 = -s[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#读取密文</span></span><br><span class="line">file1 = open(<span class="string">'flag.enc1'</span>, <span class="string">'r'</span>)</span><br><span class="line">c1 = file1.read()</span><br><span class="line">c1 = s2n(c1)<span class="comment">#字符串转数字</span></span><br><span class="line"></span><br><span class="line">file2 = open(<span class="string">'flag.enc2'</span>, <span class="string">'r'</span>)</span><br><span class="line">c2 = file2.read()</span><br><span class="line">c2 = s2n(c2)<span class="comment">#字符串转数字</span></span><br><span class="line"></span><br><span class="line">c2 = invert(c2, n)   </span><br><span class="line">m = (pow(c1,s1,n) * pow(c2 , s2 , n)) % n</span><br><span class="line"><span class="keyword">print</span> n2s(m)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="0x06-低加密指数分解攻击-e-3"><a href="#0x06-低加密指数分解攻击-e-3" class="headerlink" title="0x06 低加密指数分解攻击(e = 3)"></a>0x06 低加密指数分解攻击(e = 3)</h1><h2 id="01-思路-5"><a href="#01-思路-5" class="headerlink" title="01 思路"></a>01 思路</h2><ol>
+<li>公钥中，e=3，N非常大。</li>
+<li>加密过程：$c \equiv E(m) \equiv m^{e}(\bmod n) \equiv m^3(\bmod n)$，所以明文与密文的3次方模n同余；</li>
+<li>$m = c + n*k (k=0,1,2,3…)$，然后开三次方，暴力破解即可。</li>
+</ol>
+<h2 id="02-代码-5"><a href="#02-代码-5" class="headerlink" title="02 代码"></a>02 代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> libnum <span class="keyword">import</span> s2n, n2s</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> iroot</span><br><span class="line"></span><br><span class="line">n = ... <span class="comment">#填写n</span></span><br><span class="line">e = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#读取密文</span></span><br><span class="line">file = open(<span class="string">'flag.enc'</span>, <span class="string">'r'</span>)</span><br><span class="line">c = file.read()</span><br><span class="line">c = s2n(c)<span class="comment">#字符串转数字</span></span><br><span class="line">file.close()</span><br><span class="line"></span><br><span class="line">i = <span class="number">0</span> </span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    res = iroot( (c + i*n), <span class="number">3</span> )</span><br><span class="line">    <span class="keyword">if</span>( res[<span class="number">1</span>] ==  <span class="literal">True</span>):</span><br><span class="line">        <span class="keyword">print</span> res</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"i = "</span> + str(i)</span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">m = ... <span class="comment">#暴力获得的m</span></span><br><span class="line"><span class="keyword">print</span> n2s(m)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="0x07-私钥修复-最优非对称加密填充-God-Like-RSA"><a href="#0x07-私钥修复-最优非对称加密填充-God-Like-RSA" class="headerlink" title="0x07 私钥修复+最优非对称加密填充(God Like RSA)"></a>0x07 私钥修复+最优非对称加密填充(God Like RSA)</h1><h2 id="01-思路-6"><a href="#01-思路-6" class="headerlink" title="01 思路"></a>01 思路</h2><p>压缩包里有一个密文，一个部分缺失的私钥，一个公钥，读公钥可知 N 是 4096 位的，分解无望，肯定要从私钥着手。</p>
+<ol>
+<li>【vscode】打开【private.corrupted】，将对应变量填入下列脚本；</li>
+<li>执行脚本后得到私钥，新建文件【private.pem】并将私钥复制进去；</li>
+<li>然后执行【最优非对称加密填充】脚本。</li>
+</ol>
+<h2 id="02-代码-6"><a href="#02-代码-6" class="headerlink" title="02 代码"></a>02 代码</h2><p><strong>私钥修复脚本</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#-*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> product</span><br><span class="line"><span class="keyword">from</span> libnum <span class="keyword">import</span> invmod, gcd</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve_linear</span><span class="params">(a, b, mod)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> a &amp; <span class="number">1</span> == <span class="number">0</span> <span class="keyword">or</span> b &amp; <span class="number">1</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    <span class="keyword">return</span> (b * invmod(a, mod)) &amp; (mod - <span class="number">1</span>)  <span class="comment"># hack for mod = power of 2</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">to_n</span><span class="params">(s)</span>:</span></span><br><span class="line">    s = re.sub(<span class="string">r"[^0-9a-f]"</span>, <span class="string">""</span>, s)</span><br><span class="line">    <span class="keyword">return</span> int(s, <span class="number">16</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">msk</span><span class="params">(s)</span>:</span></span><br><span class="line">    cleaned = <span class="string">""</span>.join(map(<span class="keyword">lambda</span> x: x[<span class="number">-2</span>:], s.split(<span class="string">":"</span>)))</span><br><span class="line">    <span class="keyword">return</span> msk_ranges(cleaned), msk_mask(cleaned), msk_val(cleaned)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">msk_ranges</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> [range(<span class="number">16</span>) <span class="keyword">if</span> c == <span class="string">" "</span> <span class="keyword">else</span> [int(c, <span class="number">16</span>)] <span class="keyword">for</span> c <span class="keyword">in</span> s]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">msk_mask</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> int(<span class="string">""</span>.join(<span class="string">"0"</span> <span class="keyword">if</span> c == <span class="string">" "</span> <span class="keyword">else</span> <span class="string">"f"</span> <span class="keyword">for</span> c <span class="keyword">in</span> s), <span class="number">16</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">msk_val</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> int(<span class="string">""</span>.join(<span class="string">"0"</span> <span class="keyword">if</span> c == <span class="string">" "</span> <span class="keyword">else</span> c <span class="keyword">for</span> c <span class="keyword">in</span> s), <span class="number">16</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#根据文件pubilc.pem得到</span></span><br><span class="line">E = ...</span><br><span class="line"><span class="comment">#文件pubilc.pem中第一个Modulus</span></span><br><span class="line">N = to_n(<span class="string">"""..."""</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#private.corrupted中的prime1</span></span><br><span class="line">p_ranges, pmask_msk, pmask_val = msk(<span class="string">""" ... """</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#prime2</span></span><br><span class="line">q_ranges, qmask_msk, qmask_val = msk(<span class="string">""" ... """</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#privateExponent</span></span><br><span class="line">_, dmask_msk, dmask_val = msk(<span class="string">""" ... """</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#exponent1</span></span><br><span class="line">_, dpmask_msk, dpmask_val = msk(<span class="string">""" ... """</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#exponent2</span></span><br><span class="line">_, dqmask_msk, dqmask_val = msk(<span class="string">""" ... """</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(K, Kp, Kq, check_level, break_step)</span>:</span></span><br><span class="line">    max_step = <span class="number">0</span></span><br><span class="line">    cands = [<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> step <span class="keyword">in</span> range(<span class="number">1</span>, break_step + <span class="number">1</span>):</span><br><span class="line">        <span class="comment">#print " ", step, "( max =", max_step, ")"</span></span><br><span class="line">        max_step = max(step, max_step)</span><br><span class="line"></span><br><span class="line">        mod = <span class="number">1</span> &lt;&lt; (<span class="number">4</span> * step)</span><br><span class="line">        mask = mod - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        cands_next = []</span><br><span class="line">        <span class="keyword">for</span> p, new_digit <span class="keyword">in</span> product(cands, p_ranges[-step]):</span><br><span class="line">            pval = (new_digit &lt;&lt; ((step - <span class="number">1</span>) * <span class="number">4</span>)) | p</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> check_level &gt;= <span class="number">1</span>:</span><br><span class="line">                qval = solve_linear(pval, N &amp; mask, mod)</span><br><span class="line">                <span class="keyword">if</span> qval <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">or</span> <span class="keyword">not</span> check_val(qval, mask, qmask_msk, qmask_val):</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> check_level &gt;= <span class="number">2</span>:</span><br><span class="line">                val = solve_linear(E, <span class="number">1</span> + K * (N - pval - qval + <span class="number">1</span>), mod)</span><br><span class="line">                <span class="keyword">if</span> val <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">or</span> <span class="keyword">not</span> check_val(val, mask, dmask_msk, dmask_val):</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> check_level &gt;= <span class="number">3</span>:</span><br><span class="line">                val = solve_linear(E, <span class="number">1</span> + Kp * (pval - <span class="number">1</span>), mod)</span><br><span class="line">                <span class="keyword">if</span> val <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">or</span> <span class="keyword">not</span> check_val(val, mask, dpmask_msk, dpmask_val):</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> check_level &gt;= <span class="number">4</span>:</span><br><span class="line">                val = solve_linear(E, <span class="number">1</span> + Kq * (qval - <span class="number">1</span>), mod)</span><br><span class="line">                <span class="keyword">if</span> val <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">or</span> <span class="keyword">not</span> check_val(val, mask, dqmask_msk, dqmask_val):</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> pval * qval == N:</span><br><span class="line">                    <span class="keyword">print</span> <span class="string">"Kq ="</span>, Kq</span><br><span class="line">                    <span class="keyword">print</span> <span class="string">"pwned"</span></span><br><span class="line">                    <span class="keyword">print</span> <span class="string">"p ="</span>, pval</span><br><span class="line">                    <span class="keyword">print</span> <span class="string">"q ="</span>, qval</span><br><span class="line">                    p = pval</span><br><span class="line">                    q = qval</span><br><span class="line">                    d = invmod(E, (p - <span class="number">1</span>) * (q - <span class="number">1</span>))</span><br><span class="line">                    coef = invmod(p, q)</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">from</span> Crypto.PublicKey <span class="keyword">import</span> RSA</span><br><span class="line">                    <span class="keyword">print</span> RSA.construct(map(long, (N, E, d, p, q, coef))).exportKey()</span><br><span class="line">                    quit()</span><br><span class="line"></span><br><span class="line">            cands_next.append(pval)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> cands_next:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        cands = cands_next</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check_val</span><span class="params">(val, mask, mask_msk, mask_val)</span>:</span></span><br><span class="line">    test_mask = mask_msk &amp; mask</span><br><span class="line">    test_val = mask_val &amp; mask</span><br><span class="line">    <span class="keyword">return</span> val &amp; test_mask == test_val</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> K <span class="keyword">in</span> range(<span class="number">1</span>, E):</span><br><span class="line">    <span class="keyword">if</span> K % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"checking"</span>, K</span><br><span class="line">    <span class="keyword">if</span> search(K, <span class="number">0</span>, <span class="number">0</span>, check_level=<span class="number">2</span>, break_step=<span class="number">20</span>):</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"K ="</span>, K</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> Kp <span class="keyword">in</span> range(<span class="number">1</span>, E):</span><br><span class="line">    <span class="keyword">if</span> Kp % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"checking"</span>, Kp</span><br><span class="line">    <span class="keyword">if</span> search(K, Kp, <span class="number">0</span>, check_level=<span class="number">3</span>, break_step=<span class="number">30</span>):</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"Kp ="</span>, Kp</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> Kq <span class="keyword">in</span> range(<span class="number">1</span>, E):</span><br><span class="line">    <span class="keyword">if</span> Kq % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"checking"</span>, Kq</span><br><span class="line">    <span class="keyword">if</span> search(K, Kp, Kq, check_level=<span class="number">4</span>, break_step=<span class="number">9999</span>):</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"Kq ="</span>, Kq</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<p><strong>解题脚本(最优非对称加密填充)</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> Crypto.PublicKey <span class="keyword">import</span> RSA</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> PKCS1_OAEP</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'pubkey.pem'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    key = RSA.importKey(f)</span><br><span class="line">    N = key.n</span><br><span class="line">    e = key.e</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> N</span><br><span class="line"><span class="keyword">print</span> e</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'private.pem'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    private = RSA.importKey(f)</span><br><span class="line">    oaep = PKCS1_OAEP.new(private)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'flag.enc'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">print</span> oaep.decrypt(f.read())</span><br></pre></td></tr></table></figure>
+<h2 id="03-参考"><a href="#03-参考" class="headerlink" title="03 参考"></a>03 参考</h2><p><a href="https://www.40huo.cn/blog/rsa-private-key-recovery-and-oaep.html" target="_blank" rel="noopener">RSA 私钥恢复和最优非对称加密填充</a></p>
+<hr>
+<h1 id="0x08-wiener-attack-e特别大"><a href="#0x08-wiener-attack-e特别大" class="headerlink" title="0x08 wiener attack(e特别大)"></a>0x08 wiener attack(e特别大)</h1><h2 id="01-思路-7"><a href="#01-思路-7" class="headerlink" title="01 思路"></a>01 思路</h2><ol>
+<li>给出的n分解无望，而且e特别大，利用<code>wiener attack</code>脚本分解；</li>
+<li>然后利用一般方法求解即可。</li>
+</ol>
+<h2 id="02-代码-7"><a href="#02-代码-7" class="headerlink" title="02 代码"></a>02 代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">continued_fractions_expansion</span><span class="params">(numerator,denominator)</span>:</span><span class="comment">#(e,N)</span></span><br><span class="line">    result=[]</span><br><span class="line"> </span><br><span class="line">    divident=numerator%denominator</span><br><span class="line">    quotient=numerator/denominator</span><br><span class="line">    result.append(quotient)</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">while</span> divident!=<span class="number">0</span>:</span><br><span class="line">        numerator=numerator-quotient*denominator</span><br><span class="line"> </span><br><span class="line">        tmp=denominator</span><br><span class="line">        denominator=numerator</span><br><span class="line">        numerator=tmp</span><br><span class="line"> </span><br><span class="line">        divident=numerator%denominator</span><br><span class="line">        quotient=numerator/denominator</span><br><span class="line">        result.append(quotient)</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">convergents</span><span class="params">(expansion)</span>:</span></span><br><span class="line">    convergents=[(expansion[<span class="number">0</span>],<span class="number">1</span>)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(expansion)):</span><br><span class="line">        numerator=<span class="number">1</span></span><br><span class="line">        denominator=expansion[i]</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">            numerator+=expansion[j]*denominator</span><br><span class="line">            <span class="keyword">if</span> j==<span class="number">0</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            tmp=denominator</span><br><span class="line">            denominator=numerator</span><br><span class="line">            numerator=tmp</span><br><span class="line">        convergents.append((numerator,denominator))<span class="comment">#(k,d)</span></span><br><span class="line">    <span class="keyword">return</span> convergents</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">newtonSqrt</span><span class="params">(n)</span>:</span></span><br><span class="line">    approx = n/<span class="number">2</span></span><br><span class="line">    better = (approx + n/approx)/<span class="number">2</span></span><br><span class="line">    <span class="keyword">while</span> better != approx:</span><br><span class="line">        approx = better</span><br><span class="line">        better = (approx + n/approx)/<span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> approx</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">wiener_attack</span><span class="params">(cons,e,N)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> cs <span class="keyword">in</span> cons:</span><br><span class="line">        k,d=cs</span><br><span class="line">        <span class="keyword">if</span> k==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        phi_N=(e*d<span class="number">-1</span>)/k</span><br><span class="line">        <span class="comment">#x**2-((N-phi_N)+1)*x+N=0</span></span><br><span class="line">        a=<span class="number">1</span></span><br><span class="line">        b=-((N-phi_N)+<span class="number">1</span>)</span><br><span class="line">        c=N</span><br><span class="line">        delta = b*b - <span class="number">4</span>*a*c</span><br><span class="line">        <span class="keyword">if</span> delta&lt;=<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        x1= (newtonSqrt(delta)-b)/(<span class="number">2</span>*a)</span><br><span class="line">        x2=-(newtonSqrt(delta)+b)/(<span class="number">2</span>*a)</span><br><span class="line">        <span class="keyword">if</span> x1*x2==N:</span><br><span class="line">            <span class="keyword">return</span> [x1,x2,k,d]</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">N = ...</span><br><span class="line">e = ...</span><br><span class="line"> </span><br><span class="line">expansion = continued_fractions_expansion(e,N)</span><br><span class="line">cons = convergents(expansion)</span><br><span class="line"> </span><br><span class="line">p, q, k, d = wiener_attack(cons, e, N)</span><br><span class="line"><span class="keyword">print</span> p</span><br><span class="line"><span class="keyword">print</span> q</span><br><span class="line"></span><br><span class="line">c = ... <span class="comment">#密文</span></span><br><span class="line"></span><br><span class="line">d = gmpy2.invert(e, (p - <span class="number">1</span>) * (q - <span class="number">1</span>))</span><br><span class="line">m = pow(c, d, N)</span><br><span class="line"><span class="keyword">print</span> libnum.n2s(m)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="0x0-reference"><a href="#0x0-reference" class="headerlink" title="0x0 reference"></a>0x0 reference</h1><ul>
+<li><a href="https://blog.csdn.net/qq_28573835/article/details/86164877" target="_blank" rel="noopener">Ubuntu 安装gmpy2模块</a></li>
+<li><a href="https://bestwing.me/Common-types-of-RSA.html" target="_blank" rel="noopener">一大波RSA就要来了~~</a></li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://dragonliu2018.github.io/2020/07/07/RSA题型整理/" title="RSA题型整理" target="_blank" rel="external">https://dragonliu2018.github.io/2020/07/07/RSA题型整理/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/dragonliu2018" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/dragonliu2018" target="_blank"><span class="text-dark">Dragon&#39;s Blogs</span><small class="ml-1x">Security</small></a></h3>
+        <div>Life is painting a picture, not doing a sum.</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/07/13/CTF编码加密整理/" title="CTF编码加密整理"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Pbjl2Wajl9och0xVbR5eqoH1-gzGzoHsz',
+    appKey: 'PgxFh1wV6pyMMllhxs7NJijb',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
