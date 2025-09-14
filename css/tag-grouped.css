@@ -1,0 +1,110 @@
+/* 标签分组页面样式 */
+.tag-posts-grouped {
+  margin-top: 20px;
+}
+
+.tag-posts-grouped .panel {
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--card-bg);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.tag-posts-grouped .panel-heading {
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+  padding: 15px 20px;
+  border-radius: 8px 8px 0 0;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.tag-posts-grouped .panel-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.tag-posts-grouped .panel-title a {
+  color: var(--text-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.tag-posts-grouped .panel-title a:hover {
+  color: var(--link-hover-color);
+  text-decoration: none;
+}
+
+.tag-posts-grouped .panel-title a i {
+  font-size: 14px;
+  transition: opacity 0.3s ease;
+}
+
+.tag-posts-grouped .panel-title a .text-active {
+  display: inline;
+}
+
+.tag-posts-grouped .panel-title a .text {
+  display: none;
+}
+
+.tag-posts-grouped .panel-title a[aria-expanded="true"] .text-active {
+  display: none;
+}
+
+.tag-posts-grouped .panel-title a[aria-expanded="true"] .text {
+  display: inline;
+}
+
+.tag-posts-grouped .panel-title small {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: normal;
+}
+
+.tag-posts-grouped .panel-body {
+  padding: 0;
+  background: var(--card-bg);
+  transition: background-color 0.3s ease;
+}
+
+.tag-posts-grouped .collection {
+  padding: 15px 20px;
+}
+
+.tag-posts-grouped .collection .item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color);
+  transition: border-color 0.3s ease;
+}
+
+.tag-posts-grouped .collection .item:last-child {
+  border-bottom: none;
+}
+
+.tag-posts-grouped .collection .item a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.tag-posts-grouped .collection .item a:hover {
+  color: var(--link-hover-color);
+  text-decoration: none;
+}
+
+/* 折叠动画 */
+.panel-collapse {
+  transition: height 0.35s ease;
+}
+
+.panel-collapse.collapsing {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.35s ease;
+}
