@@ -11,6 +11,6 @@ http://example.com/about/index.html
 http://example.com/
 http://example.com/tags/%E6%B5%8B%E8%AF%95/
 http://example.com/tags/%E4%BB%A3%E7%A0%81%E5%9D%97/
-http://example.com/categories/%E6%B5%8B%E8%AF%95/
 http://example.com/categories/yyy/
+http://example.com/categories/%E6%B5%8B%E8%AF%95/
 http://example.com/categories/yyy/xxx/
