@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2025/09/14/Databend-pr-pivot-%E6%94%AF%E6%8C%81-subquery/</loc>
+    <loc>https://dragonliu2018.github.io/2025/09/14/Databend-pr-pivot-%E6%94%AF%E6%8C%81-subquery/</loc>
     
     <lastmod>2025-09-14</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2025/09/14/Doris-pr-Implement-format-methods-for-Status/</loc>
+    <loc>https://dragonliu2018.github.io/2025/09/14/Doris-pr-Implement-format-methods-for-Status/</loc>
     
     <lastmod>2025-09-14</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2025/09/13/Tool-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://dragonliu2018.github.io/2025/09/13/Tool-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
     
     <lastmod>2025-09-14</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/theme/index.html</loc>
+    <loc>https://dragonliu2018.github.io/theme/index.html</loc>
     
     <lastmod>2025-09-13</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/index.html</loc>
+    <loc>https://dragonliu2018.github.io/tags/index.html</loc>
     
     <lastmod>2025-09-13</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/repository/index.html</loc>
+    <loc>https://dragonliu2018.github.io/repository/index.html</loc>
     
     <lastmod>2025-09-13</lastmod>
     
@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/music/index.html</loc>
+    <loc>https://dragonliu2018.github.io/music/index.html</loc>
     
     <lastmod>2025-09-13</lastmod>
     
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/link/index.html</loc>
+    <loc>https://dragonliu2018.github.io/link/index.html</loc>
     
     <lastmod>2025-09-13</lastmod>
     
@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/gallery/index.html</loc>
+    <loc>https://dragonliu2018.github.io/gallery/index.html</loc>
     
     <lastmod>2025-09-13</lastmod>
     
@@ -83,7 +83,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/index.html</loc>
+    <loc>https://dragonliu2018.github.io/categories/index.html</loc>
     
     <lastmod>2025-09-13</lastmod>
     
@@ -92,7 +92,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/about/index.html</loc>
+    <loc>https://dragonliu2018.github.io/about/index.html</loc>
     
     <lastmod>2025-09-13</lastmod>
     
@@ -102,7 +102,7 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
+    <loc>https://dragonliu2018.github.io/</loc>
     <lastmod>2025-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -110,7 +110,7 @@
 
   
   <url>
-    <loc>http://example.com/tags/pr/</loc>
+    <loc>https://dragonliu2018.github.io/tags/pr/</loc>
     <lastmod>2025-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -119,77 +119,77 @@
 
   
   <url>
-    <loc>http://example.com/categories/Databend/</loc>
+    <loc>https://dragonliu2018.github.io/categories/DB/</loc>
     <lastmod>2025-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Doris/</loc>
+    <loc>https://dragonliu2018.github.io/categories/Doris/</loc>
     <lastmod>2025-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Tool/</loc>
+    <loc>https://dragonliu2018.github.io/categories/Tool/</loc>
     <lastmod>2025-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Databend/pr/</loc>
+    <loc>https://dragonliu2018.github.io/categories/DB/Databend/</loc>
     <lastmod>2025-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Doris/%E5%85%B6%E4%BB%96/</loc>
+    <loc>https://dragonliu2018.github.io/categories/Doris/pr/</loc>
     <lastmod>2025-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Tool/Hexo/</loc>
+    <loc>https://dragonliu2018.github.io/categories/Tool/Hexo/</loc>
     <lastmod>2025-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Databend/%E6%89%A7%E8%A1%8C%E5%99%A8/</loc>
+    <loc>https://dragonliu2018.github.io/categories/DB/Databend/pr/</loc>
     <lastmod>2025-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Databend/%E6%89%A7%E8%A1%8C%E5%99%A8/%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
+    <loc>https://dragonliu2018.github.io/categories/DB/Databend/%E6%89%A7%E8%A1%8C%E5%99%A8/</loc>
     <lastmod>2025-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/DB/</loc>
+    <loc>https://dragonliu2018.github.io/categories/DB/Databend/%E6%89%A7%E8%A1%8C%E5%99%A8/%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
     <lastmod>2025-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/DB/%E6%89%A7%E8%A1%8C%E5%99%A8/</loc>
+    <loc>https://dragonliu2018.github.io/categories/DB/%E6%89%A7%E8%A1%8C%E5%99%A8/</loc>
     <lastmod>2025-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/DB/%E6%89%A7%E8%A1%8C%E5%99%A8/%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
+    <loc>https://dragonliu2018.github.io/categories/DB/%E6%89%A7%E8%A1%8C%E5%99%A8/%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
     <lastmod>2025-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
