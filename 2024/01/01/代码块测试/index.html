@@ -26,7 +26,7 @@
 <meta property="og:description" content="代码块功能测试 本文用于测试代码块的各项功能。  短代码块测试（不超过5行） 这是一个短的Python代码块，不应该显示行号： 12def hello():    print(&quot;Hello World&quot;)  长代码块测试（超过5行） 这是一个长的JavaScript代码块，应该显示行号并可以折叠： 12345678910111213141516171819function f">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-12-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-09-13T16:27:40.116Z">
+<meta property="article:modified_time" content="2025-09-13T16:41:20.838Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="测试">
 <meta property="article:tag" content="代码块">
@@ -42,10 +42,8 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-  <!-- 代码块优化样式 -->
   
-<link rel="stylesheet" href="/css/code-block.css">
-
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
   
   
   
@@ -286,6 +284,15 @@
 
   
   
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-number">1.</span> <span class="toc-text"> 代码块功能测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%AD%E4%BB%A3%E7%A0%81%E5%9D%97%E6%B5%8B%E8%AF%95%E4%B8%8D%E8%B6%85%E8%BF%875%E8%A1%8C"><span class="toc-number">1.1.</span> <span class="toc-text"> 短代码块测试（不超过5行）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%95%BF%E4%BB%A3%E7%A0%81%E5%9D%97%E6%B5%8B%E8%AF%95%E8%B6%85%E8%BF%875%E8%A1%8C"><span class="toc-number">1.2.</span> <span class="toc-text"> 长代码块测试（超过5行）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E8%AF%AD%E8%A8%80%E6%B5%8B%E8%AF%95"><span class="toc-number">1.3.</span> <span class="toc-text"> 不同语言测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#c%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">1.3.1.</span> <span class="toc-text"> C++代码块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#html%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">1.3.2.</span> <span class="toc-text"> HTML代码块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">1.3.3.</span> <span class="toc-text"> CSS代码块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#json%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">1.3.4.</span> <span class="toc-text"> JSON代码块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E8%AF%B4%E6%98%8E"><span class="toc-number">1.4.</span> <span class="toc-text"> 功能说明</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
 <main class="main" role="main">
   <div class="content">
   <article id="post-代码块测试" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -428,6 +435,14 @@
     
     
     
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
   </ul>
   
   
@@ -471,10 +486,6 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 <script src="/js/application.js"></script>
-
-<!-- 代码块优化功能 -->
-
-<script src="/js/code-block.js"></script>
 
 
     <script>
