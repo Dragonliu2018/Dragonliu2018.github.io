@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://example.com/2025/09/13/%E5%B7%A5%E5%85%B7-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    <loc>http://example.com/2025/09/14/Databend-pr-pivot-%E6%94%AF%E6%8C%81-subquery/</loc>
     <lastmod>2025-09-14</lastmod>
   </url>
   <url>
-    <loc>http://example.com/2024/01/01/%E4%BB%A3%E7%A0%81%E5%9D%97%E6%B5%8B%E8%AF%95/</loc>
-    <lastmod>2025-09-13</lastmod>
+    <loc>http://example.com/2025/09/14/Doris-pr-Implement-format-methods-for-Status/</loc>
+    <lastmod>2025-09-14</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2025/09/13/Tool-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2025-09-14</lastmod>
   </url>
 </urlset> 

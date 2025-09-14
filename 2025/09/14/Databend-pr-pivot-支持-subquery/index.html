@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>[Databend][pr] pivot 支持 subquery | Dragon&#39;s Security Blogs</title>
+  <meta name="description" content="1 任务背景  Issue：https:&#x2F;&#x2F;github.com&#x2F;databendlabs&#x2F;databend&#x2F;issues&#x2F;16556 **PR：**https:&#x2F;&#x2F;github.com&#x2F;databendlabs&#x2F;databend&#x2F;pull&#x2F;16631   1.1 任务介绍 目前 databend 中的 pivot 和 unpivot 不支持 FROM&#x2F;IN + subquery。→ 文档链接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Databend][pr] pivot 支持 subquery">
+<meta property="og:url" content="http://example.com/2025/09/14/Databend-pr-pivot-%E6%94%AF%E6%8C%81-subquery/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1 任务背景  Issue：https:&#x2F;&#x2F;github.com&#x2F;databendlabs&#x2F;databend&#x2F;issues&#x2F;16556 **PR：**https:&#x2F;&#x2F;github.com&#x2F;databendlabs&#x2F;databend&#x2F;pull&#x2F;16631   1.1 任务介绍 目前 databend 中的 pivot 和 unpivot 不支持 FROM&#x2F;IN + subquery。→ 文档链接">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-09-14T09:45:42.000Z">
+<meta property="article:modified_time" content="2025-09-14T10:03:24.331Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="pr">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2025/09/14/Databend-pr-pivot-%E6%94%AF%E6%8C%81-subquery/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/dragonliu2018" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Dragon&#39;s Blogs</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Security</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Nanjing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</br>dragonliu2018@gmail.com</br>电脑端观看效果更佳！</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      <!-- 
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/">DB</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/%E6%89%A7%E8%A1%8C%E5%99%A8/">执行器</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/%E6%89%A7%E8%A1%8C%E5%99%A8/%E8%A1%A8%E8%BE%BE%E5%BC%8F/">表达式</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Databend/">Databend</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Databend/pr/">pr</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Databend/%E6%89%A7%E8%A1%8C%E5%99%A8/">执行器</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Databend/%E6%89%A7%E8%A1%8C%E5%99%A8/%E8%A1%A8%E8%BE%BE%E5%BC%8F/">表达式</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Doris/">Doris</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Doris/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/Hexo/">Hexo</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+ -->
+
+  <div class="category-block">
+    <h3 class="asidetitle">分类</h3>
+       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/">DB</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/%E6%89%A7%E8%A1%8C%E5%99%A8/">执行器</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/%E6%89%A7%E8%A1%8C%E5%99%A8/%E8%A1%A8%E8%BE%BE%E5%BC%8F/">表达式</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Databend/">Databend</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Databend/pr/">pr</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Databend/%E6%89%A7%E8%A1%8C%E5%99%A8/">执行器</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Databend/%E6%89%A7%E8%A1%8C%E5%99%A8/%E8%A1%A8%E8%BE%BE%E5%BC%8F/">表达式</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Doris/">Doris</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Doris/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/Hexo/">Hexo</a><span class="category-list-count">1</span></li></ul></li></ul>
+  </div>
+  
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/pr/" rel="tag">pr</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/pr/" style="font-size: 13px;">pr</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">九月 2025</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/DB/">DB</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/DB/%E6%89%A7%E8%A1%8C%E5%99%A8/">执行器</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/Databend/">Databend</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/Databend/pr/">pr</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/Databend/%E6%89%A7%E8%A1%8C%E5%99%A8/">执行器</a>
+              </p>
+              <p class="item-title">
+                <a href="/2025/09/14/Databend-pr-pivot-%E6%94%AF%E6%8C%81-subquery/" class="title">[Databend][pr] pivot 支持 subquery</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-09-14T09:45:42.000Z" itemprop="datePublished">2025-09-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Doris/">Doris</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/Doris/%E5%85%B6%E4%BB%96/">其他</a>
+              </p>
+              <p class="item-title">
+                <a href="/2025/09/14/Doris-pr-Implement-format-methods-for-Status/" class="title">[Doris][pr] Implement format methods for Status</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-09-14T09:26:44.000Z" itemprop="datePublished">2025-09-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Tool/">Tool</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/Tool/Hexo/">Hexo</a>
+              </p>
+              <p class="item-title">
+                <a href="/2025/09/13/Tool-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="title">[Tool] Hexo 使用教程</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-09-13T15:37:08.000Z" itemprop="datePublished">2025-09-13</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%BB%BB%E5%8A%A1%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text"> 1 任务背景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E4%BB%BB%E5%8A%A1%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text"> 1.1 任务介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E4%BB%8B%E7%BB%8D-pivot-unpivot"><span class="toc-number">1.2.</span> <span class="toc-text"> 1.2 介绍 pivot &amp; unpivot</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#121-pivot%E9%80%8F%E8%A7%86%E4%B8%80%E5%88%97%E4%B8%AD%E7%9A%84%E5%B1%9E%E6%80%A7%E5%80%BC%E8%BD%AC%E6%88%90%E5%A4%9A%E4%B8%AA%E5%AF%B9%E5%BA%94%E5%B1%9E%E6%80%A7"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 1.2.1 pivot（透视，一列中的属性值转成多个对应属性）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#122-unpivot%E5%8F%96%E6%B6%88%E9%80%8F%E8%A7%86%E5%A4%9A%E4%B8%AA%E5%B1%9E%E6%80%A7%E8%BD%AC%E6%88%90%E4%B8%80%E5%88%97%E4%B8%AD%E5%AF%B9%E5%BA%94%E7%9A%84%E5%B1%9E%E6%80%A7%E5%80%BC"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 1.2.2 unpivot（取消透视，多个属性转成一列中对应的属性值）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E8%AE%BE%E8%AE%A1%E5%8F%82%E8%80%83%E7%AB%9E%E5%93%81%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text"> 2 设计参考（竞品分析）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%80%9D%E8%B7%AF%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text"> 3 思路与实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#31-%E6%80%9D%E8%B7%AF"><span class="toc-number">3.1.</span> <span class="toc-text"> 3.1 思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#32-review-%E7%9B%B8%E5%85%B3%E4%BF%AE%E6%94%B9"><span class="toc-number">3.2.</span> <span class="toc-text"> 3.2 review 相关修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#33-bugs"><span class="toc-number">3.3.</span> <span class="toc-text"> 3.3 bugs</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%B5%8B%E8%AF%95"><span class="toc-number">4.</span> <span class="toc-text"> 4 测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#41-%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-number">4.1.</span> <span class="toc-text"> 4.1 功能测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#411-%E6%89%8B%E5%8A%A8%E6%B5%8B%E8%AF%95"><span class="toc-number">4.1.1.</span> <span class="toc-text"> 4.1.1 手动测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#412-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95ast-%E7%9B%B8%E5%85%B3"><span class="toc-number">4.1.2.</span> <span class="toc-text"> 4.1.2 单元测试（ast 相关）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#413-%E9%80%BB%E8%BE%91%E6%B5%8B%E8%AF%95sql-%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">4.1.3.</span> <span class="toc-text"> 4.1.3 逻辑测试（sql 执行结果）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#42-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-number">4.2.</span> <span class="toc-text"> 4.2 性能测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E9%9A%BE%E7%82%B9"><span class="toc-number">5.</span> <span class="toc-text"> 5 难点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-todo"><span class="toc-number">6.</span> <span class="toc-text"> 6 TODO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#x-%E5%8F%82%E8%80%83"><span class="toc-number">7.</span> <span class="toc-text"> X 参考</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Databend-pr-pivot-支持-subquery" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [Databend][pr] pivot 支持 subquery
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2025/09/14/Databend-pr-pivot-%E6%94%AF%E6%8C%81-subquery/" class="article-date">
+	  <time datetime="2025-09-14T09:45:42.000Z" itemprop="datePublished">2025-09-14</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/DB/">DB</a>►<a class="article-category-link" href="/categories/DB/%E6%89%A7%E8%A1%8C%E5%99%A8/">执行器</a>►<a class="article-category-link" href="/categories/DB/%E6%89%A7%E8%A1%8C%E5%99%A8/%E8%A1%A8%E8%BE%BE%E5%BC%8F/">表达式</a>►<a class="article-category-link" href="/categories/Databend/">Databend</a>►<a class="article-category-link" href="/categories/Databend/pr/">pr</a>►<a class="article-category-link" href="/categories/Databend/%E6%89%A7%E8%A1%8C%E5%99%A8/">执行器</a>►<a class="article-category-link" href="/categories/Databend/%E6%89%A7%E8%A1%8C%E5%99%A8/%E8%A1%A8%E8%BE%BE%E5%BC%8F/">表达式</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/pr/" rel="tag">pr</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/09/14/Databend-pr-pivot-%E6%94%AF%E6%8C%81-subquery/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.6k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="1-任务背景"><a class="markdownIt-Anchor" href="#1-任务背景"></a> 1 任务背景</h1>
+<ul>
+<li><strong>Issue</strong>：<a target="_blank" rel="noopener" href="https://github.com/databendlabs/databend/issues/16556">https://github.com/databendlabs/databend/issues/16556</a></li>
+<li>**PR：**<a target="_blank" rel="noopener" href="https://github.com/databendlabs/databend/pull/16631">https://github.com/databendlabs/databend/pull/16631</a></li>
+</ul>
+<h2 id="11-任务介绍"><a class="markdownIt-Anchor" href="#11-任务介绍"></a> 1.1 任务介绍</h2>
+<p><strong>目前 databend 中的 pivot 和 unpivot 不支持 <code>FROM/IN + subquery</code></strong>。→ <a target="_blank" rel="noopener" href="https://docs.databend.com/sql/sql-commands/query-syntax/query-pivot">文档链接</a></p>
+<p><strong>要求实现类似于 snowflake 的语法，也就是让 pivot 支持 <code>FROM/IN + subquery</code>，unpivot 支持 <code>FROM + subquery</code></strong>。→ <a target="_blank" rel="noopener" href="https://docs.snowflake.com/en/sql-reference/constructs/pivot">文档链接</a></p>
+<ul>
+<li>
+<p><strong>databend PIVOT 语法</strong></p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ...</span><br><span class="line"><span class="keyword">FROM</span> ...</span><br><span class="line">   PIVOT ( <span class="operator">&lt;</span>aggregate_function<span class="operator">&gt;</span> ( <span class="operator">&lt;</span>pivot_column<span class="operator">&gt;</span> )</span><br><span class="line">            <span class="keyword">FOR</span> <span class="operator">&lt;</span>value_column<span class="operator">&gt;</span> <span class="keyword">IN</span> ( <span class="operator">&lt;</span>pivot_value_1<span class="operator">&gt;</span> [ , <span class="operator">&lt;</span>pivot_value_2<span class="operator">&gt;</span> ... ] ) )</span><br><span class="line"></span><br><span class="line">[ ... ]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>&lt;aggregate_function&gt;</code>：用于组合来自<code>pivot_column</code>的分组值的聚合函数。</li>
+<li><code>&lt;pivot_column&gt;</code>：将使用指定的<code>&lt;aggregate_function&gt;</code>进行聚合的列。</li>
+<li><code>&lt;value_column&gt;</code>：其唯一值将在旋转结果集中成为新列的列。</li>
+<li><code>&lt;pivot_value_N&gt;</code>：来自<code>&lt;value_column&gt;</code>的唯一值，将在旋转结果集中成为新列。</li>
+</ul>
+</li>
+<li>
+<p><strong>databend UNPIVOT 语法</strong></p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ...</span><br><span class="line"><span class="keyword">FROM</span> ...</span><br><span class="line">    UNPIVOT ( <span class="operator">&lt;</span>value_column<span class="operator">&gt;</span></span><br><span class="line">    <span class="keyword">FOR</span> <span class="operator">&lt;</span>name_column<span class="operator">&gt;</span> <span class="keyword">IN</span> ( <span class="operator">&lt;</span>column_list<span class="operator">&gt;</span> ) )</span><br><span class="line"></span><br><span class="line">[ ... ]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>&lt;value_column&gt;</code>：将存储从 <code>&lt;column_list&gt;</code> 中列出的列中提取的值的列。</li>
+<li><code>&lt;name_column&gt;</code>：将存储从中提取值的列的名称的列。</li>
+<li><code>&lt;column_list&gt;</code>：要取消透视的列的列表，用逗号分隔。</li>
+</ul>
+</li>
+<li>
+<p><strong>snowflake PIVOT 语法</strong></p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ...</span><br><span class="line"><span class="keyword">FROM</span> ...</span><br><span class="line">   PIVOT ( <span class="operator">&lt;</span>aggregate_function<span class="operator">&gt;</span> ( <span class="operator">&lt;</span>pivot_column<span class="operator">&gt;</span> )</span><br><span class="line">            <span class="keyword">FOR</span> <span class="operator">&lt;</span>value_column<span class="operator">&gt;</span> <span class="keyword">IN</span> (</span><br><span class="line">              <span class="operator">&lt;</span>pivot_value_1<span class="operator">&gt;</span> [ , <span class="operator">&lt;</span>pivot_value_2<span class="operator">&gt;</span> ... ]</span><br><span class="line">              <span class="operator">|</span> <span class="keyword">ANY</span> [ <span class="keyword">ORDER</span> <span class="keyword">BY</span> ... ]</span><br><span class="line">              <span class="operator">|</span> <span class="operator">&lt;</span>subquery<span class="operator">&gt;</span></span><br><span class="line">            )</span><br><span class="line">            [ <span class="keyword">DEFAULT</span> <span class="keyword">ON</span> <span class="keyword">NULL</span> (<span class="operator">&lt;</span><span class="keyword">value</span><span class="operator">&gt;</span>) ]</span><br><span class="line">         )</span><br><span class="line"></span><br><span class="line">[ ... ]</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>snowflake UNPIVOT 语法</strong></p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ...</span><br><span class="line"><span class="keyword">FROM</span> ...</span><br><span class="line">    UNPIVOT [ &#123; INCLUDE <span class="operator">|</span> EXCLUDE &#125; NULLS ]</span><br><span class="line">      ( <span class="operator">&lt;</span>value_column<span class="operator">&gt;</span></span><br><span class="line">        <span class="keyword">FOR</span> <span class="operator">&lt;</span>name_column<span class="operator">&gt;</span> <span class="keyword">IN</span> ( <span class="operator">&lt;</span>column_list<span class="operator">&gt;</span> ) )</span><br><span class="line"></span><br><span class="line">[ ... ]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="12-介绍-pivot-unpivot"><a class="markdownIt-Anchor" href="#12-介绍-pivot-unpivot"></a> 1.2 介绍 pivot &amp; unpivot</h2>
+<h3 id="121-pivot透视一列中的属性值转成多个对应属性"><a class="markdownIt-Anchor" href="#121-pivot透视一列中的属性值转成多个对应属性"></a> 1.2.1 <strong>pivot（透视，一列中的属性值转成多个对应属性）</strong></h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.databend.com/sql/sql-commands/query-syntax/query-pivot">https://docs.databend.com/sql/sql-commands/query-syntax/query-pivot</a></p>
+</blockquote>
+<hr />
+<p><strong><code>PIVOT</code>操作通过旋转表格并基于指定列聚合结果来转换表格</strong>，这是一个对于总结和分析大量数据以更可读格式显示非常有用的操作。</p>
+<hr />
+<ul>
+<li>
+<p><strong>databend PIVOT 语法</strong></p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ...</span><br><span class="line"><span class="keyword">FROM</span> ...</span><br><span class="line">   PIVOT ( <span class="operator">&lt;</span>aggregate_function<span class="operator">&gt;</span> ( <span class="operator">&lt;</span>pivot_column<span class="operator">&gt;</span> )</span><br><span class="line">            <span class="keyword">FOR</span> <span class="operator">&lt;</span>value_column<span class="operator">&gt;</span> <span class="keyword">IN</span> ( <span class="operator">&lt;</span>pivot_value_1<span class="operator">&gt;</span> [ , <span class="operator">&lt;</span>pivot_value_2<span class="operator">&gt;</span> ... ] ) )</span><br><span class="line"></span><br><span class="line">[ ... ]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>&lt;aggregate_function&gt;</code>：用于组合来自<code>pivot_column</code>的分组值的聚合函数。</li>
+<li><code>&lt;pivot_column&gt;</code>：将使用指定的<code>&lt;aggregate_function&gt;</code>进行聚合的列。</li>
+<li><code>&lt;value_column&gt;</code>：其唯一值将在旋转结果集中成为新列的列。</li>
+<li><code>&lt;pivot_value_N&gt;</code>：来自<code>&lt;value_column&gt;</code>的唯一值，将在旋转结果集中成为新列。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>假设我们有一个名为 monthly_sales 的表，其中<strong>包含不同员工在不同月份的销售数据</strong>。我们<strong>可以使用<code>PIVOT</code>操作来总结数据并计算每个员工在每个月的总销售额</strong>。</p>
+<ul>
+<li>
+<p><strong>创建和插入数据</strong></p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建monthly_sales表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> monthly_sales(</span><br><span class="line">  empid <span class="type">INT</span>,</span><br><span class="line">  amount <span class="type">INT</span>,</span><br><span class="line">  <span class="keyword">month</span> <span class="type">VARCHAR</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 插入销售数据</span></span><br><span class="line"><span class="keyword">INSERT INTO</span> monthly_sales <span class="keyword">VALUES</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">10000</span>, <span class="string">&#x27;JAN&#x27;</span>),</span><br><span class="line">  (<span class="number">1</span>, <span class="number">400</span>, <span class="string">&#x27;JAN&#x27;</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">4500</span>, <span class="string">&#x27;JAN&#x27;</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">35000</span>, <span class="string">&#x27;JAN&#x27;</span>),</span><br><span class="line">  (<span class="number">1</span>, <span class="number">5000</span>, <span class="string">&#x27;FEB&#x27;</span>),</span><br><span class="line">  (<span class="number">1</span>, <span class="number">3000</span>, <span class="string">&#x27;FEB&#x27;</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">200</span>, <span class="string">&#x27;FEB&#x27;</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">90500</span>, <span class="string">&#x27;FEB&#x27;</span>),</span><br><span class="line">  (<span class="number">1</span>, <span class="number">6000</span>, <span class="string">&#x27;MAR&#x27;</span>),</span><br><span class="line">  (<span class="number">1</span>, <span class="number">5000</span>, <span class="string">&#x27;MAR&#x27;</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">2500</span>, <span class="string">&#x27;MAR&#x27;</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">9500</span>, <span class="string">&#x27;MAR&#x27;</span>),</span><br><span class="line">  (<span class="number">1</span>, <span class="number">8000</span>, <span class="string">&#x27;APR&#x27;</span>),</span><br><span class="line">  (<span class="number">1</span>, <span class="number">10000</span>, <span class="string">&#x27;APR&#x27;</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">800</span>, <span class="string">&#x27;APR&#x27;</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">4500</span>, <span class="string">&#x27;APR&#x27;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>使用 PIVOT</strong></p>
+<p>现在，我们可以使用<code>PIVOT</code>操作来计算每个员工在每个月的总销售额。我们将使用<code>SUM</code>聚合函数来计算总销售额，<strong>MONTH 列将被旋转以为每个月创建新列。</strong></p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> monthly_sales</span><br><span class="line">PIVOT(<span class="built_in">SUM</span>(amount) <span class="keyword">FOR</span> <span class="keyword">MONTH</span> <span class="keyword">IN</span> (<span class="string">&#x27;JAN&#x27;</span>, <span class="string">&#x27;FEB&#x27;</span>, <span class="string">&#x27;MAR&#x27;</span>, <span class="string">&#x27;APR&#x27;</span>))</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> EMPID;</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="operator">+</span><span class="comment">-------+-------+-------+-------+-------+</span></span><br><span class="line"><span class="operator">|</span> empid <span class="operator">|</span> jan   <span class="operator">|</span> feb   <span class="operator">|</span> mar   <span class="operator">|</span> apr   <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------+-------+-------+-------+-------+</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">1</span> <span class="operator">|</span> <span class="number">10400</span> <span class="operator">|</span>  <span class="number">8000</span> <span class="operator">|</span> <span class="number">11000</span> <span class="operator">|</span> <span class="number">18000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">2</span> <span class="operator">|</span> <span class="number">39500</span> <span class="operator">|</span> <span class="number">90700</span> <span class="operator">|</span> <span class="number">12000</span> <span class="operator">|</span>  <span class="number">5300</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------+-------+-------+-------+-------+</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="122-unpivot取消透视多个属性转成一列中对应的属性值"><a class="markdownIt-Anchor" href="#122-unpivot取消透视多个属性转成一列中对应的属性值"></a> 1.2.2 <strong>unpivot（取消透视，多个属性转成一列中对应的属性值）</strong></h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.databend.com/sql/sql-commands/query-syntax/query-unpivot">https://docs.databend.com/sql/sql-commands/query-syntax/query-unpivot</a></p>
+</blockquote>
+<hr />
+<p><code>UNPIVOT</code> 操作通过将列转换为行来旋转表。它是一个关系操作符，接受两列（来自表或子查询），以及列的列表，并为列表中指定的每列生成一行。在查询中，它在 FROM 子句中指定，位于表名或子查询之后。</p>
+<hr />
+<ul>
+<li>
+<p><strong>databend UNPIVOT 语法</strong></p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ...</span><br><span class="line"><span class="keyword">FROM</span> ...</span><br><span class="line">    UNPIVOT ( <span class="operator">&lt;</span>value_column<span class="operator">&gt;</span></span><br><span class="line">    <span class="keyword">FOR</span> <span class="operator">&lt;</span>name_column<span class="operator">&gt;</span> <span class="keyword">IN</span> ( <span class="operator">&lt;</span>column_list<span class="operator">&gt;</span> ) )</span><br><span class="line"></span><br><span class="line">[ ... ]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>&lt;value_column&gt;</code>：将存储从 <code>&lt;column_list&gt;</code> 中列出的列中提取的值的列。</li>
+<li><code>&lt;name_column&gt;</code>：将存储从中提取值的列的名称的列。</li>
+<li><code>&lt;column_list&gt;</code>：要取消透视的列的列表，用逗号分隔。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>让我们取消透视个别月份列，以返回每位员工每月的单一销售值：</p>
+<ul>
+<li>
+<p><strong>创建和插入数据</strong></p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建 unpivoted_monthly_sales 表</span></span><br><span class="line"><span class="keyword">CREATE TABLE</span> unpivoted_monthly_sales(</span><br><span class="line">  empid <span class="type">INT</span>,</span><br><span class="line">  jan <span class="type">INT</span>,</span><br><span class="line">  feb <span class="type">INT</span>,</span><br><span class="line">  mar <span class="type">INT</span>,</span><br><span class="line">  apr <span class="type">INT</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 插入销售数据</span></span><br><span class="line"><span class="keyword">INSERT INTO</span> unpivoted_monthly_sales <span class="keyword">VALUES</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">10400</span>,  <span class="number">8000</span>, <span class="number">11000</span>, <span class="number">18000</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">39500</span>, <span class="number">90700</span>, <span class="number">12000</span>,  <span class="number">5300</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>使用 UNPIVOT</strong></p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> unpivoted_monthly_sales</span><br><span class="line">    UNPIVOT (amount</span><br><span class="line">    <span class="keyword">FOR</span> <span class="keyword">month</span> <span class="keyword">IN</span> (jan, feb, mar, apr));</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">+</span><span class="comment">-------+-------+--------+</span></span><br><span class="line"><span class="operator">|</span> empid <span class="operator">|</span> <span class="keyword">month</span> <span class="operator">|</span> amount <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------+-------+--------+</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">1</span> <span class="operator">|</span> jan   <span class="operator">|</span>  <span class="number">10400</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">1</span> <span class="operator">|</span> feb   <span class="operator">|</span>   <span class="number">8000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">1</span> <span class="operator">|</span> mar   <span class="operator">|</span>  <span class="number">11000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">1</span> <span class="operator">|</span> apr   <span class="operator">|</span>  <span class="number">18000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">2</span> <span class="operator">|</span> jan   <span class="operator">|</span>  <span class="number">39500</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">2</span> <span class="operator">|</span> feb   <span class="operator">|</span>  <span class="number">90700</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">2</span> <span class="operator">|</span> mar   <span class="operator">|</span>  <span class="number">12000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">2</span> <span class="operator">|</span> apr   <span class="operator">|</span>   <span class="number">5300</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------+-------+--------+</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="2-设计参考竞品分析"><a class="markdownIt-Anchor" href="#2-设计参考竞品分析"></a> 2 设计参考（竞品分析）</h1>
+<h1 id="3-思路与实现"><a class="markdownIt-Anchor" href="#3-思路与实现"></a> 3 思路与实现</h1>
+<h2 id="31-思路"><a class="markdownIt-Anchor" href="#31-思路"></a> 3.1 思路</h2>
+<p>实现 <code>from + subquery</code> 较为简单，在 TableReference::Subquery 加上 pivot 和 unpivot 字段，修改 parser 及其他相关地方。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">subquery</span> = <span class="title function_ invoke__">map</span>(</span><br><span class="line">    rule! &#123;</span><br><span class="line">        LATERAL? ~ <span class="string">&quot;(&quot;</span> ~ #query ~ <span class="string">&quot;)&quot;</span> ~ #table_alias? ~ #pivot? ~ #unpivot?</span><br><span class="line">    &#125;,</span><br><span class="line">    |(lateral, _, subquery, _, alias, pivot, unpivot)| TableReferenceElement::Subquery &#123;</span><br><span class="line">        lateral: lateral.<span class="title function_ invoke__">is_some</span>(),</span><br><span class="line">        subquery: <span class="type">Box</span>::<span class="title function_ invoke__">new</span>(subquery),</span><br><span class="line">        alias,</span><br><span class="line">        pivot: pivot.<span class="title function_ invoke__">map</span>(<span class="type">Box</span>::new),</span><br><span class="line">        unpivot: unpivot.<span class="title function_ invoke__">map</span>(<span class="type">Box</span>::new),</span><br><span class="line">    &#125;,</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<hr />
+<p>实现 <code>in + subquery</code> 相对复杂，因为在 binder 的时候必须知道 column 的 name 才能生成逻辑计划，所以只能先执行一下这个 subquery ，然后把返回值当作 values 处理；但是执行 query/plan 是在 service 模块下，binder 是在 sql 模块，存在循环调用的问题。→ <a target="_blank" rel="noopener" href="https://www.notion.so/125e3d1c52c6806ca52dedaa716ef5ae?pvs=21">解决循环依赖问题</a></p>
+<p>解决思路有三种：</p>
+<ol>
+<li>【<strong>思路-1</strong>】在 pivot_rewrite 阶段（binder）执行 Subquery 得到答案，参考 QuerySampleExecutor 写个回调函数在 binder 里面调一下 service 的函数执行。
+<ol>
+<li>
+<p>Pivot 结构体新添 Subquery 字段（Query），用于存储 <code>in + subquery</code> 中的 subquery；</p>
+<ul>
+<li>
+<p><strong>Pivot</strong></p>
+  <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原版</span></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">struct</span> <span class="title class_">Pivot</span> &#123;</span><br><span class="line">    <span class="keyword">pub</span> aggregate: Expr,</span><br><span class="line">    <span class="keyword">pub</span> value_column: Identifier,</span><br><span class="line">    <span class="keyword">pub</span> values: <span class="type">Vec</span>&lt;Expr&gt;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改后</span></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">enum</span> <span class="title class_">PivotValues</span> &#123;</span><br><span class="line">    <span class="title function_ invoke__">ColumnValues</span>(<span class="type">Vec</span>&lt;Expr&gt;),</span><br><span class="line">    <span class="title function_ invoke__">Subquery</span>(<span class="type">Box</span>&lt;Query&gt;),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">struct</span> <span class="title class_">Pivot</span> &#123;</span><br><span class="line">    <span class="keyword">pub</span> aggregate: Expr,</span><br><span class="line">    <span class="keyword">pub</span> value_column: Identifier,</span><br><span class="line">    <span class="keyword">pub</span> values: PivotValues,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>在 rewrite_pivot 函数中对 Subquery 进行 parser + rewrite + opt + exec 等操作，并将结果存在原来的 <code>values</code> 字段，后续操作一致。</p>
+<ol>
+<li>执行 query 的回调函数目前有基于 PhysicalPlan 的，一种方案是基于该函数进行操作；另一种方案是新添基于 Query String 执行的回调函数。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>【<strong>思路-2</strong>】在发现 subquery 的时候返回，在 service 里面执行之后重写 sql，然后再次执行。</li>
+<li>【<strong>思路-3</strong>】现在的 plan_sql 函数里面会执行 parser 并生成 plan，可以把这个函数拆成两个：
+<ol>
+<li>第一个函数执行 parser，生成 stmt，同时进行一些 rewrite，如果这时发现有 subquery 的话，就先执行一下，然后 rewrite。</li>
+<li>第二个函数传入 rewrite 之后的 stmt，生成 plan。</li>
+</ol>
+</li>
+</ol>
+<p>本着尽可能少的改动当前代码结构的原则，选择**【思路-1】**进行实现。</p>
+<h2 id="32-review-相关修改"><a class="markdownIt-Anchor" href="#32-review-相关修改"></a> 3.2 review 相关修改</h2>
+<ul>
+<li>
+<p>【<strong>review-1</strong>】避免不必要的 clone</p>
+  <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原版</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">value</span> = columns[<span class="number">0</span>].<span class="title function_ invoke__">to_column</span>(block.<span class="title function_ invoke__">num_rows</span>());</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 修改</span></span><br><span class="line"><span class="keyword">for</span> <span class="variable">row</span> <span class="keyword">in</span> <span class="number">0</span>..block.<span class="title function_ invoke__">num_rows</span>() &#123;</span><br><span class="line">    <span class="keyword">match</span> columns[<span class="number">0</span>].value.<span class="title function_ invoke__">index</span>(row).<span class="title function_ invoke__">unwrap</span>() &#123;</span><br><span class="line">        ScalarRef::<span class="title function_ invoke__">String</span>(s) =&gt; &#123;</span><br><span class="line">            <span class="keyword">let</span> <span class="variable">literal</span> = Expr::Literal &#123;</span><br><span class="line">                span,</span><br><span class="line">                value: Literal::<span class="title function_ invoke__">String</span>(s.<span class="title function_ invoke__">to_string</span>()),</span><br><span class="line">            &#125;;</span><br><span class="line">            values.<span class="title function_ invoke__">push</span>(literal);</span><br><span class="line">        &#125;</span><br><span class="line">        _ =&gt; &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title function_ invoke__">Err</span>(ErrorCode::<span class="title function_ invoke__">SemanticError</span>(</span><br><span class="line">                <span class="string">&quot;The subquery of `pivot in` must return a string type&quot;</span>,</span><br><span class="line">            )</span><br><span class="line">            .<span class="title function_ invoke__">set_span</span>(span));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>【<strong>review-2</strong>】针对于 subquery 返回的每个 String 不需要设置 span，使用 subquery 的 span 即可。</p>
+</li>
+<li>
+<p>【<strong>review-3</strong>】使用 <code>block.num_columns()</code> 计算 column 的数量。</p>
+  <figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 原版</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">columns</span> = block.<span class="title function_ invoke__">columns</span>();</span><br><span class="line"><span class="keyword">if</span> columns.<span class="title function_ invoke__">len</span>() != <span class="number">1</span> &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改后</span></span><br><span class="line"><span class="keyword">if</span> block.<span class="title function_ invoke__">num_columns</span>() != <span class="number">1</span> &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>【<strong>review-4</strong>】将 sample_executor 和 subquery_executor 合并成一个 query_executor，实现不同的函数用来做区分。</p>
+</li>
+<li>
+<p>【<strong>review-5</strong>】对返回的 ErrorCode 设置 span。→ <a target="_blank" rel="noopener" href="https://www.notion.so/span-123e3d1c52c68003850bf86ae43a4c3d?pvs=21">span</a></p>
+<p>不使用 span：</p>
+  <figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="title function_ invoke__">Err</span>(ErrorCode::<span class="title function_ invoke__">SemanticError</span>(</span><br><span class="line">    <span class="string">&quot;The subquery of `pivot in` must return one column&quot;</span>,</span><br><span class="line">));</span><br></pre></td></tr></table></figure>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">MySQL [dev]<span class="operator">&gt;</span> <span class="keyword">SELECT</span> <span class="operator">*</span>  <span class="keyword">FROM</span> (<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> monthly_sales) PIVOT(<span class="built_in">SUM</span>(amount) <span class="keyword">FOR</span> <span class="keyword">MONTH</span> <span class="keyword">IN</span> (<span class="keyword">select</span> <span class="keyword">distinct</span> <span class="keyword">month</span>, <span class="keyword">month</span> <span class="keyword">from</span> monthly_sales)) <span class="keyword">ORDER</span> <span class="keyword">BY</span> EMPID;</span><br><span class="line">ERROR <span class="number">1105</span> (HY000): SemanticError. Code: <span class="number">1065</span>, Text <span class="operator">=</span> The subquery <span class="keyword">of</span> `pivot <span class="keyword">in</span>` must <span class="keyword">return</span> <span class="keyword">one</span> column.</span><br></pre></td></tr></table></figure>
+<hr />
+<p>使用 span：</p>
+  <figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="title function_ invoke__">Err</span>(ErrorCode::<span class="title function_ invoke__">SemanticError</span>(</span><br><span class="line">    <span class="string">&quot;The subquery of `pivot in` must return one column&quot;</span>,</span><br><span class="line">)</span><br><span class="line">.<span class="title function_ invoke__">set_span</span>(span));</span><br></pre></td></tr></table></figure>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">MySQL [dev]<span class="operator">&gt;</span> <span class="keyword">SELECT</span> <span class="operator">*</span>  <span class="keyword">FROM</span> (<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> monthly_sales) PIVOT(<span class="built_in">SUM</span>(amount) <span class="keyword">FOR</span> <span class="keyword">MONTH</span> <span class="keyword">IN</span> (<span class="keyword">select</span> <span class="keyword">distinct</span> empid <span class="keyword">from</span> monthly_sales)) <span class="keyword">ORDER</span> <span class="keyword">BY</span> EMPID;</span><br><span class="line">ERROR <span class="number">1105</span> (HY000): SemanticError. Code: <span class="number">1065</span>, Text <span class="operator">=</span> error: </span><br><span class="line">  <span class="comment">--&gt; SQL:1:78</span></span><br><span class="line">  <span class="operator">|</span></span><br><span class="line"><span class="number">1</span> <span class="operator">|</span> <span class="keyword">SELECT</span> <span class="operator">*</span>  <span class="keyword">FROM</span> (<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> monthly_sales) PIVOT(<span class="built_in">SUM</span>(amount) <span class="keyword">FOR</span> <span class="keyword">MONTH</span> <span class="keyword">IN</span> (<span class="keyword">select</span> <span class="keyword">distinct</span> empid <span class="keyword">from</span> monthly_sales)) <span class="keyword">ORDER</span> <span class="keyword">BY</span> EMPID</span><br><span class="line">  <span class="operator">|</span>                                                                              <span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span><span class="operator">^</span> The subquery <span class="keyword">of</span> `pivot <span class="keyword">in</span>` must <span class="keyword">return</span> a string type</span><br><span class="line"></span><br><span class="line">.</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="33-bugs"><a class="markdownIt-Anchor" href="#33-bugs"></a> 3.3 bugs</h2>
+<ul>
+<li>
+<p>【<strong>bug-1</strong>】因为需要两次用到 pivot 变量，所以会报 error: use of moved value 的错误。→ <a target="_blank" rel="noopener" href="https://www.notion.so/error-use-of-moved-value-11fe3d1c52c68078839ae6d3f66d8f62?pvs=21">error: use of moved value</a></p>
+<p>把 pivot 和 unpivot 挪出去，改成两个单独的函数。</p>
+</li>
+<li>
+<p>【<strong>bug-2</strong>】rewrite_pivot 是非 async 函数，但是 subquery_executor.execute_query_with_sql_string 是 async 函数，rewrite_pivot 中需要调用 subquery_executor.execute_query_with_sql_string。所以会报错：<code>await</code> is only allowed inside <code>async</code> functions and blocks。→ <a target="_blank" rel="noopener" href="https://www.notion.so/async-async-125e3d1c52c680008cb5e6a86c6a6554?pvs=21">在非 async 函数里调用 async 函数</a></p>
+<p><code>databend_common_base::runtime::block_on</code></p>
+</li>
+</ul>
+<h1 id="4-测试"><a class="markdownIt-Anchor" href="#4-测试"></a> 4 测试</h1>
+<h2 id="41-功能测试"><a class="markdownIt-Anchor" href="#41-功能测试"></a> 4.1 功能测试</h2>
+<p>与 snowflake 语法保持一致：</p>
+<ul>
+<li>pivot 支持三种 subquery，<code>from + subquery</code>、<code>in + subquery</code>、<code>from + subquery + in + subquery</code>。</li>
+<li>unpivot 只支持 <code>from + subquery</code> 一种。</li>
+</ul>
+<h3 id="411-手动测试"><a class="markdownIt-Anchor" href="#411-手动测试"></a> 4.1.1 手动测试</h3>
+<ul>
+<li>
+<p><strong>测试 Pivot</strong></p>
+<ul>
+<li>
+<p><strong>Create the monthly_sales table</strong></p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> monthly_sales(</span><br><span class="line">  empid <span class="type">INT</span>, </span><br><span class="line">  amount <span class="type">INT</span>, </span><br><span class="line">  <span class="keyword">month</span> <span class="type">VARCHAR</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>Insert sales data</strong></p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT INTO</span> monthly_sales <span class="keyword">VALUES</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">10000</span>, <span class="string">&#x27;JAN&#x27;</span>),</span><br><span class="line">  (<span class="number">1</span>, <span class="number">400</span>, <span class="string">&#x27;JAN&#x27;</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">4500</span>, <span class="string">&#x27;JAN&#x27;</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">35000</span>, <span class="string">&#x27;JAN&#x27;</span>),</span><br><span class="line">  (<span class="number">1</span>, <span class="number">5000</span>, <span class="string">&#x27;FEB&#x27;</span>),</span><br><span class="line">  (<span class="number">1</span>, <span class="number">3000</span>, <span class="string">&#x27;FEB&#x27;</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">200</span>, <span class="string">&#x27;FEB&#x27;</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">90500</span>, <span class="string">&#x27;FEB&#x27;</span>),</span><br><span class="line">  (<span class="number">1</span>, <span class="number">6000</span>, <span class="string">&#x27;MAR&#x27;</span>),</span><br><span class="line">  (<span class="number">1</span>, <span class="number">5000</span>, <span class="string">&#x27;MAR&#x27;</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">2500</span>, <span class="string">&#x27;MAR&#x27;</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">9500</span>, <span class="string">&#x27;MAR&#x27;</span>),</span><br><span class="line">  (<span class="number">1</span>, <span class="number">8000</span>, <span class="string">&#x27;APR&#x27;</span>),</span><br><span class="line">  (<span class="number">1</span>, <span class="number">10000</span>, <span class="string">&#x27;APR&#x27;</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">800</span>, <span class="string">&#x27;APR&#x27;</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">4500</span>, <span class="string">&#x27;APR&#x27;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>Pivot（原版）</strong></p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> monthly_sales</span><br><span class="line">PIVOT(<span class="built_in">SUM</span>(amount) <span class="keyword">FOR</span> <span class="keyword">MONTH</span> <span class="keyword">IN</span> (<span class="string">&#x27;JAN&#x27;</span>, <span class="string">&#x27;FEB&#x27;</span>, <span class="string">&#x27;MAR&#x27;</span>, <span class="string">&#x27;APR&#x27;</span>))</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> EMPID;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>from + subquery</strong></p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> (<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> monthly_sales)</span><br><span class="line">PIVOT(<span class="built_in">SUM</span>(amount) <span class="keyword">FOR</span> <span class="keyword">MONTH</span> <span class="keyword">IN</span> (<span class="string">&#x27;JAN&#x27;</span>, <span class="string">&#x27;FEB&#x27;</span>, <span class="string">&#x27;MAR&#x27;</span>, <span class="string">&#x27;APR&#x27;</span>))</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> EMPID;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>in + subquery</strong></p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> monthly_sales</span><br><span class="line">PIVOT(<span class="built_in">SUM</span>(amount) <span class="keyword">FOR</span> <span class="keyword">MONTH</span> <span class="keyword">IN</span> (<span class="keyword">select</span> <span class="keyword">distinct</span> <span class="keyword">month</span> <span class="keyword">from</span> monthly_sales))</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> EMPID;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>from + in + subquery</strong></p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> (<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> monthly_sales)</span><br><span class="line">PIVOT(<span class="built_in">SUM</span>(amount) <span class="keyword">FOR</span> <span class="keyword">MONTH</span> <span class="keyword">IN</span> (<span class="keyword">select</span> <span class="keyword">distinct</span> <span class="keyword">month</span> <span class="keyword">from</span> monthly_sales))</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> EMPID;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>Answer</strong></p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="operator">+</span><span class="comment">-------+-------+-------+-------+-------+</span></span><br><span class="line"><span class="operator">|</span> empid <span class="operator">|</span> jan   <span class="operator">|</span> feb   <span class="operator">|</span> mar   <span class="operator">|</span> apr   <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------+-------+-------+-------+-------+</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">1</span> <span class="operator">|</span> <span class="number">10400</span> <span class="operator">|</span>  <span class="number">8000</span> <span class="operator">|</span> <span class="number">11000</span> <span class="operator">|</span> <span class="number">18000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">2</span> <span class="operator">|</span> <span class="number">39500</span> <span class="operator">|</span> <span class="number">90700</span> <span class="operator">|</span> <span class="number">12000</span> <span class="operator">|</span>  <span class="number">5300</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------+-------+-------+-------+-------+</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>测试 Unpivot</strong></p>
+<ul>
+<li>
+<p><strong>Create the unpivoted_monthly_sales table</strong></p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> unpivoted_monthly_sales(</span><br><span class="line">  empid <span class="type">INT</span>,</span><br><span class="line">  jan <span class="type">INT</span>,</span><br><span class="line">  feb <span class="type">INT</span>,</span><br><span class="line">  mar <span class="type">INT</span>,</span><br><span class="line">  apr <span class="type">INT</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>Insert sales data</strong></p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT INTO</span> unpivoted_monthly_sales <span class="keyword">VALUES</span></span><br><span class="line">  (<span class="number">1</span>, <span class="number">10400</span>,  <span class="number">8000</span>, <span class="number">11000</span>, <span class="number">18000</span>),</span><br><span class="line">  (<span class="number">2</span>, <span class="number">39500</span>, <span class="number">90700</span>, <span class="number">12000</span>,  <span class="number">5300</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>unpivot（原版）</strong></p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> unpivoted_monthly_sales</span><br><span class="line">    UNPIVOT (amount</span><br><span class="line">    <span class="keyword">FOR</span> <span class="keyword">month</span> <span class="keyword">IN</span> (jan, feb, mar, apr));</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>from + subquery</strong></p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> monthly_sales_1)</span><br><span class="line">  UNPIVOT(sales <span class="keyword">FOR</span> <span class="keyword">month</span> <span class="keyword">IN</span> (jan, feb, mar, april))</span><br><span class="line">  <span class="keyword">ORDER</span> <span class="keyword">BY</span> empid</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>Answer</strong></p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">+</span><span class="comment">-------+-------+--------+</span></span><br><span class="line"><span class="operator">|</span> empid <span class="operator">|</span> <span class="keyword">month</span> <span class="operator">|</span> amount <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------+-------+--------+</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">1</span> <span class="operator">|</span> jan   <span class="operator">|</span>  <span class="number">10400</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">1</span> <span class="operator">|</span> feb   <span class="operator">|</span>   <span class="number">8000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">1</span> <span class="operator">|</span> mar   <span class="operator">|</span>  <span class="number">11000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">1</span> <span class="operator">|</span> apr   <span class="operator">|</span>  <span class="number">18000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">2</span> <span class="operator">|</span> jan   <span class="operator">|</span>  <span class="number">39500</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">2</span> <span class="operator">|</span> feb   <span class="operator">|</span>  <span class="number">90700</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">2</span> <span class="operator">|</span> mar   <span class="operator">|</span>  <span class="number">12000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>     <span class="number">2</span> <span class="operator">|</span> apr   <span class="operator">|</span>   <span class="number">5300</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------+-------+--------+</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="412-单元测试ast-相关"><a class="markdownIt-Anchor" href="#412-单元测试ast-相关"></a> 4.1.2 单元测试（ast 相关）</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">make unit-test</span><br></pre></td></tr></table></figure>
+<p>parser 改了会导致之前的测试失败，修复下面两个文件：</p>
+<ol>
+<li><code>src/query/ast/tests/it/testdata/stmt.txt</code></li>
+<li><code>src/query/ast/tests/it/testdata/query.txt</code></li>
+</ol>
+<hr />
+<p>另外在 test_query 函数加上一个 pivot &amp; unpivot 带 subquery 的测试用例，相关文件：<code>src/query/ast/tests/it/parser.rs</code>。</p>
+<h3 id="413-逻辑测试sql-执行结果"><a class="markdownIt-Anchor" href="#413-逻辑测试sql-执行结果"></a> 4.1.3 逻辑测试（sql 执行结果）</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">make sqllogic-test</span><br></pre></td></tr></table></figure>
+<p>为了加快测试速度，可以<strong>指定目录</strong>进行执行，甚至可以<strong>修改文件名</strong>使其在当前目录先执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./target/debug/databend-sqllogictests --handlers mysql --run_dir query</span><br></pre></td></tr></table></figure>
+<hr />
+<p>添加 pivot &amp; unpivot 相关 sql 查询，相关文件：</p>
+<ul>
+<li><code>tests/sqllogictests/suites/query/pivot.test</code></li>
+<li><code>tests/sqllogictests/suites/query/unpivot.test</code></li>
+</ul>
+<h2 id="42-性能测试"><a class="markdownIt-Anchor" href="#42-性能测试"></a> 4.2 性能测试</h2>
+<h1 id="5-难点"><a class="markdownIt-Anchor" href="#5-难点"></a> 5 难点</h1>
+<h1 id="6-todo"><a class="markdownIt-Anchor" href="#6-todo"></a> 6 TODO</h1>
+<h1 id="x-参考"><a class="markdownIt-Anchor" href="#x-参考"></a> X 参考</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.snowflake.com/en/sql-reference/constructs/pivot">https://docs.snowflake.com/en/sql-reference/constructs/pivot</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.snowflake.com/en/sql-reference/constructs/unpivot">https://docs.snowflake.com/en/sql-reference/constructs/unpivot</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.databend.com/sql/sql-commands/query-syntax/query-pivot">https://docs.databend.com/sql/sql-commands/query-syntax/query-pivot</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.databend.com/sql/sql-commands/query-syntax/query-unpivot">https://docs.databend.com/sql/sql-commands/query-syntax/query-unpivot</a></li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2025/09/14/Databend-pr-pivot-%E6%94%AF%E6%8C%81-subquery/" title="[Databend][pr] pivot 支持 subquery" target="_blank" rel="external">http://example.com/2025/09/14/Databend-pr-pivot-支持-subquery/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/dragonliu2018" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/dragonliu2018" target="_blank"><span class="text-dark">Dragon&#39;s Blogs</span><small class="ml-1x">Security</small></a></h3>
+        <div>Life is painting a picture, not doing a sum.</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2025/09/14/Doris-pr-Implement-format-methods-for-Status/" title="[Doris][pr] Implement format methods for Status"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Pbjl2Wajl9och0xVbR5eqoH1-gzGzoHsz',
+    appKey: 'PgxFh1wV6pyMMllhxs7NJijb',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

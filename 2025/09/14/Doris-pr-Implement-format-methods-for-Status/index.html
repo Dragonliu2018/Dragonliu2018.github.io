@@ -17,18 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>光影流年 | Dragon&#39;s Security Blogs</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="光影流年">
-<meta property="og:url" content="http://example.com/gallery/index.html">
+  <title>[Doris][pr] Implement format methods for Status | Dragon&#39;s Security Blogs</title>
+  <meta name="description" content="1 issue 介绍 当前 Status 类型进行 format 时，需要调用 to_string 函数： fmt::format(&quot;&#123;&#125;&quot;, status.to_string()); 想要的效果是只需要传入 Status 类型即可： fmt::format(&quot;&#123;&#125;&quot;, status);  2 实现  2.1 解析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Doris][pr] Implement format methods for Status">
+<meta property="og:url" content="http://example.com/2025/09/14/Doris-pr-Implement-format-methods-for-Status/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1 issue 介绍 当前 Status 类型进行 format 时，需要调用 to_string 函数： fmt::format(&quot;&#123;&#125;&quot;, status.to_string()); 想要的效果是只需要传入 Status 类型即可： fmt::format(&quot;&#123;&#125;&quot;, status);  2 实现  2.1 解析">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-09-13T08:56:36.000Z">
-<meta property="article:modified_time" content="2025-09-13T14:32:57.216Z">
+<meta property="article:published_time" content="2025-09-14T09:26:44.000Z">
+<meta property="article:modified_time" content="2025-09-14T09:36:34.065Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="pr">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://example.com/gallery/index.html">
+  <link rel="canonical" href="http://example.com/2025/09/14/Doris-pr-Implement-format-methods-for-Status/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -38,6 +41,8 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
   
   
   
@@ -293,16 +298,25 @@
 
   
   
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-issue-%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text"> 1 issue 介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text"> 2 实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#21-%E8%A7%A3%E6%9E%90"><span class="toc-number">2.1.</span> <span class="toc-text"> 2.1 解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-%E5%8A%9F%E8%83%BD%E4%BB%A3%E7%A0%81"><span class="toc-number">2.2.</span> <span class="toc-text"> 2.2 功能代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23-%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="toc-number">2.3.</span> <span class="toc-text"> 2.3 测试代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text"> 3 问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#31-ld-symbols-not-found-for-architecture-x86_64"><span class="toc-number">3.1.</span> <span class="toc-text"> 3.1 ld: symbol(s) not found for architecture x86_64</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#32-fmtformatter-%E6%A8%A1%E6%9D%BF%E7%89%B9%E5%8C%96%E4%BB%A3%E7%A0%81%E4%B8%8D%E8%83%BD%E5%9C%A8-doris-%E7%9A%84-namespace"><span class="toc-number">3.2.</span> <span class="toc-text"> 3.2 fmt::formatter 模板特化代码不能在 doris 的 namespace</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
 <main class="main" role="main">
   <div class="content">
-  <article id="page-" class="article article-type-page" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-Doris-pr-Implement-format-methods-for-Status" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      光影流年
+      [Doris][pr] Implement format methods for Status
     </h1>
   
 
@@ -310,12 +324,22 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/gallery/index.html" class="article-date">
-	  <time datetime="2019-09-13T08:56:36.000Z" itemprop="datePublished">2019-09-13</time>
+	<a href="/2025/09/14/Doris-pr-Implement-format-methods-for-Status/" class="article-date">
+	  <time datetime="2025-09-14T09:26:44.000Z" itemprop="datePublished">2025-09-14</time>
 	</a>
 </span>
         
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Doris/">Doris</a>►<a class="article-category-link" href="/categories/Doris/%E5%85%B6%E4%BB%96/">其他</a>
+  </span>
+
         
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/pr/" rel="tag">pr</a>
+  </span>
+
 
         
 	<span class="article-read hidden-xs">
@@ -326,20 +350,55 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/gallery/index.html#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/09/14/Doris-pr-Implement-format-methods-for-Status/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 0(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 678(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+        <h1 id="1-issue-介绍"><a class="markdownIt-Anchor" href="#1-issue-介绍"></a> 1 issue 介绍</h1>
+<p>当前 <code>Status</code> 类型进行 format 时，需要调用 <code>to_string</code> 函数：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">fmt::format(<span class="string">&quot;&#123;&#125;&quot;</span>, status.<span class="built_in">to_string</span>());</span><br></pre></td></tr></table></figure>
+<p>想要的效果是只需要传入 Status 类型即可：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">fmt::format(<span class="string">&quot;&#123;&#125;&quot;</span>, status);</span><br></pre></td></tr></table></figure>
+<h1 id="2-实现"><a class="markdownIt-Anchor" href="#2-实现"></a> 2 实现</h1>
+<h2 id="21-解析"><a class="markdownIt-Anchor" href="#21-解析"></a> 2.1 解析</h2>
+<p><code>fmt</code> 库提供了一个类模板 <code>fmt::formatter</code>，通过模板特化为 <code>Status</code> 类型提供适当的格式化方式。</p>
+<p>然后实现 <code>parse</code> 和 <code>format</code> 函数即可：</p>
+<ul>
+<li><strong><code>parse</code></strong> 函数负责解析格式字符串。在通常情况下，用户可能不需要提供自己的 <strong><code>parse</code></strong> 函数，而可以使用 fmt 默认提供的版本，该版本简单地返回解析上下文的开始迭代器。</li>
+<li><strong><code>format</code></strong> 函数是用户必须提供的关键成员函数。它定义了如何将自定义类型格式化为字符串。</li>
+</ul>
+<h2 id="22-功能代码"><a class="markdownIt-Anchor" href="#22-功能代码"></a> 2.2 功能代码</h2>
+<blockquote>
+<p>👉 **参考：**<a target="_blank" rel="noopener" href="https://wgml.pl/blog/formatting-user-defined-types-fmt.html">https://wgml.pl/blog/formatting-user-defined-types-fmt.html</a></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// specify formatter for Status</span></span><br><span class="line"><span class="keyword">template</span> &lt;&gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">fmt</span>::formatter&lt;doris::Status&gt; &#123;</span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ParseContext&gt;</span><br><span class="line">    <span class="function"><span class="keyword">constexpr</span> <span class="keyword">auto</span> <span class="title">parse</span><span class="params">(ParseContext&amp; ctx)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ctx.<span class="built_in">begin</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> FormatContext&gt;</span><br><span class="line">    <span class="function"><span class="keyword">auto</span> <span class="title">format</span><span class="params">(doris::Status <span class="type">const</span>&amp; status, FormatContext&amp; ctx)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> fmt::format_to(ctx.<span class="built_in">out</span>(), <span class="string">&quot;&#123;&#125;&quot;</span>, status.<span class="built_in">to_string</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="23-测试代码"><a class="markdownIt-Anchor" href="#23-测试代码"></a> 2.3 测试代码</h2>
+<p>实现完成后，编写测试样例，这里需要注意覆盖率。</p>
+<p>reviewer 提出的建议是：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">please add <span class="number">3</span> tests：</span><br><span class="line"><span class="number">1.</span> status == ok</span><br><span class="line"><span class="number">2.</span> status == error &amp;&amp; has stacktrace</span><br><span class="line"><span class="number">3.</span> status == error &amp;&amp; <span class="keyword">do</span> <span class="keyword">not</span> have stacktrace</span><br></pre></td></tr></table></figure>
+<h1 id="3-问题"><a class="markdownIt-Anchor" href="#3-问题"></a> 3 问题</h1>
+<h2 id="31-ld-symbols-not-found-for-architecture-x86_64"><a class="markdownIt-Anchor" href="#31-ld-symbols-not-found-for-architecture-x86_64"></a> 3.1 ld: symbol(s) not found for architecture x86_64</h2>
+<p>在本地 macos 上尝试写了个测试程序，但是发生下面的报错：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  test-reset git:(main) ✗ g++ test.cpp -std=c++20 -o <span class="built_in">test</span></span><br><span class="line">Undefined symbols <span class="keyword">for</span> architecture x86_64:</span><br><span class="line">  <span class="string">&quot;void fmt::v10::detail::vformat_to&lt;char&gt;(fmt::v10::detail::buffer&lt;char&gt;&amp;, fmt::v10::basic_string_view&lt;char&gt;, fmt::v10::detail::vformat_args&lt;char&gt;::type, fmt::v10::detail::locale_ref)&quot;</span>, referenced from:</span><br><span class="line">      <span class="built_in">fmt</span>::v10::appender <span class="built_in">fmt</span>::v10::vformat_to&lt;<span class="built_in">fmt</span>::v10::appender, 0&gt;(<span class="built_in">fmt</span>::v10::appender, <span class="built_in">fmt</span>::v10::basic_string_view&lt;char&gt;, <span class="built_in">fmt</span>::v10::basic_format_args&lt;<span class="built_in">fmt</span>::v10::basic_format_context&lt;<span class="built_in">fmt</span>::v10::appender, char&gt; &gt;) <span class="keyword">in</span> test-878b3f.o</span><br><span class="line">  <span class="string">&quot;fmt::v10::detail::assert_fail(char const*, int, char const*)&quot;</span>, referenced from:</span><br><span class="line">      std::__1::make_unsigned&lt;long&gt;::<span class="built_in">type</span> <span class="built_in">fmt</span>::v10::detail::to_unsigned&lt;long&gt;(long) <span class="keyword">in</span> test-878b3f.o</span><br><span class="line">  <span class="string">&quot;fmt::v10::vprint(fmt::v10::basic_string_view&lt;char&gt;, fmt::v10::basic_format_args&lt;fmt::v10::basic_format_context&lt;fmt::v10::appender, char&gt; &gt;)&quot;</span>, referenced from:</span><br><span class="line">      _main <span class="keyword">in</span> test-878b3f.o</span><br><span class="line">ld: symbol(s) not found <span class="keyword">for</span> architecture x86_64</span><br><span class="line">clang: error: linker <span class="built_in">command</span> failed with <span class="built_in">exit</span> code 1 (use -v to see invocation)</span><br></pre></td></tr></table></figure>
+<p><strong>解决</strong>：原因是未链接 fmt 库文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">g++ test.cpp -std=c++20 -o <span class="built_in">test</span> -lfmt</span><br></pre></td></tr></table></figure>
+<p><strong>参考</strong>：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/56608684/how-to-use-the-fmt-library-without-getting-undefined-symbols-for-architecture-x">https://stackoverflow.com/questions/56608684/how-to-use-the-fmt-library-without-getting-undefined-symbols-for-architecture-x</a></p>
+<h2 id="32-fmtformatter-模板特化代码不能在-doris-的-namespace"><a class="markdownIt-Anchor" href="#32-fmtformatter-模板特化代码不能在-doris-的-namespace"></a> 3.2 <code>fmt::formatter</code> 模板特化代码不能在 doris 的 namespace</h2>
+<p>开始将特化代码放在了 doris namespace 中，发生了下面的报错：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Class template specialization of <span class="string">&#x27;formatter&#x27;</span> not <span class="keyword">in</span> a namespace enclosing <span class="string">&#x27;v8&#x27;</span> is a Microsoft extension clang(-Wmicrosoft-template)</span><br><span class="line"></span><br><span class="line">[core.h(707, 8): ] Explicitly specialized declaration is here</span><br></pre></td></tr></table></figure>
+<p><strong>解决</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> doris &#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">// doris code</span></span><br><span class="line"></span><br><span class="line">&#125; <span class="comment">// end doris_namespace</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// define formatter here</span></span><br></pre></td></tr></table></figure>
+<p>**参考：**<a target="_blank" rel="noopener" href="https://github.com/fmtlib/fmt/issues/2767">https://github.com/fmtlib/fmt/issues/2767</a></p>
+
       
     </div>
     <div class="article-footer">
@@ -348,7 +407,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://example.com/gallery/index.html" title="光影流年" target="_blank" rel="external">http://example.com/gallery/index.html</a>
+      <a href="http://example.com/2025/09/14/Doris-pr-Implement-format-methods-for-Status/" title="[Doris][pr] Implement format methods for Status" target="_blank" rel="external">http://example.com/2025/09/14/Doris-pr-Implement-format-methods-for-Status/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -391,6 +450,28 @@
 
   <nav class="bar bar-footer clearfix" data-stick-bottom>
   <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2025/09/14/Databend-pr-pivot-%E6%94%AF%E6%8C%81-subquery/" title="[Databend][pr] pivot 支持 subquery"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2025/09/13/Tool-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="[Tool] Hexo 使用教程"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
   
   
   
@@ -455,6 +536,12 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 <script src="/js/insight.js"></script>
 
 
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
