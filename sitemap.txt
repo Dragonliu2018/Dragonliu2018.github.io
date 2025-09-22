@@ -12,12 +12,12 @@ https://dragonliu2018.github.io/categories/index.html
 https://dragonliu2018.github.io/about/index.html
 https://dragonliu2018.github.io/
 https://dragonliu2018.github.io/tags/pr/
-https://dragonliu2018.github.io/categories/DB/
 https://dragonliu2018.github.io/categories/Doris/
 https://dragonliu2018.github.io/categories/Tool/
-https://dragonliu2018.github.io/categories/DB/Databend/
 https://dragonliu2018.github.io/categories/Doris/pr/
 https://dragonliu2018.github.io/categories/Tool/Hexo/
+https://dragonliu2018.github.io/categories/DB/
+https://dragonliu2018.github.io/categories/DB/Databend/
 https://dragonliu2018.github.io/categories/DB/Databend/pr/
 https://dragonliu2018.github.io/categories/DB/Databend/%E6%89%A7%E8%A1%8C%E5%99%A8/
 https://dragonliu2018.github.io/categories/DB/Databend/%E6%89%A7%E8%A1%8C%E5%99%A8/%E8%A1%A8%E8%BE%BE%E5%BC%8F/
