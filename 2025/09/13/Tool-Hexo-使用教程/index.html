@@ -17,7 +17,7 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>[Tool] Hexo 使用教程 | Dragon&#39;s Security Blogs</title>
+  <title>[Tool] Hexo 使用教程 | Dragon&#39;s Blogs</title>
   <meta name="description" content="环境准备 ➜  nvm --version0.39.1➜  node -vv24.8.0➜  npm -v11.6.0# 安装 Hexonpm install -g hexo-cli   本地运行 Hexo   初始化 hexo，生成 hexo-blog 目录 hexo init hexo-blog   进入 hexo-blog 目录，下载 pure 主题和 source 文章 cd hexo-">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[Tool] Hexo 使用教程">
@@ -26,7 +26,7 @@
 <meta property="og:description" content="环境准备 ➜  nvm --version0.39.1➜  node -vv24.8.0➜  npm -v11.6.0# 安装 Hexonpm install -g hexo-cli   本地运行 Hexo   初始化 hexo，生成 hexo-blog 目录 hexo init hexo-blog   进入 hexo-blog 目录，下载 pure 主题和 source 文章 cd hexo-">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-09-13T15:37:08.000Z">
-<meta property="article:modified_time" content="2025-09-14T16:48:24.062Z">
+<meta property="article:modified_time" content="2025-09-14T17:20:37.864Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
@@ -49,7 +49,7 @@
 <meta name="generator" content="Hexo 7.3.0"></head>
 
 
-<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
   <header class="header" itemscope itemtype="http://schema.org/WPHeader">
   <div class="slimContent">
     <div class="navbar-header">
@@ -106,6 +106,16 @@
             <i class="icon icon-home-fill"></i>
             
             <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-navigation">
+          <a href="/navigation">
+            
+            <i class="icon icon-menu"></i>
+            
+            <span class="menu-title">导航</span>
           </a>
         </li>
         
@@ -347,7 +357,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/09/13/Tool-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 275(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 289(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
@@ -367,15 +377,15 @@
 </li>
 <li>
 <p>进入 hexo-blog 目录，下载 pure 主题和 source 文章</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd hexo-blog</span><br><span class="line">git clone https://github.com/Dragonliu2018/hexo-theme-pure.git themes/pure</span><br><span class="line">git clone https://github.com/Dragonliu2018/hexo-source.git source</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd hexo-blog</span><br><span class="line"></span><br><span class="line">git clone https://github.com/Dragonliu2018/hexo-theme-pure.git themes/pure</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除默认生成的 _posts 目录</span></span><br><span class="line">rm -rf source/_posts</span><br><span class="line">git clone https://github.com/Dragonliu2018/hexo-source.git source</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>配置 pure，<a target="_blank" rel="noopener" href="https://github.com/Dragonliu2018/hexo-theme-pure">ref link</a></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-wordcount --save</span><br><span class="line">npm install hexo-generator-json-content --save</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br><span class="line">npm install hexo-neat --save</span><br><span class="line">npm install hexo-baidu-url-submit --save</span><br><span class="line">npm install hexo-translate-title --save</span><br><span class="line">npm un hexo-renderer-marked --save</span><br><span class="line">npm i hexo-renderer-markdown-it-plus --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-wordcount --save</span><br><span class="line">npm install hexo-generator-json-content --save</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br><span class="line">npm install hexo-neat --save</span><br><span class="line">npm install hexo-translate-title --save</span><br><span class="line">npm un hexo-renderer-marked --save</span><br><span class="line">npm i hexo-renderer-markdown-it-plus --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>修改 _config.yml</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 页面中分类等导航词的语言</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">language:</span> <span class="string">en</span></span><br><span class="line"><span class="string">+</span> <span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 搜索界面的分类部分拼接 url</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">url:</span> <span class="string">https://example.com</span></span><br><span class="line"><span class="string">+</span> <span class="attr">url:</span> <span class="string">https://dragonliu2018.github.io</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置主题</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">theme:</span> </span><br><span class="line"><span class="string">+</span> <span class="attr">theme:</span> <span class="string">pure</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置部署</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/dragonliu2018/dragonliu2018.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 页面中分类等导航词的语言</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">language:</span> <span class="string">en</span></span><br><span class="line"><span class="string">+</span> <span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 搜索界面的分类部分拼接 url</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">url:</span> <span class="string">http://example.com</span></span><br><span class="line"><span class="string">+</span> <span class="attr">url:</span> <span class="string">https://dragonliu2018.github.io</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置主题</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">theme:</span> <span class="string">landscape</span></span><br><span class="line"><span class="string">+</span> <span class="attr">theme:</span> <span class="string">pure</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置部署</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/dragonliu2018/dragonliu2018.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>运行 hexo</p>

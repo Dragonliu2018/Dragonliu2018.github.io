@@ -9213,3 +9213,73 @@ body.okayNav-loaded {
     max-height: 200px;
   }
 }
+
+/* Navigation Page Styles - 确保markdown内容在导航页面中的样式 */
+.article-type-navigation .article-entry {
+  line-height: 1.8;
+}
+
+.article-type-navigation .article-entry h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid #007acc;
+  padding-bottom: 1rem;
+}
+
+.article-type-navigation .article-entry h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 2rem 0 1rem 0;
+  padding-left: 0.5rem;
+  border-left: 4px solid #007acc;
+}
+
+.article-type-navigation .article-entry h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #555;
+  margin: 1.5rem 0 0.8rem 0;
+}
+
+.article-type-navigation .article-entry p {
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.article-type-navigation .article-entry ul {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.article-type-navigation .article-entry li {
+  margin-bottom: 0.8rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.article-type-navigation .article-entry li a {
+  color: #007acc;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.article-type-navigation .article-entry li a:hover {
+  color: #005a9e;
+  text-decoration: underline;
+}
+
+.article-type-navigation .article-entry hr {
+  margin: 2rem 0;
+  border: none;
+  border-top: 1px solid #e9ecef;
+}
+
+.article-type-navigation .article-entry em {
+  color: #888;
+  font-style: italic;
+}
