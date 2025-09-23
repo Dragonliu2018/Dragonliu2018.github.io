@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>[Doris][pr] Implement format methods for Status | Dragon&#39;s Blogs</title>
+  <title>[doris][Status] Implement format methods for Status | Dragon&#39;s Blogs</title>
   <meta name="description" content="1 issue 介绍 当前 Status 类型进行 format 时，需要调用 to_string 函数： fmt::format(&quot;&#123;&#125;&quot;, status.to_string()); 想要的效果是只需要传入 Status 类型即可： fmt::format(&quot;&#123;&#125;&quot;, status);  2 实现  2.1 解析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Doris][pr] Implement format methods for Status">
-<meta property="og:url" content="https://dragonliu2018.github.io/2025/09/14/Doris-pr-Implement-format-methods-for-Status/index.html">
+<meta property="og:title" content="[doris][Status] Implement format methods for Status">
+<meta property="og:url" content="https://dragonliu2018.github.io/2025/09/14/doris-Status-Implement-format-methods-for-Status/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1 issue 介绍 当前 Status 类型进行 format 时，需要调用 to_string 函数： fmt::format(&quot;&#123;&#125;&quot;, status.to_string()); 想要的效果是只需要传入 Status 类型即可： fmt::format(&quot;&#123;&#125;&quot;, status);  2 实现  2.1 解析">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-09-14T09:26:44.000Z">
-<meta property="article:modified_time" content="2025-09-14T12:49:48.948Z">
+<meta property="article:modified_time" content="2025-09-23T01:05:52.936Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="pr">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://dragonliu2018.github.io/2025/09/14/Doris-pr-Implement-format-methods-for-Status/index.html">
+  <link rel="canonical" href="https://dragonliu2018.github.io/2025/09/14/doris-Status-Implement-format-methods-for-Status/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -205,14 +205,14 @@
   <div class="widget">
     <h3 class="widget-title">分类</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/">DB</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/Databend/">Databend</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/Databend/pr/">pr</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DB/Databend/%E6%89%A7%E8%A1%8C%E5%99%A8/">执行器</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/Databend/%E6%89%A7%E8%A1%8C%E5%99%A8/%E8%A1%A8%E8%BE%BE%E5%BC%8F/">表达式</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/DB/%E6%89%A7%E8%A1%8C%E5%99%A8/">执行器</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/%E6%89%A7%E8%A1%8C%E5%99%A8/%E8%A1%A8%E8%BE%BE%E5%BC%8F/">表达式</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Doris/">Doris</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Doris/pr/">pr</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/Hexo/">Hexo</a><span class="category-list-count">1</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/">DB</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/databend/">databend</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DB/doris/">doris</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DB/%E5%87%BD%E6%95%B0-%E8%A1%A8%E8%BE%BE%E5%BC%8F/">函数/表达式</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/Hexo/">Hexo</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
  -->
 
   <div class="category-block">
     <h3 class="asidetitle">分类</h3>
-       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/">DB</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/Databend/">Databend</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/Databend/pr/">pr</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DB/Databend/%E6%89%A7%E8%A1%8C%E5%99%A8/">执行器</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/Databend/%E6%89%A7%E8%A1%8C%E5%99%A8/%E8%A1%A8%E8%BE%BE%E5%BC%8F/">表达式</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/DB/%E6%89%A7%E8%A1%8C%E5%99%A8/">执行器</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/%E6%89%A7%E8%A1%8C%E5%99%A8/%E8%A1%A8%E8%BE%BE%E5%BC%8F/">表达式</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Doris/">Doris</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Doris/pr/">pr</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/Hexo/">Hexo</a><span class="category-list-count">1</span></li></ul></li></ul>
+       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/">DB</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/databend/">databend</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DB/doris/">doris</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DB/%E5%87%BD%E6%95%B0-%E8%A1%A8%E8%BE%BE%E5%BC%8F/">函数/表达式</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/Hexo/">Hexo</a><span class="category-list-count">1</span></li></ul></li></ul>
   </div>
   
 
@@ -256,10 +256,10 @@
             
             <div class="item-inner">
               <p class="item-category">
-                <a class="category-link" href="/categories/DB/">DB</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/DB/Databend/">Databend</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/DB/%E6%89%A7%E8%A1%8C%E5%99%A8/">执行器</a>
+                <a class="category-link" href="/categories/DB/">DB</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/DB/databend/">databend</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/DB/%E5%87%BD%E6%95%B0-%E8%A1%A8%E8%BE%BE%E5%BC%8F/">函数/表达式</a>
               </p>
               <p class="item-title">
-                <a href="/2025/09/14/Databend-pr-pivot-%E6%94%AF%E6%8C%81-subquery/" class="title">[Databend][pr] pivot 支持 subquery</a>
+                <a href="/2025/09/14/databend-pivot-%E6%94%AF%E6%8C%81-subquery/" class="title">[databend] pivot 支持 subquery</a>
               </p>
               <p class="item-date">
                 <time datetime="2025-09-14T09:45:42.000Z" itemprop="datePublished">2025-09-14</time>
@@ -271,10 +271,10 @@
             
             <div class="item-inner">
               <p class="item-category">
-                <a class="category-link" href="/categories/Doris/">Doris</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/Doris/pr/">pr</a>
+                <a class="category-link" href="/categories/DB/">DB</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/DB/doris/">doris</a>
               </p>
               <p class="item-title">
-                <a href="/2025/09/14/Doris-pr-Implement-format-methods-for-Status/" class="title">[Doris][pr] Implement format methods for Status</a>
+                <a href="/2025/09/14/doris-Status-Implement-format-methods-for-Status/" class="title">[doris][Status] Implement format methods for Status</a>
               </p>
               <p class="item-date">
                 <time datetime="2025-09-14T09:26:44.000Z" itemprop="datePublished">2025-09-14</time>
@@ -319,14 +319,14 @@
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-Doris-pr-Implement-format-methods-for-Status" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-doris-Status-Implement-format-methods-for-Status" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      [Doris][pr] Implement format methods for Status
+      [doris][Status] Implement format methods for Status
     </h1>
   
 
@@ -334,14 +334,14 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2025/09/14/Doris-pr-Implement-format-methods-for-Status/" class="article-date">
+	<a href="/2025/09/14/doris-Status-Implement-format-methods-for-Status/" class="article-date">
 	  <time datetime="2025-09-14T09:26:44.000Z" itemprop="datePublished">2025-09-14</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Doris/">Doris</a>►<a class="article-category-link" href="/categories/Doris/pr/">pr</a>
+    <a class="article-category-link" href="/categories/DB/">DB</a>►<a class="article-category-link" href="/categories/DB/doris/">doris</a>
   </span>
 
         
@@ -360,7 +360,7 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/09/14/Doris-pr-Implement-format-methods-for-Status/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/09/14/doris-Status-Implement-format-methods-for-Status/#comments" class="article-comment-link">评论</a></span>
         
 	
 		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 678(字)</span>
@@ -417,7 +417,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://dragonliu2018.github.io/2025/09/14/Doris-pr-Implement-format-methods-for-Status/" title="[Doris][pr] Implement format methods for Status" target="_blank" rel="external">https://dragonliu2018.github.io/2025/09/14/Doris-pr-Implement-format-methods-for-Status/</a>
+      <a href="https://dragonliu2018.github.io/2025/09/14/doris-Status-Implement-format-methods-for-Status/" title="[doris][Status] Implement format methods for Status" target="_blank" rel="external">https://dragonliu2018.github.io/2025/09/14/doris-Status-Implement-format-methods-for-Status/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -464,7 +464,7 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2025/09/14/Databend-pr-pivot-%E6%94%AF%E6%8C%81-subquery/" title="[Databend][pr] pivot 支持 subquery"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2025/09/14/databend-pivot-%E6%94%AF%E6%8C%81-subquery/" title="[databend] pivot 支持 subquery"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
