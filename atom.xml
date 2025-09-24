@@ -6,7 +6,7 @@
   <link href="https://dragonliu2018.github.io/atom.xml" rel="self"/>
   
   <link href="https://dragonliu2018.github.io/"/>
-  <updated>2025-09-24T15:43:04.789Z</updated>
+  <updated>2025-09-24T15:48:11.695Z</updated>
   <id>https://dragonliu2018.github.io/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[PL][Python] 编程技巧汇总</title>
+    <link href="https://dragonliu2018.github.io/2025/09/24/PL-Python-%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/"/>
+    <id>https://dragonliu2018.github.io/2025/09/24/PL-Python-%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/</id>
+    <published>2025-09-24T15:47:34.000Z</published>
+    <updated>2025-09-24T15:48:11.695Z</updated>
+    
+    
+    
+    
+    <category term="PL" scheme="https://dragonliu2018.github.io/categories/PL/"/>
+    
+    <category term="Python" scheme="https://dragonliu2018.github.io/categories/PL/Python/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>[PL][Python] 常见 bug 汇总</title>
+    <link href="https://dragonliu2018.github.io/2025/09/24/PL-Python-%E5%B8%B8%E8%A7%81-bug-%E6%B1%87%E6%80%BB/"/>
+    <id>https://dragonliu2018.github.io/2025/09/24/PL-Python-%E5%B8%B8%E8%A7%81-bug-%E6%B1%87%E6%80%BB/</id>
+    <published>2025-09-24T15:47:16.000Z</published>
+    <updated>2025-09-24T15:51:51.209Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="sort-sorted"><a class="markdownIt-Anchor" href="#sort-sorted"></a> sort() &amp; sorted()</h1><p>对比两个列表是否含有相同的元素，不需要顺序一样。sort() 函数返回 None，因此不能直接使用 method-1 进行判断。</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># method-1 error</span></span><br><span class="line"><span class="keyword">if</span> l1.sort() == l2.sort():</span><br><span class="line">  xxx</span><br><span class="line"></span><br><span class="line"><span class="comment"># method-2 OK</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">sorted</span>(l1) == <span class="built_in">sorted</span>(l2):</span><br><span class="line">  xxx</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;sort-sorted&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#sort-sorted&quot;&gt;&lt;/a&gt; sort() &amp;amp; sorted()&lt;/h1&gt;
+&lt;p&gt;对比两个列表是否含有相同的元素，不需要顺序一样。sort() 函数返回</summary>
+      
+    
+    
+    
+    <category term="PL" scheme="https://dragonliu2018.github.io/categories/PL/"/>
+    
+    <category term="Python" scheme="https://dragonliu2018.github.io/categories/PL/Python/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>[Tool] github 使用技巧汇总</title>
