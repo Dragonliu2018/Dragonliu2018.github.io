@@ -1,4 +1,10 @@
 $(function() {
+  // 设备检测函数
+  function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+           (window.innerWidth <= 768);
+  }
+
   // bootstrap tooltip
   $('[data-toggle="tooltip"]').tooltip();
 
@@ -11,6 +17,18 @@ $(function() {
       position: 'right',
       // allowPageScroll: true
     });
+  }
+
+  // TOC设备控制逻辑
+  var $collapseToc = $('#collapseToc');
+  if ($collapseToc.length > 0) {
+    if (isMobileDevice()) {
+      // 移动端：默认收起TOC
+      $collapseToc.removeClass('in');
+    } else {
+      // PC端：默认展开TOC
+      $collapseToc.addClass('in');
+    }
   }
 
   $('#collapseToc').on('shown.bs.collapse', function() {

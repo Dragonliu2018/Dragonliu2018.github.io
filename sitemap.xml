@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dragonliu2018.github.io/navigation/index.html</loc>
+    
+    <lastmod>2025-09-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://dragonliu2018.github.io/2025/09/24/PL-Python-%E5%B8%B8%E8%A7%81-bug-%E6%B1%87%E6%80%BB/</loc>
     
     <lastmod>2025-09-24</lastmod>
@@ -77,15 +86,6 @@
     <loc>https://dragonliu2018.github.io/2025/09/13/Tool-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
     
     <lastmod>2025-09-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://dragonliu2018.github.io/navigation/index.html</loc>
-    
-    <lastmod>2025-09-22</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -203,6 +203,13 @@
   </url>
   
   <url>
+    <loc>https://dragonliu2018.github.io/categories/DB/</loc>
+    <lastmod>2025-09-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://dragonliu2018.github.io/categories/Tool/Hexo/</loc>
     <lastmod>2025-09-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -211,13 +218,6 @@
   
   <url>
     <loc>https://dragonliu2018.github.io/categories/Tool/git/</loc>
-    <lastmod>2025-09-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://dragonliu2018.github.io/categories/DB/</loc>
     <lastmod>2025-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

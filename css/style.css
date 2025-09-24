@@ -9219,6 +9219,33 @@ body.okayNav-loaded {
   line-height: 1.8;
 }
 
+/* 移动端TOC控制样式 */
+@media (max-width: 768px) {
+  .sidebar-toc {
+    /* 移动端默认隐藏TOC，除非用户主动点击 */
+    display: none !important;
+  }
+  
+  .sidebar-toc.in {
+    /* 移动端展开时显示 */
+    display: block !important;
+  }
+  
+  /* 移动端TOC按钮样式优化 */
+  .toggle-toc {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
+
+/* PC端TOC默认展开样式 */
+@media (min-width: 769px) {
+  .sidebar-toc {
+    /* PC端默认显示TOC */
+    display: block !important;
+  }
+}
+
 .article-type-navigation .article-entry h1 {
   font-size: 2rem;
   font-weight: 600;
