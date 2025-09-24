@@ -17,18 +17,20 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>分类 | Dragon&#39;s Blogs</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="https://dragonliu2018.github.io/categories/index.html">
+  <title>[Tool] wsl 报错汇总 | Dragon&#39;s Blogs</title>
+  <meta name="description" content="执行 systemctl 失败 【问题】 System has not been booted with systemd as init system (PID 1). Can&#x27;t operate. Failed to connect to bus: Host is down  【解决】 https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;WSL&#x2F;issues&#x2F;8883">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Tool] wsl 报错汇总">
+<meta property="og:url" content="https://dragonliu2018.github.io/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="执行 systemctl 失败 【问题】 System has not been booted with systemd as init system (PID 1). Can&#x27;t operate. Failed to connect to bus: Host is down  【解决】 https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;WSL&#x2F;issues&#x2F;8883">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-09-13T14:32:57.214Z">
-<meta property="article:modified_time" content="2025-09-13T14:32:57.214Z">
+<meta property="article:published_time" content="2025-09-24T14:08:37.000Z">
+<meta property="article:modified_time" content="2025-09-24T14:12:11.127Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://dragonliu2018.github.io/categories/index.html">
+  <link rel="canonical" href="https://dragonliu2018.github.io/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -38,6 +40,8 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
   
   
   
@@ -322,312 +326,162 @@
 </aside>
 
   
-  <main class="main" role="main">
-  <article class="article article-categories article-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">分类</h1>
-      <p class="text-muted hidden-xs">共 8 个分类</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/categories">All</a></li>
-          
-          <li><a href="/categories/Tool/">Tool</a></li>
-          
-          <li><a href="/categories/Tool/git/">git</a></li>
-          
-          <li><a href="/categories/DB/">DB</a></li>
-          
-          <li><a href="/categories/Tool/Hexo/">Hexo</a></li>
-          
-          <li><a href="/categories/Tool/wsl/">wsl</a></li>
-          
-          <li><a href="/categories/DB/databend/">databend</a></li>
-          
-          <li><a href="/categories/DB/doris/">doris</a></li>
-          
-          <li><a href="/categories/DB/函数-表达式/">函数/表达式</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C-systemctl-%E5%A4%B1%E8%B4%A5"><span class="toc-number">1.</span> <span class="toc-text"> 执行 systemctl 失败</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Tool-wsl-报错汇总" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
       
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapseTool" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              Tool
-            </a>
-            <small class="text-muted">(Total 5 articles)</small>
-          </h3>
-        </div>
-        <div id="collapseTool" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTool">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/24/Tool-git-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:44:11.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] git 报错汇总
-</a>
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [Tool] wsl 报错汇总
+    </h1>
+  
 
-
-              
-                
-<a href="/2025/09/13/Tool-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-13T15:37:08.000Z" itemprop="datePublished">2025-09-13</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] Hexo 使用教程
-</a>
-
-
-              
-                
-<a href="/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:08:37.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] wsl 报错汇总
-</a>
-
-
-              
-                
-<a href="/2025/09/24/Tool-github-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:45:16.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] github 使用技巧汇总
-</a>
-
-
-              
-                
-<a href="/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:21:50.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] git 使用技巧汇总
-</a>
-
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
       
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapsegit" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              git
-            </a>
-            <small class="text-muted">(Total 3 articles)</small>
-          </h3>
-        </div>
-        <div id="collapsegit" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headinggit">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/24/Tool-git-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:44:11.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] git 报错汇总
-</a>
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" class="article-date">
+	  <time datetime="2025-09-24T14:08:37.000Z" itemprop="datePublished">2025-09-24</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Tool/">Tool</a>►<a class="article-category-link" href="/categories/Tool/wsl/">wsl</a>
+  </span>
+
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
 
 
-              
-                
-<a href="/2025/09/24/Tool-github-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:45:16.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] github 使用技巧汇总
-</a>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 40(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
+	
 
-
-              
-                
-<a href="/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:21:50.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] git 使用技巧汇总
-</a>
-
-
-              
-            </div>
-          </div>
-        </div>
       </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
       
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapseDB" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              DB
-            </a>
-            <small class="text-muted">(Total 2 articles)</small>
-          </h3>
-        </div>
-        <div id="collapseDB" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingDB">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/14/databend-pivot-%E6%94%AF%E6%8C%81-subquery/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-14T09:45:42.000Z" itemprop="datePublished">2025-09-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [databend] pivot 支持 subquery
-</a>
+        <h1 id="执行-systemctl-失败"><a class="markdownIt-Anchor" href="#执行-systemctl-失败"></a> 执行 systemctl 失败</h1>
+<p>【<strong>问题</strong>】</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">System has not been booted with systemd as init system (PID 1). Can&#x27;t operate. Failed to connect to bus: Host is down</span><br></pre></td></tr></table></figure>
+<hr />
+<p>【<strong>解决</strong>】</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/microsoft/WSL/issues/8883">https://github.com/microsoft/WSL/issues/8883</a></p>
 
-
-              
-                
-<a href="/2025/09/14/doris-Status-Implement-format-methods-for-Status/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-14T09:26:44.000Z" itemprop="datePublished">2025-09-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [doris][Status] Implement format methods for Status
-</a>
-
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapseHexo" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              Hexo
-            </a>
-            <small class="text-muted">(Total 1 articles)</small>
-          </h3>
-        </div>
-        <div id="collapseHexo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingHexo">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/13/Tool-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-13T15:37:08.000Z" itemprop="datePublished">2025-09-13</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] Hexo 使用教程
-</a>
-
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapsewsl" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              wsl
-            </a>
-            <small class="text-muted">(Total 1 articles)</small>
-          </h3>
-        </div>
-        <div id="collapsewsl" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingwsl">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:08:37.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] wsl 报错汇总
-</a>
-
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapsedatabend" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              databend
-            </a>
-            <small class="text-muted">(Total 1 articles)</small>
-          </h3>
-        </div>
-        <div id="collapsedatabend" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingdatabend">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/14/databend-pivot-%E6%94%AF%E6%8C%81-subquery/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-14T09:45:42.000Z" itemprop="datePublished">2025-09-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [databend] pivot 支持 subquery
-</a>
-
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapsedoris" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              doris
-            </a>
-            <small class="text-muted">(Total 1 articles)</small>
-          </h3>
-        </div>
-        <div id="collapsedoris" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingdoris">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/14/doris-Status-Implement-format-methods-for-Status/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-14T09:26:44.000Z" itemprop="datePublished">2025-09-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [doris][Status] Implement format methods for Status
-</a>
-
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapse函数/表达式" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              函数/表达式
-            </a>
-            <small class="text-muted">(Total 1 articles)</small>
-          </h3>
-        </div>
-        <div id="collapse函数/表达式" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading函数/表达式">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/14/databend-pivot-%E6%94%AF%E6%8C%81-subquery/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-14T09:45:42.000Z" itemprop="datePublished">2025-09-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [databend] pivot 支持 subquery
-</a>
-
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
       
     </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://dragonliu2018.github.io/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" title="[Tool] wsl 报错汇总" target="_blank" rel="external">https://dragonliu2018.github.io/2025/09/24/Tool-wsl-报错汇总/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/dragonliu2018" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/dragonliu2018" target="_blank"><span class="text-dark">Dragon&#39;s Blogs</span><small class="ml-1x">Security</small></a></h3>
+        <div>Life is painting a picture, not doing a sum.</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
   </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" title="[Tool] git 使用技巧汇总"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2025/09/14/databend-pivot-%E6%94%AF%E6%8C%81-subquery/" title="[databend] pivot 支持 subquery"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
 </main>
+
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
 	
 	
@@ -680,6 +534,39 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Pbjl2Wajl9och0xVbR5eqoH1-gzGzoHsz',
+    appKey: 'PgxFh1wV6pyMMllhxs7NJijb',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
 
 
 

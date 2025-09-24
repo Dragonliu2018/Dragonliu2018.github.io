@@ -17,18 +17,22 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>分类 | Dragon&#39;s Blogs</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="https://dragonliu2018.github.io/categories/index.html">
+  <title>[Tool] git 使用技巧汇总 | Dragon&#39;s Blogs</title>
+  <meta name="description" content="将当前修改压到 HEAD commit git commit --amend  取消某个文件的更改 git checkout -- &lt;file_name&gt;  参考：https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_32907195&#x2F;article&#x2F;details&#x2F;115333898   删除某个文件(夹) # 推荐git rm &lt;file_name&gt;# 相当于rm &amp;lt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Tool] git 使用技巧汇总">
+<meta property="og:url" content="https://dragonliu2018.github.io/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="将当前修改压到 HEAD commit git commit --amend  取消某个文件的更改 git checkout -- &lt;file_name&gt;  参考：https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_32907195&#x2F;article&#x2F;details&#x2F;115333898   删除某个文件(夹) # 推荐git rm &lt;file_name&gt;# 相当于rm &amp;lt">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-09-13T14:32:57.214Z">
-<meta property="article:modified_time" content="2025-09-13T14:32:57.214Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-24_23-13-21.png">
+<meta property="article:published_time" content="2025-09-24T14:21:50.000Z">
+<meta property="article:modified_time" content="2025-09-24T15:43:03.234Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-24_23-13-21.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://dragonliu2018.github.io/categories/index.html">
+  <link rel="canonical" href="https://dragonliu2018.github.io/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -38,6 +42,8 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
   
   
   
@@ -322,312 +328,192 @@
 </aside>
 
   
-  <main class="main" role="main">
-  <article class="article article-categories article-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">分类</h1>
-      <p class="text-muted hidden-xs">共 8 个分类</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/categories">All</a></li>
-          
-          <li><a href="/categories/Tool/">Tool</a></li>
-          
-          <li><a href="/categories/Tool/git/">git</a></li>
-          
-          <li><a href="/categories/DB/">DB</a></li>
-          
-          <li><a href="/categories/Tool/Hexo/">Hexo</a></li>
-          
-          <li><a href="/categories/Tool/wsl/">wsl</a></li>
-          
-          <li><a href="/categories/DB/databend/">databend</a></li>
-          
-          <li><a href="/categories/DB/doris/">doris</a></li>
-          
-          <li><a href="/categories/DB/函数-表达式/">函数/表达式</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%86%E5%BD%93%E5%89%8D%E4%BF%AE%E6%94%B9%E5%8E%8B%E5%88%B0-head-commit"><span class="toc-number">1.</span> <span class="toc-text"> 将当前修改压到 HEAD commit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%96%E6%B6%88%E6%9F%90%E4%B8%AA%E6%96%87%E4%BB%B6%E7%9A%84%E6%9B%B4%E6%94%B9"><span class="toc-number">2.</span> <span class="toc-text"> 取消某个文件的更改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">3.</span> <span class="toc-text"> 删除某个文件(夹)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ignore-%E5%B7%B2%E7%BB%8F-push-%E5%88%B0%E8%BF%9C%E7%AB%AF%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text"> ignore 已经 push 到远端的文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AA-commit"><span class="toc-number">5.</span> <span class="toc-text"> 合并多个 commit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#patch"><span class="toc-number">6.</span> <span class="toc-text"> patch</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF"><span class="toc-number">7.</span> <span class="toc-text"> 本地分支 &amp; 远程分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%92%A4%E9%94%80-commit"><span class="toc-number">8.</span> <span class="toc-text"> 撤销 commit</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Tool-git-使用技巧汇总" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
       
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapseTool" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              Tool
-            </a>
-            <small class="text-muted">(Total 5 articles)</small>
-          </h3>
-        </div>
-        <div id="collapseTool" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTool">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/24/Tool-git-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:44:11.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] git 报错汇总
-</a>
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [Tool] git 使用技巧汇总
+    </h1>
+  
 
-
-              
-                
-<a href="/2025/09/13/Tool-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-13T15:37:08.000Z" itemprop="datePublished">2025-09-13</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] Hexo 使用教程
-</a>
-
-
-              
-                
-<a href="/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:08:37.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] wsl 报错汇总
-</a>
-
-
-              
-                
-<a href="/2025/09/24/Tool-github-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:45:16.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] github 使用技巧汇总
-</a>
-
-
-              
-                
-<a href="/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:21:50.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] git 使用技巧汇总
-</a>
-
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
       
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapsegit" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              git
-            </a>
-            <small class="text-muted">(Total 3 articles)</small>
-          </h3>
-        </div>
-        <div id="collapsegit" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headinggit">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/24/Tool-git-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:44:11.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] git 报错汇总
-</a>
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" class="article-date">
+	  <time datetime="2025-09-24T14:21:50.000Z" itemprop="datePublished">2025-09-24</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Tool/">Tool</a>►<a class="article-category-link" href="/categories/Tool/git/">git</a>
+  </span>
+
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
 
 
-              
-                
-<a href="/2025/09/24/Tool-github-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:45:16.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] github 使用技巧汇总
-</a>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 297(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
+	
 
-
-              
-                
-<a href="/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:21:50.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] git 使用技巧汇总
-</a>
-
-
-              
-            </div>
-          </div>
-        </div>
       </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
       
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapseDB" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              DB
-            </a>
-            <small class="text-muted">(Total 2 articles)</small>
-          </h3>
-        </div>
-        <div id="collapseDB" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingDB">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/14/databend-pivot-%E6%94%AF%E6%8C%81-subquery/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-14T09:45:42.000Z" itemprop="datePublished">2025-09-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [databend] pivot 支持 subquery
-</a>
+        <h1 id="将当前修改压到-head-commit"><a class="markdownIt-Anchor" href="#将当前修改压到-head-commit"></a> 将当前修改压到 HEAD commit</h1>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+<h1 id="取消某个文件的更改"><a class="markdownIt-Anchor" href="#取消某个文件的更改"></a> 取消某个文件的更改</h1>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git checkout -- &lt;file_name&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32907195/article/details/115333898">https://blog.csdn.net/qq_32907195/article/details/115333898</a></p>
+</blockquote>
+<h1 id="删除某个文件夹"><a class="markdownIt-Anchor" href="#删除某个文件夹"></a> 删除某个文件(夹)</h1>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">推荐</span></span><br><span class="line">git rm &lt;file_name&gt;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">相当于</span></span><br><span class="line">rm &lt;file_name&gt;</span><br><span class="line">git add &lt;file_name&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="ignore-已经-push-到远端的文件"><a class="markdownIt-Anchor" href="#ignore-已经-push-到远端的文件"></a> ignore 已经 push 到远端的文件</h1>
+<p>【<strong>问题</strong>】</p>
+<p>.vscode 文件夹已经 push 到远程，如何 ignore？</p>
+<hr />
+<p>【<strong>解决</strong>】</p>
+<ol>
+<li>
+<p>从 Git 索引中移除 .vscode 目录（不会删除本地文件夹，只是让 git 不再跟踪它）：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  SG-DQA git:(main) git <span class="built_in">rm</span> -r --cached .vscode</span><br><span class="line"><span class="built_in">rm</span> <span class="string">&#x27;.vscode/launch.json&#x27;</span></span><br><span class="line"><span class="built_in">rm</span> <span class="string">&#x27;.vscode/settings.json&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>添加 <code>.gitignore</code> 文件</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.vscode/</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>git add &amp; git commit &amp; git push</p>
+</li>
+</ol>
+<h1 id="合并多个-commit"><a class="markdownIt-Anchor" href="#合并多个-commit"></a> 合并多个 commit</h1>
+<p><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-24_23-13-21.png" alt="" /></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">method-1</span></span><br><span class="line">git rebase -i origin/main</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">method-2</span></span><br><span class="line">git rebase -i ce75153a87</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">method-3: 与要合并的commit数量一致</span></span><br><span class="line">git rebase -i HEAD~8</span><br></pre></td></tr></table></figure>
+<h1 id="patch"><a class="markdownIt-Anchor" href="#patch"></a> patch</h1>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git diff &gt; xx.patch</span><br><span class="line">git apply x.patch</span><br></pre></td></tr></table></figure>
+<h1 id="本地分支-远程分支"><a class="markdownIt-Anchor" href="#本地分支-远程分支"></a> 本地分支 &amp; 远程分支</h1>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看本地分支关联（跟踪）的远程分支之间的对应关系</span></span><br><span class="line">git branch -vv</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">推送当前分支到远程（没有对应分支）</span></span><br><span class="line">git push -f --set-upstream origin dragonliu/dictionary_mysql_opt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置本地分支与远程分支的关联</span></span><br><span class="line">git branch --set-upstream-to=origin/&lt;远程分支名&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="撤销-commit"><a class="markdownIt-Anchor" href="#撤销-commit"></a> 撤销 commit</h1>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">撤销本地 commit</span></span><br><span class="line">git reset --soft HEAD^</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">撤销远程 commit</span></span><br><span class="line">git reset HEAD^</span><br><span class="line">git push -f</span><br></pre></td></tr></table></figure>
 
-
-              
-                
-<a href="/2025/09/14/doris-Status-Implement-format-methods-for-Status/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-14T09:26:44.000Z" itemprop="datePublished">2025-09-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [doris][Status] Implement format methods for Status
-</a>
-
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapseHexo" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              Hexo
-            </a>
-            <small class="text-muted">(Total 1 articles)</small>
-          </h3>
-        </div>
-        <div id="collapseHexo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingHexo">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/13/Tool-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-13T15:37:08.000Z" itemprop="datePublished">2025-09-13</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] Hexo 使用教程
-</a>
-
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapsewsl" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              wsl
-            </a>
-            <small class="text-muted">(Total 1 articles)</small>
-          </h3>
-        </div>
-        <div id="collapsewsl" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingwsl">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:08:37.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] wsl 报错汇总
-</a>
-
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapsedatabend" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              databend
-            </a>
-            <small class="text-muted">(Total 1 articles)</small>
-          </h3>
-        </div>
-        <div id="collapsedatabend" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingdatabend">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/14/databend-pivot-%E6%94%AF%E6%8C%81-subquery/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-14T09:45:42.000Z" itemprop="datePublished">2025-09-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [databend] pivot 支持 subquery
-</a>
-
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapsedoris" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              doris
-            </a>
-            <small class="text-muted">(Total 1 articles)</small>
-          </h3>
-        </div>
-        <div id="collapsedoris" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingdoris">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/14/doris-Status-Implement-format-methods-for-Status/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-14T09:26:44.000Z" itemprop="datePublished">2025-09-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [doris][Status] Implement format methods for Status
-</a>
-
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapse函数/表达式" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              函数/表达式
-            </a>
-            <small class="text-muted">(Total 1 articles)</small>
-          </h3>
-        </div>
-        <div id="collapse函数/表达式" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading函数/表达式">
-          <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/14/databend-pivot-%E6%94%AF%E6%8C%81-subquery/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-14T09:45:42.000Z" itemprop="datePublished">2025-09-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [databend] pivot 支持 subquery
-</a>
-
-
-              
-            </div>
-          </div>
-        </div>
-      </div>
       
     </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://dragonliu2018.github.io/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" title="[Tool] git 使用技巧汇总" target="_blank" rel="external">https://dragonliu2018.github.io/2025/09/24/Tool-git-使用技巧汇总/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/dragonliu2018" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/dragonliu2018" target="_blank"><span class="text-dark">Dragon&#39;s Blogs</span><small class="ml-1x">Security</small></a></h3>
+        <div>Life is painting a picture, not doing a sum.</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
   </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2025/09/24/Tool-git-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" title="[Tool] git 报错汇总"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" title="[Tool] wsl 报错汇总"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
 </main>
+
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
 	
 	
@@ -680,6 +566,39 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Pbjl2Wajl9och0xVbR5eqoH1-gzGzoHsz',
+    appKey: 'PgxFh1wV6pyMMllhxs7NJijb',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
 
 
 

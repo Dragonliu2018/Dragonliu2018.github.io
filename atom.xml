@@ -6,7 +6,7 @@
   <link href="https://dragonliu2018.github.io/atom.xml" rel="self"/>
   
   <link href="https://dragonliu2018.github.io/"/>
-  <updated>2025-09-23T01:06:58.364Z</updated>
+  <updated>2025-09-24T15:43:04.789Z</updated>
   <id>https://dragonliu2018.github.io/</id>
   
   <author>
@@ -15,6 +15,109 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[Tool] github 使用技巧汇总</title>
+    <link href="https://dragonliu2018.github.io/2025/09/24/Tool-github-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/"/>
+    <id>https://dragonliu2018.github.io/2025/09/24/Tool-github-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/</id>
+    <published>2025-09-24T14:45:16.000Z</published>
+    <updated>2025-09-24T15:43:04.789Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="新增-ssh-密钥到-github-帐户"><a class="markdownIt-Anchor" href="#新增-ssh-密钥到-github-帐户"></a> 新增 SSH 密钥到 GitHub 帐户</h1><ol><li><p>生成 key，一路默认即可：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">➜  .ssh ssh-keygen</span><br></pre></td></tr></table></figure></li><li><p>复制 id_rsa.pub 文件中的内容到 GitHub：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">➜  .ssh cat id_rsa.pub</span><br></pre></td></tr></table></figure></li><li><p>测试是否配置成功：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">➜  .ssh ssh -T git@github.com</span><br><span class="line">Hi Dragonliu2018! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;新增-ssh-密钥到-github-帐户&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#新增-ssh-密钥到-github-帐户&quot;&gt;&lt;/a&gt; 新增 SSH 密钥到 GitHub 帐户&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;生成 key，一</summary>
+      
+    
+    
+    
+    <category term="Tool" scheme="https://dragonliu2018.github.io/categories/Tool/"/>
+    
+    <category term="git" scheme="https://dragonliu2018.github.io/categories/Tool/git/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>[Tool] git 报错汇总</title>
+    <link href="https://dragonliu2018.github.io/2025/09/24/Tool-git-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/"/>
+    <id>https://dragonliu2018.github.io/2025/09/24/Tool-git-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/</id>
+    <published>2025-09-24T14:44:11.000Z</published>
+    <updated>2025-09-24T15:43:06.611Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id=""><a class="markdownIt-Anchor" href="#"></a> </h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#&quot;&gt;&lt;/a&gt; &lt;/h1&gt;
+</summary>
+      
+    
+    
+    
+    <category term="Tool" scheme="https://dragonliu2018.github.io/categories/Tool/"/>
+    
+    <category term="git" scheme="https://dragonliu2018.github.io/categories/Tool/git/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>[Tool] git 使用技巧汇总</title>
+    <link href="https://dragonliu2018.github.io/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/"/>
+    <id>https://dragonliu2018.github.io/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/</id>
+    <published>2025-09-24T14:21:50.000Z</published>
+    <updated>2025-09-24T15:43:03.234Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="将当前修改压到-head-commit"><a class="markdownIt-Anchor" href="#将当前修改压到-head-commit"></a> 将当前修改压到 HEAD commit</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure><h1 id="取消某个文件的更改"><a class="markdownIt-Anchor" href="#取消某个文件的更改"></a> 取消某个文件的更改</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git checkout -- &lt;file_name&gt;</span><br></pre></td></tr></table></figure><blockquote><p>参考：<a href="https://blog.csdn.net/qq_32907195/article/details/115333898">https://blog.csdn.net/qq_32907195/article/details/115333898</a></p></blockquote><h1 id="删除某个文件夹"><a class="markdownIt-Anchor" href="#删除某个文件夹"></a> 删除某个文件(夹)</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">推荐</span></span><br><span class="line">git rm &lt;file_name&gt;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">相当于</span></span><br><span class="line">rm &lt;file_name&gt;</span><br><span class="line">git add &lt;file_name&gt;</span><br></pre></td></tr></table></figure><h1 id="ignore-已经-push-到远端的文件"><a class="markdownIt-Anchor" href="#ignore-已经-push-到远端的文件"></a> ignore 已经 push 到远端的文件</h1><p>【<strong>问题</strong>】</p><p>.vscode 文件夹已经 push 到远程，如何 ignore？</p><hr /><p>【<strong>解决</strong>】</p><ol><li><p>从 Git 索引中移除 .vscode 目录（不会删除本地文件夹，只是让 git 不再跟踪它）：</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  SG-DQA git:(main) git <span class="built_in">rm</span> -r --cached .vscode</span><br><span class="line"><span class="built_in">rm</span> <span class="string">&#x27;.vscode/launch.json&#x27;</span></span><br><span class="line"><span class="built_in">rm</span> <span class="string">&#x27;.vscode/settings.json&#x27;</span></span><br></pre></td></tr></table></figure></li><li><p>添加 <code>.gitignore</code> 文件</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.vscode/</span><br></pre></td></tr></table></figure></li><li><p>git add &amp; git commit &amp; git push</p></li></ol><h1 id="合并多个-commit"><a class="markdownIt-Anchor" href="#合并多个-commit"></a> 合并多个 commit</h1><p><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-24_23-13-21.png" alt="" /></p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">method-1</span></span><br><span class="line">git rebase -i origin/main</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">method-2</span></span><br><span class="line">git rebase -i ce75153a87</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">method-3: 与要合并的commit数量一致</span></span><br><span class="line">git rebase -i HEAD~8</span><br></pre></td></tr></table></figure><h1 id="patch"><a class="markdownIt-Anchor" href="#patch"></a> patch</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git diff &gt; xx.patch</span><br><span class="line">git apply x.patch</span><br></pre></td></tr></table></figure><h1 id="本地分支-远程分支"><a class="markdownIt-Anchor" href="#本地分支-远程分支"></a> 本地分支 &amp; 远程分支</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看本地分支关联（跟踪）的远程分支之间的对应关系</span></span><br><span class="line">git branch -vv</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">推送当前分支到远程（没有对应分支）</span></span><br><span class="line">git push -f --set-upstream origin dragonliu/dictionary_mysql_opt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置本地分支与远程分支的关联</span></span><br><span class="line">git branch --set-upstream-to=origin/&lt;远程分支名&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h1 id="撤销-commit"><a class="markdownIt-Anchor" href="#撤销-commit"></a> 撤销 commit</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">撤销本地 commit</span></span><br><span class="line">git reset --soft HEAD^</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">撤销远程 commit</span></span><br><span class="line">git reset HEAD^</span><br><span class="line">git push -f</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;将当前修改压到-head-commit&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#将当前修改压到-head-commit&quot;&gt;&lt;/a&gt; 将当前修改压到 HEAD commit&lt;/h1&gt;
+&lt;figure class=&quot;highlight</summary>
+      
+    
+    
+    
+    <category term="Tool" scheme="https://dragonliu2018.github.io/categories/Tool/"/>
+    
+    <category term="git" scheme="https://dragonliu2018.github.io/categories/Tool/git/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>[Tool] wsl 报错汇总</title>
+    <link href="https://dragonliu2018.github.io/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/"/>
+    <id>https://dragonliu2018.github.io/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/</id>
+    <published>2025-09-24T14:08:37.000Z</published>
+    <updated>2025-09-24T14:12:11.127Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="执行-systemctl-失败"><a class="markdownIt-Anchor" href="#执行-systemctl-失败"></a> 执行 systemctl 失败</h1><p>【<strong>问题</strong>】</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">System has not been booted with systemd as init system (PID 1). Can&#x27;t operate. Failed to connect to bus: Host is down</span><br></pre></td></tr></table></figure><hr /><p>【<strong>解决</strong>】</p><p><a href="https://github.com/microsoft/WSL/issues/8883">https://github.com/microsoft/WSL/issues/8883</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;执行-systemctl-失败&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#执行-systemctl-失败&quot;&gt;&lt;/a&gt; 执行 systemctl 失败&lt;/h1&gt;
+&lt;p&gt;【&lt;strong&gt;问题&lt;/strong&gt;】&lt;/p&gt;
+&lt;figure</summary>
+      
+    
+    
+    
+    <category term="Tool" scheme="https://dragonliu2018.github.io/categories/Tool/"/>
+    
+    <category term="wsl" scheme="https://dragonliu2018.github.io/categories/Tool/wsl/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>[databend] pivot 支持 subquery</title>

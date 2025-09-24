@@ -1,3 +1,7 @@
+https://dragonliu2018.github.io/2025/09/24/Tool-git-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/
+https://dragonliu2018.github.io/2025/09/24/Tool-github-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/
+https://dragonliu2018.github.io/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/
+https://dragonliu2018.github.io/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/
 https://dragonliu2018.github.io/2025/09/14/databend-pivot-%E6%94%AF%E6%8C%81-subquery/
 https://dragonliu2018.github.io/2025/09/14/doris-Status-Implement-format-methods-for-Status/
 https://dragonliu2018.github.io/2025/09/13/Tool-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/
@@ -13,8 +17,10 @@ https://dragonliu2018.github.io/about/index.html
 https://dragonliu2018.github.io/
 https://dragonliu2018.github.io/tags/pr/
 https://dragonliu2018.github.io/categories/Tool/
+https://dragonliu2018.github.io/categories/Tool/git/
 https://dragonliu2018.github.io/categories/DB/
 https://dragonliu2018.github.io/categories/Tool/Hexo/
+https://dragonliu2018.github.io/categories/Tool/wsl/
 https://dragonliu2018.github.io/categories/DB/databend/
-https://dragonliu2018.github.io/categories/DB/%E5%87%BD%E6%95%B0-%E8%A1%A8%E8%BE%BE%E5%BC%8F/
 https://dragonliu2018.github.io/categories/DB/doris/
+https://dragonliu2018.github.io/categories/DB/%E5%87%BD%E6%95%B0-%E8%A1%A8%E8%BE%BE%E5%BC%8F/
