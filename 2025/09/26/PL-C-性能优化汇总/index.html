@@ -17,20 +17,24 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>[Tool] wsl 报错汇总 | Dragon&#39;s Blogs</title>
-  <meta name="description" content="执行 systemctl 失败 【问题】 System has not been booted with systemd as init system (PID 1). Can&#x27;t operate. Failed to connect to bus: Host is down  【解决】 https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;WSL&#x2F;issues&#x2F;8883">
+  <title>[PL][C++] 性能优化汇总 | Dragon&#39;s Blogs</title>
+  <meta name="description" content="常用技巧  避免构造不必要的对象，例如 std::string 函数返回值为常量字符串时，且需要 std::string_view 类型；函数返回值类型可以设为 std::string_view，如果设为 std::string，会有多余的拷贝。   分支预测 &amp; unlikely ref：https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;639443238  避免反复构造和">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Tool] wsl 报错汇总">
-<meta property="og:url" content="https://dragonliu2018.github.io/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/index.html">
+<meta property="og:title" content="[PL][C++] 性能优化汇总">
+<meta property="og:url" content="https://dragonliu2018.github.io/2025/09/26/PL-C-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%B1%87%E6%80%BB/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="执行 systemctl 失败 【问题】 System has not been booted with systemd as init system (PID 1). Can&#x27;t operate. Failed to connect to bus: Host is down  【解决】 https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;WSL&#x2F;issues&#x2F;8883">
+<meta property="og:description" content="常用技巧  避免构造不必要的对象，例如 std::string 函数返回值为常量字符串时，且需要 std::string_view 类型；函数返回值类型可以设为 std::string_view，如果设为 std::string，会有多余的拷贝。   分支预测 &amp; unlikely ref：https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;639443238  避免反复构造和">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-09-24T14:08:37.000Z">
-<meta property="article:modified_time" content="2025-09-24T14:12:11.127Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_00-16-21.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_00-19-21.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_00-19-41.png">
+<meta property="article:published_time" content="2025-09-25T16:06:51.000Z">
+<meta property="article:modified_time" content="2025-09-25T16:20:12.162Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_00-16-21.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://dragonliu2018.github.io/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/index.html">
+  <link rel="canonical" href="https://dragonliu2018.github.io/2025/09/26/PL-C-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%B1%87%E6%80%BB/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -331,21 +335,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C-systemctl-%E5%A4%B1%E8%B4%A5"><span class="toc-number">1.</span> <span class="toc-text"> 执行 systemctl 失败</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="toc-number">1.</span> <span class="toc-text"> 常用技巧</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E9%A2%84%E6%B5%8B-unlikely"><span class="toc-number">2.</span> <span class="toc-text"> 分支预测 &amp; unlikely</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%81%BF%E5%85%8D%E5%8F%8D%E5%A4%8D%E6%9E%84%E9%80%A0%E5%92%8C%E6%9E%90%E6%9E%84-vector"><span class="toc-number">3.</span> <span class="toc-text"> 避免反复构造和析构 vector</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vector-%E4%BD%BF%E7%94%A8-reserve-%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E5%86%85%E5%AD%98%E7%94%B3%E8%AF%B7%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%A4%8D%E5%88%B6"><span class="toc-number">4.</span> <span class="toc-text"> vector 使用 reserve 避免重复内存申请与数据复制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.1.</span> <span class="toc-text"> 场景介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E9%AA%8C%E8%AF%81"><span class="toc-number">4.2.</span> <span class="toc-text"> 代码验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gpt-%E7%8E%B0%E8%B1%A1%E8%A7%A3%E9%87%8A"><span class="toc-number">4.3.</span> <span class="toc-text"> GPT 现象解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vector_push_back_one_by_one-%E5%87%BD%E6%95%B0"><span class="toc-number">4.3.1.</span> <span class="toc-text"> vector_push_back_one_by_one 函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vector_push_back_reserve-%E5%87%BD%E6%95%B0"><span class="toc-number">4.3.2.</span> <span class="toc-text"> vector_push_back_reserve 函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94"><span class="toc-number">4.3.3.</span> <span class="toc-text"> 性能对比</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#unordered_map-%E6%9B%BF%E6%8D%A2-map"><span class="toc-number">5.</span> <span class="toc-text"> unordered_map 替换 map</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">5.1.</span> <span class="toc-text"> 问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E4%BC%98"><span class="toc-number">5.2.</span> <span class="toc-text"> 调优</span></a></li></ol></li></ol>
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-Tool-wsl-报错汇总" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-PL-C-性能优化汇总" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      [Tool] wsl 报错汇总
+      [PL][C++] 性能优化汇总
     </h1>
   
 
@@ -353,14 +357,14 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" class="article-date">
-	  <time datetime="2025-09-24T14:08:37.000Z" itemprop="datePublished">2025-09-24</time>
+	<a href="/2025/09/26/PL-C-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%B1%87%E6%80%BB/" class="article-date">
+	  <time datetime="2025-09-25T16:06:51.000Z" itemprop="datePublished">2025-09-26</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Tool/">Tool</a>►<a class="article-category-link" href="/categories/Tool/wsl/">wsl</a>
+    <a class="article-category-link" href="/categories/PL/">PL</a>►<a class="article-category-link" href="/categories/PL/C/">C++</a>
   </span>
 
         
@@ -374,25 +378,74 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/09/26/PL-C-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%B1%87%E6%80%BB/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 40(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.3k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5(分)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1 id="执行-systemctl-失败"><a class="markdownIt-Anchor" href="#执行-systemctl-失败"></a> 执行 systemctl 失败</h1>
-<p>【<strong>问题</strong>】</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">System has not been booted with systemd as init system (PID 1). Can&#x27;t operate. Failed to connect to bus: Host is down</span><br></pre></td></tr></table></figure>
+        <h1 id="常用技巧"><a class="markdownIt-Anchor" href="#常用技巧"></a> 常用技巧</h1>
+<ul>
+<li>避免构造不必要的对象，例如 std::string</li>
+<li>函数返回值为常量字符串时，且需要 std::string_view 类型；函数返回值类型可以设为 std::string_view，如果设为 std::string，会有多余的拷贝。</li>
+</ul>
+<h1 id="分支预测-unlikely"><a class="markdownIt-Anchor" href="#分支预测-unlikely"></a> 分支预测 &amp; unlikely</h1>
+<p>ref：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/639443238">https://www.zhihu.com/question/639443238</a></p>
+<h1 id="避免反复构造和析构-vector"><a class="markdownIt-Anchor" href="#避免反复构造和析构-vector"></a> 避免反复构造和析构 vector</h1>
+<p>【热点】</p>
+<p>问题来源于 YMatrix 实习，下面的 vector 声明在了 for 循环内部，每次遍历都会进行构造和析构，成本较大。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (std::<span class="type">size_t</span> i = <span class="number">0</span>; i &lt; times; ++i) &#123;</span><br><span class="line">	std::vector&lt;std::<span class="type">uint32_t</span>&gt; idx_chain;</span><br><span class="line">	<span class="built_in">func</span>(idx_chain);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr />
-<p>【<strong>解决</strong>】</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/microsoft/WSL/issues/8883">https://github.com/microsoft/WSL/issues/8883</a></p>
+<p>【优化】</p>
+<p>可以将 vector 声明位置提到 for 循环外部，每次遍历对 vector 进行 clear 即可</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::vector&lt;std::<span class="type">uint32_t</span>&gt; idx_chain;</span><br><span class="line"><span class="keyword">for</span> (std::<span class="type">size_t</span> i = <span class="number">0</span>; i &lt; times; ++i) &#123;</span><br><span class="line">    idx_chain.<span class="built_in">clear</span>();</span><br><span class="line">    <span class="built_in">func</span>(idx_chain);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="vector-使用-reserve-避免重复内存申请与数据复制"><a class="markdownIt-Anchor" href="#vector-使用-reserve-避免重复内存申请与数据复制"></a> vector 使用 reserve 避免重复内存申请与数据复制</h1>
+<h2 id="场景介绍"><a class="markdownIt-Anchor" href="#场景介绍"></a> 场景介绍</h2>
+<p><strong>当使用 vector 时，如果已知需要多少元素的空间，则使用 <code>reserve</code> 函数预先分配足够的内存空间，减少动态内存分配和元素复制的次数</strong>。这使得插入操作更加高效，尤其是在处理大量数据时，性能优势更加明显。</p>
+<h2 id="代码验证"><a class="markdownIt-Anchor" href="#代码验证"></a> 代码验证</h2>
+<p>【<strong>链接</strong>】<a target="_blank" rel="noopener" href="https://quick-bench.com/q/ctDLCeIqzoycLX9KUuBajAapaUA">https://quick-bench.com/q/ctDLCeIqzoycLX9KUuBajAapaUA</a></p>
+<hr />
+<ul>
+<li>
+<p><strong>代码</strong></p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">constexpr</span> <span class="type">int</span> SIZE = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">vector_push_back_one_by_one</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::vector&lt;std::string&gt; str_vec;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; SIZE; i++) &#123;</span><br><span class="line">        str_vec.<span class="built_in">push_back</span>(std::<span class="built_in">to_string</span>(i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">vector_push_back_reserve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::vector&lt;std::string&gt; str_vec;</span><br><span class="line">    str_vec.<span class="built_in">reserve</span>(SIZE);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; SIZE; i++) &#123;</span><br><span class="line">        str_vec.<span class="built_in">push_back</span>(std::<span class="built_in">to_string</span>(i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">PushOneByOne</span><span class="params">(benchmark::State&amp; state)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Code inside this loop is measured repeatedly</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> _ : state) &#123;</span><br><span class="line">    <span class="keyword">auto</span> ret = <span class="built_in">vector_push_back_one_by_one</span>();</span><br><span class="line">    <span class="comment">// Make sure the variable is not optimized away by compiler</span></span><br><span class="line">    benchmark::<span class="built_in">DoNotOptimize</span>(ret);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Register the function as a benchmark</span></span><br><span class="line"><span class="built_in">BENCHMARK</span>(PushOneByOne);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">PushReserve</span><span class="params">(benchmark::State&amp; state)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Code before the loop is not measured</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> _ : state) &#123;</span><br><span class="line">    <span class="keyword">auto</span> ret = <span class="built_in">vector_push_back_reserve</span>();</span><br><span class="line">    <span class="comment">// Make sure the variable is not optimized away by compiler</span></span><br><span class="line">    benchmark::<span class="built_in">DoNotOptimize</span>(ret);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">BENCHMARK</span>(PushReserve);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_00-16-21.png" alt="" /></p>
+<h2 id="gpt-现象解释"><a class="markdownIt-Anchor" href="#gpt-现象解释"></a> GPT 现象解释</h2>
+<p><code>vector_push_back_reserve</code> 函数比 <code>vector_push_back_one_by_one</code> 函数高效的原因主要在于内存分配策略的不同。</p>
+<h3 id="vector_push_back_one_by_one-函数"><a class="markdownIt-Anchor" href="#vector_push_back_one_by_one-函数"></a> <strong><code>vector_push_back_one_by_one</code> 函数</strong></h3>
+<ul>
+<li><strong>动态内存分配</strong>：<code>std::vector</code> 的 <code>push_back</code> 方法会在容器容量不足时，自动分配新的内存来存储更多的元素。每次分配的内存大小通常是当前容量的两倍左右（具体策略因标准库实现而异）。例如，初始容量可能为 0，第一次调用 <code>push_back</code> 时分配一定大小的内存（如 16 个元素的空间），当插入第 17 个元素时，会重新分配内存（如 32 个元素的空间），并将原有元素复制到新的内存空间中，然后释放旧的内存空间。</li>
+<li><strong>多次内存分配和复制</strong>：在插入大量元素时，这种动态内存分配会导致多次内存分配和复制操作。每次重新分配内存时，都需要将已有的元素复制到新的内存空间中，这会消耗大量的时间和计算资源。随着元素数量的增加，这种开销会逐渐累积，导致整体性能下降。</li>
+</ul>
+<h3 id="vector_push_back_reserve-函数"><a class="markdownIt-Anchor" href="#vector_push_back_reserve-函数"></a> <strong><code>vector_push_back_reserve</code> 函数</strong></h3>
+<ul>
+<li><strong>预先分配内存</strong>：<code>std::vector</code> 的 <code>reserve</code> 方法允许在容器创建时预先分配足够的内存来存储指定数量的元素。在 <code>vector_push_back_reserve</code> 函数中，通过调用 <code>str_vec.reserve(SIZE)</code>，预先分配了足够存储 <code>SIZE</code> 个 <code>std::string</code> 元素的内存空间。</li>
+<li><strong>减少内存分配和复制</strong>：由于预先分配了足够的内存，后续调用 <code>push_back</code> 方法时，不需要再进行动态内存分配和元素复制操作。所有元素都可以直接插入到预先分配的内存空间中，从而避免了多次内存分配和复制的开销，显著提高了插入操作的效率。</li>
+</ul>
+<h3 id="性能对比"><a class="markdownIt-Anchor" href="#性能对比"></a> <strong>性能对比</strong></h3>
+<ul>
+<li><strong>时间复杂度</strong>：<code>vector_push_back_one_by_one</code> 的时间复杂度为 <em>O</em>(<em>n</em>log<em>n</em>)，因为每次重新分配内存时，都需要复制已有的元素，而复制操作的时间复杂度与当前元素数量成正比。相比之下，<code>vector_push_back_reserve</code> 的时间复杂度为 <em>O</em>(<em>n</em>)，因为所有元素都可以直接插入到预先分配的内存空间中，无需额外的复制操作。</li>
+<li><strong>实际性能</strong>：在实际运行中，<code>vector_push_back_reserve</code> 函数的执行时间通常比 <code>vector_push_back_one_by_one</code> 函数短得多，尤其是在插入大量元素时。这是因为 <code>vector_push_back_one_by_one</code> 函数需要进行多次内存分配和复制操作，而 <code>vector_push_back_reserve</code> 函数只需要一次内存分配，后续的插入操作非常高效。</li>
+</ul>
+<h1 id="unordered_map-替换-map"><a class="markdownIt-Anchor" href="#unordered_map-替换-map"></a> unordered_map 替换 map</h1>
+<h2 id="问题"><a class="markdownIt-Anchor" href="#问题"></a> 问题</h2>
+<p>问题来自与 cmu 15-445 fall 2022 p1，当时在线测试HardTest_4 超时（上限是 10s，当时程序耗时 14s）。</p>
+<h2 id="调优"><a class="markdownIt-Anchor" href="#调优"></a> 调优</h2>
+<p>在 macbook 上跑的项目，没有 perf 分析工具，使用 macos 中的 Instruments 进行分析。</p>
+<p>可以看到 <code>HardTest_4</code> 的主要耗时在 <code>HistoryCmpLess()</code> 函数上：</p>
+<p><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_00-19-21.png" alt="" /></p>
+<p>耗时集中在下面三行代码，推测是 <code>history_</code> 的随机取数据导致性能低下。</p>
+<p><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_00-19-41.png" alt="" /></p>
+<p>查看 <code>history_</code> 类型，果然是 map 类型，但是使用 unordered_map 更加高效。更换数据类型后，耗时下降到 7s，符合预期。</p>
 
       
     </div>
@@ -402,7 +455,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://dragonliu2018.github.io/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" title="[Tool] wsl 报错汇总" target="_blank" rel="external">https://dragonliu2018.github.io/2025/09/24/Tool-wsl-报错汇总/</a>
+      <a href="https://dragonliu2018.github.io/2025/09/26/PL-C-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%B1%87%E6%80%BB/" title="[PL][C++] 性能优化汇总" target="_blank" rel="external">https://dragonliu2018.github.io/2025/09/26/PL-C-性能优化汇总/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -448,13 +501,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" title="[Tool] git 使用技巧汇总"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2025/09/14/databend-pivot-%E6%94%AF%E6%8C%81-subquery/" title="[databend] pivot 支持 subquery"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2025/09/25/Tool-docker-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" title="[Tool] docker 使用技巧汇总"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
