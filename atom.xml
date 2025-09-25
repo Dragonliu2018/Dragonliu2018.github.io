@@ -6,7 +6,7 @@
   <link href="https://dragonliu2018.github.io/atom.xml" rel="self"/>
   
   <link href="https://dragonliu2018.github.io/"/>
-  <updated>2025-09-25T16:20:12.162Z</updated>
+  <updated>2025-09-25T16:31:25.463Z</updated>
   <id>https://dragonliu2018.github.io/</id>
   
   <author>
@@ -15,6 +15,89 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[Tool] C++ benchmark</title>
+    <link href="https://dragonliu2018.github.io/2025/09/26/Tool-C-benchmark/"/>
+    <id>https://dragonliu2018.github.io/2025/09/26/Tool-C-benchmark/</id>
+    <published>2025-09-25T16:30:37.000Z</published>
+    <updated>2025-09-25T16:31:25.463Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-编译"><a class="markdownIt-Anchor" href="#1-编译"></a> 1 编译</h1><ol><li><p>clone 仓库：<code>git clone https://github.com/google/benchmark.git</code></p></li><li><p>新建 build：</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> benchmark</span><br><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line"><span class="built_in">cd</span> build</span><br></pre></td></tr></table></figure></li><li><p>cmake &amp; 下载依赖:</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake -DBENCHMARK_DOWNLOAD_DEPENDENCIES=on -DCMAKE_BUILD_TYPE=Release ../</span><br></pre></td></tr></table></figure></li><li><p>编译：</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake --build <span class="string">&quot;build&quot;</span> --config Release</span><br></pre></td></tr></table></figure></li></ol><h1 id="2-编写测试"><a class="markdownIt-Anchor" href="#2-编写测试"></a> 2 编写测试</h1><h1 id="3-在线-benchmark"><a class="markdownIt-Anchor" href="#3-在线-benchmark"></a> 3 在线 benchmark</h1><p><a href="https://quick-bench.com/q/6tDxsmk3FMX55B8W1RrdiG_s7_k">https://quick-bench.com/q/6tDxsmk3FMX55B8W1RrdiG_s7_k</a></p><h1 id="x-参考"><a class="markdownIt-Anchor" href="#x-参考"></a> X 参考</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;1-编译&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-编译&quot;&gt;&lt;/a&gt; 1 编译&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;clone 仓库：&lt;code&gt;git clone https://github.com/google/bench</summary>
+      
+    
+    
+    
+    <category term="PL" scheme="https://dragonliu2018.github.io/categories/PL/"/>
+    
+    <category term="Tool" scheme="https://dragonliu2018.github.io/categories/Tool/"/>
+    
+    <category term="C++" scheme="https://dragonliu2018.github.io/categories/PL/C/"/>
+    
+    <category term="调优" scheme="https://dragonliu2018.github.io/categories/Tool/%E8%B0%83%E4%BC%98/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>[Tool] gperf 安装使用教程</title>
+    <link href="https://dragonliu2018.github.io/2025/09/26/Tool-gperf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+    <id>https://dragonliu2018.github.io/2025/09/26/Tool-gperf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</id>
+    <published>2025-09-25T16:28:23.000Z</published>
+    <updated>2025-09-25T16:28:47.582Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-介绍"><a class="markdownIt-Anchor" href="#1-介绍"></a> 1 介绍</h1><p><a href="https://github.com/gperftools/gperftools">https://github.com/gperftools/gperftools</a></p><p><a href="https://github.com/gperftools/gperftools">gperftools</a> 是谷歌推出的一套非常强大的性能分析工具集. 它主要有这三个功能:</p><ul><li>分析 CPU 性能, 能够统计出一段时间内各个函数的执行时间, 帮助我们找出耗时的代码;</li><li>分析内存占用情况, 能够统计出某一时刻各个函数分配的内存大小, 帮助我们找出内存占用高的代码, 也能帮助我们定位内存泄露;</li><li>自动检查内存泄露.</li></ul><p>gperftools 还包含一个高性能内存分配器 tcmalloc, 我们可以用它代替 glibc 的 ptmalloc. tcmalloc 自带统计功能, 内存分析和检查内存泄露就靠它.</p><p>本文介绍 gperftools 在 Linux 下的一些常见的用法. 如果你需要使用 gperftools 分析 Linux (服务器) 程序, 这篇文章可以当作一个 Quick Start.</p><h1 id="2-安装"><a class="markdownIt-Anchor" href="#2-安装"></a> 2 安装</h1><p><strong>方法1：</strong></p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ruby -e <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>&quot;</span> &lt; /dev/null 2&gt; /dev/null</span><br></pre></td></tr></table></figure><p><strong>方法2:</strong></p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install gperftools</span><br></pre></td></tr></table></figure><h1 id="3-使用"><a class="markdownIt-Anchor" href="#3-使用"></a> 3 使用</h1><h1 id="x-参考"><a class="markdownIt-Anchor" href="#x-参考"></a> X 参考</h1><ul><li><a href="https://stackoverflow.com/questions/23200704/install-perf-on-mac"><strong>Install “perf” on Mac</strong></a></li><li><a href="https://luyuhuang.tech/2022/04/10/gperftools.html"><strong>使用 gperftools 分析程序性能</strong></a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;1-介绍&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-介绍&quot;&gt;&lt;/a&gt; 1 介绍&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/gperftools/gperftools&quot;&gt;https://github.</summary>
+      
+    
+    
+    
+    <category term="Tool" scheme="https://dragonliu2018.github.io/categories/Tool/"/>
+    
+    <category term="调优" scheme="https://dragonliu2018.github.io/categories/Tool/%E8%B0%83%E4%BC%98/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>[Tool] perf 安装使用教程</title>
+    <link href="https://dragonliu2018.github.io/2025/09/26/Tool-perf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+    <id>https://dragonliu2018.github.io/2025/09/26/Tool-perf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</id>
+    <published>2025-09-25T16:24:37.000Z</published>
+    <updated>2025-09-25T16:28:35.585Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-ubuntu-安装步骤"><a class="markdownIt-Anchor" href="#1-ubuntu-安装步骤"></a> 1 ubuntu 安装步骤</h1><ol><li><p>安装<code>linux-tools-common</code>：</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install linux-tools-common</span><br></pre></td></tr></table></figure></li><li><p>此时运行perf仍然失败：</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  matrixdb git:(main) ✗ perf</span><br><span class="line">WARNING: perf not found <span class="keyword">for</span> kernel 5.15.0-69</span><br><span class="line"></span><br><span class="line">  You may need to install the following packages <span class="keyword">for</span> this specific kernel:</span><br><span class="line">    linux-tools-5.15.0-69-generic</span><br><span class="line">    linux-cloud-tools-5.15.0-69-generic</span><br><span class="line"></span><br><span class="line">  You may also want to install one of the following packages to keep up to <span class="built_in">date</span>:</span><br><span class="line">    linux-tools-generic</span><br><span class="line">    linux-cloud-tools-generic</span><br></pre></td></tr></table></figure></li><li><p>根据提示先进行对应包的更新：</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install linux-tools-generic linux-cloud-tools-generic</span><br></pre></td></tr></table></figure></li><li><p>下载对应包：</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install linux-tools-5.15.0-69-generic linux-cloud-tools-5.15.0-69-generic</span><br></pre></td></tr></table></figure></li><li><p>进行验证，下载成功：</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  matrixdb git:(main) ✗ perf -v</span><br><span class="line">perf version 5.15.87</span><br></pre></td></tr></table></figure></li></ol><h1 id="2-卸载"><a class="markdownIt-Anchor" href="#2-卸载"></a> 2 卸载</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get remove linux-tools-common linux-tools-$(<span class="built_in">uname</span> -r) linux-cloud-tools-$(<span class="built_in">uname</span> -r)</span><br></pre></td></tr></table></figure><h1 id="3-报错"><a class="markdownIt-Anchor" href="#3-报错"></a> 3 报错</h1><h2 id="31-报错1the-cpu_corecycles-event-is-not-supported"><a class="markdownIt-Anchor" href="#31-报错1the-cpu_corecycles-event-is-not-supported"></a> 3.1 报错1：The cpu_core/cycles/ event is not supported.</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  build git:(p1) ✗ <span class="built_in">sudo</span> perf record ./test/buffer_pool_manager_instance_test</span><br><span class="line">Error:</span><br><span class="line">The cpu_core/cycles/ event is not supported.</span><br></pre></td></tr></table></figure><p>在公司 macbook 上没有出现报错，在实验室 win11 上出现上述问题。</p><p><strong>参考</strong> <a href="https://www.cnblogs.com/azureology/p/13913540.html">虚拟机Linux使用perf stat提示cycles not supported</a>，解决方法如下：</p><ol><li>关闭VMware虚拟机电源，找到硬件配置选项中CPU</li><li>勾选<code>☑️虚拟化CPU性能计数器</code></li><li>重启问题解决（但是我的机器勾选后无法启动虚拟机了🥦</li></ol><h1 id="4-使用"><a class="markdownIt-Anchor" href="#4-使用"></a> 4 使用</h1><h2 id="41-抓取性能信息"><a class="markdownIt-Anchor" href="#41-抓取性能信息"></a> 4.1 抓取性能信息</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进程</span></span><br><span class="line"><span class="built_in">sudo</span> perf record --call-graph=dwarf -p 479061</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可执行文件</span></span><br><span class="line"><span class="built_in">sudo</span> perf record --call-graph=dwarf ./exec</span><br></pre></td></tr></table></figure><h2 id="42-结果展示"><a class="markdownIt-Anchor" href="#42-结果展示"></a> 4.2 结果展示</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> perf report -i perf.data --no-inline -g</span><br></pre></td></tr></table></figure><h2 id="43-快捷键"><a class="markdownIt-Anchor" href="#43-快捷键"></a> 4.3 快捷键</h2><ol><li>展开：<code>shift</code> + <code>+</code></li><li></li></ol><h1 id="x-参考"><a class="markdownIt-Anchor" href="#x-参考"></a> X 参考</h1><ul><li><a href="https://www.jianshu.com/p/4659063b3c0d"><strong>基于Ubuntu 18.04 安装perf工具</strong></a></li><li><a href="https://installati.one/install-perf-tools-unstable-ubuntu-22-04/"><strong>How To Install perf-tools-unstable on Ubuntu 22.04</strong></a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;1-ubuntu-安装步骤&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-ubuntu-安装步骤&quot;&gt;&lt;/a&gt; 1 ubuntu 安装步骤&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;安装&lt;code&gt;linux-tools-common&lt;/c</summary>
+      
+    
+    
+    
+    <category term="Tool" scheme="https://dragonliu2018.github.io/categories/Tool/"/>
+    
+    <category term="调优" scheme="https://dragonliu2018.github.io/categories/Tool/%E8%B0%83%E4%BC%98/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>[PL][C++] 性能优化汇总</title>

@@ -17,16 +17,20 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>分类: C++ | Dragon&#39;s Blogs</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://dragonliu2018.github.io/categories/PL/C/index.html">
+  <title>[Tool] perf 安装使用教程 | Dragon&#39;s Blogs</title>
+  <meta name="description" content="1 ubuntu 安装步骤   安装linux-tools-common：  sudo apt-get install linux-tools-common   此时运行perf仍然失败：  ➜  matrixdb git:(main) ✗ perfWARNING: perf not found for kernel 5.15.0-69  You may need to install the">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Tool] perf 安装使用教程">
+<meta property="og:url" content="https://dragonliu2018.github.io/2025/09/26/Tool-perf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1 ubuntu 安装步骤   安装linux-tools-common：  sudo apt-get install linux-tools-common   此时运行perf仍然失败：  ➜  matrixdb git:(main) ✗ perfWARNING: perf not found for kernel 5.15.0-69  You may need to install the">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-09-25T16:24:37.000Z">
+<meta property="article:modified_time" content="2025-09-25T16:28:35.585Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://dragonliu2018.github.io/categories/PL/C/index.html">
+  <link rel="canonical" href="https://dragonliu2018.github.io/2025/09/26/Tool-perf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -36,6 +40,8 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
   
   
   
@@ -320,83 +326,204 @@
 </aside>
 
   
-  <main class="main" role="main">
-  <article class="content article article-categories article-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">分类: C++</h1>
-      <p class="hidden-xs">共 2 篇文章</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/categories">All</a></li>
-          
-          <li><a href="/categories/PL/">PL</a></li>
-          
-          <li><a href="/categories/Tool/">Tool</a></li>
-          
-          <li><a href="/categories/PL/C/">C++</a></li>
-          
-          <li><a href="/categories/PL/Python/">Python</a></li>
-          
-          <li><a href="/categories/Tool/调优/">调优</a></li>
-          
-          <li><a href="/categories/Tool/wsl/">wsl</a></li>
-          
-          <li><a href="/categories/Tool/Hexo/">Hexo</a></li>
-          
-          <li><a href="/categories/Tool/docker/">docker</a></li>
-          
-          <li><a href="/categories/Tool/git/">git</a></li>
-          
-          <li><a href="/categories/DB/">DB</a></li>
-          
-          <li><a href="/categories/DB/databend/">databend</a></li>
-          
-          <li><a href="/categories/DB/doris/">doris</a></li>
-          
-          <li><a href="/categories/DB/函数-表达式/">函数/表达式</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
-      <div class="panel panel-default b-no">
-    <div class="panel-heading" role="tab">
-        <h4 class="panel-title">
-            <a data-toggle="collapse" href="#collapseC++" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              C++
-            </a>
-            <small class="text-muted">(Total 2 articles)</small>
-        </h4>
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-ubuntu-%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text"> 1 ubuntu 安装步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%8D%B8%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text"> 2 卸载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%8A%A5%E9%94%99"><span class="toc-number">3.</span> <span class="toc-text"> 3 报错</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#31-%E6%8A%A5%E9%94%991the-cpu_corecycles-event-is-not-supported"><span class="toc-number">3.1.</span> <span class="toc-text"> 3.1 报错1：The cpu_core&#x2F;cycles&#x2F; event is not supported.</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E4%BD%BF%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text"> 4 使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#41-%E6%8A%93%E5%8F%96%E6%80%A7%E8%83%BD%E4%BF%A1%E6%81%AF"><span class="toc-number">4.1.</span> <span class="toc-text"> 4.1 抓取性能信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#42-%E7%BB%93%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="toc-number">4.2.</span> <span class="toc-text"> 4.2 结果展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#43-%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">4.3.</span> <span class="toc-text"> 4.3 快捷键</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#x-%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text"> X 参考</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Tool-perf-安装使用教程" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [Tool] perf 安装使用教程
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2025/09/26/Tool-perf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="article-date">
+	  <time datetime="2025-09-25T16:24:37.000Z" itemprop="datePublished">2025-09-26</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Tool/">Tool</a>►<a class="article-category-link" href="/categories/Tool/%E8%B0%83%E4%BC%98/">调优</a>
+  </span>
+
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/09/26/Tool-perf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 377(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
+	
+
+      </div>
     </div>
-    <div id="collapseC++" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingC++">
-        <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/26/Tool-C-benchmark/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-25T16:30:37.000Z" itemprop="datePublished">2025-09-26</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] C++ benchmark
-</a>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="1-ubuntu-安装步骤"><a class="markdownIt-Anchor" href="#1-ubuntu-安装步骤"></a> 1 ubuntu 安装步骤</h1>
+<ol>
+<li>
+<p>安装<code>linux-tools-common</code>：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install linux-tools-common</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>此时运行perf仍然失败：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  matrixdb git:(main) ✗ perf</span><br><span class="line">WARNING: perf not found <span class="keyword">for</span> kernel 5.15.0-69</span><br><span class="line"></span><br><span class="line">  You may need to install the following packages <span class="keyword">for</span> this specific kernel:</span><br><span class="line">    linux-tools-5.15.0-69-generic</span><br><span class="line">    linux-cloud-tools-5.15.0-69-generic</span><br><span class="line"></span><br><span class="line">  You may also want to install one of the following packages to keep up to <span class="built_in">date</span>:</span><br><span class="line">    linux-tools-generic</span><br><span class="line">    linux-cloud-tools-generic</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>根据提示先进行对应包的更新：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install linux-tools-generic linux-cloud-tools-generic</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>下载对应包：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install linux-tools-5.15.0-69-generic linux-cloud-tools-5.15.0-69-generic</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>进行验证，下载成功：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  matrixdb git:(main) ✗ perf -v</span><br><span class="line">perf version 5.15.87</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="2-卸载"><a class="markdownIt-Anchor" href="#2-卸载"></a> 2 卸载</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get remove linux-tools-common linux-tools-$(<span class="built_in">uname</span> -r) linux-cloud-tools-$(<span class="built_in">uname</span> -r)</span><br></pre></td></tr></table></figure>
+<h1 id="3-报错"><a class="markdownIt-Anchor" href="#3-报错"></a> 3 报错</h1>
+<h2 id="31-报错1the-cpu_corecycles-event-is-not-supported"><a class="markdownIt-Anchor" href="#31-报错1the-cpu_corecycles-event-is-not-supported"></a> 3.1 报错1：The cpu_core/cycles/ event is not supported.</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  build git:(p1) ✗ <span class="built_in">sudo</span> perf record ./test/buffer_pool_manager_instance_test</span><br><span class="line">Error:</span><br><span class="line">The cpu_core/cycles/ event is not supported.</span><br></pre></td></tr></table></figure>
+<p>在公司 macbook 上没有出现报错，在实验室 win11 上出现上述问题。</p>
+<p><strong>参考</strong> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/azureology/p/13913540.html">虚拟机Linux使用perf stat提示cycles not supported</a>，解决方法如下：</p>
+<ol>
+<li>关闭VMware虚拟机电源，找到硬件配置选项中CPU</li>
+<li>勾选<code>☑️虚拟化CPU性能计数器</code></li>
+<li>重启问题解决（但是我的机器勾选后无法启动虚拟机了🥦</li>
+</ol>
+<h1 id="4-使用"><a class="markdownIt-Anchor" href="#4-使用"></a> 4 使用</h1>
+<h2 id="41-抓取性能信息"><a class="markdownIt-Anchor" href="#41-抓取性能信息"></a> 4.1 抓取性能信息</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进程</span></span><br><span class="line"><span class="built_in">sudo</span> perf record --call-graph=dwarf -p 479061</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可执行文件</span></span><br><span class="line"><span class="built_in">sudo</span> perf record --call-graph=dwarf ./exec</span><br></pre></td></tr></table></figure>
+<h2 id="42-结果展示"><a class="markdownIt-Anchor" href="#42-结果展示"></a> 4.2 结果展示</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> perf report -i perf.data --no-inline -g</span><br></pre></td></tr></table></figure>
+<h2 id="43-快捷键"><a class="markdownIt-Anchor" href="#43-快捷键"></a> 4.3 快捷键</h2>
+<ol>
+<li>展开：<code>shift</code> + <code>+</code></li>
+<li></li>
+</ol>
+<h1 id="x-参考"><a class="markdownIt-Anchor" href="#x-参考"></a> X 参考</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4659063b3c0d"><strong>基于Ubuntu 18.04 安装perf工具</strong></a></li>
+<li><a target="_blank" rel="noopener" href="https://installati.one/install-perf-tools-unstable-ubuntu-22-04/"><strong>How To Install perf-tools-unstable on Ubuntu 22.04</strong></a></li>
+</ul>
 
-
-              
-                
-<a href="/2025/09/26/PL-C-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-25T16:06:51.000Z" itemprop="datePublished">2025-09-26</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [PL][C++] 性能优化汇总
-</a>
-
-
-              
-            </div>
-        </div>
+      
     </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://dragonliu2018.github.io/2025/09/26/Tool-perf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="[Tool] perf 安装使用教程" target="_blank" rel="external">https://dragonliu2018.github.io/2025/09/26/Tool-perf-安装使用教程/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/dragonliu2018" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/dragonliu2018" target="_blank"><span class="text-dark">Dragon Liu</span><small class="ml-1x">Blogs</small></a></h3>
+        <div>Life is painting a picture, not doing a sum.</div>
+      </div>
+    </figure>
+  </div>
 </div>
+
+
     </div>
   </article>
-   
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2025/09/26/Tool-gperf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="[Tool] gperf 安装使用教程"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2025/09/26/PL-C-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%B1%87%E6%80%BB/" title="[PL][C++] 性能优化汇总"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -451,6 +578,39 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Pbjl2Wajl9och0xVbR5eqoH1-gzGzoHsz',
+    appKey: 'PgxFh1wV6pyMMllhxs7NJijb',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
 
 
 
