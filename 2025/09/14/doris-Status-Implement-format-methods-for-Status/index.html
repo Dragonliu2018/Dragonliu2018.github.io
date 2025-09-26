@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>[doris][Status] Implement format methods for Status | Dragon&#39;s Blogs</title>
+  <meta name="description" content="1 issue 介绍  issue: https:&#x2F;&#x2F;github.com&#x2F;apache&#x2F;doris&#x2F;issues&#x2F;25974 PR: https:&#x2F;&#x2F;github.com&#x2F;apache&#x2F;doris&#x2F;pull&#x2F;26133  当前 Status 类型进行 format 时，需要调用 to_string 函数： fmt::format(&quot;&#123;&#125;&quot;, status">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[doris][Status] Implement format methods for Status">
+<meta property="og:url" content="https://dragonliu2018.github.io/2025/09/14/doris-Status-Implement-format-methods-for-Status/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1 issue 介绍  issue: https:&#x2F;&#x2F;github.com&#x2F;apache&#x2F;doris&#x2F;issues&#x2F;25974 PR: https:&#x2F;&#x2F;github.com&#x2F;apache&#x2F;doris&#x2F;pull&#x2F;26133  当前 Status 类型进行 format 时，需要调用 to_string 函数： fmt::format(&quot;&#123;&#125;&quot;, status">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-09-14T09:26:44.000Z">
+<meta property="article:modified_time" content="2025-09-26T16:08:24.481Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="pr">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://dragonliu2018.github.io/2025/09/14/doris-Status-Implement-format-methods-for-Status/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/dragonliu2018" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Dragon Liu</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Blogs</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-navigation">
+          <a href="/navigation">
+            
+            <i class="icon icon-map-marker"></i>
+            
+            <span class="menu-title">导航</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</br>dragonliu2018@gmail.com</br>电脑端观看效果更佳！</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      <!-- 
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/">DB</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/databend/">databend</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DB/doris/">doris</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DB/%E5%87%BD%E6%95%B0-%E8%A1%A8%E8%BE%BE%E5%BC%8F/">函数/表达式</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PL/C/">C++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/Python/">Python</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/docker/">docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/git/">git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/opt/">opt</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/wsl/">wsl</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+ -->
+
+  <div class="category-block">
+    <h3 class="asidetitle">分类</h3>
+       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/">DB</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/databend/">databend</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DB/doris/">doris</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DB/%E5%87%BD%E6%95%B0-%E8%A1%A8%E8%BE%BE%E5%BC%8F/">函数/表达式</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PL/C/">C++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/Python/">Python</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/docker/">docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/git/">git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/opt/">opt</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/wsl/">wsl</a><span class="category-list-count">1</span></li></ul></li></ul>
+  </div>
+  
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/pr/" rel="tag">pr</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/pr/" style="font-size: 13px;">pr</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">九月 2025</a><span class="archive-list-count">24</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/DB/">DB</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/DB/doris/">doris</a>
+              </p>
+              <p class="item-title">
+                <a href="/2025/09/27/doris-DEFAULT-%E6%94%AF%E6%8C%81-PI-%E4%BD%9C%E4%B8%BA%E5%88%97%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC/" class="title">[doris][DEFAULT] 支持 PI 作为列的默认值</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-09-26T16:22:11.000Z" itemprop="datePublished">2025-09-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/DB/">DB</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/DB/doris/">doris</a>
+              </p>
+              <p class="item-title">
+                <a href="/2025/09/27/doris-insert-%E6%94%AF%E6%8C%81%E5%85%B7%E6%9C%89-CTE-%E7%9A%84-Insert/" class="title">[doris][insert] 支持具有 CTE 的 Insert</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-09-26T16:17:55.000Z" itemprop="datePublished">2025-09-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/DB/">DB</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/DB/doris/">doris</a>
+              </p>
+              <p class="item-title">
+                <a href="/2025/09/27/doris-%E6%94%AF%E6%8C%81%E5%88%A0%E9%99%A4%E5%9B%9E%E6%94%B6%E7%AB%99%E5%86%85%E5%AE%B9/" class="title">[doris] 支持删除回收站内容</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-09-26T16:09:09.000Z" itemprop="datePublished">2025-09-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/DB/">DB</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/DB/doris/">doris</a>
+              </p>
+              <p class="item-title">
+                <a href="/2025/09/27/doris-insert-%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90/" class="title">[doris] insert 实现解析</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-09-26T16:05:18.000Z" itemprop="datePublished">2025-09-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/DB/">DB</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/DB/doris/">doris</a>
+              </p>
+              <p class="item-title">
+                <a href="/2025/09/27/doris-Catalog-Recycle-Bin-%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90/" class="title">[doris] Catalog Recycle Bin 实现解析</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2025-09-26T16:04:43.000Z" itemprop="datePublished">2025-09-27</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-issue-%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text"> 1 issue 介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text"> 2 实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#21-%E8%A7%A3%E6%9E%90"><span class="toc-number">2.1.</span> <span class="toc-text"> 2.1 解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-%E5%8A%9F%E8%83%BD%E4%BB%A3%E7%A0%81"><span class="toc-number">2.2.</span> <span class="toc-text"> 2.2 功能代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23-%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="toc-number">2.3.</span> <span class="toc-text"> 2.3 测试代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text"> 3 问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#31-ld-symbols-not-found-for-architecture-x86_64"><span class="toc-number">3.1.</span> <span class="toc-text"> 3.1 ld: symbol(s) not found for architecture x86_64</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#32-fmtformatter-%E6%A8%A1%E6%9D%BF%E7%89%B9%E5%8C%96%E4%BB%A3%E7%A0%81%E4%B8%8D%E8%83%BD%E5%9C%A8-doris-%E7%9A%84-namespace"><span class="toc-number">3.2.</span> <span class="toc-text"> 3.2 fmt::formatter 模板特化代码不能在 doris 的 namespace</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-doris-Status-Implement-format-methods-for-Status" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [doris][Status] Implement format methods for Status
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2025/09/14/doris-Status-Implement-format-methods-for-Status/" class="article-date">
+	  <time datetime="2025-09-14T09:26:44.000Z" itemprop="datePublished">2025-09-14</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/DB/">DB</a>►<a class="article-category-link" href="/categories/DB/doris/">doris</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/pr/" rel="tag">pr</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/09/14/doris-Status-Implement-format-methods-for-Status/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 694(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="1-issue-介绍"><a class="markdownIt-Anchor" href="#1-issue-介绍"></a> 1 issue 介绍</h1>
+<ul>
+<li><strong>issue</strong>: <a target="_blank" rel="noopener" href="https://github.com/apache/doris/issues/25974">https://github.com/apache/doris/issues/25974</a></li>
+<li><strong>PR</strong>: <a target="_blank" rel="noopener" href="https://github.com/apache/doris/pull/26133">https://github.com/apache/doris/pull/26133</a></li>
+</ul>
+<p>当前 <code>Status</code> 类型进行 format 时，需要调用 <code>to_string</code> 函数：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">fmt::format(<span class="string">&quot;&#123;&#125;&quot;</span>, status.<span class="built_in">to_string</span>());</span><br></pre></td></tr></table></figure>
+<p>想要的效果是只需要传入 Status 类型即可：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">fmt::format(<span class="string">&quot;&#123;&#125;&quot;</span>, status);</span><br></pre></td></tr></table></figure>
+<h1 id="2-实现"><a class="markdownIt-Anchor" href="#2-实现"></a> 2 实现</h1>
+<h2 id="21-解析"><a class="markdownIt-Anchor" href="#21-解析"></a> 2.1 解析</h2>
+<p><code>fmt</code> 库提供了一个类模板 <code>fmt::formatter</code>，通过模板特化为 <code>Status</code> 类型提供适当的格式化方式。</p>
+<p>然后实现 <code>parse</code> 和 <code>format</code> 函数即可：</p>
+<ul>
+<li><strong><code>parse</code></strong> 函数负责解析格式字符串。在通常情况下，用户可能不需要提供自己的 <strong><code>parse</code></strong> 函数，而可以使用 fmt 默认提供的版本，该版本简单地返回解析上下文的开始迭代器。</li>
+<li><strong><code>format</code></strong> 函数是用户必须提供的关键成员函数。它定义了如何将自定义类型格式化为字符串。</li>
+</ul>
+<h2 id="22-功能代码"><a class="markdownIt-Anchor" href="#22-功能代码"></a> 2.2 功能代码</h2>
+<blockquote>
+<p>👉 **参考：**<a target="_blank" rel="noopener" href="https://wgml.pl/blog/formatting-user-defined-types-fmt.html">https://wgml.pl/blog/formatting-user-defined-types-fmt.html</a></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// specify formatter for Status</span></span><br><span class="line"><span class="keyword">template</span> &lt;&gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">fmt</span>::formatter&lt;doris::Status&gt; &#123;</span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ParseContext&gt;</span><br><span class="line">    <span class="function"><span class="keyword">constexpr</span> <span class="keyword">auto</span> <span class="title">parse</span><span class="params">(ParseContext&amp; ctx)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ctx.<span class="built_in">begin</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> FormatContext&gt;</span><br><span class="line">    <span class="function"><span class="keyword">auto</span> <span class="title">format</span><span class="params">(doris::Status <span class="type">const</span>&amp; status, FormatContext&amp; ctx)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> fmt::format_to(ctx.<span class="built_in">out</span>(), <span class="string">&quot;&#123;&#125;&quot;</span>, status.<span class="built_in">to_string</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="23-测试代码"><a class="markdownIt-Anchor" href="#23-测试代码"></a> 2.3 测试代码</h2>
+<p>实现完成后，编写测试样例，这里需要注意覆盖率。</p>
+<p>reviewer 提出的建议是：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">please add <span class="number">3</span> tests：</span><br><span class="line"><span class="number">1.</span> status == ok</span><br><span class="line"><span class="number">2.</span> status == error &amp;&amp; has stacktrace</span><br><span class="line"><span class="number">3.</span> status == error &amp;&amp; <span class="keyword">do</span> <span class="keyword">not</span> have stacktrace</span><br></pre></td></tr></table></figure>
+<h1 id="3-问题"><a class="markdownIt-Anchor" href="#3-问题"></a> 3 问题</h1>
+<h2 id="31-ld-symbols-not-found-for-architecture-x86_64"><a class="markdownIt-Anchor" href="#31-ld-symbols-not-found-for-architecture-x86_64"></a> 3.1 ld: symbol(s) not found for architecture x86_64</h2>
+<p>在本地 macos 上尝试写了个测试程序，但是发生下面的报错：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  test-reset git:(main) ✗ g++ test.cpp -std=c++20 -o <span class="built_in">test</span></span><br><span class="line">Undefined symbols <span class="keyword">for</span> architecture x86_64:</span><br><span class="line">  <span class="string">&quot;void fmt::v10::detail::vformat_to&lt;char&gt;(fmt::v10::detail::buffer&lt;char&gt;&amp;, fmt::v10::basic_string_view&lt;char&gt;, fmt::v10::detail::vformat_args&lt;char&gt;::type, fmt::v10::detail::locale_ref)&quot;</span>, referenced from:</span><br><span class="line">      <span class="built_in">fmt</span>::v10::appender <span class="built_in">fmt</span>::v10::vformat_to&lt;<span class="built_in">fmt</span>::v10::appender, 0&gt;(<span class="built_in">fmt</span>::v10::appender, <span class="built_in">fmt</span>::v10::basic_string_view&lt;char&gt;, <span class="built_in">fmt</span>::v10::basic_format_args&lt;<span class="built_in">fmt</span>::v10::basic_format_context&lt;<span class="built_in">fmt</span>::v10::appender, char&gt; &gt;) <span class="keyword">in</span> test-878b3f.o</span><br><span class="line">  <span class="string">&quot;fmt::v10::detail::assert_fail(char const*, int, char const*)&quot;</span>, referenced from:</span><br><span class="line">      std::__1::make_unsigned&lt;long&gt;::<span class="built_in">type</span> <span class="built_in">fmt</span>::v10::detail::to_unsigned&lt;long&gt;(long) <span class="keyword">in</span> test-878b3f.o</span><br><span class="line">  <span class="string">&quot;fmt::v10::vprint(fmt::v10::basic_string_view&lt;char&gt;, fmt::v10::basic_format_args&lt;fmt::v10::basic_format_context&lt;fmt::v10::appender, char&gt; &gt;)&quot;</span>, referenced from:</span><br><span class="line">      _main <span class="keyword">in</span> test-878b3f.o</span><br><span class="line">ld: symbol(s) not found <span class="keyword">for</span> architecture x86_64</span><br><span class="line">clang: error: linker <span class="built_in">command</span> failed with <span class="built_in">exit</span> code 1 (use -v to see invocation)</span><br></pre></td></tr></table></figure>
+<p><strong>解决</strong>：原因是未链接 fmt 库文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">g++ test.cpp -std=c++20 -o <span class="built_in">test</span> -lfmt</span><br></pre></td></tr></table></figure>
+<p><strong>参考</strong>：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/56608684/how-to-use-the-fmt-library-without-getting-undefined-symbols-for-architecture-x">https://stackoverflow.com/questions/56608684/how-to-use-the-fmt-library-without-getting-undefined-symbols-for-architecture-x</a></p>
+<h2 id="32-fmtformatter-模板特化代码不能在-doris-的-namespace"><a class="markdownIt-Anchor" href="#32-fmtformatter-模板特化代码不能在-doris-的-namespace"></a> 3.2 <code>fmt::formatter</code> 模板特化代码不能在 doris 的 namespace</h2>
+<p>开始将特化代码放在了 doris namespace 中，发生了下面的报错：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Class template specialization of <span class="string">&#x27;formatter&#x27;</span> not <span class="keyword">in</span> a namespace enclosing <span class="string">&#x27;v8&#x27;</span> is a Microsoft extension clang(-Wmicrosoft-template)</span><br><span class="line"></span><br><span class="line">[core.h(707, 8): ] Explicitly specialized declaration is here</span><br></pre></td></tr></table></figure>
+<p><strong>解决</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> doris &#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">// doris code</span></span><br><span class="line"></span><br><span class="line">&#125; <span class="comment">// end doris_namespace</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// define formatter here</span></span><br></pre></td></tr></table></figure>
+<p>**参考：**<a target="_blank" rel="noopener" href="https://github.com/fmtlib/fmt/issues/2767">https://github.com/fmtlib/fmt/issues/2767</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://dragonliu2018.github.io/2025/09/14/doris-Status-Implement-format-methods-for-Status/" title="[doris][Status] Implement format methods for Status" target="_blank" rel="external">https://dragonliu2018.github.io/2025/09/14/doris-Status-Implement-format-methods-for-Status/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/dragonliu2018" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/dragonliu2018" target="_blank"><span class="text-dark">Dragon Liu</span><small class="ml-1x">Blogs</small></a></h3>
+        <div>Life is painting a picture, not doing a sum.</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2025/09/14/databend-pivot-%E6%94%AF%E6%8C%81-subquery/" title="[databend] pivot 支持 subquery"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2025/09/13/Tool-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="[Tool] Hexo 使用教程"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dragonliu2018" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Pbjl2Wajl9och0xVbR5eqoH1-gzGzoHsz',
+    appKey: 'PgxFh1wV6pyMMllhxs7NJijb',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

@@ -2,7 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://dragonliu2018.github.io/2025/09/27/DB-doris-%E6%94%AF%E6%8C%81%E5%88%A0%E9%99%A4%E5%9B%9E%E6%94%B6%E7%AB%99%E5%86%85%E5%AE%B9/</loc>
+    <loc>https://dragonliu2018.github.io/2025/09/27/doris-DEFAULT-%E6%94%AF%E6%8C%81-PI-%E4%BD%9C%E4%B8%BA%E5%88%97%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC/</loc>
+    
+    <lastmod>2025-09-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://dragonliu2018.github.io/2025/09/27/doris-insert-%E6%94%AF%E6%8C%81%E5%85%B7%E6%9C%89-CTE-%E7%9A%84-Insert/</loc>
+    
+    <lastmod>2025-09-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://dragonliu2018.github.io/2025/09/26/doris-%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2025-09-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://dragonliu2018.github.io/2025/09/26/doris-%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E6%B1%87%E6%80%BB/</loc>
+    
+    <lastmod>2025-09-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://dragonliu2018.github.io/2025/09/26/doris-%E8%BF%90%E8%A1%8C%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/</loc>
+    
+    <lastmod>2025-09-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://dragonliu2018.github.io/2025/09/27/doris-%E6%94%AF%E6%8C%81%E5%88%A0%E9%99%A4%E5%9B%9E%E6%94%B6%E7%AB%99%E5%86%85%E5%AE%B9/</loc>
+    
+    <lastmod>2025-09-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://dragonliu2018.github.io/2025/09/27/doris-Catalog-Recycle-Bin-%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90/</loc>
+    
+    <lastmod>2025-09-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://dragonliu2018.github.io/2025/09/26/doris-%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/</loc>
+    
+    <lastmod>2025-09-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://dragonliu2018.github.io/2025/09/27/doris-insert-%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90/</loc>
     
     <lastmod>2025-09-26</lastmod>
     
@@ -20,61 +92,7 @@
   </url>
   
   <url>
-    <loc>https://dragonliu2018.github.io/2025/09/27/DB-doris-insert-%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90/</loc>
-    
-    <lastmod>2025-09-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://dragonliu2018.github.io/2025/09/27/DB-doris-Catalog-Recycle-Bin-%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90/</loc>
-    
-    <lastmod>2025-09-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://dragonliu2018.github.io/2025/09/26/DB-doris-%E8%BF%90%E8%A1%8C%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/</loc>
-    
-    <lastmod>2025-09-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://dragonliu2018.github.io/2025/09/26/DB-doris-%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E6%B1%87%E6%80%BB/</loc>
-    
-    <lastmod>2025-09-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://dragonliu2018.github.io/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/</loc>
-    
-    <lastmod>2025-09-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://dragonliu2018.github.io/2025/09/26/DB-doris-%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/</loc>
-    
-    <lastmod>2025-09-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://dragonliu2018.github.io/2025/09/26/DB-doris-%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/</loc>
     
     <lastmod>2025-09-26</lastmod>
     
@@ -299,20 +317,6 @@
 
   
   <url>
-    <loc>https://dragonliu2018.github.io/categories/DB/</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://dragonliu2018.github.io/categories/DB/doris/</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://dragonliu2018.github.io/categories/PL/</loc>
     <lastmod>2025-09-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -321,13 +325,6 @@
   
   <url>
     <loc>https://dragonliu2018.github.io/categories/Tool/</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://dragonliu2018.github.io/categories/DB/databend/</loc>
     <lastmod>2025-09-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -348,7 +345,28 @@
   </url>
   
   <url>
+    <loc>https://dragonliu2018.github.io/categories/Tool/opt/</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://dragonliu2018.github.io/categories/Tool/Hexo/</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://dragonliu2018.github.io/categories/Tool/wsl/</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://dragonliu2018.github.io/categories/DB/</loc>
     <lastmod>2025-09-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -369,14 +387,14 @@
   </url>
   
   <url>
-    <loc>https://dragonliu2018.github.io/categories/Tool/opt/</loc>
+    <loc>https://dragonliu2018.github.io/categories/DB/databend/</loc>
     <lastmod>2025-09-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://dragonliu2018.github.io/categories/Tool/wsl/</loc>
+    <loc>https://dragonliu2018.github.io/categories/DB/doris/</loc>
     <lastmod>2025-09-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
