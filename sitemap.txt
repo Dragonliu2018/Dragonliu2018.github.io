@@ -1,3 +1,7 @@
+https://dragonliu2018.github.io/2025/09/27/DB-doris-%E6%94%AF%E6%8C%81%E5%88%A0%E9%99%A4%E5%9B%9E%E6%94%B6%E7%AB%99%E5%86%85%E5%AE%B9/
+https://dragonliu2018.github.io/2025/09/14/doris-Status-Implement-format-methods-for-Status/
+https://dragonliu2018.github.io/2025/09/27/DB-doris-insert-%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90/
+https://dragonliu2018.github.io/2025/09/27/DB-doris-Catalog-Recycle-Bin-%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90/
 https://dragonliu2018.github.io/2025/09/26/DB-doris-%E8%BF%90%E8%A1%8C%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/
 https://dragonliu2018.github.io/2025/09/26/DB-doris-%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E6%B1%87%E6%80%BB/
 https://dragonliu2018.github.io/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/
@@ -16,7 +20,6 @@ https://dragonliu2018.github.io/2025/09/24/Tool-git-%E6%8A%A5%E9%94%99%E6%B1%87%
 https://dragonliu2018.github.io/2025/09/24/Tool-github-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/
 https://dragonliu2018.github.io/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/
 https://dragonliu2018.github.io/2025/09/14/databend-pivot-%E6%94%AF%E6%8C%81-subquery/
-https://dragonliu2018.github.io/2025/09/14/doris-Status-Implement-format-methods-for-Status/
 https://dragonliu2018.github.io/2025/09/13/Tool-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/
 https://dragonliu2018.github.io/theme/index.html
 https://dragonliu2018.github.io/tags/index.html
@@ -32,9 +35,9 @@ https://dragonliu2018.github.io/categories/DB/
 https://dragonliu2018.github.io/categories/DB/doris/
 https://dragonliu2018.github.io/categories/PL/
 https://dragonliu2018.github.io/categories/Tool/
+https://dragonliu2018.github.io/categories/DB/databend/
 https://dragonliu2018.github.io/categories/PL/C/
 https://dragonliu2018.github.io/categories/PL/Python/
-https://dragonliu2018.github.io/categories/DB/databend/
 https://dragonliu2018.github.io/categories/Tool/Hexo/
 https://dragonliu2018.github.io/categories/Tool/docker/
 https://dragonliu2018.github.io/categories/Tool/git/

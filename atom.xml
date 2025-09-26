@@ -6,7 +6,7 @@
   <link href="https://dragonliu2018.github.io/atom.xml" rel="self"/>
   
   <link href="https://dragonliu2018.github.io/"/>
-  <updated>2025-09-26T15:40:01.442Z</updated>
+  <updated>2025-09-26T16:10:20.054Z</updated>
   <id>https://dragonliu2018.github.io/</id>
   
   <author>
@@ -15,6 +15,66 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[DB][doris] 支持删除回收站内容</title>
+    <link href="https://dragonliu2018.github.io/2025/09/27/DB-doris-%E6%94%AF%E6%8C%81%E5%88%A0%E9%99%A4%E5%9B%9E%E6%94%B6%E7%AB%99%E5%86%85%E5%AE%B9/"/>
+    <id>https://dragonliu2018.github.io/2025/09/27/DB-doris-%E6%94%AF%E6%8C%81%E5%88%A0%E9%99%A4%E5%9B%9E%E6%94%B6%E7%AB%99%E5%86%85%E5%AE%B9/</id>
+    <published>2025-09-26T16:09:09.000Z</published>
+    <updated>2025-09-26T16:10:20.054Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-issue-介绍"><a class="markdownIt-Anchor" href="#1-issue-介绍"></a> 1 issue 介绍</h1><ul><li><strong>issue:</strong> <a href="https://github.com/apache/doris/issues/31348">https://github.com/apache/doris/issues/31348</a></li><li><strong>PR</strong>: <a href="https://github.com/apache/doris/pull/31893">https://github.com/apache/doris/pull/31893</a></li></ul><p>回收站（Catalog Recycle Bin）：</p><hr /><p>将数据库、表和分区删除后，会将他们放到回收站，然后经过 <code>catalog_trash_expire_second</code> 秒(在 <code>fe.conf</code> 中设置)后会被删除。目标是提供类似下面的命令来立即从回收站中删除他们：</p><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span> <span class="keyword">drop</span> the database, <span class="keyword">table</span> <span class="keyword">and</span> <span class="keyword">partition</span> <span class="keyword">with</span> the specified db_id</span><br><span class="line"><span class="keyword">drop</span> catalog recycle bin <span class="keyword">where</span> <span class="string">&#x27;DbId&#x27;</span> <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> <span class="keyword">drop</span> the <span class="keyword">table</span> <span class="keyword">and</span> <span class="keyword">partition</span> <span class="keyword">with</span> the specified table_id</span><br><span class="line"><span class="keyword">drop</span> catalog recycle bin <span class="keyword">where</span> <span class="string">&#x27;TableId&#x27;</span> <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> <span class="keyword">drop</span> the <span class="keyword">partition</span> <span class="keyword">with</span> the specified partition_id</span><br><span class="line"><span class="keyword">drop</span> catalog recycle bin <span class="keyword">where</span> <span class="string">&#x27;PartitionId&#x27;</span> <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>;</span><br></pre></td></tr></table></figure><h1 id="2-实现"><a class="markdownIt-Anchor" href="#2-实现"></a> 2 实现</h1><ol><li>这个任务涉及到添加语法，doris 是基于 antlr4 实现的，在 statementBase 位置加上新语法 <code>drop catalog recycle bin</code>，这样就可以生成 AST（抽象语法树）；</li><li>然后就需要进行绑定，将 Java 中的类绑定到 AST 对应节点，antlr4 提供了 Visitor 去访问 ****AST 中的节点。在 doris 中调用 <code>LogicalPlanBuilder</code> 来基于 AST 节点去绑定数据库实体，从而构建逻辑计划树，这里只需要记录 <code>id</code> 和 <code>idType</code> 即可；</li><li>catalog recycle bin 有 hashmap 存放 id 和具体信息的映射，我们根据 idType 和 id 去到 hashmap 搜索，如果没有对应 id 则抛出异常，否则进行删除操作；对于删除数据库的操作，其下的所有表和分区需要删除。</li></ol><h1 id="3-测试"><a class="markdownIt-Anchor" href="#3-测试"></a> 3 测试</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./run-regression-test.sh --run test_drop_catalog_recycle_bin</span><br></pre></td></tr></table></figure><h1 id="x-参考"><a class="markdownIt-Anchor" href="#x-参考"></a> X 参考</h1><ul><li>相关代码在 <code>CatalogRecycleBin.java</code>，参考 <code>erasePartition</code>, <code>eraseTable</code> 和 <code>erasePartition</code> 如何将回收站内容删除。</li><li>从回收站恢复数据库、表和分区的命令：<a href="https://doris.apache.org/zh-CN/docs/admin-manual/data-admin/delete-recover/">https://doris.apache.org/zh-CN/docs/admin-manual/data-admin/delete-recover/</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;1-issue-介绍&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-issue-介绍&quot;&gt;&lt;/a&gt; 1 issue 介绍&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;issue:&lt;/strong&gt; &lt;a href=&quot;https://g</summary>
+      
+    
+    
+    
+    <category term="DB" scheme="https://dragonliu2018.github.io/categories/DB/"/>
+    
+    <category term="doris" scheme="https://dragonliu2018.github.io/categories/DB/doris/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>[DB][doris] insert 实现解析</title>
+    <link href="https://dragonliu2018.github.io/2025/09/27/DB-doris-insert-%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90/"/>
+    <id>https://dragonliu2018.github.io/2025/09/27/DB-doris-insert-%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90/</id>
+    <published>2025-09-26T16:05:18.000Z</published>
+    <updated>2025-09-26T16:06:09.986Z</updated>
+    
+    
+    
+    
+    <category term="DB" scheme="https://dragonliu2018.github.io/categories/DB/"/>
+    
+    <category term="doris" scheme="https://dragonliu2018.github.io/categories/DB/doris/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>[DB][doris] Catalog Recycle Bin 实现解析</title>
+    <link href="https://dragonliu2018.github.io/2025/09/27/DB-doris-Catalog-Recycle-Bin-%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90/"/>
+    <id>https://dragonliu2018.github.io/2025/09/27/DB-doris-Catalog-Recycle-Bin-%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90/</id>
+    <published>2025-09-26T16:04:43.000Z</published>
+    <updated>2025-09-26T16:05:58.466Z</updated>
+    
+    
+    
+    
+    <category term="DB" scheme="https://dragonliu2018.github.io/categories/DB/"/>
+    
+    <category term="doris" scheme="https://dragonliu2018.github.io/categories/DB/doris/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>[DB][doris] 变量配置汇总</title>
@@ -439,58 +499,6 @@
     
     
     <category term="pr" scheme="https://dragonliu2018.github.io/tags/pr/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[doris][Status] Implement format methods for Status</title>
-    <link href="https://dragonliu2018.github.io/2025/09/14/doris-Status-Implement-format-methods-for-Status/"/>
-    <id>https://dragonliu2018.github.io/2025/09/14/doris-Status-Implement-format-methods-for-Status/</id>
-    <published>2025-09-14T09:26:44.000Z</published>
-    <updated>2025-09-23T01:05:52.936Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="1-issue-介绍"><a class="markdownIt-Anchor" href="#1-issue-介绍"></a> 1 issue 介绍</h1><p>当前 <code>Status</code> 类型进行 format 时，需要调用 <code>to_string</code> 函数：</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">fmt::format(<span class="string">&quot;&#123;&#125;&quot;</span>, status.<span class="built_in">to_string</span>());</span><br></pre></td></tr></table></figure><p>想要的效果是只需要传入 Status 类型即可：</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">fmt::format(<span class="string">&quot;&#123;&#125;&quot;</span>, status);</span><br></pre></td></tr></table></figure><h1 id="2-实现"><a class="markdownIt-Anchor" href="#2-实现"></a> 2 实现</h1><h2 id="21-解析"><a class="markdownIt-Anchor" href="#21-解析"></a> 2.1 解析</h2><p><code>fmt</code> 库提供了一个类模板 <code>fmt::formatter</code>，通过模板特化为 <code>Status</code> 类型提供适当的格式化方式。</p><p>然后实现 <code>parse</code> 和 <code>format</code> 函数即可：</p><ul><li><strong><code>parse</code></strong> 函数负责解析格式字符串。在通常情况下，用户可能不需要提供自己的 <strong><code>parse</code></strong> 函数，而可以使用 fmt 默认提供的版本，该版本简单地返回解析上下文的开始迭代器。</li><li><strong><code>format</code></strong> 函数是用户必须提供的关键成员函数。它定义了如何将自定义类型格式化为字符串。</li></ul><h2 id="22-功能代码"><a class="markdownIt-Anchor" href="#22-功能代码"></a> 2.2 功能代码</h2><blockquote><p>👉 **参考：**<a href="https://wgml.pl/blog/formatting-user-defined-types-fmt.html">https://wgml.pl/blog/formatting-user-defined-types-fmt.html</a></p></blockquote><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// specify formatter for Status</span></span><br><span class="line"><span class="keyword">template</span> &lt;&gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">fmt</span>::formatter&lt;doris::Status&gt; &#123;</span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ParseContext&gt;</span><br><span class="line">    <span class="function"><span class="keyword">constexpr</span> <span class="keyword">auto</span> <span class="title">parse</span><span class="params">(ParseContext&amp; ctx)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ctx.<span class="built_in">begin</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> FormatContext&gt;</span><br><span class="line">    <span class="function"><span class="keyword">auto</span> <span class="title">format</span><span class="params">(doris::Status <span class="type">const</span>&amp; status, FormatContext&amp; ctx)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> fmt::format_to(ctx.<span class="built_in">out</span>(), <span class="string">&quot;&#123;&#125;&quot;</span>, status.<span class="built_in">to_string</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h2 id="23-测试代码"><a class="markdownIt-Anchor" href="#23-测试代码"></a> 2.3 测试代码</h2><p>实现完成后，编写测试样例，这里需要注意覆盖率。</p><p>reviewer 提出的建议是：</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">please add <span class="number">3</span> tests：</span><br><span class="line"><span class="number">1.</span> status == ok</span><br><span class="line"><span class="number">2.</span> status == error &amp;&amp; has stacktrace</span><br><span class="line"><span class="number">3.</span> status == error &amp;&amp; <span class="keyword">do</span> <span class="keyword">not</span> have stacktrace</span><br></pre></td></tr></table></figure><h1 id="3-问题"><a class="markdownIt-Anchor" href="#3-问题"></a> 3 问题</h1><h2 id="31-ld-symbols-not-found-for-architecture-x86_64"><a class="markdownIt-Anchor" href="#31-ld-symbols-not-found-for-architecture-x86_64"></a> 3.1 ld: symbol(s) not found for architecture x86_64</h2><p>在本地 macos 上尝试写了个测试程序，但是发生下面的报错：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  test-reset git:(main) ✗ g++ test.cpp -std=c++20 -o <span class="built_in">test</span></span><br><span class="line">Undefined symbols <span class="keyword">for</span> architecture x86_64:</span><br><span class="line">  <span class="string">&quot;void fmt::v10::detail::vformat_to&lt;char&gt;(fmt::v10::detail::buffer&lt;char&gt;&amp;, fmt::v10::basic_string_view&lt;char&gt;, fmt::v10::detail::vformat_args&lt;char&gt;::type, fmt::v10::detail::locale_ref)&quot;</span>, referenced from:</span><br><span class="line">      <span class="built_in">fmt</span>::v10::appender <span class="built_in">fmt</span>::v10::vformat_to&lt;<span class="built_in">fmt</span>::v10::appender, 0&gt;(<span class="built_in">fmt</span>::v10::appender, <span class="built_in">fmt</span>::v10::basic_string_view&lt;char&gt;, <span class="built_in">fmt</span>::v10::basic_format_args&lt;<span class="built_in">fmt</span>::v10::basic_format_context&lt;<span class="built_in">fmt</span>::v10::appender, char&gt; &gt;) <span class="keyword">in</span> test-878b3f.o</span><br><span class="line">  <span class="string">&quot;fmt::v10::detail::assert_fail(char const*, int, char const*)&quot;</span>, referenced from:</span><br><span class="line">      std::__1::make_unsigned&lt;long&gt;::<span class="built_in">type</span> <span class="built_in">fmt</span>::v10::detail::to_unsigned&lt;long&gt;(long) <span class="keyword">in</span> test-878b3f.o</span><br><span class="line">  <span class="string">&quot;fmt::v10::vprint(fmt::v10::basic_string_view&lt;char&gt;, fmt::v10::basic_format_args&lt;fmt::v10::basic_format_context&lt;fmt::v10::appender, char&gt; &gt;)&quot;</span>, referenced from:</span><br><span class="line">      _main <span class="keyword">in</span> test-878b3f.o</span><br><span class="line">ld: symbol(s) not found <span class="keyword">for</span> architecture x86_64</span><br><span class="line">clang: error: linker <span class="built_in">command</span> failed with <span class="built_in">exit</span> code 1 (use -v to see invocation)</span><br></pre></td></tr></table></figure><p><strong>解决</strong>：原因是未链接 fmt 库文件</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">g++ test.cpp -std=c++20 -o <span class="built_in">test</span> -lfmt</span><br></pre></td></tr></table></figure><p><strong>参考</strong>：<a href="https://stackoverflow.com/questions/56608684/how-to-use-the-fmt-library-without-getting-undefined-symbols-for-architecture-x">https://stackoverflow.com/questions/56608684/how-to-use-the-fmt-library-without-getting-undefined-symbols-for-architecture-x</a></p><h2 id="32-fmtformatter-模板特化代码不能在-doris-的-namespace"><a class="markdownIt-Anchor" href="#32-fmtformatter-模板特化代码不能在-doris-的-namespace"></a> 3.2 <code>fmt::formatter</code> 模板特化代码不能在 doris 的 namespace</h2><p>开始将特化代码放在了 doris namespace 中，发生了下面的报错：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Class template specialization of <span class="string">&#x27;formatter&#x27;</span> not <span class="keyword">in</span> a namespace enclosing <span class="string">&#x27;v8&#x27;</span> is a Microsoft extension clang(-Wmicrosoft-template)</span><br><span class="line"></span><br><span class="line">[core.h(707, 8): ] Explicitly specialized declaration is here</span><br></pre></td></tr></table></figure><p><strong>解决</strong>：</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> doris &#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">// doris code</span></span><br><span class="line"></span><br><span class="line">&#125; <span class="comment">// end doris_namespace</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// define formatter here</span></span><br></pre></td></tr></table></figure><p>**参考：**<a href="https://github.com/fmtlib/fmt/issues/2767">https://github.com/fmtlib/fmt/issues/2767</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;1-issue-介绍&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-issue-介绍&quot;&gt;&lt;/a&gt; 1 issue 介绍&lt;/h1&gt;
-&lt;p&gt;当前 &lt;code&gt;Status&lt;/code&gt; 类型进行 format 时，需要调用 &lt;code&gt;</summary>
-      
-    
-    
-    
-    <category term="DB" scheme="https://dragonliu2018.github.io/categories/DB/"/>
-    
-    <category term="doris" scheme="https://dragonliu2018.github.io/categories/DB/doris/"/>
-    
-    
-    <category term="pr" scheme="https://dragonliu2018.github.io/tags/pr/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[Tool] Hexo 使用教程</title>
-    <link href="https://dragonliu2018.github.io/2025/09/13/Tool-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
-    <id>https://dragonliu2018.github.io/2025/09/13/Tool-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</id>
-    <published>2025-09-13T15:37:08.000Z</published>
-    <updated>2025-09-23T01:03:51.746Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="环境准备"><a class="markdownIt-Anchor" href="#环境准备"></a> 环境准备</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">➜  nvm --version</span><br><span class="line">0.39.1</span><br><span class="line">➜  node -v</span><br><span class="line">v24.8.0</span><br><span class="line">➜  npm -v</span><br><span class="line">11.6.0</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装 Hexo</span></span><br><span class="line">npm install -g hexo-cli </span><br></pre></td></tr></table></figure><h1 id="本地运行-hexo"><a class="markdownIt-Anchor" href="#本地运行-hexo"></a> 本地运行 Hexo</h1><ol><li><p>初始化 hexo，生成 hexo-blog 目录</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo init hexo-blog</span><br></pre></td></tr></table></figure></li><li><p>进入 hexo-blog 目录，下载 pure 主题和 source 文章</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd hexo-blog</span><br><span class="line"></span><br><span class="line">git clone https://github.com/Dragonliu2018/hexo-theme-pure.git themes/pure</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除默认生成的 _posts 目录</span></span><br><span class="line">rm -rf source/_posts</span><br><span class="line">git clone https://github.com/Dragonliu2018/hexo-source.git source</span><br></pre></td></tr></table></figure></li><li><p>配置 pure，<a href="https://github.com/Dragonliu2018/hexo-theme-pure">ref link</a></p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-wordcount --save</span><br><span class="line">npm install hexo-generator-json-content --save</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br><span class="line">npm install hexo-neat --save</span><br><span class="line">npm install hexo-translate-title --save</span><br><span class="line">npm un hexo-renderer-marked --save</span><br><span class="line">npm i hexo-renderer-markdown-it-plus --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li><li><p>修改 _config.yml</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 页面中分类等导航词的语言</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">language:</span> <span class="string">en</span></span><br><span class="line"><span class="string">+</span> <span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 搜索界面的分类部分拼接 url</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">url:</span> <span class="string">http://example.com</span></span><br><span class="line"><span class="string">+</span> <span class="attr">url:</span> <span class="string">https://dragonliu2018.github.io</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置主题</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">theme:</span> <span class="string">landscape</span></span><br><span class="line"><span class="string">+</span> <span class="attr">theme:</span> <span class="string">pure</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置部署</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/dragonliu2018/dragonliu2018.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></li><li><p>运行 hexo</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure></li></ol><h1 id="部署-github"><a class="markdownIt-Anchor" href="#部署-github"></a> 部署 Github</h1><blockquote><p>参考：<a href="https://hexo.io/docs/one-command-deployment">https://hexo.io/docs/one-command-deployment</a></p></blockquote><ol><li><p>安装 hexo-deployer-git</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li><li><p>修改项目根目录 blog 下的 <code>_config.yml</code></p><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/dragonliu2018/dragonliu2018.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></li><li><p>部署</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure></li></ol><h1 id="常用命令"><a class="markdownIt-Anchor" href="#常用命令"></a> 常用命令</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;环境准备&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#环境准备&quot;&gt;&lt;/a&gt; 环境准备&lt;/h1&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;spa</summary>
-      
-    
-    
-    
-    <category term="Tool" scheme="https://dragonliu2018.github.io/categories/Tool/"/>
-    
-    <category term="Hexo" scheme="https://dragonliu2018.github.io/categories/Tool/Hexo/"/>
-    
     
   </entry>
   

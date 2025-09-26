@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://dragonliu2018.github.io/2025/09/27/DB-doris-%E6%94%AF%E6%8C%81%E5%88%A0%E9%99%A4%E5%9B%9E%E6%94%B6%E7%AB%99%E5%86%85%E5%AE%B9/</loc>
+    <lastmod>2025-09-26</lastmod>
+  </url>
+  <url>
+    <loc>https://dragonliu2018.github.io/2025/09/14/doris-Status-Implement-format-methods-for-Status/</loc>
+    <lastmod>2025-09-26</lastmod>
+  </url>
+  <url>
+    <loc>https://dragonliu2018.github.io/2025/09/27/DB-doris-insert-%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90/</loc>
+    <lastmod>2025-09-26</lastmod>
+  </url>
+  <url>
+    <loc>https://dragonliu2018.github.io/2025/09/27/DB-doris-Catalog-Recycle-Bin-%E5%AE%9E%E7%8E%B0%E8%A7%A3%E6%9E%90/</loc>
+    <lastmod>2025-09-26</lastmod>
+  </url>
+  <url>
     <loc>https://dragonliu2018.github.io/2025/09/26/DB-doris-%E8%BF%90%E8%A1%8C%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/</loc>
     <lastmod>2025-09-26</lastmod>
   </url>
@@ -66,10 +82,6 @@
   </url>
   <url>
     <loc>https://dragonliu2018.github.io/2025/09/14/databend-pivot-%E6%94%AF%E6%8C%81-subquery/</loc>
-    <lastmod>2025-09-23</lastmod>
-  </url>
-  <url>
-    <loc>https://dragonliu2018.github.io/2025/09/14/doris-Status-Implement-format-methods-for-Status/</loc>
     <lastmod>2025-09-23</lastmod>
   </url>
   <url>
