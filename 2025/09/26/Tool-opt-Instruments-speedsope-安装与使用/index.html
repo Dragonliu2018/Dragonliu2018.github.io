@@ -17,16 +17,28 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>归档: 2025 | Dragon&#39;s Blogs</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://dragonliu2018.github.io/archives/2025/index.html">
+  <title>[Tool][opt] Instruments + speedsope 安装与使用 | Dragon&#39;s Blogs</title>
+  <meta name="description" content="A 安装引子 在 macbook 上做 cmu 15445 fall 2022 p1 时，p1 在线测试超时了，需要进行性能调优。但是 macos 上没有 perf，调研后发现替代物 → Instruments。  步骤  Instruments 集成在 xcode 中，所以先要安装 xcode（xcode 体积大，约 7G，所以一定要注意 macos 和 xcode 的版本对应 → https">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Tool][opt] Instruments + speedsope 安装与使用">
+<meta property="og:url" content="https://dragonliu2018.github.io/2025/09/26/Tool-opt-Instruments-speedsope-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="A 安装引子 在 macbook 上做 cmu 15445 fall 2022 p1 时，p1 在线测试超时了，需要进行性能调优。但是 macos 上没有 perf，调研后发现替代物 → Instruments。  步骤  Instruments 集成在 xcode 中，所以先要安装 xcode（xcode 体积大，约 7G，所以一定要注意 macos 和 xcode 的版本对应 → https">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-51-01.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-01.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-02.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-03.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-04.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-05.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-06.png">
+<meta property="article:published_time" content="2025-09-25T16:34:54.000Z">
+<meta property="article:modified_time" content="2025-09-26T00:58:05.704Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-51-01.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://dragonliu2018.github.io/archives/2025/index.html">
+  <link rel="canonical" href="https://dragonliu2018.github.io/2025/09/26/Tool-opt-Instruments-speedsope-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -36,6 +48,8 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
   
   
   
@@ -321,165 +335,212 @@
 
   
   
-<main class="main" role="main">
-  	<article class="content article article-archives article-type-list" itemscope="">
-	    <header class="article-header">
-	      <h1 itemprop="title">归档: 2025</h1>
-	      <p class="text-muted">共 18 篇文章</p>
-	    </header>
-	    <div class="article-body">
-	      
-  
-  
-    
-    
-      
-      
-      <section class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapse2025" aria-expanded="true">
-              <i class="icon icon-calendar-plus text-active"></i><i class="icon icon-calendar-minus text"></i>
-              2025
-            </a>
-            <!-- <a href="/archives/2025" class="archive-year">2025</a> -->
-          </h3>
-        </div>
-        <div id="collapse2025" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2025">
-        <div class="panel-body">
-          <div class="collection">
-    
-    
-<a href="/2025/09/26/DB-doris-%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-26T01:09:20.000Z" itemprop="datePublished">2025-09-26</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [DB][doris] 编译教程
-</a>
-
-
-  
-    
-    
-    
-<a href="/2025/09/26/DB-doris-%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-26T01:09:04.000Z" itemprop="datePublished">2025-09-26</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [DB][doris] 编译报错汇总
-</a>
-
-
-  
-    
-    
-    
-<a href="/2025/09/26/DB-doris-%E8%BF%90%E8%A1%8C%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-26T01:08:53.000Z" itemprop="datePublished">2025-09-26</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [DB][doris] 运行报错汇总
-</a>
-
-
-  
-    
-    
-    
-<a href="/2025/09/26/Tool-opt-Instruments-speedsope-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-25T16:34:54.000Z" itemprop="datePublished">2025-09-26</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool][opt] Instruments + speedsope 安装与使用
-</a>
-
-
-  
-    
-    
-    
-<a href="/2025/09/26/Tool-opt-C-benchmark/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-25T16:30:37.000Z" itemprop="datePublished">2025-09-26</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool][opt] C++ benchmark
-</a>
-
-
-  
-    
-    
-    
-<a href="/2025/09/26/Tool-opt-gperf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-25T16:28:23.000Z" itemprop="datePublished">2025-09-26</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool][opt] gperf 安装使用教程
-</a>
-
-
-  
-    
-    
-    
-<a href="/2025/09/26/Tool-opt-perf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-25T16:24:37.000Z" itemprop="datePublished">2025-09-26</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool][opt] perf 安装使用教程
-</a>
-
-
-  
-    
-    
-    
-<a href="/2025/09/26/PL-C-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-25T16:06:51.000Z" itemprop="datePublished">2025-09-26</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [PL][C++] 性能优化汇总
-</a>
-
-
-  
-    
-    
-    
-<a href="/2025/09/25/Tool-docker-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-25T11:56:32.000Z" itemprop="datePublished">2025-09-25</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] docker 使用技巧汇总
-</a>
-
-
-  
-    
-    
-    
-<a href="/2025/09/24/PL-Python-%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T15:47:34.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [PL][Python] 编程技巧汇总
-</a>
-
-
-  
-  
-    </div></div></div></section>
-  
-
-	    </div>
-  	</article>
-  	
-    
-    <nav class="bar bar-footer clearfix" data-stick-bottom>
-        <div class="bar-inner">
-        <ul class="pager pull-left">
-            
-            <li class="prev disabled">
-                <a href="javascript:;">
-                    <i class="icon icon-angle-left"></i>
-                    上一页
-                </a>
-            </li>
-            
-            
-            <li class="next">
-                <a href="/archives/2025/page/2/">
-                    下一页
-                    <i class="icon icon-angle-right"></i>
-                </a>
-            </li>
-            
-        </ul>
-            <div class="total-article bar-right">Page 1 of 2</div>
-        </div>
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#a-%E5%AE%89%E8%A3%85%E5%BC%95%E5%AD%90"><span class="toc-number">1.</span> <span class="toc-text"> A 安装引子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text"> 步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#b-%E4%BD%BF%E7%94%A8%E5%BC%95%E5%AD%90"><span class="toc-number">3.</span> <span class="toc-text"> B 使用引子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="toc-number">4.</span> <span class="toc-text"> 1 可执行程序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E8%BF%9B%E7%A8%8B"><span class="toc-number">5.</span> <span class="toc-text"> 2 进程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%81%AB%E7%84%B0%E5%9B%BE"><span class="toc-number">6.</span> <span class="toc-text"> 3 火焰图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#x-%E5%8F%82%E8%80%83"><span class="toc-number">7.</span> <span class="toc-text"> X 参考</span></a></li></ol>
     </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Tool-opt-Instruments-speedsope-安装与使用" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
- 	
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [Tool][opt] Instruments + speedsope 安装与使用
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2025/09/26/Tool-opt-Instruments-speedsope-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="article-date">
+	  <time datetime="2025-09-25T16:34:54.000Z" itemprop="datePublished">2025-09-26</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Tool/">Tool</a>►<a class="article-category-link" href="/categories/Tool/opt/">opt</a>
+  </span>
+
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/09/26/Tool-opt-Instruments-speedsope-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 497(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="a-安装引子"><a class="markdownIt-Anchor" href="#a-安装引子"></a> A 安装引子</h1>
+<p>在 macbook 上做 cmu 15445 fall 2022 p1 时，p1 在线测试超时了，需要进行性能调优。但是 macos 上没有 perf，调研后发现替代物 → Instruments。</p>
+<h1 id="步骤"><a class="markdownIt-Anchor" href="#步骤"></a> 步骤</h1>
+<ol>
+<li>Instruments 集成在 xcode 中，所以先要安装 xcode（xcode 体积大，约 7G，所以一定要注意 macos 和 xcode 的版本对应 → <a target="_blank" rel="noopener" href="https://developer.apple.com/cn/support/xcode/%EF%BC%8C%E4%B8%8D%E8%A6%81%E4%B8%8B%E8%BD%BD%E9%94%99%E4%BA%86%E7%89%88%E6%9C%AC%F0%9F%A5%A6">https://developer.apple.com/cn/support/xcode/，不要下载错了版本🥦</a></li>
+<li>可以通过 App Store 进行下载，或者通过这个链接 → <a target="_blank" rel="noopener" href="https://developer.apple.com/download/all/?q=for%20Xcode">https://developer.apple.com/download/all/?q=for Xcode</a></li>
+</ol>
+<hr />
+<p>【<strong>参考</strong>】<a target="_blank" rel="noopener" href="https://blog.csdn.net/sunshine__sun/article/details/115062452"><strong>安装Xcode的方法</strong></a></p>
+<h1 id="b-使用引子"><a class="markdownIt-Anchor" href="#b-使用引子"></a> B 使用引子</h1>
+<p>Instruments 是一款苹果自带的测试工具，用于相关的性能分析和动态跟踪，其中有内存性能测试，图形性能测试、内存性能测试等。</p>
+<p>打开 xcode；</p>
+<p>通过导航栏找到 Instruments：</p>
+<p><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-51-01.png" alt="" /></p>
+<p>或者 <code>command + 空格</code> 直接搜索 Instruments 即可。</p>
+<hr />
+<p>打开 <code>Time Profiler</code> 进行性能分析：</p>
+<p><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-01.png" alt="" /></p>
+<hr />
+<p>主要通过下面两种方式进行耗时分析：</p>
+<h1 id="1-可执行程序"><a class="markdownIt-Anchor" href="#1-可执行程序"></a> 1 可执行程序</h1>
+<p>选择 <code>可执行程序</code>，然后点击 <code>开始</code> 图标即可。</p>
+<p><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-02.png" alt="" /></p>
+<blockquote>
+<p>⚠️：当时分析 cum 15445 fall 2022 p1 的时候，这种不能得出好的结果，就使用了下面进程的方式。</p>
+</blockquote>
+<h1 id="2-进程"><a class="markdownIt-Anchor" href="#2-进程"></a> 2 进程</h1>
+<ol>
+<li>
+<p>这里选择分析 <code>所有进程</code>，因为要分析的是一个可执行文件，不太好把他搞成一个进程。<br />
+<img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-03.png" alt="" /></p>
+</li>
+<li>
+<p>点击 <code>开始</code> 图标，执行目标文件，等待目标文件执行完，点击 <code>结束</code> 图标；</p>
+</li>
+<li>
+<p>这时可以看到分析结果，目标文件也在其中：</p>
+<p><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-04.png" alt="" /></p>
+</li>
+<li>
+<p>为了方便查看，可以将其单独领出来，点击右侧 ➡️；</p>
+</li>
+<li>
+<p>可以看到 <code>HardTest_4</code> 的主要耗时在 <code>HistoryCmpLess()</code> 函数上：</p>
+<p><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-05.png" alt="" /></p>
+</li>
+<li>
+<p>耗时集中在下面三行代码，推测是 <code>history_</code> 的随机取数据导致性能低下。</p>
+<p><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-06.png" alt="" /></p>
+<p>查看 <code>history_</code> 类型，果然是 map 类型，但是使用 unordered_map 更加高效。更换数据类型后，耗时下降到 <strong>7s</strong>，符合预期。</p>
+</li>
+</ol>
+<h1 id="3-火焰图"><a class="markdownIt-Anchor" href="#3-火焰图"></a> 3 火焰图</h1>
+<p>就可以利用 speedsope 生成火焰图：</p>
+<p><a target="_blank" rel="noopener" href="https://www.speedscope.app/">speedscope</a></p>
+<h1 id="x-参考"><a class="markdownIt-Anchor" href="#x-参考"></a> X 参考</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6865102561507672077"><strong>Instrument工具使用</strong></a></li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://dragonliu2018.github.io/2025/09/26/Tool-opt-Instruments-speedsope-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" title="[Tool][opt] Instruments + speedsope 安装与使用" target="_blank" rel="external">https://dragonliu2018.github.io/2025/09/26/Tool-opt-Instruments-speedsope-安装与使用/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/dragonliu2018" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/dragonliu2018" target="_blank"><span class="text-dark">Dragon Liu</span><small class="ml-1x">Blogs</small></a></h3>
+        <div>Life is painting a picture, not doing a sum.</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2025/09/26/DB-doris-%E8%BF%90%E8%A1%8C%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" title="[DB][doris] 运行报错汇总"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2025/09/26/Tool-opt-C-benchmark/" title="[Tool][opt] C++ benchmark"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -534,6 +595,39 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Pbjl2Wajl9och0xVbR5eqoH1-gzGzoHsz',
+    appKey: 'PgxFh1wV6pyMMllhxs7NJijb',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
 
 
 

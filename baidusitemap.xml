@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://dragonliu2018.github.io/2025/09/26/Tool-C-benchmark/</loc>
+    <loc>https://dragonliu2018.github.io/2025/09/26/DB-doris-%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/</loc>
+    <lastmod>2025-09-26</lastmod>
+  </url>
+  <url>
+    <loc>https://dragonliu2018.github.io/2025/09/26/DB-doris-%E8%BF%90%E8%A1%8C%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/</loc>
+    <lastmod>2025-09-26</lastmod>
+  </url>
+  <url>
+    <loc>https://dragonliu2018.github.io/2025/09/26/DB-doris-%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2025-09-26</lastmod>
+  </url>
+  <url>
+    <loc>https://dragonliu2018.github.io/2025/09/26/Tool-opt-Instruments-speedsope-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2025-09-26</lastmod>
+  </url>
+  <url>
+    <loc>https://dragonliu2018.github.io/2025/09/26/Tool-opt-gperf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2025-09-25</lastmod>
   </url>
   <url>
-    <loc>https://dragonliu2018.github.io/2025/09/26/Tool-gperf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://dragonliu2018.github.io/2025/09/26/Tool-opt-perf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2025-09-25</lastmod>
   </url>
   <url>
-    <loc>https://dragonliu2018.github.io/2025/09/26/Tool-perf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://dragonliu2018.github.io/2025/09/26/Tool-opt-C-benchmark/</loc>
     <lastmod>2025-09-25</lastmod>
   </url>
   <url>

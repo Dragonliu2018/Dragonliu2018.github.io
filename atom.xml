@@ -6,7 +6,7 @@
   <link href="https://dragonliu2018.github.io/atom.xml" rel="self"/>
   
   <link href="https://dragonliu2018.github.io/"/>
-  <updated>2025-09-25T16:31:25.463Z</updated>
+  <updated>2025-09-26T01:10:31.884Z</updated>
   <id>https://dragonliu2018.github.io/</id>
   
   <author>
@@ -17,11 +17,95 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>[Tool] C++ benchmark</title>
-    <link href="https://dragonliu2018.github.io/2025/09/26/Tool-C-benchmark/"/>
-    <id>https://dragonliu2018.github.io/2025/09/26/Tool-C-benchmark/</id>
+    <title>[DB][doris] 编译教程</title>
+    <link href="https://dragonliu2018.github.io/2025/09/26/DB-doris-%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/"/>
+    <id>https://dragonliu2018.github.io/2025/09/26/DB-doris-%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/</id>
+    <published>2025-09-26T01:09:20.000Z</published>
+    <updated>2025-09-26T01:10:31.884Z</updated>
+    
+    
+    
+    
+    <category term="DB" scheme="https://dragonliu2018.github.io/categories/DB/"/>
+    
+    <category term="doris" scheme="https://dragonliu2018.github.io/categories/DB/doris/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>[DB][doris] 编译报错汇总</title>
+    <link href="https://dragonliu2018.github.io/2025/09/26/DB-doris-%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/"/>
+    <id>https://dragonliu2018.github.io/2025/09/26/DB-doris-%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/</id>
+    <published>2025-09-26T01:09:04.000Z</published>
+    <updated>2025-09-26T01:18:02.614Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="macos-编译报错"><a class="markdownIt-Anchor" href="#macos-编译报错"></a> macos 编译报错</h1><h2 id="报错1-mvn-is-not-found"><a class="markdownIt-Anchor" href="#报错1-mvn-is-not-found"></a> <strong>报错1: mvn is not found</strong></h2><p>【<strong>报错</strong>】</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  doris git:(master) bash build.sh</span><br><span class="line">Python 3.11.6</span><br><span class="line">The JAVA_HOME environment variable is not defined correctly,</span><br><span class="line">this environment variable is needed to run this program.</span><br><span class="line">Error: mvn is not found</span><br></pre></td></tr></table></figure><hr /><p>【<strong>解决</strong>】</p><p>设置 JAVA_HOME 环境变量。</p><p><a href="https://blog.csdn.net/watson2017/article/details/103243301">https://blog.csdn.net/watson2017/article/details/103243301</a></p><h2 id="报错2-代码-bug"><a class="markdownIt-Anchor" href="#报错2-代码-bug"></a> <strong>报错2: 代码 bug</strong></h2><p>【<strong>报错</strong>】</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/Users/dragonliu/code/doris/be/src/vec/core/extended_types.h:42:8: error: reference to <span class="string">&#x27;is_signed&#x27;</span> is ambiguous</span><br></pre></td></tr></table></figure><hr /><p>【<strong>解决</strong>】</p><p>代码 bug，新版已经修复：</p><p><a href="https://github.com/apache/doris/commit/462db3d5bea5fe3e4e3b9c6e592b91ad2aff6ba4">https://github.com/apache/doris/commit/462db3d5bea5fe3e4e3b9c6e592b91ad2aff6ba4</a></p><h2 id="报错3-swapon-command-not-found"><a class="markdownIt-Anchor" href="#报错3-swapon-command-not-found"></a> <strong>报错3: swapon: command not found</strong></h2><p>【<strong>报错</strong>】</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  be git:(master) sh bin/start_be.sh --daemon</span><br><span class="line">bin/start_be.sh: line 86: swapon: <span class="built_in">command</span> not found</span><br></pre></td></tr></table></figure><hr /><p>【<strong>解决</strong>】</p><p>修改 <code>doris/output/be/bin/start_be.sh</code>，将 swapon 部分注释掉</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># if [[ &quot;$(swapon -s | wc -l)&quot; -gt 1 ]]; then</span></span><br><span class="line"><span class="comment">#     echo &quot;Please disable swap memory before installation.&quot;</span></span><br><span class="line"><span class="comment">#     exit 1</span></span><br><span class="line"><span class="comment"># fi</span></span><br></pre></td></tr></table></figure><h2 id="报错4-command-not-found-mysql-未解决"><a class="markdownIt-Anchor" href="#报错4-command-not-found-mysql-未解决"></a> <strong>报错4: command not found: mysql → 未解决</strong></h2><p>【<strong>报错</strong>】</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  bin git:(master) mysql -h 127.0.0.1 -P 9030 -u root</span><br><span class="line">zsh: <span class="built_in">command</span> not found: mysql</span><br></pre></td></tr></table></figure><hr /><p>【<strong>解决</strong>】</p><p>下载 mysql client:</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install mysql-client</span><br></pre></td></tr></table></figure><p>因为与 mysql (which contains client libraries) 冲突，需要配置环境变量：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PATH=&quot;/usr/local/opt/mysql-client/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line">~ <span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure><p>错误：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  bin git:(master) mysql -h 127.0.0.1 -P 9030 -u root</span><br><span class="line">ERROR 2003 (HY000): Can<span class="string">&#x27;t connect to MySQL server on &#x27;</span>127.0.0.1:9030<span class="string">&#x27; (61)</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;macos-编译报错&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#macos-编译报错&quot;&gt;&lt;/a&gt; macos 编译报错&lt;/h1&gt;
+&lt;h2 id=&quot;报错1-mvn-is-not-found&quot;&gt;&lt;a class=&quot;markdownIt-</summary>
+      
+    
+    
+    
+    <category term="DB" scheme="https://dragonliu2018.github.io/categories/DB/"/>
+    
+    <category term="doris" scheme="https://dragonliu2018.github.io/categories/DB/doris/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>[DB][doris] 运行报错汇总</title>
+    <link href="https://dragonliu2018.github.io/2025/09/26/DB-doris-%E8%BF%90%E8%A1%8C%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/"/>
+    <id>https://dragonliu2018.github.io/2025/09/26/DB-doris-%E8%BF%90%E8%A1%8C%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/</id>
+    <published>2025-09-26T01:08:53.000Z</published>
+    <updated>2025-09-26T01:10:37.934Z</updated>
+    
+    
+    
+    
+    <category term="DB" scheme="https://dragonliu2018.github.io/categories/DB/"/>
+    
+    <category term="doris" scheme="https://dragonliu2018.github.io/categories/DB/doris/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>[Tool][opt] Instruments + speedsope 安装与使用</title>
+    <link href="https://dragonliu2018.github.io/2025/09/26/Tool-opt-Instruments-speedsope-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
+    <id>https://dragonliu2018.github.io/2025/09/26/Tool-opt-Instruments-speedsope-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</id>
+    <published>2025-09-25T16:34:54.000Z</published>
+    <updated>2025-09-26T00:58:05.704Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="a-安装引子"><a class="markdownIt-Anchor" href="#a-安装引子"></a> A 安装引子</h1><p>在 macbook 上做 cmu 15445 fall 2022 p1 时，p1 在线测试超时了，需要进行性能调优。但是 macos 上没有 perf，调研后发现替代物 → Instruments。</p><h1 id="步骤"><a class="markdownIt-Anchor" href="#步骤"></a> 步骤</h1><ol><li>Instruments 集成在 xcode 中，所以先要安装 xcode（xcode 体积大，约 7G，所以一定要注意 macos 和 xcode 的版本对应 → <a href="https://developer.apple.com/cn/support/xcode/%EF%BC%8C%E4%B8%8D%E8%A6%81%E4%B8%8B%E8%BD%BD%E9%94%99%E4%BA%86%E7%89%88%E6%9C%AC%F0%9F%A5%A6">https://developer.apple.com/cn/support/xcode/，不要下载错了版本🥦</a></li><li>可以通过 App Store 进行下载，或者通过这个链接 → <a href="https://developer.apple.com/download/all/?q=for%20Xcode">https://developer.apple.com/download/all/?q=for Xcode</a></li></ol><hr /><p>【<strong>参考</strong>】<a href="https://blog.csdn.net/sunshine__sun/article/details/115062452"><strong>安装Xcode的方法</strong></a></p><h1 id="b-使用引子"><a class="markdownIt-Anchor" href="#b-使用引子"></a> B 使用引子</h1><p>Instruments 是一款苹果自带的测试工具，用于相关的性能分析和动态跟踪，其中有内存性能测试，图形性能测试、内存性能测试等。</p><p>打开 xcode；</p><p>通过导航栏找到 Instruments：</p><p><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-51-01.png" alt="" /></p><p>或者 <code>command + 空格</code> 直接搜索 Instruments 即可。</p><hr /><p>打开 <code>Time Profiler</code> 进行性能分析：</p><p><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-01.png" alt="" /></p><hr /><p>主要通过下面两种方式进行耗时分析：</p><h1 id="1-可执行程序"><a class="markdownIt-Anchor" href="#1-可执行程序"></a> 1 可执行程序</h1><p>选择 <code>可执行程序</code>，然后点击 <code>开始</code> 图标即可。</p><p><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-02.png" alt="" /></p><blockquote><p>⚠️：当时分析 cum 15445 fall 2022 p1 的时候，这种不能得出好的结果，就使用了下面进程的方式。</p></blockquote><h1 id="2-进程"><a class="markdownIt-Anchor" href="#2-进程"></a> 2 进程</h1><ol><li><p>这里选择分析 <code>所有进程</code>，因为要分析的是一个可执行文件，不太好把他搞成一个进程。<br /><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-03.png" alt="" /></p></li><li><p>点击 <code>开始</code> 图标，执行目标文件，等待目标文件执行完，点击 <code>结束</code> 图标；</p></li><li><p>这时可以看到分析结果，目标文件也在其中：</p><p><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-04.png" alt="" /></p></li><li><p>为了方便查看，可以将其单独领出来，点击右侧 ➡️；</p></li><li><p>可以看到 <code>HardTest_4</code> 的主要耗时在 <code>HistoryCmpLess()</code> 函数上：</p><p><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-05.png" alt="" /></p></li><li><p>耗时集中在下面三行代码，推测是 <code>history_</code> 的随机取数据导致性能低下。</p><p><img src="https://raw.githubusercontent.com/Dragonliu2018/hexo-images-bed/main/2025/Snipaste_2025-09-26_08-52-06.png" alt="" /></p><p>查看 <code>history_</code> 类型，果然是 map 类型，但是使用 unordered_map 更加高效。更换数据类型后，耗时下降到 <strong>7s</strong>，符合预期。</p></li></ol><h1 id="3-火焰图"><a class="markdownIt-Anchor" href="#3-火焰图"></a> 3 火焰图</h1><p>就可以利用 speedsope 生成火焰图：</p><p><a href="https://www.speedscope.app/">speedscope</a></p><h1 id="x-参考"><a class="markdownIt-Anchor" href="#x-参考"></a> X 参考</h1><ul><li><a href="https://juejin.cn/post/6865102561507672077"><strong>Instrument工具使用</strong></a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;a-安装引子&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#a-安装引子&quot;&gt;&lt;/a&gt; A 安装引子&lt;/h1&gt;
+&lt;p&gt;在 macbook 上做 cmu 15445 fall 2022 p1 时，p1 在线测试超时了，需要进行性能调优。但是</summary>
+      
+    
+    
+    
+    <category term="Tool" scheme="https://dragonliu2018.github.io/categories/Tool/"/>
+    
+    <category term="opt" scheme="https://dragonliu2018.github.io/categories/Tool/opt/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>[Tool][opt] C++ benchmark</title>
+    <link href="https://dragonliu2018.github.io/2025/09/26/Tool-opt-C-benchmark/"/>
+    <id>https://dragonliu2018.github.io/2025/09/26/Tool-opt-C-benchmark/</id>
     <published>2025-09-25T16:30:37.000Z</published>
-    <updated>2025-09-25T16:31:25.463Z</updated>
+    <updated>2025-09-25T16:37:20.394Z</updated>
     
     <content type="html"><![CDATA[<h1 id="1-编译"><a class="markdownIt-Anchor" href="#1-编译"></a> 1 编译</h1><ol><li><p>clone 仓库：<code>git clone https://github.com/google/benchmark.git</code></p></li><li><p>新建 build：</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> benchmark</span><br><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line"><span class="built_in">cd</span> build</span><br></pre></td></tr></table></figure></li><li><p>cmake &amp; 下载依赖:</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake -DBENCHMARK_DOWNLOAD_DEPENDENCIES=on -DCMAKE_BUILD_TYPE=Release ../</span><br></pre></td></tr></table></figure></li><li><p>编译：</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake --build <span class="string">&quot;build&quot;</span> --config Release</span><br></pre></td></tr></table></figure></li></ol><h1 id="2-编写测试"><a class="markdownIt-Anchor" href="#2-编写测试"></a> 2 编写测试</h1><h1 id="3-在线-benchmark"><a class="markdownIt-Anchor" href="#3-在线-benchmark"></a> 3 在线 benchmark</h1><p><a href="https://quick-bench.com/q/6tDxsmk3FMX55B8W1RrdiG_s7_k">https://quick-bench.com/q/6tDxsmk3FMX55B8W1RrdiG_s7_k</a></p><h1 id="x-参考"><a class="markdownIt-Anchor" href="#x-参考"></a> X 参考</h1>]]></content>
     
@@ -42,17 +126,17 @@
     
     <category term="C++" scheme="https://dragonliu2018.github.io/categories/PL/C/"/>
     
-    <category term="调优" scheme="https://dragonliu2018.github.io/categories/Tool/%E8%B0%83%E4%BC%98/"/>
+    <category term="opt" scheme="https://dragonliu2018.github.io/categories/Tool/opt/"/>
     
     
   </entry>
   
   <entry>
-    <title>[Tool] gperf 安装使用教程</title>
-    <link href="https://dragonliu2018.github.io/2025/09/26/Tool-gperf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
-    <id>https://dragonliu2018.github.io/2025/09/26/Tool-gperf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</id>
+    <title>[Tool][opt] gperf 安装使用教程</title>
+    <link href="https://dragonliu2018.github.io/2025/09/26/Tool-opt-gperf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+    <id>https://dragonliu2018.github.io/2025/09/26/Tool-opt-gperf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</id>
     <published>2025-09-25T16:28:23.000Z</published>
-    <updated>2025-09-25T16:28:47.582Z</updated>
+    <updated>2025-09-25T16:38:29.450Z</updated>
     
     <content type="html"><![CDATA[<h1 id="1-介绍"><a class="markdownIt-Anchor" href="#1-介绍"></a> 1 介绍</h1><p><a href="https://github.com/gperftools/gperftools">https://github.com/gperftools/gperftools</a></p><p><a href="https://github.com/gperftools/gperftools">gperftools</a> 是谷歌推出的一套非常强大的性能分析工具集. 它主要有这三个功能:</p><ul><li>分析 CPU 性能, 能够统计出一段时间内各个函数的执行时间, 帮助我们找出耗时的代码;</li><li>分析内存占用情况, 能够统计出某一时刻各个函数分配的内存大小, 帮助我们找出内存占用高的代码, 也能帮助我们定位内存泄露;</li><li>自动检查内存泄露.</li></ul><p>gperftools 还包含一个高性能内存分配器 tcmalloc, 我们可以用它代替 glibc 的 ptmalloc. tcmalloc 自带统计功能, 内存分析和检查内存泄露就靠它.</p><p>本文介绍 gperftools 在 Linux 下的一些常见的用法. 如果你需要使用 gperftools 分析 Linux (服务器) 程序, 这篇文章可以当作一个 Quick Start.</p><h1 id="2-安装"><a class="markdownIt-Anchor" href="#2-安装"></a> 2 安装</h1><p><strong>方法1：</strong></p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ruby -e <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>&quot;</span> &lt; /dev/null 2&gt; /dev/null</span><br></pre></td></tr></table></figure><p><strong>方法2:</strong></p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install gperftools</span><br></pre></td></tr></table></figure><h1 id="3-使用"><a class="markdownIt-Anchor" href="#3-使用"></a> 3 使用</h1><h1 id="x-参考"><a class="markdownIt-Anchor" href="#x-参考"></a> X 参考</h1><ul><li><a href="https://stackoverflow.com/questions/23200704/install-perf-on-mac"><strong>Install “perf” on Mac</strong></a></li><li><a href="https://luyuhuang.tech/2022/04/10/gperftools.html"><strong>使用 gperftools 分析程序性能</strong></a></li></ul>]]></content>
     
@@ -67,17 +151,17 @@
     
     <category term="Tool" scheme="https://dragonliu2018.github.io/categories/Tool/"/>
     
-    <category term="调优" scheme="https://dragonliu2018.github.io/categories/Tool/%E8%B0%83%E4%BC%98/"/>
+    <category term="opt" scheme="https://dragonliu2018.github.io/categories/Tool/opt/"/>
     
     
   </entry>
   
   <entry>
-    <title>[Tool] perf 安装使用教程</title>
-    <link href="https://dragonliu2018.github.io/2025/09/26/Tool-perf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
-    <id>https://dragonliu2018.github.io/2025/09/26/Tool-perf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</id>
+    <title>[Tool][opt] perf 安装使用教程</title>
+    <link href="https://dragonliu2018.github.io/2025/09/26/Tool-opt-perf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+    <id>https://dragonliu2018.github.io/2025/09/26/Tool-opt-perf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</id>
     <published>2025-09-25T16:24:37.000Z</published>
-    <updated>2025-09-25T16:28:35.585Z</updated>
+    <updated>2025-09-25T16:38:14.178Z</updated>
     
     <content type="html"><![CDATA[<h1 id="1-ubuntu-安装步骤"><a class="markdownIt-Anchor" href="#1-ubuntu-安装步骤"></a> 1 ubuntu 安装步骤</h1><ol><li><p>安装<code>linux-tools-common</code>：</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install linux-tools-common</span><br></pre></td></tr></table></figure></li><li><p>此时运行perf仍然失败：</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  matrixdb git:(main) ✗ perf</span><br><span class="line">WARNING: perf not found <span class="keyword">for</span> kernel 5.15.0-69</span><br><span class="line"></span><br><span class="line">  You may need to install the following packages <span class="keyword">for</span> this specific kernel:</span><br><span class="line">    linux-tools-5.15.0-69-generic</span><br><span class="line">    linux-cloud-tools-5.15.0-69-generic</span><br><span class="line"></span><br><span class="line">  You may also want to install one of the following packages to keep up to <span class="built_in">date</span>:</span><br><span class="line">    linux-tools-generic</span><br><span class="line">    linux-cloud-tools-generic</span><br></pre></td></tr></table></figure></li><li><p>根据提示先进行对应包的更新：</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install linux-tools-generic linux-cloud-tools-generic</span><br></pre></td></tr></table></figure></li><li><p>下载对应包：</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install linux-tools-5.15.0-69-generic linux-cloud-tools-5.15.0-69-generic</span><br></pre></td></tr></table></figure></li><li><p>进行验证，下载成功：</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  matrixdb git:(main) ✗ perf -v</span><br><span class="line">perf version 5.15.87</span><br></pre></td></tr></table></figure></li></ol><h1 id="2-卸载"><a class="markdownIt-Anchor" href="#2-卸载"></a> 2 卸载</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get remove linux-tools-common linux-tools-$(<span class="built_in">uname</span> -r) linux-cloud-tools-$(<span class="built_in">uname</span> -r)</span><br></pre></td></tr></table></figure><h1 id="3-报错"><a class="markdownIt-Anchor" href="#3-报错"></a> 3 报错</h1><h2 id="31-报错1the-cpu_corecycles-event-is-not-supported"><a class="markdownIt-Anchor" href="#31-报错1the-cpu_corecycles-event-is-not-supported"></a> 3.1 报错1：The cpu_core/cycles/ event is not supported.</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  build git:(p1) ✗ <span class="built_in">sudo</span> perf record ./test/buffer_pool_manager_instance_test</span><br><span class="line">Error:</span><br><span class="line">The cpu_core/cycles/ event is not supported.</span><br></pre></td></tr></table></figure><p>在公司 macbook 上没有出现报错，在实验室 win11 上出现上述问题。</p><p><strong>参考</strong> <a href="https://www.cnblogs.com/azureology/p/13913540.html">虚拟机Linux使用perf stat提示cycles not supported</a>，解决方法如下：</p><ol><li>关闭VMware虚拟机电源，找到硬件配置选项中CPU</li><li>勾选<code>☑️虚拟化CPU性能计数器</code></li><li>重启问题解决（但是我的机器勾选后无法启动虚拟机了🥦</li></ol><h1 id="4-使用"><a class="markdownIt-Anchor" href="#4-使用"></a> 4 使用</h1><h2 id="41-抓取性能信息"><a class="markdownIt-Anchor" href="#41-抓取性能信息"></a> 4.1 抓取性能信息</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进程</span></span><br><span class="line"><span class="built_in">sudo</span> perf record --call-graph=dwarf -p 479061</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可执行文件</span></span><br><span class="line"><span class="built_in">sudo</span> perf record --call-graph=dwarf ./exec</span><br></pre></td></tr></table></figure><h2 id="42-结果展示"><a class="markdownIt-Anchor" href="#42-结果展示"></a> 4.2 结果展示</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> perf report -i perf.data --no-inline -g</span><br></pre></td></tr></table></figure><h2 id="43-快捷键"><a class="markdownIt-Anchor" href="#43-快捷键"></a> 4.3 快捷键</h2><ol><li>展开：<code>shift</code> + <code>+</code></li><li></li></ol><h1 id="x-参考"><a class="markdownIt-Anchor" href="#x-参考"></a> X 参考</h1><ul><li><a href="https://www.jianshu.com/p/4659063b3c0d"><strong>基于Ubuntu 18.04 安装perf工具</strong></a></li><li><a href="https://installati.one/install-perf-tools-unstable-ubuntu-22-04/"><strong>How To Install perf-tools-unstable on Ubuntu 22.04</strong></a></li></ul>]]></content>
     
@@ -94,7 +178,7 @@
     
     <category term="Tool" scheme="https://dragonliu2018.github.io/categories/Tool/"/>
     
-    <category term="调优" scheme="https://dragonliu2018.github.io/categories/Tool/%E8%B0%83%E4%BC%98/"/>
+    <category term="opt" scheme="https://dragonliu2018.github.io/categories/Tool/opt/"/>
     
     
   </entry>
