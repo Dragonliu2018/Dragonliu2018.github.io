@@ -1,5 +1,7 @@
-https://dragonliu2018.github.io/2025/09/26/DB-doris-%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/
 https://dragonliu2018.github.io/2025/09/26/DB-doris-%E8%BF%90%E8%A1%8C%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/
+https://dragonliu2018.github.io/2025/09/26/DB-doris-%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E6%B1%87%E6%80%BB/
+https://dragonliu2018.github.io/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/
+https://dragonliu2018.github.io/2025/09/26/DB-doris-%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/
 https://dragonliu2018.github.io/2025/09/26/DB-doris-%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/
 https://dragonliu2018.github.io/2025/09/26/Tool-opt-Instruments-speedsope-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/
 https://dragonliu2018.github.io/2025/09/26/Tool-opt-gperf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/
@@ -7,7 +9,6 @@ https://dragonliu2018.github.io/2025/09/26/Tool-opt-perf-%E5%AE%89%E8%A3%85%E4%B
 https://dragonliu2018.github.io/2025/09/26/Tool-opt-C-benchmark/
 https://dragonliu2018.github.io/2025/09/26/PL-C-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%B1%87%E6%80%BB/
 https://dragonliu2018.github.io/2025/09/25/Tool-docker-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/
-https://dragonliu2018.github.io/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/
 https://dragonliu2018.github.io/navigation/index.html
 https://dragonliu2018.github.io/2025/09/24/PL-Python-%E5%B8%B8%E8%A7%81-bug-%E6%B1%87%E6%80%BB/
 https://dragonliu2018.github.io/2025/09/24/PL-Python-%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/
@@ -28,8 +29,8 @@ https://dragonliu2018.github.io/about/index.html
 https://dragonliu2018.github.io/
 https://dragonliu2018.github.io/tags/pr/
 https://dragonliu2018.github.io/categories/DB/
-https://dragonliu2018.github.io/categories/PL/
 https://dragonliu2018.github.io/categories/DB/doris/
+https://dragonliu2018.github.io/categories/PL/
 https://dragonliu2018.github.io/categories/Tool/
 https://dragonliu2018.github.io/categories/PL/C/
 https://dragonliu2018.github.io/categories/PL/Python/

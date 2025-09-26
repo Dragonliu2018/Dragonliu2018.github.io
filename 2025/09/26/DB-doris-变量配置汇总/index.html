@@ -17,16 +17,20 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>分类: Tool | Dragon&#39;s Blogs</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://dragonliu2018.github.io/categories/Tool/index.html">
+  <title>[DB][doris] 变量配置汇总 | Dragon&#39;s Blogs</title>
+  <meta name="description" content="variables  查看变量 show variables like &quot;%nereids%&quot;;  设置变量 SET enable_nereids_planner&#x3D;false; -- 是否开启新优化器 nereids  FE config  查看配置  设置配置  BE config  查看配置  设置配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[DB][doris] 变量配置汇总">
+<meta property="og:url" content="https://dragonliu2018.github.io/2025/09/26/DB-doris-%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E6%B1%87%E6%80%BB/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="variables  查看变量 show variables like &quot;%nereids%&quot;;  设置变量 SET enable_nereids_planner&#x3D;false; -- 是否开启新优化器 nereids  FE config  查看配置  设置配置  BE config  查看配置  设置配置">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-09-26T15:36:51.000Z">
+<meta property="article:modified_time" content="2025-09-26T15:40:01.442Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://dragonliu2018.github.io/categories/Tool/index.html">
+  <link rel="canonical" href="https://dragonliu2018.github.io/2025/09/26/DB-doris-%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E6%B1%87%E6%80%BB/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -36,6 +40,8 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
   
   
   
@@ -320,147 +326,161 @@
 </aside>
 
   
-  <main class="main" role="main">
-  <article class="content article article-categories article-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">分类: Tool</h1>
-      <p class="hidden-xs">共 10 篇文章</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/categories">All</a></li>
-          
-          <li><a href="/categories/DB/">DB</a></li>
-          
-          <li><a href="/categories/DB/doris/">doris</a></li>
-          
-          <li><a href="/categories/PL/">PL</a></li>
-          
-          <li><a href="/categories/Tool/">Tool</a></li>
-          
-          <li><a href="/categories/PL/C/">C++</a></li>
-          
-          <li><a href="/categories/PL/Python/">Python</a></li>
-          
-          <li><a href="/categories/DB/databend/">databend</a></li>
-          
-          <li><a href="/categories/Tool/Hexo/">Hexo</a></li>
-          
-          <li><a href="/categories/Tool/docker/">docker</a></li>
-          
-          <li><a href="/categories/Tool/git/">git</a></li>
-          
-          <li><a href="/categories/Tool/opt/">opt</a></li>
-          
-          <li><a href="/categories/Tool/wsl/">wsl</a></li>
-          
-          <li><a href="/categories/DB/函数-表达式/">函数/表达式</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
-      <div class="panel panel-default b-no">
-    <div class="panel-heading" role="tab">
-        <h4 class="panel-title">
-            <a data-toggle="collapse" href="#collapseTool" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              Tool
-            </a>
-            <small class="text-muted">(Total 10 articles)</small>
-        </h4>
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#variables"><span class="toc-number">1.</span> <span class="toc-text"> variables</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.</span> <span class="toc-text"> 查看变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> 设置变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#fe-config"><span class="toc-number">2.</span> <span class="toc-text"> FE config</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E9%85%8D%E7%BD%AE"><span class="toc-number">2.1.</span> <span class="toc-text"> 查看配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text"> 设置配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#be-config"><span class="toc-number">3.</span> <span class="toc-text"> BE config</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E9%85%8D%E7%BD%AE-2"><span class="toc-number">3.1.</span> <span class="toc-text"> 查看配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E9%85%8D%E7%BD%AE-2"><span class="toc-number">3.2.</span> <span class="toc-text"> 设置配置</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-DB-doris-变量配置汇总" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [DB][doris] 变量配置汇总
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2025/09/26/DB-doris-%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E6%B1%87%E6%80%BB/" class="article-date">
+	  <time datetime="2025-09-26T15:36:51.000Z" itemprop="datePublished">2025-09-26</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/DB/">DB</a>►<a class="article-category-link" href="/categories/DB/doris/">doris</a>
+  </span>
+
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/09/26/DB-doris-%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E6%B1%87%E6%80%BB/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 47(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
+	
+
+      </div>
     </div>
-    <div id="collapseTool" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTool">
-        <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2025/09/26/Tool-opt-Instruments-speedsope-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-25T16:34:54.000Z" itemprop="datePublished">2025-09-26</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool][opt] Instruments + speedsope 安装与使用
-</a>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="variables"><a class="markdownIt-Anchor" href="#variables"></a> variables</h1>
+<h2 id="查看变量"><a class="markdownIt-Anchor" href="#查看变量"></a> 查看变量</h2>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">show</span> variables <span class="keyword">like</span> &quot;%nereids%&quot;;</span><br></pre></td></tr></table></figure>
+<h2 id="设置变量"><a class="markdownIt-Anchor" href="#设置变量"></a> 设置变量</h2>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> enable_nereids_planner<span class="operator">=</span><span class="literal">false</span>; <span class="comment">-- 是否开启新优化器 nereids</span></span><br></pre></td></tr></table></figure>
+<h1 id="fe-config"><a class="markdownIt-Anchor" href="#fe-config"></a> FE config</h1>
+<h2 id="查看配置"><a class="markdownIt-Anchor" href="#查看配置"></a> 查看配置</h2>
+<h2 id="设置配置"><a class="markdownIt-Anchor" href="#设置配置"></a> 设置配置</h2>
+<h1 id="be-config"><a class="markdownIt-Anchor" href="#be-config"></a> BE config</h1>
+<h2 id="查看配置-2"><a class="markdownIt-Anchor" href="#查看配置-2"></a> 查看配置</h2>
+<h2 id="设置配置-2"><a class="markdownIt-Anchor" href="#设置配置-2"></a> 设置配置</h2>
 
-
-              
-                
-<a href="/2025/09/26/Tool-opt-C-benchmark/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-25T16:30:37.000Z" itemprop="datePublished">2025-09-26</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool][opt] C++ benchmark
-</a>
-
-
-              
-                
-<a href="/2025/09/26/Tool-opt-gperf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-25T16:28:23.000Z" itemprop="datePublished">2025-09-26</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool][opt] gperf 安装使用教程
-</a>
-
-
-              
-                
-<a href="/2025/09/26/Tool-opt-perf-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-25T16:24:37.000Z" itemprop="datePublished">2025-09-26</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool][opt] perf 安装使用教程
-</a>
-
-
-              
-                
-<a href="/2025/09/25/Tool-docker-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-25T11:56:32.000Z" itemprop="datePublished">2025-09-25</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] docker 使用技巧汇总
-</a>
-
-
-              
-                
-<a href="/2025/09/24/Tool-github-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:45:16.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] github 使用技巧汇总
-</a>
-
-
-              
-                
-<a href="/2025/09/24/Tool-git-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:44:11.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] git 报错汇总
-</a>
-
-
-              
-                
-<a href="/2025/09/24/Tool-git-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:21:50.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] git 使用技巧汇总
-</a>
-
-
-              
-                
-<a href="/2025/09/24/Tool-wsl-%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-24T14:08:37.000Z" itemprop="datePublished">2025-09-24</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] wsl 报错汇总
-</a>
-
-
-              
-                
-<a href="/2025/09/13/Tool-Hexo-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="collection-item"   itemprop="url">
-  <time datetime="2025-09-13T15:37:08.000Z" itemprop="datePublished">2025-09-13</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> [Tool] Hexo 使用教程
-</a>
-
-
-              
-            </div>
-        </div>
+      
     </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://dragonliu2018.github.io/2025/09/26/DB-doris-%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E6%B1%87%E6%80%BB/" title="[DB][doris] 变量配置汇总" target="_blank" rel="external">https://dragonliu2018.github.io/2025/09/26/DB-doris-变量配置汇总/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/dragonliu2018" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/dragonliu2018" target="_blank"><span class="text-dark">Dragon Liu</span><small class="ml-1x">Blogs</small></a></h3>
+        <div>Life is painting a picture, not doing a sum.</div>
+      </div>
+    </figure>
+  </div>
 </div>
+
+
     </div>
   </article>
-   
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2025/09/26/DB-doris-%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/" title="[DB][doris] 编译教程"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -515,6 +535,39 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'Pbjl2Wajl9och0xVbR5eqoH1-gzGzoHsz',
+    appKey: 'PgxFh1wV6pyMMllhxs7NJijb',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
 
 
 
